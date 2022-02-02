@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getBridgeTokens } from "../../api/commonService";
-import { ChainResponseDto, TokenResponseDto } from "../../common/dtos";
+import { ChainResponseDto, TokenResponseDto } from "../dtos";
 import "dotenv/config";
-import { ETH } from "../../common/constants";
+import { ETH } from "../constants";
 
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 

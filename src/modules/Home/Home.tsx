@@ -11,7 +11,7 @@ import useHome from "./useHome";
 import _ from "lodash";
 import MainContent from "./MainContent";
 import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
-import useTokens from "./useTokens";
+import useTokens from "../../common/hooks/useTokens";
 
 const Root = styled.div``;
 
