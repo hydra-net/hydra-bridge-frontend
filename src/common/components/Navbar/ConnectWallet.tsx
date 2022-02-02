@@ -3,8 +3,7 @@ import styled, { useTheme } from "styled-components";
 import { getFlexCenter, getHorizontalGap } from "../../styles";
 import Button from "../Buttons/Button";
 import Copy from "../Copy";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import "dotenv/config";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
@@ -75,7 +74,6 @@ const ConnectWallet = () => {
           {isRightNetwork && <Copy payload={address || ""} onCopy={notify} />}
         </Wrapper>
       </Container>
-      <ToastContainer />
     </Root>
   );
 };

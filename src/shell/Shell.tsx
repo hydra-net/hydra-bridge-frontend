@@ -6,6 +6,8 @@ import { lazyWithPreload } from "../helpers/lazy";
 import { routes } from "../routes";
 import Fallback from "./Fallback";
 import useChains from "../common/hooks/useChains";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = lazyWithPreload(
   () => import(/* webpackChunkName: 'LandingModule' */ "../modules/Home/Home")
@@ -28,6 +30,7 @@ const Shell = () => {
             <Route path={routes.page404} element={<Page404 />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
+          <ToastContainer />
         </Suspense>
       </Layout>
     </>
