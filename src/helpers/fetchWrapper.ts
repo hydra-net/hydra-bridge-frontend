@@ -1,6 +1,6 @@
 import { IApiResponse } from "../common/commonTypes";
+import { BaseResponseDto } from "../common/dtos";
 import { parseJson } from "./requestHelper";
-
 
 export const fetchWrapper = {
   get,
@@ -9,19 +9,19 @@ export const fetchWrapper = {
   delete: _delete,
 };
 
-async function get<T>(url: string): Promise<IApiResponse<T>> {
+async function get<T>(url: string): Promise<IApiResponse<BaseResponseDto<T>>> {
   const requestOptions: any = {
     method: "GET",
   };
   const resp = await fetch(url, requestOptions);
-  return handleResponse<T>(resp);
+  return handleResponse<BaseResponseDto<T>>(resp);
 }
 
 function post(
   url: string,
   body: any,
   contentType: string = "application/json"
- ) {
+) {
   const requestOptions: any = {
     method: "POST",
     headers: { "Content-Type": contentType },
@@ -52,10 +52,10 @@ function _delete(url: string) {
   return fetch(url, requestOptions).then(handleResponse);
 }
 
-function handleResponse<T>(response: any) {
+function handleResponse<T>(response: any): IApiResponse<T> {
   return response.text().then((text: string) => {
     const data = text && parseJson(text);
-    let resp: IApiResponse<T> = { result: data };
+    let resp: IApiResponse<BaseResponseDto<T>> = {};
     if (!response.ok) {
       switch (response.status) {
         case 400:
@@ -81,7 +81,6 @@ function handleResponse<T>(response: any) {
         case 500:
           resp = { errorMsg: "Something went wrong!", status: 500 };
           break;
-
         default:
           const error = (data && data.message) || response.statusText;
           resp = { errorMsg: error, status: response.status };
@@ -89,7 +88,7 @@ function handleResponse<T>(response: any) {
       }
       return Promise.reject(resp);
     }
-
+    resp.result = data;
     return resp;
   });
 }

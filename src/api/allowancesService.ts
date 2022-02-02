@@ -1,4 +1,8 @@
-import { BaseResponseDto } from "../common/dtos";
+import {
+  BaseResponseDto,
+  BuildAllowanceResponseDto,
+  CheckAllowanceResponseDto,
+} from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
 import "dotenv/config";
 const { REACT_APP_API_URL } = process.env;
@@ -8,19 +12,15 @@ export const checkAllowance = async (
   owner: string,
   spender: string,
   tokenAddress: string
-): Promise<BaseResponseDto> => {
+): Promise<BaseResponseDto<CheckAllowanceResponseDto> | undefined> => {
   try {
-    const response: any = await fetchWrapper.get(
+    const response = await fetchWrapper.get<CheckAllowanceResponseDto>(
       `${REACT_APP_API_URL}/approval/check-allowance?chainId=${chainId}&owner=${owner}&spender=${spender}&tokenAddress=${tokenAddress}`
     );
 
-    return response.result;
+    return response.result ?? undefined;
   } catch (e) {
-    console.log(e);
-    return {
-      success: false,
-      result: null,
-    };
+    console.log("Error check allowance", e);
   }
 };
 
@@ -30,17 +30,13 @@ export const buildApprovalTx = async (
   spender: string,
   tokenAddress: string,
   amount: number
-): Promise<BaseResponseDto> => {
+): Promise<BaseResponseDto<BuildAllowanceResponseDto> | undefined> => {
   try {
-    const response: any = await fetchWrapper.get(
+    const response = await fetchWrapper.get<BuildAllowanceResponseDto>(
       `${REACT_APP_API_URL}/approval/build-tx?chainId=${chainId}&owner=${owner}&spender=${spender}&tokenAddress=${tokenAddress}&amount=${amount}`
     );
-    return response.result;
+    return response.result ?? undefined;
   } catch (e) {
-    console.log(e);
-    return {
-      success: false,
-      result: null,
-    };
+    console.log("Error building approval transaction", e);
   }
 };

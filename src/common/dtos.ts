@@ -1,13 +1,8 @@
 import { BridgeId } from "./enums";
 
-export interface BaseListResponseDto<T> {
+export interface BaseResponseDto<T> {
   success: boolean;
-  result: T[];
-}
-
-export interface BaseResponseDto {
-  success: boolean;
-  result: any;
+  result: T;
 }
 
 export interface CheckAllowanceDto {
