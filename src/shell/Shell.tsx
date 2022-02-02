@@ -1,12 +1,11 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import Layout from "../common/components/Layout";
 import { Routes, Route } from "react-router-dom";
 import { defaultTheme } from "./theme/theme";
 import { lazyWithPreload } from "../helpers/lazy";
 import { routes } from "../routes";
 import Fallback from "./Fallback";
-import { getAllChains } from "../api/commonService";
-import { ChainResponseDto } from "../common/dtos";
+import useChains from "../common/hooks/useChains";
 
 const Home = lazyWithPreload(
   () => import(/* webpackChunkName: 'LandingModule' */ "../modules/Home/Home")
@@ -18,17 +17,7 @@ const Page404 = lazyWithPreload(
 );
 
 const Shell = () => {
-  const [chains, setChains] = useState<ChainResponseDto[]>([]);
-
-  useEffect(() => {
-    async function getChains() {
-      const res = await getAllChains();
-      if (res && res.success) {
-        setChains(res.result);
-      }
-    }
-    getChains();
-  }, []);
+  const { chains } = useChains();
 
   return (
     <>
