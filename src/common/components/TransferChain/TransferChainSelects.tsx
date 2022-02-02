@@ -49,8 +49,8 @@ const customStyles: any = {
 };
 
 type Props = {
-  chainsFrom:  ISelectOption[] ;
-  chainsTo:  ISelectOption[] 
+  chainsFrom: ISelectOption[];
+  chainsTo: ISelectOption[];
   chainFrom: number;
   chainTo: number;
   isDisabled: boolean;
@@ -66,14 +66,14 @@ const TransferChainSelects = ({
   onSelectChainFrom,
   onSelectChainTo,
 }: Props) => {
-
-
   return (
     <Root>
       <TransferChainContainer>
         <TransferLabel>Transfer from</TransferLabel>
         <StyledSelect
-          value={chainsFrom.find((option) => option.value === chainFrom) || null}
+          value={
+            chainsFrom.find((option) => option.value === chainFrom) || null
+          }
           styles={customStyles}
           options={chainsFrom}
           placeholder={null}
