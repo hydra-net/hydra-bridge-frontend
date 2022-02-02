@@ -7,13 +7,12 @@ import {
   QuoteRequestDto,
   RouteDto,
   TokenBalanceDto,
-  TokenResponseDto,
 } from "../../common/dtos";
-import { getBridgeTokens } from "../../api/commonService";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { getUserAddressBalances } from "../../api/balancesService";
 import { isEmpty } from "../../helpers/stringHelper";
 import "dotenv/config";
+import { ETH } from "../../common/constants";
 
 const { REACT_APP_DEFAULT_NETWORK_ID, REACT_APP_ETH_CONTRACT } = process.env;
 
@@ -33,7 +32,6 @@ export default function useHome() {
   const [inProgress, setInProgress] = useState<boolean>(false);
 
   //state
-  const [tokens, setTokens] = useState<TokenResponseDto[]>([]);
   const [chainFrom, setChainFrom] = useState<ChainResponseDto>();
   const [chainTo, setChainTo] = useState<ChainResponseDto>();
   const [walletBalances, setWalletBalances] = useState<TokenBalanceDto[]>();
@@ -45,9 +43,6 @@ export default function useHome() {
 
   //modal
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-  const token = tokens.find((t) => t.id === asset);
-  const isEth = token?.symbol.toString().toLowerCase() === "eth";
 
   const { onboard, address, provider, network } = useWeb3();
 
@@ -74,29 +69,13 @@ export default function useHome() {
           }
         }
       } catch (e) {
-        console.log(e);
+        console.log("Wallet balances error", e);
         setError(e);
         setIsErrorOpen(true);
       }
     }
     getWalletBalances();
   }, [address, chainFrom, setWalletBalances]);
-
-  useEffect(() => {
-    async function getTokens() {
-      const res = await getBridgeTokens(
-        chainFrom
-          ? chainFrom?.chainId!
-          : parseInt(REACT_APP_DEFAULT_NETWORK_ID!)
-      );
-      if (res && res.success) {
-        setTokens(res.result);
-      }
-    }
-    if (network) {
-      getTokens();
-    }
-  }, [network, chainFrom]);
 
   const onConnectWallet = async () => {
     // Prompt user to select a wallet
@@ -121,7 +100,7 @@ export default function useHome() {
         const res = await getQuote(dto);
         if (res.success) {
           if (res.result) {
-            const isEther = res.result.fromAsset.symbol.toLowerCase() === "eth";
+            const isEther = res.result.fromAsset.symbol.toLowerCase() === ETH;
             if (res.result.routes.length > 0) {
               let filteredRoutes = res.result.routes;
 
@@ -147,14 +126,15 @@ export default function useHome() {
                   res.result.isApproved,
                   dto.toChainId,
                   dto.amount,
-                  res.result.fromAsset.address
+                  res.result.fromAsset.address,
+                  isEther
                 );
               }
             }
           }
         }
       } catch (e) {
-        console.log(e);
+        console.log("Get quote error", e);
         setError(e);
         setIsErrorOpen(true);
       } finally {
@@ -168,7 +148,8 @@ export default function useHome() {
     isApproved: boolean,
     chainId: number,
     amount: number,
-    tokenAddress: string
+    tokenAddress: string,
+    isEth: boolean
   ) => {
     try {
       if (
@@ -192,7 +173,7 @@ export default function useHome() {
         }
       }
     } catch (e) {
-      console.log(e);
+      console.log("Build approve data error", e);
       setError(e);
       setIsErrorOpen(true);
     }
@@ -229,7 +210,7 @@ export default function useHome() {
         }
       }
     } catch (e: any) {
-      console.log(e);
+      console.log("On approve wallet error", e);
       setError("Something went wrong!");
       setIsErrorOpen(true);
     } finally {
@@ -246,7 +227,7 @@ export default function useHome() {
           setBridgeTx(res.result);
         }
       } catch (e) {
-        console.log(e);
+        console.log("Get bridge tx data error", e);
         setError(e);
         setIsErrorOpen(true);
       }
@@ -283,13 +264,10 @@ export default function useHome() {
     walletBalances,
     isWrongNetwork,
     network,
-    token,
-    tokens,
     asset,
     amountIn,
     amountOut,
     routeId,
-    isEth,
     isApproved,
     isErrorOpen,
     inProgress,
