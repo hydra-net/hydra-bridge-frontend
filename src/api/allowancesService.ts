@@ -10,12 +10,11 @@ const { REACT_APP_API_URL } = process.env;
 export const checkAllowance = async (
   chainId: number,
   owner: string,
-  spender: string,
   tokenAddress: string
 ): Promise<BaseResponseDto<CheckAllowanceResponseDto> | undefined> => {
   try {
     const response = await fetchWrapper.get<CheckAllowanceResponseDto>(
-      `${REACT_APP_API_URL}/approval/check-allowance?chainId=${chainId}&owner=${owner}&spender=${spender}&tokenAddress=${tokenAddress}`
+      `${REACT_APP_API_URL}/approval/check-allowance?chainId=${chainId}&owner=${owner}&tokenAddress=${tokenAddress}`
     );
 
     return response.result ?? undefined;
@@ -27,13 +26,12 @@ export const checkAllowance = async (
 export const buildApprovalTx = async (
   chainId: number,
   owner: string,
-  spender: string,
   tokenAddress: string,
   amount: number
 ): Promise<BaseResponseDto<BuildAllowanceResponseDto> | undefined> => {
   try {
     const response = await fetchWrapper.get<BuildAllowanceResponseDto>(
-      `${REACT_APP_API_URL}/approval/build-tx?chainId=${chainId}&owner=${owner}&spender=${spender}&tokenAddress=${tokenAddress}&amount=${amount}`
+      `${REACT_APP_API_URL}/approval/build-tx?chainId=${chainId}&owner=${owner}&tokenAddress=${tokenAddress}&amount=${amount}`
     );
     return response.result ?? undefined;
   } catch (e) {

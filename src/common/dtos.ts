@@ -1,5 +1,3 @@
-import { BridgeId } from "./enums";
-
 export interface BaseResponseDto<T> {
   success: boolean;
   result: T;
@@ -97,7 +95,6 @@ export interface BuildTxResponseDto {
   to: string;
   from: string;
   value?: any;
-  bridgeId?: BridgeId;
 }
 
 export interface TokenResponseDto {
