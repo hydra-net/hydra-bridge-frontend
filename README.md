@@ -20,9 +20,12 @@ Install NodeJS and Yarn node version 16.13.2.
 
 Copy `env.example` in `.env` and populate missing variables.
 `REACT_APP_API_URL` is api that project uses, if you use localhost use `http://localhost:3001/api` to get backend api, if not put here dev environment api
-`REACT_APP_ETH_INFURA_ID` got to https://infura.io/ and setup project, put here project ID
-`REACT_APP_NETWORK_ID` here use 1 for mainnet and 5 for goerli testnet, witch are official ids of those networks, long term this will be removed and moved to some other config
-`REACT_APP_HYDRA_BRIDGE_CONTRACT` this is smart contract address for current network app is running, ask main dev to provide addreses, long term this will be removed and moved to some other config
+
+## Start app
+
+- use commands:
+  - `yarn dev` for launching app on `goerli` test network
+  - `yarn production` for launching app on `mainnet` network
 
 ## Folder Structure
 
