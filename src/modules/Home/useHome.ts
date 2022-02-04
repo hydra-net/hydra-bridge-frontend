@@ -1,24 +1,27 @@
 import { useCallback, useEffect, useState } from "react";
 import { buildApprovalTx } from "../../api/allowancesService";
-import { getQuote } from "../../api/bridgeService";
+import { buildBridgeTx, getQuote } from "../../api/bridgeService";
 import {
+  BuildAllowanceResponseDto,
+  BuildTxRequestDto,
   BuildTxResponseDto,
   QuoteRequestDto,
   RouteDto,
 } from "../../common/dtos";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { isEmpty } from "../../helpers/stringHelper";
-import "dotenv/config";
-import { ETH } from "../../common/constants";
+import { ETH, HOP_BRIDGE_GOERLI } from "../../common/constants";
 import _ from "lodash";
 import { toast } from "react-toastify";
-
-const { REACT_APP_DEFAULT_NETWORK_ID, REACT_APP_ETH_CONTRACT } = process.env;
+import "dotenv/config";
+const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 export default function useHome() {
   //transaction actions
   const [bridgeRoutes, setBridgeRoutes] = useState<RouteDto[]>([]);
-  const [buildApproveTx, setBuildApproveTx] = useState<any>();
+  const [buildApproveTx, setBuildApproveTx] =
+    useState<BuildAllowanceResponseDto>();
+  const [bridgeTx, setBridgeTx] = useState<BuildTxResponseDto>();
 
   const [txHash, setTxHash] = useState<string>();
 
@@ -30,19 +33,13 @@ export default function useHome() {
   const [asset, setAsset] = useState<number>(4);
   const [routeId, setRouteId] = useState<number>(0);
   const [isWrongNetwork, setIsWrongNetwork] = useState<boolean>(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const [showRoutes, setShowRoutes] = useState<boolean>(false);
 
   //modal
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { onboard, address, provider, network } = useWeb3();
-
-  useEffect(() => {
-    if (network && parseInt(REACT_APP_DEFAULT_NETWORK_ID!) === network) {
-      setIsWrongNetwork(false);
-    } else {
-      setIsWrongNetwork(true);
-    }
-  }, [network, setIsWrongNetwork]);
 
   const onConnectWallet = async () => {
     // Prompt user to select a wallet
@@ -51,6 +48,14 @@ export default function useHome() {
     // Run wallet checks to make sure that user is ready to transact
     await onboard?.walletCheck();
   };
+
+  useEffect(() => {
+    if (network && parseInt(REACT_APP_DEFAULT_NETWORK_ID!) === network) {
+      setIsWrongNetwork(false);
+    } else {
+      setIsWrongNetwork(true);
+    }
+  }, [network, setIsWrongNetwork]);
 
   const onGetQuote = async (dto: QuoteRequestDto) => {
     if (
@@ -66,7 +71,7 @@ export default function useHome() {
       try {
         const response = await getQuote(dto);
         if (response) {
-          const { fromAsset, routes, isApproved } = response.result;
+          const { fromAsset, routes } = response.result;
           const isEther = fromAsset.symbol.toLowerCase() === ETH;
           if (routes.length > 0) {
             let filteredRoutes = routes;
@@ -74,29 +79,32 @@ export default function useHome() {
             if (isEther) {
               filteredRoutes = routes.filter(
                 (route: RouteDto) =>
-                  route.bridgeRoute.bridgeName !== "hop-bridge-goerli"
+                  route.bridgeRoute.bridgeName !== HOP_BRIDGE_GOERLI
               );
             }
             const cheapestRoute = filteredRoutes[0];
             setRouteId(cheapestRoute.id);
+            setBridgeTx(cheapestRoute.buildTx);
             setBridgeRoutes(filteredRoutes);
-          }
 
-          if (isApproved) {
-            setIsApproved(true);
-          } else {
-            setIsApproved(false);
+            if (response.result.isApproved) {
+              setIsApproved(true);
+            } else {
+              setIsApproved(false);
 
-            if (!isEther) {
-              await onBuildApproveTxData(
-                dto.recipient,
-                isApproved,
-                dto.toChainId,
-                dto.amount,
-                fromAsset.address,
-                isEther
-              );
+              if (!isEther) {
+                await onBuildApproveTxData(
+                  dto.recipient,
+                  isApproved,
+                  dto.toChainId,
+                  dto.amount,
+                  fromAsset.address,
+                  isEther
+                );
+              }
             }
+            setShowRoutes(true);
+            setIsDisabled(false);
           }
         }
       } catch (e) {
@@ -130,16 +138,14 @@ export default function useHome() {
         !isEth &&
         !isWrongNetwork
       ) {
-        const result = await buildApprovalTx(
+        const response = await buildApprovalTx(
           chainId,
           walletAddress,
-          REACT_APP_ETH_CONTRACT!,
           tokenAddress,
           amount
         );
-        if (result) {
-          console.log("Build approve data", result);
-          setBuildApproveTx(result);
+        if (response) {
+          setBuildApproveTx(response.result);
         }
       }
     } catch (e) {
@@ -191,6 +197,19 @@ export default function useHome() {
     }
   };
 
+  const getBridgeTxData = async (dto: BuildTxRequestDto) => {
+    if (!isWrongNetwork) {
+      try {
+        const response = await buildBridgeTx(dto);
+        if (response) {
+          setBridgeTx(response.result);
+        }
+      } catch (e) {
+        console.log("Build bridge tx error", e);
+      }
+    }
+  };
+
   const onMoveAssets = async (
     isEth: boolean,
     isSendingEnabled: boolean,
@@ -223,6 +242,13 @@ export default function useHome() {
     }
   };
 
+  const onRouteClick = async (dto: BuildTxRequestDto) => {
+    if (!inProgress) {
+      setRouteId(dto.routeId);
+      await getBridgeTxData(dto);
+    }
+  };
+
   return {
     onDebouncedQuote,
     onMoveAssets,
@@ -230,13 +256,20 @@ export default function useHome() {
     onGetQuote,
     onBuildApproveTxData,
     onApproveWallet,
+    onRouteClick,
     setAsset,
     setRouteId,
     setInProgress,
     setIsModalOpen,
     setTxHash,
     setIsApproved,
+    setShowRoutes,
+    setIsDisabled,
+    getBridgeTxData,
+    showRoutes,
+    isDisabled,
     isWrongNetwork,
+    bridgeTx,
     network,
     asset,
     routeId,
