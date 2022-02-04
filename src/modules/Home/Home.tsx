@@ -13,7 +13,7 @@ import useAmountInput from "./useAmountInput";
 import useWalletBalances from "./useWalletBalances";
 import useChainTransfers from "./useChainTransfers";
 import { ISelectOption } from "../../common/commonTypes";
-import useBridgeTxData from "./useBridgeTxData";
+import { toast } from "react-toastify";
 
 const Root = styled.div``;
 
@@ -40,16 +40,22 @@ const Home = ({ chains }: Props) => {
     onConnectWallet,
     onApproveWallet,
     onMoveAssets,
+    onRouteClick,
     setAsset,
     setRouteId,
     setIsModalOpen,
     setInProgress,
     setIsApproved,
+    setShowRoutes,
+    setIsDisabled,
+    showRoutes,
+    bridgeTx,
+    isWrongNetwork,
     buildApproveTx,
     onDebouncedQuote,
-    isWrongNetwork,
     routeId,
     asset,
+    isDisabled,
     isApproved,
     inProgress,
     isModalOpen,
@@ -59,7 +65,7 @@ const Home = ({ chains }: Props) => {
   const { address, network } = useWeb3();
   const { chainFrom, chainTo, onSelectChainFrom, onSelectChainTo } =
     useChainTransfers(chains);
-  const { walletBalances } = useWalletBalances(address!, chainFrom?.chainId!);
+  const { walletBalances } = useWalletBalances(address!, network!);
   const {
     amountIn,
     amountOut,
@@ -67,6 +73,7 @@ const Home = ({ chains }: Props) => {
     setAmountIn,
     setAmountOut,
     onAmountInChange,
+    setIsNotEnoughBalance,
   } = useAmountInput(
     address!,
     asset,
@@ -78,40 +85,70 @@ const Home = ({ chains }: Props) => {
     onDebouncedQuote
   );
   const { tokens, isEth } = useTokens(chainFrom!, network!, asset);
-  const { bridgeTx } = useBridgeTxData(
-    amountIn,
-    asset,
-    asset,
-    chainFrom?.chainId!,
-    chainTo?.chainId!,
-    routeId,
-    address!,
-    isWrongNetwork,
-    isApproved,
-    isEth
-  );
 
   const isAbleToMove = isApproved || isEth;
   const isConnected = !!address;
+  const isActionDisabled = inProgress || isWrongNetwork || isDisabled;
+
+  const handleAmountInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShowRoutes(false);
+    setIsDisabled(true);
+    const { value } = e.target;
+    onAmountInChange(value);
+  };
+
+  const handleOnRouteClick = async (id: number) => {
+    if (
+      address &&
+      amountIn &&
+      (isApproved || (isEth && id > 0)) &&
+      !isWrongNetwork
+    ) {
+      await onRouteClick({
+        amount: amountIn!,
+        fromAsset: asset!,
+        toAsset: asset!,
+        fromChainId: chainFrom!.chainId!,
+        toChainId: chainTo!.chainId!,
+        routeId: id,
+        recipient: address!,
+      });
+    }
+  };
 
   const handleSelectAsset = (option: ISelectOption) => {
     const { value } = option;
     setAsset(option ? value : null);
+    setShowRoutes(false);
+    setIsDisabled(true);
     if (amountIn && amountIn > 0) {
-      getIsNotEnoughBalance(walletBalances!, amountIn, value, isWrongNetwork);
-      onDebouncedQuote({
-        recipient: address!,
-        fromAsset: value,
-        fromChainId: chainFrom?.chainId!,
-        toAsset: value,
-        toChainId: chainTo?.chainId!,
-        amount: amountIn!,
-      });
+      const isNotEnoughBalance = getIsNotEnoughBalance(
+        walletBalances!,
+        amountIn,
+        value,
+        isWrongNetwork
+      );
+      if (!isNotEnoughBalance) {
+        onDebouncedQuote({
+          recipient: address!,
+          fromAsset: value,
+          fromChainId: chainFrom?.chainId!,
+          toAsset: value,
+          toChainId: chainTo?.chainId!,
+          amount: amountIn!,
+        });
+      }
+      if (isNotEnoughBalance) {
+        toast.error("Error not enough funds", { autoClose: false });
+      }
+      setIsNotEnoughBalance(isNotEnoughBalance);
     }
   };
 
   const hanldeOnSelectChainFrom = (option: ISelectOption) => {
     const selectedChain = onSelectChainFrom(option);
+    setShowRoutes(false);
+    setIsDisabled(true);
     if (selectedChain) {
       onDebouncedQuote({
         recipient: address!,
@@ -126,6 +163,8 @@ const Home = ({ chains }: Props) => {
 
   const hanldeOnSelectChainTo = (option: any) => {
     const selectedChain = onSelectChainTo(option);
+    setShowRoutes(false);
+    setIsDisabled(true);
     if (selectedChain) {
       onDebouncedQuote({
         recipient: address!,
@@ -136,16 +175,6 @@ const Home = ({ chains }: Props) => {
         amount: amountIn!,
       });
     }
-  };
-
-  const handleOnRouteClick = (id: number) => {
-    if (!inProgress) {
-      setRouteId(id);
-    }
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
   };
 
   const handleMoveAssets = async () => {
@@ -164,6 +193,7 @@ const Home = ({ chains }: Props) => {
     setAmountIn(0.0);
     setIsApproved(false);
     setRouteId(0);
+    setShowRoutes(false);
   };
 
   return (
@@ -183,8 +213,8 @@ const Home = ({ chains }: Props) => {
             chains={chains}
             chainFrom={chainFrom!}
             chainTo={chainTo!}
-            amountIn={amountIn}
-            amountOut={amountOut}
+            amountIn={amountIn!}
+            amountOut={amountOut!}
             routeId={routeId}
             inProgress={inProgress}
             isAbleToMove={isAbleToMove}
@@ -194,10 +224,11 @@ const Home = ({ chains }: Props) => {
             isEth={isEth}
             isNotEnoughBalance={isNotEnoughBalance}
             isWrongNetwork={isWrongNetwork}
-            onAmountChange={onAmountInChange}
+            isDisabled={isActionDisabled}
+            onAmountChange={handleAmountInChange}
             onApproveWallet={() =>
               onApproveWallet(
-                amountIn,
+                amountIn!,
                 chainFrom?.isSendingEnabled!,
                 chainTo?.isReceivingEnabled!,
                 chainFrom?.chainId!,
@@ -210,26 +241,21 @@ const Home = ({ chains }: Props) => {
             onSelectChainFrom={hanldeOnSelectChainFrom}
           />
 
-          {isAbleToMove &&
-            !!amountIn &&
-            amountIn > 0 &&
-            isConnected &&
-            !isNotEnoughBalance &&
-            !isWrongNetwork && (
-              <BridgeRoutes
-                inProgress={inProgress}
-                selectedRouteId={routeId}
-                routes={bridgeRoutes}
-                onRouteSelect={handleOnRouteClick}
-              />
-            )}
+          {showRoutes && !isNotEnoughBalance && isAbleToMove && (
+            <BridgeRoutes
+              inProgress={inProgress}
+              selectedRouteId={routeId}
+              routes={bridgeRoutes}
+              onRouteSelect={handleOnRouteClick}
+            />
+          )}
         </Wrapper>
       </Root>
 
       <HydraModal
         network={network!}
         subtitle="Transaction"
-        onClose={handleCloseModal}
+        onClose={() => setIsModalOpen(false)}
         isOpen={isModalOpen}
         tx={txHash!}
       />
