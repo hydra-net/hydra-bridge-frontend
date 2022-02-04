@@ -47,13 +47,13 @@ const AssetSelect = ({
   onSelectAsset,
 }: Props) => {
   const customStyles: any = {
-    control: (provided: CSSProperties, state: any) => ({
+    control: (provided: CSSProperties) => ({
       ...provided,
       borderRadius: "10px",
     }),
   };
 
-  const options = tokens.map((token: TokenResponseDto, index: number) => {
+  const options = tokens.map((token: TokenResponseDto) => {
     const isEth = token.symbol.toLocaleLowerCase() === ETH;
     return {
       label: token.symbol,

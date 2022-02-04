@@ -42,7 +42,7 @@ const IconArrowRight = styled(Icon)`
 `;
 
 const customStyles: any = {
-  control: (provided: CSSProperties, state: any) => ({
+  control: (provided: CSSProperties) => ({
     ...provided,
     borderRadius: "10px",
   }),

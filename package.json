@@ -24,16 +24,25 @@
     "web3": "^1.6.1"
   },
   "devDependencies": {
-    "web-vitals": "^1.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.178",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.16",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15"
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.3",
+    "prettier": "^2.5.1",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "dev": "REACT_APP_DEFAULT_NETWORK_ID=5 react-scripts start",
@@ -58,6 +67,21 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    ".{js,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    ".{js,json,md}": [
+      "prettier --write",
+      "git add"
     ]
   }
 }
