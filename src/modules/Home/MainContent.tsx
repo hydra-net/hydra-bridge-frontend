@@ -73,6 +73,7 @@ type Props = {
   isNotEnoughBalance: boolean;
   isApproveReady: boolean;
   isEth: boolean;
+  isDisabled: boolean;
   onSelectChainFrom: (option: any) => void;
   onSelectChainTo: (option: any) => void;
   onAmountChange: (e: any) => void;
@@ -95,6 +96,7 @@ const MainContent = ({
   isApproved,
   isConnected,
   inProgress,
+  isDisabled,
   isWrongNetwork,
   onSelectChainFrom,
   onSelectChainTo,
@@ -140,8 +142,8 @@ const MainContent = ({
           isAmountSet={!!amountIn}
           isAbleToMove={isAbleToMove}
           isNotEnoughBalance={isNotEnoughBalance}
-          isApproveReady={isApproveReady} //!!buildApproveTx
-          isWrongNetwork={isWrongNetwork}
+          isApproveReady={isApproveReady}
+          isDisabled={isDisabled}
           onWalletConnect={onConnectWallet}
           onWalletApprove={onApproveWallet}
           onMoveAssets={onMoveAssets}
