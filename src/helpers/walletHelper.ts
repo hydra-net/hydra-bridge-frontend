@@ -39,3 +39,8 @@ export const getIsNotEnoughBalance = (
     return false;
   }
 };
+
+export const formatWalletAddress = (isWrongNetwork: boolean, address: string) =>
+  !isWrongNetwork
+    ? address.substring(0, 6) + "..." + address.substring(38, 42)
+    : "Wrong network";
