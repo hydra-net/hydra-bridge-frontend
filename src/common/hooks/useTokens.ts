@@ -4,8 +4,6 @@ import { ChainResponseDto, TokenResponseDto } from "../dtos";
 import "dotenv/config";
 import { ETH } from "../constants";
 
-const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
-
 function useTokens(
   chainFrom: ChainResponseDto,
   network: number,
@@ -20,9 +18,7 @@ function useTokens(
     async function getTokens() {
       try {
         const res = await getBridgeTokens(
-          chainFrom
-            ? chainFrom?.chainId!
-            : parseInt(REACT_APP_DEFAULT_NETWORK_ID!)
+          chainFrom ? chainFrom?.chainId! : network
         );
         if (res && res.success) {
           setTokens(res.result);
