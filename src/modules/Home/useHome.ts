@@ -119,7 +119,7 @@ export default function useHome() {
     await onGetQuote(dto);
   };
 
-  const onDebouncedQuote = useCallback(_.debounce(onQuote, 3000), []); // eslint-disable-line react-hooks/exhaustive-deps
+  const onDebouncedQuote = useCallback(_.debounce(onQuote, 3000), []);
 
   const onBuildApproveTxData = async (
     walletAddress: string,
