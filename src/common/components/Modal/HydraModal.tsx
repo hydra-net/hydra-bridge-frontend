@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 import styled from "styled-components";
+import { NETWORK_EXPLORER_URLS } from "../../constants";
+import { SupportedChainId } from "../../enums";
 import { getFlexCenter } from "../../styles";
 import Button from "../Buttons/Button";
 
@@ -33,10 +35,10 @@ type Props = {
   tx: string;
 };
 const HydraModal = ({ network, subtitle, tx, isOpen, onClose }: Props) => {
-  let transUrl = `https://etherscan.io/tx/${tx}`;
+  let transUrl = `${NETWORK_EXPLORER_URLS[SupportedChainId.MAINNET]}/tx/${tx}`;
 
-  if (network === 5) {
-    transUrl = `https://goerli.etherscan.io/tx/${tx}`;
+  if (network === SupportedChainId.GOERLI) {
+    transUrl = `${NETWORK_EXPLORER_URLS[SupportedChainId.GOERLI]}/tx/${tx}`;
   }
 
   return (
