@@ -17,8 +17,7 @@ function useAmountInput(
   const [amountOut, setAmountOut] = useState<number>(0.0);
   const [isNotEnoughBalance, setIsNotEnoughBalance] = useState<boolean>(false);
 
-  const onAmountInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+  const onAmountInChange = (value: string) => {
     let regEx = new RegExp(/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/); //eslint-disable-line no-useless-escape
     if (regEx.test(value)) {
       const parsedInput = Number(value);
