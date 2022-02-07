@@ -9,11 +9,11 @@ import {
   RouteDto,
 } from "../../common/dtos";
 import { useWeb3 } from "@chainsafe/web3-context";
-import { isEmpty } from "../../helpers/stringHelper";
 import { ETH, HOP_BRIDGE_GOERLI } from "../../common/constants";
 import _ from "lodash";
 import { toast } from "react-toastify";
 import "dotenv/config";
+import { TransactionRequest } from "@ethersproject/abstract-provider";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 export default function useHome() {
@@ -70,7 +70,7 @@ export default function useHome() {
       setInProgress(true);
       try {
         const response = await getQuote(dto);
-        if (response) {
+        if (response.success && response.result) {
           const { fromAsset, routes } = response.result;
           const isEther = fromAsset.symbol.toLowerCase() === ETH;
           if (routes.length > 0) {
@@ -122,7 +122,7 @@ export default function useHome() {
   const onDebouncedQuote = useCallback(_.debounce(onQuote, 3000), []);
 
   const onBuildApproveTxData = async (
-    walletAddress: string,
+    owner: string,
     isApproved: boolean,
     chainId: number,
     amount: number,
@@ -132,19 +132,19 @@ export default function useHome() {
     try {
       if (
         !isApproved &&
-        walletAddress &&
-        !isEmpty(amount.toString()) &&
+        owner &&
+        amount &&
         tokenAddress &&
         !isEth &&
         !isWrongNetwork
       ) {
-        const response = await buildApprovalTx(
+        const response = await buildApprovalTx({
           chainId,
-          walletAddress,
+          owner,
           tokenAddress,
-          amount
-        );
-        if (response) {
+          amount,
+        });
+        if (response.success && response.result) {
           setBuildApproveTx(response.result);
         }
       }
@@ -201,7 +201,7 @@ export default function useHome() {
     if (!isWrongNetwork) {
       try {
         const response = await buildBridgeTx(dto);
-        if (response) {
+        if (response.success && response.result) {
           setBridgeTx(response.result);
         }
       } catch (e) {
@@ -221,7 +221,7 @@ export default function useHome() {
         const signer = provider!.getUncheckedSigner();
         const { data, to, from, value } = bridgeTx;
         console.log("bridge tx move:", bridgeTx);
-        let dto: any = { data, to, from };
+        let dto: TransactionRequest = { data, to, from };
         if (isEth) {
           dto.value = value;
         }
@@ -230,6 +230,7 @@ export default function useHome() {
         setInProgress(true);
         setTxHash(tx.hash);
         setIsModalOpen(true);
+        setShowRoutes(false);
         console.log("Move tx", tx);
         const receipt = await tx.wait();
         if (receipt.logs) {

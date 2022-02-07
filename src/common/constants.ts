@@ -8,6 +8,8 @@ export const POLYGON = "polygon";
 export const HOP_BRIDGE = "hop-bridge";
 export const HOP_BRIDGE_GOERLI = "hop-bridge-goerli";
 export const HOP = "hop";
+export const GOERLI = "goerli";
+export const ETHEREUM = "ethereum";
 
 export const NETWORK_EXPLORER_URLS: { [key in SupportedChainId]: string } = {
   [SupportedChainId.MAINNET]: `https://etherscan.io/`,

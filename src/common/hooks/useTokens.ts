@@ -20,7 +20,8 @@ function useTokens(
         const res = await getBridgeTokens(
           chainFrom ? chainFrom?.chainId! : network
         );
-        if (res && res.success) {
+
+        if (res.success && res.result && res.result.length > 0) {
           setTokens(res.result);
         }
       } catch (e) {

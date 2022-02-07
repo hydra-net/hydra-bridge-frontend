@@ -9,7 +9,7 @@ function useChains() {
     async function getChains() {
       try {
         const res = await getAllChains();
-        if (res && res.success) {
+        if (res.success && res.result && res.result.length > 0) {
           setChains(res.result);
         }
       } catch (e) {

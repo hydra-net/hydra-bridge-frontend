@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 import _ from "lodash";
 import { QuoteRequestDto, TokenBalanceDto } from "../../common/dtos";
+import { getOnlyNumbersAndDecimalNumbersRegex } from "../../helpers/regexHelper";
 
 function useAmountInput(
   recipient: string,
@@ -18,7 +19,7 @@ function useAmountInput(
   const [isNotEnoughBalance, setIsNotEnoughBalance] = useState<boolean>(false);
 
   const onAmountInChange = (value: string) => {
-    let regEx = new RegExp(/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/); //eslint-disable-line no-useless-escape
+    let regEx = getOnlyNumbersAndDecimalNumbersRegex();
     if (regEx.test(value)) {
       const parsedInput = Number(value);
       setAmountIn(parsedInput);

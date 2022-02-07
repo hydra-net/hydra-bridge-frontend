@@ -3,6 +3,7 @@ import ActionButtons from "../../common/components/ActionButtons/ActionButtons";
 import Icon from "../../common/components/Icon/Icon";
 import AmountInput from "../../common/components/Input";
 import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
+import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
 import { ChainResponseDto } from "../../common/dtos";
 import { getVerticalGap } from "../../common/styles";
 
@@ -31,8 +32,8 @@ const getFromChains = (chains: ChainResponseDto[]) => {
   return chains
     .filter((item) => item.isSendingEnabled)
     .map((chain: ChainResponseDto) => {
-      const name = chain.name.toString().toLowerCase().includes("goerli")
-        ? "ethereum"
+      const name = chain.name.toString().toLowerCase().includes(GOERLI)
+        ? ETHEREUM
         : (chain.name.toString().toLowerCase() as any);
       return {
         label: chain.name,
@@ -46,8 +47,8 @@ const getToChains = (chains: ChainResponseDto[]) => {
   return chains
     .filter((item) => item.isReceivingEnabled)
     .map((chain: ChainResponseDto) => {
-      const name = chain.name.toString().toLowerCase().includes("polygon")
-        ? "polygon"
+      const name = chain.name.toString().toLowerCase().includes(POLYGON)
+        ? POLYGON
         : (chain.name.toString().toLowerCase() as any);
 
       return {

@@ -15,7 +15,11 @@ function useWalletBalances(address: string, chainId: number) {
             address,
             chainId ?? parseInt(REACT_APP_DEFAULT_NETWORK_ID!)
           );
-          if (response && response.success) {
+          if (
+            response.success &&
+            response.result &&
+            response.result.length > 0
+          ) {
             setWalletBalances(response.result);
           }
         }
