@@ -118,7 +118,7 @@ const Home = ({ chains }: Props) => {
 
   const handleSelectAsset = (option: ISelectOption) => {
     const { value } = option;
-    setAsset(option ? value : null);
+    setAsset(value);
     setShowRoutes(false);
     setIsDisabled(true);
     if (amountIn && amountIn > 0) {
@@ -161,7 +161,7 @@ const Home = ({ chains }: Props) => {
     }
   };
 
-  const hanldeOnSelectChainTo = (option: any) => {
+  const hanldeOnSelectChainTo = (option: ISelectOption) => {
     const selectedChain = onSelectChainTo(option);
     setShowRoutes(false);
     setIsDisabled(true);
@@ -184,6 +184,7 @@ const Home = ({ chains }: Props) => {
       chainTo?.isReceivingEnabled!,
       bridgeTx!
     );
+
     onResetValues();
   };
 

@@ -230,6 +230,7 @@ export default function useHome() {
         setInProgress(true);
         setTxHash(tx.hash);
         setIsModalOpen(true);
+        setShowRoutes(false);
         console.log("Move tx", tx);
         const receipt = await tx.wait();
         if (receipt.logs) {
