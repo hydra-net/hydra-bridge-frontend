@@ -5,7 +5,7 @@ import IconOption from "../Select/IconOption";
 import ValueOption from "../Select/ValueOption";
 import { getFlexCenter, getHorizontalGap } from "../../styles";
 import { TokenResponseDto } from "../../dtos";
-import { IconKeys } from "../../commonTypes";
+import { IconKeys, ISelectOption } from "../../commonTypes";
 import { ETH } from "../../constants";
 
 const Root = styled.div``;
@@ -37,7 +37,7 @@ type Props = {
   isLoading?: boolean;
   tokens: TokenResponseDto[];
   isDisabled: boolean;
-  onSelectAsset: (value: any) => void;
+  onSelectAsset: (option: any) => void;
 };
 const AssetSelect = ({
   isLoading,
@@ -53,7 +53,7 @@ const AssetSelect = ({
     }),
   };
 
-  const options = tokens.map((token: TokenResponseDto) => {
+  const options: ISelectOption[] = tokens.map((token: TokenResponseDto) => {
     const isEth = token.symbol.toLocaleLowerCase() === ETH;
     return {
       label: token.symbol,
