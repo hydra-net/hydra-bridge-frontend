@@ -2,7 +2,7 @@
   "name": "hydra-bridge-frontend",
   "version": "0.1.0",
   "private": true,
-  "description": "Hydra bridge fronend app",
+  "description": "Hydra bridge frontend app",
   "keywords": [],
   "author": "Slaven Rađa <slaven@rimatik.hr>",
   "dependencies": {
