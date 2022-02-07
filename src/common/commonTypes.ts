@@ -1,15 +1,8 @@
 import icons from "./components/Icon";
 
-export interface IApiResponse<T> {
-  result?: T;
-  status?: number;
-  errorMsg?: string;
-  message?: string;
-}
-
 export interface ISelectOption {
   label: string;
-  value: any;
+  value: number;
   icon?: any;
 }
 

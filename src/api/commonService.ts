@@ -5,32 +5,29 @@ import {
 } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
 import "dotenv/config";
-
-const { REACT_APP_API_URL } = process.env;
+import { getAllChainsUrl, getBridgeTokensUrl } from "./apiRoutes";
+import { handleResponse } from "../helpers/responseHandler";
 
 export const getBridgeTokens = async (
   chainId: number
-): Promise<BaseResponseDto<TokenResponseDto[]> | undefined> => {
+): Promise<BaseResponseDto<TokenResponseDto[]>> => {
   try {
-    const response = await fetchWrapper.get<TokenResponseDto[]>(
-      `${REACT_APP_API_URL}/common/tokens?chainId=${chainId}`
-    );
-
-    return response.result ?? undefined;
+    const response = await fetchWrapper.get(getBridgeTokensUrl(chainId));
+    return await handleResponse(response);
   } catch (e) {
     console.log("Error getting bridge tokens", e);
+    return { success: false, result: [] };
   }
 };
 
 export const getAllChains = async (): Promise<
-  BaseResponseDto<ChainResponseDto[]> | undefined
+  BaseResponseDto<ChainResponseDto[]>
 > => {
   try {
-    const response: any = await fetchWrapper.get<ChainResponseDto[]>(
-      `${REACT_APP_API_URL}/common/chains`
-    );
-    return response.result ?? undefined;
+    const response = await fetchWrapper.get(getAllChainsUrl());
+    return await handleResponse(response);
   } catch (e) {
     console.log("Error getting chains", e);
+    return { success: false, result: [] };
   }
 };

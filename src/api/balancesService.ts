@@ -1,20 +1,20 @@
 import { BaseResponseDto, TokenBalanceDto } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
 import "dotenv/config";
-
-const { REACT_APP_API_URL } = process.env;
+import { getUserBalancesUrl } from "./apiRoutes";
+import { handleResponse } from "../helpers/responseHandler";
 
 export const getUserAddressBalances = async (
   address: string,
   chainId: number
-): Promise<BaseResponseDto<TokenBalanceDto[]> | undefined> => {
+): Promise<BaseResponseDto<TokenBalanceDto[]>> => {
   try {
-    const response = await fetchWrapper.get<TokenBalanceDto[]>(
-      `${REACT_APP_API_URL}/balances?address=${address}&&chainId=${chainId}`
+    const response = await fetchWrapper.get(
+      getUserBalancesUrl(address, chainId)
     );
-
-    return response.result ?? undefined;
+    return await handleResponse(response);
   } catch (e) {
     console.log("Error getting user balance", e);
+    return { success: false, result: [] };
   }
 };

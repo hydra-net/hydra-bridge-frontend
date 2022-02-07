@@ -1,12 +1,11 @@
 export interface BaseResponseDto<T> {
   success: boolean;
-  result: T;
+  result?: T;
 }
 
-export interface CheckAllowanceDto {
+export interface CheckAllowanceRequestDto {
   chainId: string;
   owner: string;
-  spender: string;
   tokenAddress: string;
 }
 
@@ -16,11 +15,10 @@ export interface CheckAllowanceResponseDto {
 }
 
 export interface BuildAllowanceRequestDto {
-  chainId: string;
+  chainId: number;
   owner: string;
-  spender: string;
   tokenAddress: string;
-  amount: string;
+  amount: number;
 }
 
 export interface BuildAllowanceResponseDto {
