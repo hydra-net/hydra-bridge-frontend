@@ -1,6 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../../shell/theme/globalStyle";
-import { NetworkProvider } from "../context/NetworkContext";
 import Navbar from "./Navbar/Navbar";
 import Web3Wrapper from "./Web3Wrapper";
 
@@ -16,10 +15,8 @@ const Layout = ({ theme, children }: ILayoutProps) => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Web3Wrapper>
-        <NetworkProvider>
-          <Navbar />
-          <Root>{children}</Root>
-        </NetworkProvider>
+        <Navbar />
+        <Root>{children}</Root>
       </Web3Wrapper>
     </ThemeProvider>
   );

@@ -10,7 +10,7 @@ export const getUserAddressBalances = async (
 ): Promise<BaseResponseDto<TokenBalanceDto[]> | undefined> => {
   try {
     const response = await fetchWrapper.get<TokenBalanceDto[]>(
-      `${REACT_APP_API_URL}/balances?address=${address}&&chainId=${chainId}`
+      `${REACT_APP_API_URL}/balances?address=${address}&chainId=${chainId}`
     );
 
     return response.result ?? undefined;
