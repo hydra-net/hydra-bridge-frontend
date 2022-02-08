@@ -1,5 +1,4 @@
 import {
-  BaseResponseDto,
   BuildAllowanceRequestDto,
   BuildAllowanceResponseDto,
   CheckAllowanceRequestDto,
@@ -12,24 +11,22 @@ import { handleResponse } from "../helpers/responseHandler";
 
 export const checkAllowance = async (
   dto: CheckAllowanceRequestDto
-): Promise<BaseResponseDto<CheckAllowanceResponseDto>> => {
+): Promise<CheckAllowanceResponseDto | undefined> => {
   try {
     const response = await fetchWrapper.get(getCheckAllowanceUrl(dto));
     return await handleResponse(response);
   } catch (e) {
     console.log("Error check allowance", e);
-    return { success: false, result: undefined };
   }
 };
 
 export const buildApprovalTx = async (
   dto: BuildAllowanceRequestDto
-): Promise<BaseResponseDto<BuildAllowanceResponseDto>> => {
+): Promise<BuildAllowanceResponseDto | undefined> => {
   try {
     const response = await fetchWrapper.get(getBuildApprovalTxUrl(dto));
     return handleResponse(response);
   } catch (e) {
     console.log("Error building approval transaction", e);
-    return { success: false, result: undefined };
   }
 };

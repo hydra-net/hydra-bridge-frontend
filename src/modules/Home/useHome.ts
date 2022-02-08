@@ -69,9 +69,9 @@ export default function useHome() {
     ) {
       setInProgress(true);
       try {
-        const response = await getQuote(dto);
-        if (response.success && response.result) {
-          const { fromAsset, routes } = response.result;
+        const result = await getQuote(dto);
+        if (result) {
+          const { fromAsset, routes } = result;
           const isEther = fromAsset.symbol.toLowerCase() === ETH;
           if (routes.length > 0) {
             let filteredRoutes = routes;
@@ -87,7 +87,7 @@ export default function useHome() {
             setBridgeTx(cheapestRoute.buildTx);
             setBridgeRoutes(filteredRoutes);
 
-            if (response.result.isApproved) {
+            if (result.isApproved) {
               setIsApproved(true);
             } else {
               setIsApproved(false);
@@ -144,8 +144,8 @@ export default function useHome() {
           tokenAddress,
           amount,
         });
-        if (response.success && response.result) {
-          setBuildApproveTx(response.result);
+        if (response) {
+          setBuildApproveTx(response);
         }
       }
     } catch (e) {
@@ -201,8 +201,8 @@ export default function useHome() {
     if (!isWrongNetwork) {
       try {
         const response = await buildBridgeTx(dto);
-        if (response.success && response.result) {
-          setBridgeTx(response.result);
+        if (response) {
+          setBridgeTx(response);
         }
       } catch (e) {
         console.log("Build bridge tx error", e);

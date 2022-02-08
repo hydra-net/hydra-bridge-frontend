@@ -1,5 +1,4 @@
 import {
-  BaseResponseDto,
   BuildTxRequestDto,
   BuildTxResponseDto,
   QuoteRequestDto,
@@ -12,24 +11,22 @@ import { handleResponse } from "../helpers/responseHandler";
 
 export const buildBridgeTx = async (
   dto: BuildTxRequestDto
-): Promise<BaseResponseDto<BuildTxResponseDto>> => {
+): Promise<BuildTxResponseDto | undefined> => {
   try {
     const response = await fetchWrapper.get(getBuildTxRequestUrl(dto));
     return await handleResponse(response);
   } catch (e) {
     console.log("Error building bridge tx", e);
-    return { success: false, result: undefined };
   }
 };
 
 export const getQuote = async (
   dto: QuoteRequestDto
-): Promise<BaseResponseDto<QuoteResponseDto>> => {
+): Promise<QuoteResponseDto | undefined> => {
   try {
     const response = await fetchWrapper.get(getQuoteUrl(dto));
     return await handleResponse(response);
   } catch (e) {
     console.log("Error getting quote", e);
-    return { success: false, result: undefined };
   }
 };

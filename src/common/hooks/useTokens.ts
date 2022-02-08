@@ -17,12 +17,12 @@ function useTokens(
   useEffect(() => {
     async function getTokens() {
       try {
-        const res = await getBridgeTokens(
+        const result = await getBridgeTokens(
           chainFrom ? chainFrom?.chainId! : network
         );
 
-        if (res.success && res.result && res.result.length > 0) {
-          setTokens(res.result);
+        if (result && result.length > 0) {
+          setTokens(result);
         }
       } catch (e) {
         console.log("Get tokens error", e);

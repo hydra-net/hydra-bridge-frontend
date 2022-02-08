@@ -8,9 +8,9 @@ function useChains() {
   useEffect(() => {
     async function getChains() {
       try {
-        const res = await getAllChains();
-        if (res.success && res.result && res.result.length > 0) {
-          setChains(res.result);
+        const result = await getAllChains();
+        if (result && result.length > 0) {
+          setChains(result);
         }
       } catch (e) {
         console.log("Get chains failed:", e);
