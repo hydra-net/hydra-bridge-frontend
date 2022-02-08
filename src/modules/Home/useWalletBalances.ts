@@ -11,16 +11,12 @@ function useWalletBalances(address: string, chainId: number) {
     async function getWalletBalances() {
       try {
         if (address) {
-          const response = await getUserAddressBalances(
+          const result = await getUserAddressBalances(
             address,
             chainId ?? parseInt(REACT_APP_DEFAULT_NETWORK_ID!)
           );
-          if (
-            response.success &&
-            response.result &&
-            response.result.length > 0
-          ) {
-            setWalletBalances(response.result);
+          if (result && result.length > 0) {
+            setWalletBalances(result);
           }
         }
       } catch (e) {

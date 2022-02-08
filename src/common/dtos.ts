@@ -1,8 +1,3 @@
-export interface BaseResponseDto<T> {
-  success: boolean;
-  result?: T;
-}
-
 export interface CheckAllowanceRequestDto {
   chainId: string;
   owner: string;
