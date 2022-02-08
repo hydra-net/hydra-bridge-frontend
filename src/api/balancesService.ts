@@ -15,6 +15,5 @@ export const getUserAddressBalances = async (
     return await handleResponse(response);
   } catch (e) {
     console.log("Error getting user balance", e);
-    return undefined;
   }
 };

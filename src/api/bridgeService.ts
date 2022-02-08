@@ -17,7 +17,6 @@ export const buildBridgeTx = async (
     return await handleResponse(response);
   } catch (e) {
     console.log("Error building bridge tx", e);
-    return undefined;
   }
 };
 
@@ -29,6 +28,5 @@ export const getQuote = async (
     return await handleResponse(response);
   } catch (e) {
     console.log("Error getting quote", e);
-    return undefined;
   }
 };

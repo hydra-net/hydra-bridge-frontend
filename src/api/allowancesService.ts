@@ -17,7 +17,6 @@ export const checkAllowance = async (
     return await handleResponse(response);
   } catch (e) {
     console.log("Error check allowance", e);
-    return undefined;
   }
 };
 
@@ -29,6 +28,5 @@ export const buildApprovalTx = async (
     return handleResponse(response);
   } catch (e) {
     console.log("Error building approval transaction", e);
-    return undefined;
   }
 };

@@ -12,7 +12,6 @@ export const getBridgeTokens = async (
     return await handleResponse(response);
   } catch (e) {
     console.log("Error getting bridge tokens", e);
-    return undefined;
   }
 };
 
@@ -24,6 +23,5 @@ export const getAllChains = async (): Promise<
     return await handleResponse(response);
   } catch (e) {
     console.log("Error getting chains", e);
-    return undefined;
   }
 };
