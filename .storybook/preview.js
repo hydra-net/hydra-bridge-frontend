@@ -3,7 +3,7 @@ import { addDecorator } from "@storybook/react";
 import { withThemes } from "@react-theming/storybook-addon";
 
 import { appViewports } from "./vieports.config";
-import { defaultTheme } from "../src/shell/theme/theme";
+import { defaultTheme } from "../src/shell/theme/legacyTheme";
 
 import "./storybook.css";
 

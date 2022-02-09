@@ -1,7 +1,7 @@
-import { DefaultTheme } from "styled-components";
+import { DefaultTheme, LegacyTheme } from "styled-components";
 
 declare module "styled-components" {
-  export interface DefaultTheme {
+  export interface LegacyTheme extends DefaultTheme {
     primaryColor: string;
     secondaryColor: string;
 
@@ -30,19 +30,19 @@ declare module "styled-components" {
       lg: string;
     };
     backgroundColor: string;
-    lightBackgroundColorHover: string,
-    inputBackgroundColor: string,
-    inputBorderColor: string,
-    lightBackgroundColor: string,
-    greyColor: string
-    buttonDefaultColor: string,
-    greenColor: string
+    lightBackgroundColorHover: string;
+    inputBackgroundColor: string;
+    inputBorderColor: string;
+    lightBackgroundColor: string;
+    greyColor: string;
+    buttonDefaultColor: string;
+    greenColor: string;
     blueColor: string;
     redColor: string;
   }
 }
 
-export const defaultTheme: DefaultTheme = {
+export const legacyTheme: LegacyTheme = {
   primaryColor: "#ffffff",
   secondaryColor: "#121212",
 
@@ -71,7 +71,7 @@ export const defaultTheme: DefaultTheme = {
     lg: "20px",
   },
   backgroundColor: "#1e1e1e",
-  lightBackgroundColorHover:"#171717",
+  lightBackgroundColorHover: "#171717",
   inputBackgroundColor: "rgba(255, 255, 255, 0.05)",
   inputBorderColor: "rgba(255, 255, 255, 0.3)",
   lightBackgroundColor: "#2d2d2d",
@@ -79,5 +79,5 @@ export const defaultTheme: DefaultTheme = {
   buttonDefaultColor: "rgba(0,0,0,0.2)",
   greenColor: "#37b514",
   blueColor: "#1976d2",
-  redColor: "#d32f2f"
+  redColor: "#d32f2f",
 };
