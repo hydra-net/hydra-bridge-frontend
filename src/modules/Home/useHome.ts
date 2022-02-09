@@ -30,7 +30,7 @@ export default function useHome() {
   const [inProgress, setInProgress] = useState<boolean>(false);
 
   //state
-  const [asset, setAsset] = useState<number>(4);
+  const [asset, setAsset] = useState<number>(0);
   const [routeId, setRouteId] = useState<number>(0);
   const [isWrongNetwork, setIsWrongNetwork] = useState<boolean>(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
@@ -96,7 +96,7 @@ export default function useHome() {
                 await onBuildApproveTxData(
                   dto.recipient,
                   isApproved,
-                  dto.toChainId,
+                  dto.fromChainId,
                   dto.amount,
                   fromAsset.address,
                   isEther
