@@ -24,6 +24,12 @@ export const getFlexStart = css`
   align-items: center;
 `;
 
+export const getFlexBetween = css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const getAbsoluteFill = css`
   position: absolute;
   top: 0;
