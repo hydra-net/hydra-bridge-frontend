@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../../shell/theme/globalStyle";
 import Navbar from "./Navbar/Navbar";
@@ -5,11 +6,10 @@ import Web3Wrapper from "./Web3Wrapper";
 
 interface ILayoutProps {
   theme: any;
-  children: any;
+  children: ReactNode;
 }
 
 const Root = styled.div``;
-
 
 const Layout = ({ theme, children }: ILayoutProps) => {
   return (

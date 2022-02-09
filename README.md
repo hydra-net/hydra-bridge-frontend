@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+# Hydra bridge ui app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is hydra bridge frontend app that uses hydra-bridge-backend api as source of data and hydra bridge smart contract to approve token spending.
 
-## Available Scripts
+## Current state of app
 
-In the project directory, you can run:
+This is POC/beta version with basic functionalities for bridging.
+Features that are covered:
 
-### `yarn start`
+- Connecting metamask wallet
+- Approving hydra bridge smart contract to use tokens
+- Showing available routes through hop and polygon bridges
+- Bridging founds L1-L2 from ethereum mainnet to polygon, arbitrum, optimism and from goerli testnet to polygon mumbai testnet
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Install NodeJS and Yarn node version 16.13.2.
 
-### `yarn test`
+## Environment Variables
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Copy `env.example` in `.env` and populate missing variables.
+`REACT_APP_API_URL` is api that project uses, if you use localhost use `http://localhost:3001/api` to get backend api, if not put here dev environment api
 
-### `yarn build`
+## Start app
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- use commands:
+  - `yarn dev` for launching app on `goerli` test network
+  - `yarn production` for launching app on `mainnet` network
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Folder Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### /
 
-### `yarn eject`
+Root folder contains:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `.env.example` which is file example of `.env` file
+- `.gitignore` contains all files and folders to ignore
+- `.nvmrc` file that contains nvm version of node that's used in project
+- `package.json` npm configuration file
+- `tsconfig.json` file that configures typescript for project
+- `window.d.ts` typescript definitions for window object
+- `yarn.lock` file is main source of information about the current versions of dependencies in project
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### /public
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- `index.html` app entry point
+- `manifest.json` is a simple JSON file in our website that tells the browser about your website on user's mobile device or desktop.
+- `robots.txt` tells search engine crawlers which URLs the crawler can access on our site
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### /src
 
-## Learn More
+- `App.tsx` that's component that contains main routes of app
+- `index.css` that's basic css file for app entry point `index.tsx`
+- `index.tsx` it's app entry point
+- `react-app-env.d.ts` typescipt definition for react-scripts
+- `reportWebVitals.ts` web vitals performance function
+- `routes.ts` file that contains app routes
+- `setupTests.ts` file where tests can be written
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### /src/api
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- folder contains helpers for calling backend services
+
+### /src/assets
+
+- folder contains all app assets
+
+### /src/common
+
+- folder contains common components and files that can be reused
+
+### /src/helpers/
+
+- folder that contains all helpers that app uses like `fetchWrapper.ts`, `requestHelper.ts` etc.
+
+### /src/modules/
+
+- folder that contains app modules like `Home` and `Page404`
+
+### /src/shell/
+
+- folder that contains `theme` folder, `Fallback.tsx` file and `Shell.tsx` where all routes are initialised and child components are passed to `Layout` component along with `Suspense` component for fallback

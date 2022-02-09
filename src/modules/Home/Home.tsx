@@ -1,20 +1,19 @@
 import { useWeb3 } from "@chainsafe/web3-context";
-import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
-import ActionButtons from "../../common/components/ActionButtons/ActionButtons";
-import AppMessage from "../../common/components/AppMessage";
 import AssetSelect from "../../common/components/AssetSelect";
 import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
-import Icon from "../../common/components/Icon/Icon";
-import AmountInput from "../../common/components/Input";
 import HydraModal from "../../common/components/Modal/HydraModal";
-import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
-import { BuildTxRequestDto, ChainResponseDto } from "../../common/dtos";
-import { getFlexCenter, getVerticalGap } from "../../common/styles";
+import { ChainResponseDto } from "../../common/dtos";
+import { getFlexCenter } from "../../common/styles";
 import useHome from "./useHome";
-import { parseUnits } from "ethers/lib/utils";
-import { ethers } from "ethers";
-import _ from "lodash";
+import MainContent from "./MainContent";
+import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
+import useTokens from "../../common/hooks/useTokens";
+import useAmountInput from "./useAmountInput";
+import useWalletBalances from "./useWalletBalances";
+import useChainTransfers from "./useChainTransfers";
+import { ISelectOption } from "../../common/commonTypes";
+import { toast } from "react-toastify";
 
 const Root = styled.div``;
 
@@ -26,34 +25,10 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-const TransferWrapper = styled.div`
-  background: rgb(255, 255, 255);
-  box-shadow: rgb(0 0 0 / 1%) 0px 0px 1px, rgb(0 0 0 / 4%) 0px 4px 8px,
-    rgb(0 0 0 / 4%) 0px 16px 24px, rgb(0 0 0 / 1%) 0px 24px 32px;
-  border-radius: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 1;
-  padding: 10px;
-`;
 const SendWrapper = styled.div`
   ${getFlexCenter}
   width: 100%;
   margin-bottom: 20px;
-`;
-
-const Container = styled.div`
-  width: 100%;
-`;
-
-const AmountsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  ${getVerticalGap("15px")};
-`;
-
-const ErrorContainer = styled.div`
-  margin-bottom: 10px;
 `;
 
 type Props = {
@@ -64,256 +39,161 @@ const Home = ({ chains }: Props) => {
   const {
     onConnectWallet,
     onApproveWallet,
-    onReset,
-    getBridgeTxData,
-    onGetQuote,
-    setChainFrom,
-    setChainTo,
+    onMoveAssets,
+    onRouteClick,
     setAsset,
-    setAmountIn,
-    setAmountOut,
     setRouteId,
-    setIsErrorOpen,
-    setInProgress,
-    setTxHash,
     setIsModalOpen,
-    setError,
+    setInProgress,
+    setIsApproved,
+    setShowRoutes,
+    setIsDisabled,
+    showRoutes,
+    bridgeTx,
     isWrongNetwork,
     buildApproveTx,
-    walletBalances,
-    tokens,
-    isEth,
-    amountIn,
-    amountOut,
+    onDebouncedQuote,
     routeId,
     asset,
-    isErrorOpen,
+    isDisabled,
     isApproved,
     inProgress,
     isModalOpen,
-    bridgeTx,
-    provider,
     bridgeRoutes,
-    chainTo,
-    chainFrom,
     txHash,
-    error,
   } = useHome();
   const { address, network } = useWeb3();
+  const { chainFrom, chainTo, onSelectChainFrom, onSelectChainTo } =
+    useChainTransfers(chains);
+  const { walletBalances } = useWalletBalances(address!, network!);
+  const {
+    amountIn,
+    amountOut,
+    isNotEnoughBalance,
+    setAmountIn,
+    setAmountOut,
+    onAmountInChange,
+    setIsNotEnoughBalance,
+  } = useAmountInput(
+    address!,
+    asset,
+    chainFrom?.chainId!,
+    asset,
+    chainTo?.chainId!,
+    walletBalances,
+    isWrongNetwork,
+    onDebouncedQuote
+  );
+  const { tokens, isEth } = useTokens(chainFrom!, network!, asset);
+
   const isAbleToMove = isApproved || isEth;
   const isConnected = !!address;
+  const isActionDisabled = inProgress || isWrongNetwork || isDisabled;
 
-  const [isNotEnoughBalance, setIsNotEnoughBalance] = useState<boolean>(false);
-
-  const chainsFrom = chains
-    .filter((item) => item.isSendingEnabled)
-    .map((chain: ChainResponseDto) => {
-      const name = chain.name.toString().toLowerCase().includes("goerli")
-        ? "ethereum"
-        : (chain.name.toString().toLowerCase() as any);
-      return {
-        label: chain.name,
-        value: chain.chainId,
-        icon: <Icon name={name} size="20px" />,
-      };
-    });
-
-  const chainsTo = chains
-    .filter((item) => item.isReceivingEnabled)
-    .map((chain: ChainResponseDto) => {
-      const name = chain.name.toString().toLowerCase().includes("polygon")
-        ? "polygon"
-        : (chain.name.toString().toLowerCase() as any);
-
-      return {
-        label: chain.name,
-        value: chain.chainId,
-        icon: <Icon name={name} size="20px" />,
-      };
-    });
-
-  const handleQuote = async (
-    recipient: string,
-    fromAsset: number,
-    toAsset: number,
-    fromChainId: number,
-    toChainId: number,
-    amount: number
-  ) => {
-    await onGetQuote({
-      recipient: recipient,
-      fromAsset: fromAsset,
-      fromChainId: fromChainId,
-      toAsset: toAsset,
-      toChainId: toChainId,
-      amount: amount,
-    });
+  const handleAmountInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setShowRoutes(false);
+    setIsDisabled(true);
+    const { value } = e.target;
+    onAmountInChange(value);
   };
 
-  const debouncedQuote = useCallback(_.debounce(handleQuote, 3000), []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    async function getMoveTxData() {
-      const dto: BuildTxRequestDto = {
+  const handleOnRouteClick = async (id: number) => {
+    if (
+      address &&
+      amountIn &&
+      (isApproved || (isEth && id > 0)) &&
+      !isWrongNetwork
+    ) {
+      await onRouteClick({
         amount: amountIn!,
         fromAsset: asset!,
         toAsset: asset!,
         fromChainId: chainFrom!.chainId!,
         toChainId: chainTo!.chainId!,
-        routeId: routeId!,
+        routeId: id,
         recipient: address!,
-      };
-
-      await getBridgeTxData(dto);
-    }
-
-    if (
-      address &&
-      amountIn &&
-      (isApproved || (isEth && routeId > 0)) &&
-      !isWrongNetwork
-    ) {
-      getMoveTxData();
-    }
-  }, [isApproved, routeId, amountIn]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const handleAmountInChange = (e: any) => {
-    const { value } = e.target;
-    let regEx = new RegExp(/^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$/); //eslint-disable-line no-useless-escape
-    if (regEx.test(value)) {
-      setAmountIn(value);
-      setAmountOut(value);
-      checkBalance(value, asset);
-      debouncedQuote(
-        address!,
-        asset,
-        asset,
-        chainFrom?.chainId!,
-        chainTo?.chainId!,
-        value
-      );
-    } else {
-      const parsedValue = value.replace(/\D/, "");
-      setAmountIn(parsedValue);
-      setAmountOut(parsedValue);
+      });
     }
   };
 
-  const checkBalance = (value: number, asset: number) => {
-    try {
-      const tokenBalanceDto = walletBalances?.find(
-        (tokenBalance) => tokenBalance.tokenId === asset
+  const handleSelectAsset = (option: ISelectOption) => {
+    const { value } = option;
+    setAsset(value);
+    setShowRoutes(false);
+    setIsDisabled(true);
+    if (amountIn && amountIn > 0) {
+      const isNotEnoughBalance = getIsNotEnoughBalance(
+        walletBalances!,
+        amountIn,
+        value,
+        isWrongNetwork
       );
-      if (tokenBalanceDto && value && !isWrongNetwork) {
-        const units =
-          tokenBalanceDto.symbol.toLocaleLowerCase() !== "eth" ? 6 : 18;
-        const parsedAmountToSpend = parseUnits(value.toString(), units);
-        const amountInBig = ethers.BigNumber.from(parsedAmountToSpend);
-        const balanceBig = ethers.BigNumber.from(tokenBalanceDto?.amount!);
-        setIsNotEnoughBalance(amountInBig.gt(balanceBig));
+      if (!isNotEnoughBalance) {
+        onDebouncedQuote({
+          recipient: address!,
+          fromAsset: value,
+          fromChainId: chainFrom?.chainId!,
+          toAsset: value,
+          toChainId: chainTo?.chainId!,
+          amount: amountIn!,
+        });
       }
-    } catch (e) {
-      console.log(e);
+      if (isNotEnoughBalance) {
+        toast.error("Error not enough funds", { autoClose: false });
+      }
+      setIsNotEnoughBalance(isNotEnoughBalance);
+    }
+  };
+
+  const hanldeOnSelectChainFrom = (option: ISelectOption) => {
+    const selectedChain = onSelectChainFrom(option);
+    setShowRoutes(false);
+    setIsDisabled(true);
+    if (selectedChain) {
+      onDebouncedQuote({
+        recipient: address!,
+        fromAsset: asset,
+        fromChainId: selectedChain.chainId,
+        toAsset: asset,
+        toChainId: chainTo?.chainId!,
+        amount: amountIn!,
+      });
+    }
+  };
+
+  const hanldeOnSelectChainTo = (option: ISelectOption) => {
+    const selectedChain = onSelectChainTo(option);
+    setShowRoutes(false);
+    setIsDisabled(true);
+    if (selectedChain) {
+      onDebouncedQuote({
+        recipient: address!,
+        fromAsset: asset,
+        fromChainId: chainFrom?.chainId!,
+        toAsset: asset,
+        toChainId: selectedChain.chainId,
+        amount: amountIn!,
+      });
     }
   };
 
   const handleMoveAssets = async () => {
-    if (
-      !isWrongNetwork &&
-      chainFrom?.isSendingEnabled &&
-      chainTo?.isReceivingEnabled
-    ) {
-      try {
-        const signer = provider!.getUncheckedSigner();
-        const { data, to, from, value } = bridgeTx;
-        console.log("bridge tx move:", bridgeTx);
-        let dto: any = { data, to, from };
-        if (isEth) {
-          dto.value = value;
-        }
-
-        const tx = await signer.sendTransaction(dto);
-        setInProgress(true);
-        setTxHash(tx.hash);
-        setIsModalOpen(true);
-        console.log("Move tx", tx);
-        const receipt = await tx.wait();
-        if (receipt.logs) {
-          onReset();
-          console.log("Move receipt logs", receipt.logs);
-        }
-      } catch (e: any) {
-        console.log(e);
-        setError("Something went wrong!");
-        setIsErrorOpen(true);
-      }
-    }
+    await onMoveAssets(
+      isEth,
+      chainFrom?.isSendingEnabled!,
+      chainTo?.isReceivingEnabled!,
+      bridgeTx!
+    );
+    onResetValues();
   };
 
-  const handleSelectChainFrom = (option: any) => {
-    const { value } = option;
-    if (value !== chainTo?.chainId) {
-      const selectedChain = chains.find((chain) => chain.chainId === value);
-      if (selectedChain) {
-        setChainFrom(selectedChain);
-        debouncedQuote(
-          address!,
-          asset,
-          asset,
-          selectedChain.chainId,
-          chainTo?.chainId!,
-          amountIn!
-        );
-      } else {
-        setChainFrom(undefined);
-      }
-    }
-  };
-
-  const handleSelectChainTo = (option: any) => {
-    const { value } = option;
-    if (option && value !== chainTo?.chainId!) {
-      const selectedChain = chains.find((chain) => chain.chainId === value);
-      if (selectedChain) {
-        setChainTo(selectedChain);
-        debouncedQuote(
-          address!,
-          asset,
-          asset,
-          chainFrom?.chainId!,
-          selectedChain.chainId,
-          amountIn!
-        );
-      } else {
-        setChainTo(undefined);
-      }
-    }
-  };
-
-  const handleSelectAsset = (option: any) => {
-    const { value } = option;
-    setAsset(option ? value : null);
-    if (amountIn && amountIn > 0) {
-      checkBalance(amountIn, value);
-      debouncedQuote(
-        address!,
-        value,
-        value,
-        chainFrom?.chainId!,
-        chainTo?.chainId!,
-        amountIn!
-      );
-    }
-  };
-
-  const handleOnRouteClick = (id: number) => {
-    if (!inProgress) {
-      setRouteId(id);
-    }
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const onResetValues = () => {
+    setInProgress(false);
+    setAmountOut(0.0);
+    setAmountIn(0.0);
+    setIsApproved(false);
+    setRouteId(0);
+    setShowRoutes(false);
   };
 
   return (
@@ -329,79 +209,53 @@ const Home = ({ chains }: Props) => {
               onSelectAsset={handleSelectAsset}
             />
           </SendWrapper>
-          {error && (
-            <ErrorContainer>
-              <AppMessage
-                isOpen={isErrorOpen}
-                message={error}
-                onClose={() => setIsErrorOpen(false)}
-              />
-            </ErrorContainer>
+          <MainContent
+            chains={chains}
+            chainFrom={chainFrom!}
+            chainTo={chainTo!}
+            amountIn={amountIn!}
+            amountOut={amountOut!}
+            routeId={routeId}
+            inProgress={inProgress}
+            isAbleToMove={isAbleToMove}
+            isApproveReady={!!buildApproveTx}
+            isApproved={isApproved}
+            isConnected={isConnected}
+            isEth={isEth}
+            isNotEnoughBalance={isNotEnoughBalance}
+            isWrongNetwork={isWrongNetwork}
+            isDisabled={isActionDisabled}
+            onAmountChange={handleAmountInChange}
+            onApproveWallet={() =>
+              onApproveWallet(
+                amountIn!,
+                chainFrom?.isSendingEnabled!,
+                chainTo?.isReceivingEnabled!,
+                chainFrom?.chainId!,
+                chainTo?.chainId!
+              )
+            }
+            onConnectWallet={onConnectWallet}
+            onMoveAssets={handleMoveAssets}
+            onSelectChainTo={hanldeOnSelectChainTo}
+            onSelectChainFrom={hanldeOnSelectChainFrom}
+          />
+
+          {showRoutes && !isNotEnoughBalance && isAbleToMove && (
+            <BridgeRoutes
+              inProgress={inProgress}
+              selectedRouteId={routeId}
+              routes={bridgeRoutes}
+              onRouteSelect={handleOnRouteClick}
+            />
           )}
-          <TransferWrapper>
-            <Container>
-              <TransferChainSelects
-                chainsFrom={chainsFrom}
-                chainsTo={chainsTo}
-                chainFrom={chainFrom?.chainId!}
-                chainTo={chainTo?.chainId!}
-                onSelectChainFrom={handleSelectChainFrom}
-                onSelectChainTo={handleSelectChainTo}
-                isDisabled={inProgress || isWrongNetwork}
-              />
-              <AmountsContainer>
-                <AmountInput
-                  amount={amountIn}
-                  label={"Send"}
-                  min={0}
-                  placeholder={"0.0"}
-                  disabled={inProgress || isWrongNetwork}
-                  onChange={handleAmountInChange}
-                />
-                <AmountInput
-                  amount={amountOut}
-                  placeholder={"0.0"}
-                  label={"Receive"}
-                  disabled={true}
-                />
-              </AmountsContainer>
-              <ActionButtons
-                isConnected={isConnected}
-                isApproved={isApproved}
-                inProgress={inProgress}
-                isRouteIdSelected={routeId > 0}
-                isEth={isEth}
-                isAmountSet={!!amountIn}
-                isAbleToMove={isAbleToMove}
-                isNotEnoughBalance={isNotEnoughBalance}
-                isApproveReady={!!buildApproveTx}
-                isWrongNetwork={isWrongNetwork}
-                onWalletConnect={onConnectWallet}
-                onWalletApprove={onApproveWallet}
-                onMoveAssets={handleMoveAssets}
-              />
-            </Container>
-          </TransferWrapper>
-          {isAbleToMove &&
-            !!amountIn &&
-            amountIn > 0 &&
-            isConnected &&
-            !isNotEnoughBalance &&
-            !isWrongNetwork && (
-              <BridgeRoutes
-                inProgress={inProgress}
-                selectedRouteId={routeId}
-                routes={bridgeRoutes}
-                onRouteSelect={handleOnRouteClick}
-              />
-            )}
         </Wrapper>
       </Root>
 
       <HydraModal
         network={network!}
         subtitle="Transaction"
-        onClose={handleCloseModal}
+        onClose={() => setIsModalOpen(false)}
         isOpen={isModalOpen}
         tx={txHash!}
       />

@@ -1,102 +1,45 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { buildApprovalTx } from "../../api/allowancesService";
 import { buildBridgeTx, getQuote } from "../../api/bridgeService";
 import {
+  BuildAllowanceResponseDto,
   BuildTxRequestDto,
-  ChainResponseDto,
+  BuildTxResponseDto,
   QuoteRequestDto,
   RouteDto,
-  TokenBalanceDto,
-  TokenResponseDto,
 } from "../../common/dtos";
-import { getBridgeTokens } from "../../api/commonService";
 import { useWeb3 } from "@chainsafe/web3-context";
-import { getUserAddressBalances } from "../../api/balancesService";
-import { isEmpty } from "../../helpers/stringHelper";
+import { ETH, HOP_BRIDGE_GOERLI } from "../../common/constants";
+import _ from "lodash";
+import { toast } from "react-toastify";
 import "dotenv/config";
-
-const { REACT_APP_DEFAULT_NETWORK_ID, REACT_APP_ETH_CONTRACT } = process.env;
+import { TransactionRequest } from "@ethersproject/abstract-provider";
+const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 export default function useHome() {
   //transaction actions
   const [bridgeRoutes, setBridgeRoutes] = useState<RouteDto[]>([]);
-  const [buildApproveTx, setBuildApproveTx] = useState<any>();
-  const [bridgeTx, setBridgeTx] = useState<any>();
-  const [txHash, setTxHash] = useState<string>();
+  const [buildApproveTx, setBuildApproveTx] =
+    useState<BuildAllowanceResponseDto>();
+  const [bridgeTx, setBridgeTx] = useState<BuildTxResponseDto>();
 
-  //errors
-  const [error, setError] = useState<any>(undefined);
+  const [txHash, setTxHash] = useState<string>();
 
   //checks
   const [isApproved, setIsApproved] = useState<boolean>(false);
-  const [isErrorOpen, setIsErrorOpen] = useState<boolean>(false);
   const [inProgress, setInProgress] = useState<boolean>(false);
 
   //state
-  const [tokens, setTokens] = useState<TokenResponseDto[]>([]);
-  const [chainFrom, setChainFrom] = useState<ChainResponseDto>();
-  const [chainTo, setChainTo] = useState<ChainResponseDto>();
-  const [walletBalances, setWalletBalances] = useState<TokenBalanceDto[]>();
-  const [asset, setAsset] = useState<number>(4);
-  const [amountIn, setAmountIn] = useState<number>(0.0);
-  const [amountOut, setAmountOut] = useState<number>(0.0);
+  const [asset, setAsset] = useState<number>(0);
   const [routeId, setRouteId] = useState<number>(0);
   const [isWrongNetwork, setIsWrongNetwork] = useState<boolean>(false);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const [showRoutes, setShowRoutes] = useState<boolean>(false);
 
   //modal
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const token = tokens.find((t) => t.id === asset);
-  const isEth = token?.symbol.toString().toLowerCase() === "eth";
-
   const { onboard, address, provider, network } = useWeb3();
-
-  useEffect(() => {
-    if (network && parseInt(REACT_APP_DEFAULT_NETWORK_ID!) === network) {
-      setIsWrongNetwork(false);
-    } else {
-      setIsWrongNetwork(true);
-    }
-  }, [network, setIsWrongNetwork]);
-
-  useEffect(() => {
-    async function getWalletBalances() {
-      try {
-        if (address) {
-          const res = await getUserAddressBalances(
-            address,
-            chainFrom
-              ? chainFrom?.chainId!
-              : parseInt(REACT_APP_DEFAULT_NETWORK_ID!)
-          );
-          if (res && res.success) {
-            setWalletBalances(res.result);
-          }
-        }
-      } catch (e) {
-        console.log(e);
-        setError(e);
-        setIsErrorOpen(true);
-      }
-    }
-    getWalletBalances();
-  }, [address, chainFrom, setWalletBalances]);
-
-  useEffect(() => {
-    async function getTokens() {
-      const res = await getBridgeTokens(
-        chainFrom
-          ? chainFrom?.chainId!
-          : parseInt(REACT_APP_DEFAULT_NETWORK_ID!)
-      );
-      if (res && res.success) {
-        setTokens(res.result);
-      }
-    }
-    if (network) {
-      getTokens();
-    }
-  }, [network, chainFrom]);
 
   const onConnectWallet = async () => {
     // Prompt user to select a wallet
@@ -105,6 +48,14 @@ export default function useHome() {
     // Run wallet checks to make sure that user is ready to transact
     await onboard?.walletCheck();
   };
+
+  useEffect(() => {
+    if (network && parseInt(REACT_APP_DEFAULT_NETWORK_ID!) === network) {
+      setIsWrongNetwork(false);
+    } else {
+      setIsWrongNetwork(true);
+    }
+  }, [network, setIsWrongNetwork]);
 
   const onGetQuote = async (dto: QuoteRequestDto) => {
     if (
@@ -118,25 +69,25 @@ export default function useHome() {
     ) {
       setInProgress(true);
       try {
-        const res = await getQuote(dto);
-        if (res.success) {
-          if (res.result) {
-            const isEther = res.result.fromAsset.symbol.toLowerCase() === "eth";
-            if (res.result.routes.length > 0) {
-              let filteredRoutes = res.result.routes;
+        const result = await getQuote(dto);
+        if (result) {
+          const { fromAsset, routes } = result;
+          const isEther = fromAsset.symbol.toLowerCase() === ETH;
+          if (routes.length > 0) {
+            let filteredRoutes = routes;
 
-              if (isEther) {
-                filteredRoutes = res.result.routes.filter(
-                  (route: RouteDto) =>
-                    route.bridgeRoute.bridgeName !== "hop-bridge-goerli"
-                );
-              }
-              const cheapestRoute = filteredRoutes[0];
-              setRouteId(cheapestRoute.id);
-              setBridgeRoutes(filteredRoutes);
+            if (isEther) {
+              filteredRoutes = routes.filter(
+                (route: RouteDto) =>
+                  route.bridgeRoute.bridgeName !== HOP_BRIDGE_GOERLI
+              );
             }
+            const cheapestRoute = filteredRoutes[0];
+            setRouteId(cheapestRoute.id);
+            setBridgeTx(cheapestRoute.buildTx);
+            setBridgeRoutes(filteredRoutes);
 
-            if (res.result.isApproved) {
+            if (result.isApproved) {
               setIsApproved(true);
             } else {
               setIsApproved(false);
@@ -144,67 +95,77 @@ export default function useHome() {
               if (!isEther) {
                 await onBuildApproveTxData(
                   dto.recipient,
-                  res.result.isApproved,
-                  dto.toChainId,
+                  isApproved,
+                  dto.fromChainId,
                   dto.amount,
-                  res.result.fromAsset.address
+                  fromAsset.address,
+                  isEther
                 );
               }
             }
+            setShowRoutes(true);
+            setIsDisabled(false);
           }
         }
       } catch (e) {
-        console.log(e);
-        setError(e);
-        setIsErrorOpen(true);
+        console.log("Get quote error", e);
       } finally {
         setInProgress(false);
       }
     }
   };
 
+  const onQuote = async (dto: QuoteRequestDto) => {
+    await onGetQuote(dto);
+  };
+
+  const onDebouncedQuote = useCallback(_.debounce(onQuote, 3000), []);
+
   const onBuildApproveTxData = async (
-    walletAddress: string,
+    owner: string,
     isApproved: boolean,
     chainId: number,
     amount: number,
-    tokenAddress: string
+    tokenAddress: string,
+    isEth: boolean
   ) => {
     try {
       if (
         !isApproved &&
-        walletAddress &&
-        !isEmpty(amount.toString()) &&
+        owner &&
+        amount &&
         tokenAddress &&
         !isEth &&
         !isWrongNetwork
       ) {
-        const res = await buildApprovalTx(
+        const response = await buildApprovalTx({
           chainId,
-          walletAddress,
-          REACT_APP_ETH_CONTRACT!,
+          owner,
           tokenAddress,
-          amount
-        );
-        if (res.success) {
-          console.log("Build approve data", res);
-          setBuildApproveTx(res.result);
+          amount,
+        });
+        if (response) {
+          setBuildApproveTx(response);
         }
       }
     } catch (e) {
-      console.log(e);
-      setError(e);
-      setIsErrorOpen(true);
+      console.log("Build approve data error", e);
     }
   };
 
-  const onApproveWallet = async () => {
+  const onApproveWallet = async (
+    amountIn: number,
+    isSendingEnabled: boolean,
+    isReceivingEnabled: boolean,
+    chainFromId: number,
+    chainToId: number
+  ) => {
     try {
       if (
         buildApproveTx &&
         !isWrongNetwork &&
-        chainFrom?.isSendingEnabled &&
-        chainTo?.isReceivingEnabled
+        isSendingEnabled &&
+        isReceivingEnabled
       ) {
         const signer = provider!.getUncheckedSigner();
         const tx = await signer.sendTransaction(buildApproveTx);
@@ -220,18 +181,17 @@ export default function useHome() {
             await onGetQuote({
               recipient: address!,
               fromAsset: asset,
-              fromChainId: chainFrom?.chainId!,
+              fromChainId: chainFromId,
               toAsset: asset,
-              toChainId: chainTo?.chainId!,
+              toChainId: chainToId,
               amount: amountIn,
             });
           }
         }
       }
     } catch (e: any) {
-      console.log(e);
-      setError("Something went wrong!");
-      setIsErrorOpen(true);
+      console.log("On approve wallet error", e);
+      toast.error("Error approving wallet", { autoClose: false });
     } finally {
       setInProgress(false);
     }
@@ -240,67 +200,86 @@ export default function useHome() {
   const getBridgeTxData = async (dto: BuildTxRequestDto) => {
     if (!isWrongNetwork) {
       try {
-        const res = await buildBridgeTx(dto);
-        if (res.success) {
-          console.log("bridge tx data res", res.result);
-          setBridgeTx(res.result);
+        const response = await buildBridgeTx(dto);
+        if (response) {
+          setBridgeTx(response);
         }
       } catch (e) {
-        console.log(e);
-        setError(e);
-        setIsErrorOpen(true);
+        console.log("Build bridge tx error", e);
       }
     }
   };
 
-  const onReset = () => {
-    setInProgress(false);
-    setAmountOut(0.0);
-    setAmountIn(0.0);
-    setIsApproved(false);
-    setRouteId(0);
+  const onMoveAssets = async (
+    isEth: boolean,
+    isSendingEnabled: boolean,
+    isReceivingEnabled: boolean,
+    bridgeTx: BuildTxResponseDto
+  ) => {
+    if (!isWrongNetwork && isSendingEnabled && isReceivingEnabled) {
+      try {
+        const signer = provider!.getUncheckedSigner();
+        const { data, to, from, value } = bridgeTx;
+        console.log("bridge tx move:", bridgeTx);
+        let dto: TransactionRequest = { data, to, from };
+        if (isEth) {
+          dto.value = value;
+        }
+
+        const tx = await signer.sendTransaction(dto);
+        setInProgress(true);
+        setTxHash(tx.hash);
+        setIsModalOpen(true);
+        setShowRoutes(false);
+        console.log("Move tx", tx);
+        const receipt = await tx.wait();
+        if (receipt.logs) {
+          console.log("Move receipt logs", receipt.logs);
+        }
+      } catch (e: any) {
+        console.log("Bridge funds error", e);
+        toast.error("Error bridging funds", { autoClose: false });
+      }
+    }
+  };
+
+  const onRouteClick = async (dto: BuildTxRequestDto) => {
+    if (!inProgress) {
+      setRouteId(dto.routeId);
+      await getBridgeTxData(dto);
+    }
   };
 
   return {
+    onDebouncedQuote,
+    onMoveAssets,
     onConnectWallet,
     onGetQuote,
     onBuildApproveTxData,
     onApproveWallet,
-    onReset,
-    getBridgeTxData,
-    setChainFrom,
-    setChainTo,
+    onRouteClick,
     setAsset,
-    setAmountIn,
-    setAmountOut,
     setRouteId,
     setInProgress,
     setIsModalOpen,
-    setIsErrorOpen,
     setTxHash,
-    setError,
     setIsApproved,
-    walletBalances,
+    setShowRoutes,
+    setIsDisabled,
+    getBridgeTxData,
+    showRoutes,
+    isDisabled,
     isWrongNetwork,
+    bridgeTx,
     network,
-    token,
-    tokens,
     asset,
-    amountIn,
-    amountOut,
     routeId,
-    isEth,
     isApproved,
-    isErrorOpen,
     inProgress,
     isModalOpen,
     provider,
-    chainFrom,
-    chainTo,
-    bridgeTx,
     buildApproveTx,
     txHash,
     bridgeRoutes,
-    error,
   };
 }

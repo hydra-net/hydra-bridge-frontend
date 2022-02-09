@@ -5,7 +5,6 @@ import { IconKeys, IStyleableProps } from "../../commonTypes";
 import { getFlexCenter, getAbsoluteFill } from "../../styles";
 import LoadingSpinner from "../LoadingSpinner";
 
-
 interface IStyledButtonProps {
   $height?: string;
   $width?: string;
@@ -22,7 +21,7 @@ interface IStyledLabelProps {
 }
 
 const StyledButton = styled.button<IStyledButtonProps>`
-  background: ${({ theme, $background }) => $background};
+  background: ${({ $background }) => $background};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   height: ${({ $height }) => $height || "40px"};
   ${getFlexCenter};
@@ -37,8 +36,7 @@ const StyledButton = styled.button<IStyledButtonProps>`
     props.$borderColor ? `1px solid ${props.$borderColor}` : "none"};
 
   &:hover:not(:disabled) {
-    background: ${({ theme, $backgroundHover }) =>
-      $backgroundHover};
+    background: ${({ $backgroundHover }) => $backgroundHover};
   }
 
   &:disabled {
@@ -65,9 +63,9 @@ const SpinnerWrapper = styled.div`
 `;
 
 export const Label = styled.p<IStyledLabelProps>`
-font-weight:  ${({ $fontWeight }) => $fontWeight || '400'};
-font-size: ${(props) => props.theme.paragraph.lg};
-line-height: 20px;
+  font-weight: ${({ $fontWeight }) => $fontWeight || "400"};
+  font-size: ${(props) => props.theme.paragraph.lg};
+  line-height: 20px;
   color: ${({ theme, $color }) => $color || theme.primaryColor};
   white-space: nowrap;
   &:first-letter {
@@ -135,7 +133,11 @@ const Button = ({
       <StyledButtonContent $isLoading={!!isLoading}>
         {children || (
           <>
-            {label || <Label $fontWeight={fontWeight} $color={labelColor}>{text}</Label>}
+            {label || (
+              <Label $fontWeight={fontWeight} $color={labelColor}>
+                {text}
+              </Label>
+            )}
             {(iconSrc || iconName) && (
               <StyledIcon
                 src={iconSrc}

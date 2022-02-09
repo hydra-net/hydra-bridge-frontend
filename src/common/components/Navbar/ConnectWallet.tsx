@@ -3,8 +3,8 @@ import styled, { useTheme } from "styled-components";
 import { getFlexCenter, getHorizontalGap } from "../../styles";
 import Button from "../Buttons/Button";
 import Copy from "../Copy";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { formatWalletAddress } from "../../../helpers/walletHelper";
 import "dotenv/config";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
@@ -16,11 +16,11 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Wrapper = styled.div<{ $isRightNetwork: boolean }>`
+const Wrapper = styled.div<{ $isWrongNetwork: boolean }>`
   padding: 10px 20px;
   border-radius: ${(props) => props.theme.borderRadius.lg};
   background: ${(props) =>
-    props.$isRightNetwork ? "rgb(226, 226, 229)" : "rgb(218, 45, 43)"};
+    props.$isWrongNetwork ? "rgb(218, 45, 43)" : "rgb(226, 226, 229)"};
   font-weight: 700;
   cursor: pointer;
   ${getFlexCenter};
@@ -33,11 +33,7 @@ const AddressContainer = styled.div``;
 const ConnectWallet = () => {
   const theme = useTheme();
   const { onboard, wallet, address, network } = useWeb3();
-
-  const isRightNetwork =
-    network && parseInt(REACT_APP_DEFAULT_NETWORK_ID!) === network
-      ? true
-      : false;
+  const isWrongNetwork = parseInt(REACT_APP_DEFAULT_NETWORK_ID!) !== network;
 
   const handleConnectWallet = async () => {
     if (!wallet) {
@@ -66,16 +62,13 @@ const ConnectWallet = () => {
   return (
     <Root>
       <Container>
-        <Wrapper $isRightNetwork={isRightNetwork}>
+        <Wrapper $isWrongNetwork={isWrongNetwork}>
           <AddressContainer>
-            {isRightNetwork
-              ? address.substring(0, 6) + "..." + address.substring(38, 42)
-              : "Wrong network"}
+            {formatWalletAddress(isWrongNetwork, address)}
           </AddressContainer>
-          {isRightNetwork && <Copy payload={address || ""} onCopy={notify} />}
+          {!isWrongNetwork && <Copy payload={address || ""} onCopy={notify} />}
         </Wrapper>
       </Container>
-      <ToastContainer />
     </Root>
   );
 };

@@ -1,19 +1,6 @@
-import { BridgeId } from "./enums";
-
-export interface BaseListResponseDto<T> {
-  success: boolean;
-  result: T[];
-}
-
-export interface BaseResponseDto {
-  success: boolean;
-  result: any;
-}
-
-export interface CheckAllowanceDto {
+export interface CheckAllowanceRequestDto {
   chainId: string;
   owner: string;
-  spender: string;
   tokenAddress: string;
 }
 
@@ -23,11 +10,10 @@ export interface CheckAllowanceResponseDto {
 }
 
 export interface BuildAllowanceRequestDto {
-  chainId: string;
+  chainId: number;
   owner: string;
-  spender: string;
   tokenAddress: string;
-  amount: string;
+  amount: number;
 }
 
 export interface BuildAllowanceResponseDto {
@@ -102,7 +88,6 @@ export interface BuildTxResponseDto {
   to: string;
   from: string;
   value?: any;
-  bridgeId?: BridgeId;
 }
 
 export interface TokenResponseDto {
