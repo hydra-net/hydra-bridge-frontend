@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled, { LegacyTheme, useTheme } from "styled-components";
 import { getFlexCenter } from "../../styles";
 import Button from "../Buttons/Button";
 
@@ -38,7 +38,7 @@ const ActionButtons = ({
   onWalletApprove,
   onMoveAssets,
 }: Props) => {
-  const theme = useTheme();
+  const theme = useTheme() as LegacyTheme;
   const showConnectButton = !isConnected && !inProgress;
   const showApprove =
     isConnected &&
