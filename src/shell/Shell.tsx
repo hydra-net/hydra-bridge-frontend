@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Layout from "../common/components/Layout";
 import { Routes, Route } from "react-router-dom";
-import { defaultTheme } from "./theme/theme";
+import { defaultTheme } from "./theme/legacyTheme";
 import { lazyWithPreload } from "../helpers/lazy";
 import { routes } from "../routes";
 import Fallback from "./Fallback";
