@@ -80,3 +80,10 @@ Root folder contains:
 ### /src/shell/
 
 - folder that contains `theme` folder, `Fallback.tsx` file and `Shell.tsx` where all routes are initialised and child components are passed to `Layout` component along with `Suspense` component for fallback
+
+## Styleguide
+To see the Styleguide run the command below :
+```
+yarn storybook
+```
+*The styleguide use the port 6006*
