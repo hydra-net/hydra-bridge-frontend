@@ -3,19 +3,11 @@ import { addDecorator } from "@storybook/react";
 import { withThemes } from "@react-theming/storybook-addon";
 
 import { appViewports } from "./vieports.config";
-import { stakenetTheme } from "../src/shell/theme/stakenetTheme";
-import { StakenetGlobalStyle } from "../src/shell/theme/stakenetGlobalStyle";
+import { defaultTheme } from "../src/shell/theme/theme";
 
 import "./storybook.css";
-import "../src/assets/fonts/index.css";
 
-addDecorator(withThemes(ThemeProvider, [stakenetTheme]));
-addDecorator((s) => (
-  <>
-    <StakenetGlobalStyle />
-    {s()}
-  </>
-));
+addDecorator(withThemes(ThemeProvider, [defaultTheme]));
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

@@ -1,9 +1,3 @@
-html, body {
-  /* converts 1 rem to 10px instead of 16px */
-  font-size: 62.5% !important;
-  font-family: "Rubik", sans-serif;
-}
-
 body.sb-show-main {
   background: #0b1226 !important;
 }
