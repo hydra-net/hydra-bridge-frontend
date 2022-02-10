@@ -1,4 +1,4 @@
-import icons from "./components/Icon";
+import icons from './components/Icon';
 
 export interface ISelectOption {
   label: string;

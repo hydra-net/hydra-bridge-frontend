@@ -1,19 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
-import { buildApprovalTx } from "../../api/allowancesService";
-import { buildBridgeTx, getQuote } from "../../api/bridgeService";
+import { useCallback, useEffect, useState } from 'react';
+import { buildApprovalTx } from '../../api/allowancesService';
+import { buildBridgeTx, getQuote } from '../../api/bridgeService';
 import {
   BuildAllowanceResponseDto,
   BuildTxRequestDto,
   BuildTxResponseDto,
   QuoteRequestDto,
   RouteDto,
-} from "../../common/dtos";
-import { useWeb3 } from "@chainsafe/web3-context";
-import { ETH, HOP_BRIDGE_GOERLI } from "../../common/constants";
-import _ from "lodash";
-import { toast } from "react-toastify";
-import "dotenv/config";
-import { TransactionRequest } from "@ethersproject/abstract-provider";
+} from '../../common/dtos';
+import { useWeb3 } from '@chainsafe/web3-context';
+import { ETH, HOP_BRIDGE_GOERLI } from '../../common/constants';
+import _ from 'lodash';
+import { toast } from 'react-toastify';
+import 'dotenv/config';
+import { TransactionRequest } from '@ethersproject/abstract-provider';
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 export default function useHome() {
@@ -108,7 +108,7 @@ export default function useHome() {
           }
         }
       } catch (e) {
-        console.log("Get quote error", e);
+        console.log('Get quote error', e);
       } finally {
         setInProgress(false);
       }
@@ -149,7 +149,7 @@ export default function useHome() {
         }
       }
     } catch (e) {
-      console.log("Build approve data error", e);
+      console.log('Build approve data error', e);
     }
   };
 
@@ -170,14 +170,14 @@ export default function useHome() {
         const signer = provider!.getUncheckedSigner();
         const tx = await signer.sendTransaction(buildApproveTx);
         if (tx) {
-          console.log("Approve tx hash:", tx.hash);
+          console.log('Approve tx hash:', tx.hash);
           setInProgress(true);
           setTxHash(tx.hash);
           setIsModalOpen(true);
           const receipt = await tx.wait();
           if (receipt.logs) {
             setIsApproved(true);
-            console.log("Approve receipt logs", receipt.logs);
+            console.log('Approve receipt logs', receipt.logs);
             await onGetQuote({
               recipient: address!,
               fromAsset: asset,
@@ -190,8 +190,8 @@ export default function useHome() {
         }
       }
     } catch (e: any) {
-      console.log("On approve wallet error", e);
-      toast.error("Error approving wallet", { autoClose: false });
+      console.log('On approve wallet error', e);
+      toast.error('Error approving wallet', { autoClose: false });
     } finally {
       setInProgress(false);
     }
@@ -205,7 +205,7 @@ export default function useHome() {
           setBridgeTx(response);
         }
       } catch (e) {
-        console.log("Build bridge tx error", e);
+        console.log('Build bridge tx error', e);
       }
     }
   };
@@ -220,7 +220,7 @@ export default function useHome() {
       try {
         const signer = provider!.getUncheckedSigner();
         const { data, to, from, value } = bridgeTx;
-        console.log("bridge tx move:", bridgeTx);
+        console.log('bridge tx move:', bridgeTx);
         let dto: TransactionRequest = { data, to, from };
         if (isEth) {
           dto.value = value;
@@ -231,14 +231,14 @@ export default function useHome() {
         setTxHash(tx.hash);
         setIsModalOpen(true);
         setShowRoutes(false);
-        console.log("Move tx", tx);
+        console.log('Move tx', tx);
         const receipt = await tx.wait();
         if (receipt.logs) {
-          console.log("Move receipt logs", receipt.logs);
+          console.log('Move receipt logs', receipt.logs);
         }
       } catch (e: any) {
-        console.log("Bridge funds error", e);
-        toast.error("Error bridging funds", { autoClose: false });
+        console.log('Bridge funds error', e);
+        toast.error('Error bridging funds', { autoClose: false });
       }
     }
   };

@@ -7,7 +7,7 @@ export const fetchWrapper = {
 
 async function get(url: string): Promise<Response> {
   const requestOptions: any = {
-    method: "GET",
+    method: 'GET',
   };
   return await fetch(url, requestOptions);
 }
@@ -15,11 +15,11 @@ async function get(url: string): Promise<Response> {
 function post(
   url: string,
   body: any,
-  contentType: string = "application/json"
+  contentType: string = 'application/json'
 ): Promise<Response> {
   const requestOptions: any = {
-    method: "POST",
-    headers: { "Content-Type": contentType },
+    method: 'POST',
+    headers: { 'Content-Type': contentType },
     body: JSON.stringify(body),
   };
   return fetch(url, requestOptions);
@@ -28,12 +28,12 @@ function post(
 function put(
   url: string,
   body: any,
-  contentType: string = "application/json",
+  contentType: string = 'application/json',
   stringify: boolean = true
 ): Promise<Response> {
   const requestOptions: any = {
-    method: "PUT",
-    headers: { "Content-Type": contentType },
+    method: 'PUT',
+    headers: { 'Content-Type': contentType },
     body: stringify ? JSON.stringify(body) : body,
   };
   return fetch(url, requestOptions);
@@ -41,7 +41,7 @@ function put(
 
 function _delete(url: string): Promise<Response> {
   const requestOptions: any = {
-    method: "DELETE",
+    method: 'DELETE',
   };
 
   return fetch(url, requestOptions);

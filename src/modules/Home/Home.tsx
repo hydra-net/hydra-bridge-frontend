@@ -1,19 +1,20 @@
-import { useWeb3 } from "@chainsafe/web3-context";
-import styled from "styled-components";
-import AssetSelect from "../../common/components/AssetSelect";
-import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
-import HydraModal from "../../common/components/Modal/HydraModal";
-import { ChainResponseDto } from "../../common/dtos";
-import { getFlexCenter } from "../../common/styles";
-import useHome from "./useHome";
-import MainContent from "./MainContent";
-import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
-import useTokens from "../../common/hooks/useTokens";
-import useAmountInput from "./useAmountInput";
-import useWalletBalances from "./useWalletBalances";
-import useChainTransfers from "./useChainTransfers";
-import { ISelectOption } from "../../common/commonTypes";
-import { toast } from "react-toastify";
+import React from 'react';
+import { useWeb3 } from '@chainsafe/web3-context';
+import styled from 'styled-components';
+import AssetSelect from '../../common/components/AssetSelect';
+import BridgeRoutes from '../../common/components/BridgeRoutes/BridgeRoutes';
+import HydraModal from '../../common/components/Modal/HydraModal';
+import { ChainResponseDto } from '../../common/dtos';
+import { getFlexCenter } from '../../common/styles';
+import useHome from './useHome';
+import MainContent from './MainContent';
+import { getIsNotEnoughBalance } from '../../helpers/walletHelper';
+import useTokens from '../../common/hooks/useTokens';
+import useAmountInput from './useAmountInput';
+import useWalletBalances from './useWalletBalances';
+import useChainTransfers from './useChainTransfers';
+import { ISelectOption } from '../../common/commonTypes';
+import { toast } from 'react-toastify';
 
 const Root = styled.div``;
 
@@ -26,7 +27,7 @@ const Wrapper = styled.div`
 `;
 
 const SendWrapper = styled.div`
-  ${getFlexCenter}
+  ${getFlexCenter};
   width: 100%;
   margin-bottom: 20px;
 `;
@@ -139,7 +140,7 @@ const Home = ({ chains }: Props) => {
         });
       }
       if (isNotEnoughBalance) {
-        toast.error("Error not enough funds", { autoClose: false });
+        toast.error('Error not enough funds', { autoClose: false });
       }
       setIsNotEnoughBalance(isNotEnoughBalance);
     }

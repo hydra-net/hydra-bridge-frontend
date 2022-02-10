@@ -1,19 +1,19 @@
-import styled, { CSSProperties } from "styled-components";
-import Icon from "../Icon/Icon";
-import Select from "react-select";
-import IconOption from "../Select/IconOption";
-import ValueOption from "../Select/ValueOption";
-import { getFlexCenter, getHorizontalGap } from "../../styles";
-import { TokenResponseDto } from "../../dtos";
-import { IconKeys, ISelectOption } from "../../commonTypes";
-import { ETH } from "../../constants";
+import styled, { CSSProperties } from 'styled-components';
+import Icon from '../Icon/Icon';
+import Select from 'react-select';
+import IconOption from '../Select/IconOption';
+import ValueOption from '../Select/ValueOption';
+import { getFlexCenter, getHorizontalGap } from '../../styles';
+import { TokenResponseDto } from '../../dtos';
+import { IconKeys, ISelectOption } from '../../commonTypes';
+import { ETH } from '../../constants';
 
 const Root = styled.div``;
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  ${getHorizontalGap("10px")}
+  ${getHorizontalGap('10px')}
   ${getFlexCenter}
 `;
 
@@ -49,7 +49,7 @@ const AssetSelect = ({
   const customStyles: any = {
     control: (provided: CSSProperties) => ({
       ...provided,
-      borderRadius: "10px",
+      borderRadius: '10px',
     }),
   };
 
@@ -61,7 +61,7 @@ const AssetSelect = ({
       icon: (
         <Icon
           name={
-            isEth ? "ethereum" : (token.symbol.toLocaleLowerCase() as IconKeys)
+            isEth ? 'ethereum' : (token.symbol.toLocaleLowerCase() as IconKeys)
           }
           size="20px"
         />

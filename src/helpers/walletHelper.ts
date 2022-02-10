@@ -1,7 +1,7 @@
-import { ethers } from "ethers";
-import { parseUnits } from "ethers/lib/utils";
-import { TokenBalanceDto } from "../common/dtos";
-import { localStorageHelper, LocalStorageKeys } from "./localStorageHelper";
+import { ethers } from 'ethers';
+import { parseUnits } from 'ethers/lib/utils';
+import { TokenBalanceDto } from '../common/dtos';
+import { localStorageHelper, LocalStorageKeys } from './localStorageHelper';
 
 export const walletHelper = {
   getLocalWallets: () => {
@@ -35,12 +35,12 @@ export const getIsNotEnoughBalance = (
 
     return false;
   } catch (e) {
-    console.log("Error checking wallet balance");
+    console.log('Error checking wallet balance');
     return false;
   }
 };
 
 export const formatWalletAddress = (isWrongNetwork: boolean, address: string) =>
   !isWrongNetwork
-    ? address.substring(0, 6) + "..." + address.substring(38, 42)
-    : "Wrong network";
+    ? address.substring(0, 6) + '...' + address.substring(38, 42)
+    : 'Wrong network';

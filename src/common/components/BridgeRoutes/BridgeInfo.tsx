@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { getBridgeIconName } from "../../../helpers/bridgeHelper";
-import { IconKeys } from "../../commonTypes";
-import { getFlexCenter, getHorizontalGap, getVerticalGap } from "../../styles";
-import Icon from "../Icon/Icon";
+import styled from 'styled-components';
+import { getBridgeIconName } from '../../../helpers/bridgeHelper';
+import { IconKeys } from '../../commonTypes';
+import { getFlexCenter, getHorizontalGap, getVerticalGap } from '../../styles';
+import Icon from '../Icon/Icon';
 
 const Root = styled.div`
   width: 100%;
@@ -12,8 +12,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   ${getFlexCenter};
-  ${getVerticalGap("5px")};
-  ${getHorizontalGap("5px")};
+  ${getVerticalGap('5px')};
+  ${getHorizontalGap('5px')};
 `;
 
 const DisplayName = styled.p`

@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
-import _ from "lodash";
-import { QuoteRequestDto, TokenBalanceDto } from "../../common/dtos";
-import { getOnlyNumbersAndDecimalNumbersRegex } from "../../helpers/regexHelper";
+import { useState } from 'react';
+import { getIsNotEnoughBalance } from '../../helpers/walletHelper';
+import _ from 'lodash';
+import { QuoteRequestDto, TokenBalanceDto } from '../../common/dtos';
+import { getOnlyNumbersAndDecimalNumbersRegex } from '../../helpers/regexHelper';
 
 function useAmountInput(
   recipient: string,
@@ -41,7 +41,7 @@ function useAmountInput(
         amount: parsedInput,
       });
     } else {
-      const parsedValue = value.replace(/\D/, "");
+      const parsedValue = value.replace(/\D/, '');
       const parsedInput = Number(parsedValue);
       setAmountIn(parsedInput);
       setAmountOut(parsedInput);
