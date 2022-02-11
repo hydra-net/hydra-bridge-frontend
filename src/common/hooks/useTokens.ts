@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { getBridgeTokens } from '../../api/commonService';
-import { ChainResponseDto, TokenResponseDto } from '../dtos';
-import 'dotenv/config';
-import { ETH } from '../constants';
+import { useEffect, useState } from "react";
+import { getBridgeTokens } from "../../api/commonService";
+import { ChainResponseDto, TokenResponseDto } from "../dtos";
+import "dotenv/config";
+import { ETH } from "../constants";
 
 function useTokens(
   chainFrom: ChainResponseDto,
@@ -25,7 +25,7 @@ function useTokens(
           setTokens(result);
         }
       } catch (e) {
-        console.log('Get tokens error', e);
+        console.log("Get tokens error", e);
       }
     }
     if (network) {

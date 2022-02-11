@@ -1,5 +1,5 @@
-import copyIcon from '../../assets/copy-icon.svg';
-import styled from 'styled-components';
+import copyIcon from "../../assets/copy-icon.svg";
+import styled from "styled-components";
 
 type Props = {
   onCopy?: () => void;
@@ -8,8 +8,8 @@ type Props = {
 };
 
 const CopyIcon = styled.img<{ size?: string }>`
-  width: ${(props) => props.size ?? '20px'};
-  height: ${(props) => props.size ?? '20px'};
+  width: ${(props) => props.size ?? "20px"};
+  height: ${(props) => props.size ?? "20px"};
 `;
 
 const Copy = ({ payload, size, onCopy }: Props) => {
@@ -24,7 +24,7 @@ const Copy = ({ payload, size, onCopy }: Props) => {
         }
       },
       (err) => {
-        console.error('Could not copy text: ', err);
+        console.error("Could not copy text: ", err);
       }
     );
   };

@@ -1,8 +1,8 @@
-import { TokenBalanceDto } from '../common/dtos';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import 'dotenv/config';
-import { getUserBalancesUrl } from './apiRoutes';
-import { handleResponse } from '../helpers/responseHandler';
+import { TokenBalanceDto } from "../common/dtos";
+import { fetchWrapper } from "../helpers/fetchWrapper";
+import "dotenv/config";
+import { getUserBalancesUrl } from "./apiRoutes";
+import { handleResponse } from "../helpers/responseHandler";
 
 export const getUserAddressBalances = async (
   address: string,
@@ -14,6 +14,6 @@ export const getUserAddressBalances = async (
     );
     return await handleResponse(response);
   } catch (e) {
-    console.log('Error getting user balance', e);
+    console.log("Error getting user balance", e);
   }
 };

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { getVerticalGap } from '../../styles';
+import React from "react";
+import styled from "styled-components";
+import { getVerticalGap } from "../../styles";
 
 const Container = styled.div`
   border-radius: ${(props) => props.theme.borderRadius.sm};
@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 0 10px;
   box-sizing: border-box;
   flex-direction: column;
-  ${getVerticalGap('5px')};
+  ${getVerticalGap("5px")};
 `;
 
 const Input = styled.input`

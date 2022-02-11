@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 export const getHorizontalGap = (size: string) => css`
   & > *:not(:last-child) {

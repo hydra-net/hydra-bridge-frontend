@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import spinnerIcon from '../../assets/spinner-icon.svg';
-import { IStyleableProps } from '../commonTypes';
+import styled from "styled-components";
+import spinnerIcon from "../../assets/spinner-icon.svg";
+import { IStyleableProps } from "../commonTypes";
 
 const Spinner = styled.img<{ maxWidth?: string }>`
   margin: 0 auto;
   animation: load3 1.4s infinite linear;
-  max-width: ${(props) => props.maxWidth ?? '30px'};
+  max-width: ${(props) => props.maxWidth ?? "30px"};
 
   @keyframes load3 {
     0% {

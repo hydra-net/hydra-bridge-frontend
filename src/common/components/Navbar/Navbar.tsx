@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { getFlexStart } from '../../styles';
-import ConnectWallet from './ConnectWallet';
+import styled from "styled-components";
+import { getFlexStart } from "../../styles";
+import ConnectWallet from "./ConnectWallet";
 
 const Root = styled.div`
   padding: 10px 67px;

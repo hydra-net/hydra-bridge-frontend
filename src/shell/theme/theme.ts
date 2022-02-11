@@ -1,6 +1,6 @@
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from "styled-components";
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     primaryColor: string;
     secondaryColor: string;
@@ -43,41 +43,41 @@ declare module 'styled-components' {
 }
 
 export const defaultTheme: DefaultTheme = {
-  primaryColor: '#ffffff',
-  secondaryColor: '#121212',
+  primaryColor: "#ffffff",
+  secondaryColor: "#121212",
 
   heading: {
-    xxl: '58px',
-    xl: '48px',
-    lg: '38px',
-    md: '28px',
-    sm: '24px',
-    xs: '19px',
+    xxl: "58px",
+    xl: "48px",
+    lg: "38px",
+    md: "28px",
+    sm: "24px",
+    xs: "19px",
   },
 
   paragraph: {
-    xxl: '22px',
-    xl: '18px',
-    lg: '16px',
-    md: '14px',
-    sm: '12px',
-    xs: '10px',
+    xxl: "22px",
+    xl: "18px",
+    lg: "16px",
+    md: "14px",
+    sm: "12px",
+    xs: "10px",
   },
 
   borderRadius: {
-    xs: '3px',
-    sm: '6px',
-    md: '10px',
-    lg: '20px',
+    xs: "3px",
+    sm: "6px",
+    md: "10px",
+    lg: "20px",
   },
-  backgroundColor: '#1e1e1e',
-  lightBackgroundColorHover: '#171717',
-  inputBackgroundColor: 'rgba(255, 255, 255, 0.05)',
-  inputBorderColor: 'rgba(255, 255, 255, 0.3)',
-  lightBackgroundColor: '#2d2d2d',
-  greyColor: 'rgb(226, 226, 229)',
-  buttonDefaultColor: 'rgba(0,0,0,0.2)',
-  greenColor: '#37b514',
-  blueColor: '#1976d2',
-  redColor: '#d32f2f',
+  backgroundColor: "#1e1e1e",
+  lightBackgroundColorHover: "#171717",
+  inputBackgroundColor: "rgba(255, 255, 255, 0.05)",
+  inputBorderColor: "rgba(255, 255, 255, 0.3)",
+  lightBackgroundColor: "#2d2d2d",
+  greyColor: "rgb(226, 226, 229)",
+  buttonDefaultColor: "rgba(0,0,0,0.2)",
+  greenColor: "#37b514",
+  blueColor: "#1976d2",
+  redColor: "#d32f2f",
 };

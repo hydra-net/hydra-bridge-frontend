@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
-import styled, { css } from 'styled-components';
-import Icon from '../Icon/Icon';
-import { IconKeys, IStyleableProps } from '../../commonTypes';
-import { getFlexCenter, getAbsoluteFill } from '../../styles';
-import LoadingSpinner from '../LoadingSpinner';
+import { ReactNode } from "react";
+import styled, { css } from "styled-components";
+import Icon from "../Icon/Icon";
+import { IconKeys, IStyleableProps } from "../../commonTypes";
+import { getFlexCenter, getAbsoluteFill } from "../../styles";
+import LoadingSpinner from "../LoadingSpinner";
 
 interface IStyledButtonProps {
   $height?: string;
@@ -23,17 +23,17 @@ interface IStyledLabelProps {
 const StyledButton = styled.button<IStyledButtonProps>`
   background: ${({ $background }) => $background};
   border-radius: ${({ theme }) => theme.borderRadius.md};
-  height: ${({ $height }) => $height || '40px'};
+  height: ${({ $height }) => $height || "40px"};
   ${getFlexCenter};
   cursor: pointer;
   text-decoration: none;
   padding: 0 16px;
   width: ${({ $width, $fullWidth }) =>
-    $fullWidth ? '100%' : $width || 'auto'};
+    $fullWidth ? "100%" : $width || "auto"};
   transition: background-color 200ms linear;
   position: relative;
   border: ${(props) =>
-    props.$borderColor ? `1px solid ${props.$borderColor}` : 'none'};
+    props.$borderColor ? `1px solid ${props.$borderColor}` : "none"};
 
   &:hover:not(:disabled) {
     background: ${({ $backgroundHover }) => $backgroundHover};
@@ -63,7 +63,7 @@ const SpinnerWrapper = styled.div`
 `;
 
 export const Label = styled.p<IStyledLabelProps>`
-  font-weight: ${({ $fontWeight }) => $fontWeight || '400'};
+  font-weight: ${({ $fontWeight }) => $fontWeight || "400"};
   font-size: ${(props) => props.theme.paragraph.lg};
   line-height: 20px;
   color: ${({ theme, $color }) => $color || theme.primaryColor};
@@ -142,7 +142,7 @@ const Button = ({
               <StyledIcon
                 src={iconSrc}
                 name={iconName}
-                size={iconSize || '14px'}
+                size={iconSize || "14px"}
               />
             )}
           </>
