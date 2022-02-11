@@ -27,6 +27,16 @@ Copy `env.example` in `.env` and populate missing variables.
   - `yarn dev` for launching app on `goerli` test network
   - `yarn production` for launching app on `mainnet` network
 
+### Lint files
+To display errors, run:
+``` 
+yarn lint
+```
+To apply possible fixes, run :
+```
+yarn lint:fix
+```
+
 ## Folder Structure
 
 ### /

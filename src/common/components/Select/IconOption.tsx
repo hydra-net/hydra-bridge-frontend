@@ -1,13 +1,12 @@
-import { components } from "react-select";
-import styled from "styled-components";
-import { getFlexStart, getHorizontalGap } from "../../styles";
+import { components } from 'react-select';
+import styled from 'styled-components';
+import { getFlexStart, getHorizontalGap } from '../../styles';
 
 const Container = styled.div`
   flex-direction: row;
   ${getFlexStart};
-  ${getHorizontalGap("10px")};
+  ${getHorizontalGap('10px')};
 `;
-
 
 const IconOption = (props: any) => {
   const { Option } = components;

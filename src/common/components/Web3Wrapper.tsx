@@ -1,9 +1,9 @@
-import { Web3Provider } from "@chainsafe/web3-context";
-import { ReactNode } from "react";
-import { walletHelper } from "../../helpers/walletHelper";
-import { ALL_SUPPORTED_CHAIN_IDS } from "../constants";
+import { Web3Provider } from '@chainsafe/web3-context';
+import { ReactNode } from 'react';
+import { walletHelper } from '../../helpers/walletHelper';
+import { ALL_SUPPORTED_CHAIN_IDS } from '../constants';
 
-const wallets = [{ walletName: "metamask", preferred: true }];
+const wallets = [{ walletName: 'metamask', preferred: true }];
 
 interface Web3WrapperProps {
   children: ReactNode;

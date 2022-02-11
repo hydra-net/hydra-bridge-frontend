@@ -1,8 +1,7 @@
-
 export enum LocalStorageKeys {
-  wallets = "wallets",
-  selectedWallet = "onboard.selectedWallet",
-  modalWarningAccepted = "modalWarningAccepted",
+  wallets = 'wallets',
+  selectedWallet = 'onboard.selectedWallet',
+  modalWarningAccepted = 'modalWarningAccepted',
 }
 
 export const localStorageHelper = {
@@ -22,6 +21,4 @@ export const localStorageHelper = {
   remove: (key: LocalStorageKeys): void => {
     localStorage.removeItem(key);
   },
-
-
 };

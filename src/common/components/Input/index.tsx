@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { getVerticalGap } from "../../styles";
+import React from 'react';
+import styled from 'styled-components';
+import { getVerticalGap } from '../../styles';
 
 const Container = styled.div`
   border-radius: ${(props) => props.theme.borderRadius.sm};
@@ -10,7 +10,7 @@ const Container = styled.div`
   padding: 0 10px;
   box-sizing: border-box;
   flex-direction: column;
-  ${getVerticalGap("5px")};
+  ${getVerticalGap('5px')};
 `;
 
 const Input = styled.input`
@@ -23,12 +23,12 @@ const Input = styled.input`
   box-sizing: border-box;
   width: 100%;
   padding: 0 10px 0 10px;
-  outline: 0!important;
+  outline: 0 !important;
   font: inherit;
 `;
 
 const Label = styled.div`
-  font-weight: 700; 
+  font-weight: 700;
   font-size: ${({ theme }) => theme.paragraph.lg};
   color: ${({ theme }) => theme.secondaryColor};
   margin-bottom: 5px;
@@ -53,7 +53,7 @@ const AmountInput = ({
   max,
   placeholder,
   step = 0.1,
-  disabled
+  disabled,
 }: Props) => {
   return (
     <Container>
@@ -67,7 +67,6 @@ const AmountInput = ({
         max={max}
         step={step}
         disabled={disabled}
-        
       />
     </Container>
   );

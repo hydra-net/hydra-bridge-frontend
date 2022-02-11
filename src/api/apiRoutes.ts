@@ -3,7 +3,7 @@ import {
   BuildTxRequestDto,
   CheckAllowanceRequestDto,
   QuoteRequestDto,
-} from "../common/dtos";
+} from '../common/dtos';
 
 const { REACT_APP_API_URL } = process.env;
 

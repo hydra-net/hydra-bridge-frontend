@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import ActionButtons from "../../common/components/ActionButtons/ActionButtons";
-import Icon from "../../common/components/Icon/Icon";
-import AmountInput from "../../common/components/Input";
-import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
-import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
-import { ChainResponseDto } from "../../common/dtos";
-import { getVerticalGap } from "../../common/styles";
+import styled from 'styled-components';
+import ActionButtons from '../../common/components/ActionButtons/ActionButtons';
+import Icon from '../../common/components/Icon/Icon';
+import AmountInput from '../../common/components/Input';
+import TransferChainSelects from '../../common/components/TransferChain/TransferChainSelects';
+import { ETHEREUM, GOERLI, POLYGON } from '../../common/constants';
+import { ChainResponseDto } from '../../common/dtos';
+import { getVerticalGap } from '../../common/styles';
 
 const Root = styled.div`
   background: rgb(255, 255, 255);
-  box-shadow: rgb(0 0 0 / 1%) 0px 0px 1px, rgb(0 0 0 / 4%) 0px 4px 8px,
-    rgb(0 0 0 / 4%) 0px 16px 24px, rgb(0 0 0 / 1%) 0px 24px 32px;
+  box-shadow: rgb(0 0 0 / 1%) 0 0 1px, rgb(0 0 0 / 4%) 0 4px 8px,
+    rgb(0 0 0 / 4%) 0 16px 24px, rgb(0 0 0 / 1%) 0 24px 32px;
   border-radius: 24px;
   margin-left: auto;
   margin-right: auto;
@@ -25,7 +25,7 @@ const Container = styled.div`
 const AmountsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  ${getVerticalGap("15px")};
+  ${getVerticalGap('15px')};
 `;
 
 const getFromChains = (chains: ChainResponseDto[]) => {
@@ -121,16 +121,16 @@ const MainContent = ({
         <AmountsContainer>
           <AmountInput
             amount={amountIn}
-            label={"Send"}
+            label={'Send'}
             min={0}
-            placeholder={"0.0"}
+            placeholder={'0.0'}
             disabled={inProgress || isWrongNetwork}
             onChange={onAmountChange}
           />
           <AmountInput
             amount={amountOut}
-            placeholder={"0.0"}
-            label={"Receive"}
+            placeholder={'0.0'}
+            label={'Receive'}
             disabled={true}
           />
         </AmountsContainer>

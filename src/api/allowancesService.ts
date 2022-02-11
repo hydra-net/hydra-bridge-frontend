@@ -3,11 +3,11 @@ import {
   BuildAllowanceResponseDto,
   CheckAllowanceRequestDto,
   CheckAllowanceResponseDto,
-} from "../common/dtos";
-import { fetchWrapper } from "../helpers/fetchWrapper";
-import "dotenv/config";
-import { getBuildApprovalTxUrl, getCheckAllowanceUrl } from "./apiRoutes";
-import { handleResponse } from "../helpers/responseHandler";
+} from '../common/dtos';
+import { fetchWrapper } from '../helpers/fetchWrapper';
+import 'dotenv/config';
+import { getBuildApprovalTxUrl, getCheckAllowanceUrl } from './apiRoutes';
+import { handleResponse } from '../helpers/responseHandler';
 
 export const checkAllowance = async (
   dto: CheckAllowanceRequestDto
@@ -16,7 +16,7 @@ export const checkAllowance = async (
     const response = await fetchWrapper.get(getCheckAllowanceUrl(dto));
     return await handleResponse(response);
   } catch (e) {
-    console.log("Error check allowance", e);
+    console.log('Error check allowance', e);
   }
 };
 
@@ -27,6 +27,6 @@ export const buildApprovalTx = async (
     const response = await fetchWrapper.get(getBuildApprovalTxUrl(dto));
     return handleResponse(response);
   } catch (e) {
-    console.log("Error building approval transaction", e);
+    console.log('Error building approval transaction', e);
   }
 };

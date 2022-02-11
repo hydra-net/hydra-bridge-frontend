@@ -3,11 +3,11 @@ import {
   BuildTxResponseDto,
   QuoteRequestDto,
   QuoteResponseDto,
-} from "../common/dtos";
-import { fetchWrapper } from "../helpers/fetchWrapper";
-import "dotenv/config";
-import { getBuildTxRequestUrl, getQuoteUrl } from "./apiRoutes";
-import { handleResponse } from "../helpers/responseHandler";
+} from '../common/dtos';
+import { fetchWrapper } from '../helpers/fetchWrapper';
+import 'dotenv/config';
+import { getBuildTxRequestUrl, getQuoteUrl } from './apiRoutes';
+import { handleResponse } from '../helpers/responseHandler';
 
 export const buildBridgeTx = async (
   dto: BuildTxRequestDto
@@ -16,7 +16,7 @@ export const buildBridgeTx = async (
     const response = await fetchWrapper.get(getBuildTxRequestUrl(dto));
     return await handleResponse(response);
   } catch (e) {
-    console.log("Error building bridge tx", e);
+    console.log('Error building bridge tx', e);
   }
 };
 
@@ -27,6 +27,6 @@ export const getQuote = async (
     const response = await fetchWrapper.get(getQuoteUrl(dto));
     return await handleResponse(response);
   } catch (e) {
-    console.log("Error getting quote", e);
+    console.log('Error getting quote', e);
   }
 };

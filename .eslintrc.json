@@ -1,25 +1,44 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:storybook/recommended",
     "prettier"
   ],
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "17.0.2"
+    }
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "defaultParams": true,
+      "regexUFlag": false,
+      "regexYFlag": false,
+      "templateStrings": true,
+      "unicodeCodePointEscapes": false
     },
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier", "unused-imports"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier",
+    "unused-imports"
+  ],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "process": true
   },
   "rules": {
     // suppress errors for missing 'import React' in files
@@ -31,7 +50,13 @@
       }
     ],
     "@typescript-eslint/no-unused-vars": 1,
-    "unused-imports/no-unused-imports-ts": 1
+    "unused-imports/no-unused-imports-ts": 1,
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": true,
+        "endOfLine": "auto"
+      }
+    ]
   },
   "overrides": [
     {

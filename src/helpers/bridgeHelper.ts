@@ -5,7 +5,7 @@ import {
   POLYGON,
   POLYGON_BRIDGE,
   POLYGON_BRIDGE_GOERLI,
-} from "../common/constants";
+} from '../common/constants';
 
 export const getBridgeIconName = (bridgeName: string): string => {
   if (bridgeName === POLYGON_BRIDGE || bridgeName === POLYGON_BRIDGE_GOERLI) {
@@ -16,5 +16,5 @@ export const getBridgeIconName = (bridgeName: string): string => {
     return HOP;
   }
 
-  return "";
+  return '';
 };

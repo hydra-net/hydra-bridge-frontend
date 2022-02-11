@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { RouteDto } from "../../dtos";
-import RouteItems from "./RouteItems";
-import TransferFees from "./TransferFees";
+import styled from 'styled-components';
+import { RouteDto } from '../../dtos';
+import RouteItems from './RouteItems';
+import TransferFees from './TransferFees';
 
 const Route = styled.div<{ isSelected?: boolean }>`
   height: 100px;
@@ -10,7 +10,7 @@ const Route = styled.div<{ isSelected?: boolean }>`
   border-radius: ${({ theme }) => theme.borderRadius.md};
   cursor: pointer;
   background: ${(props) =>
-    props.isSelected ? props.theme.greenColor : "transparent"};
+    props.isSelected ? props.theme.greenColor : 'transparent'};
   color: ${(props) =>
     props.isSelected ? props.theme.primaryColor : props.theme.secondaryColor};
 `;

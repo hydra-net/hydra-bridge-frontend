@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Root = styled.div`
   margin-top: 10px;
@@ -14,12 +14,12 @@ type Props = {
 const TransferFees = ({ transactionCoastUsd, serviceTime }: Props) => {
   return (
     <Root>
-      {" Gas fee: ~$" +
+      {' Gas fee: ~$' +
         (Math.round(transactionCoastUsd * 100) / 100).toFixed(2) +
-        " | " +
-        "~" +
+        ' | ' +
+        '~' +
         serviceTime / 60 +
-        " min"}
+        ' min'}
     </Root>
   );
 };

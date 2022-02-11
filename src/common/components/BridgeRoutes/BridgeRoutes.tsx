@@ -1,18 +1,14 @@
-import styled from "styled-components";
-import { RouteDto } from "../../dtos";
-import {
-  getFlexCenter,
-  getFlexStart,
-  getVerticalGap,
-} from "../../styles";
-import LoadingSpinner from "../LoadingSpinner";
-import BridgeRoute from "./BridgeRoute";
+import styled from 'styled-components';
+import { RouteDto } from '../../dtos';
+import { getFlexCenter, getFlexStart, getVerticalGap } from '../../styles';
+import LoadingSpinner from '../LoadingSpinner';
+import BridgeRoute from './BridgeRoute';
 
 const Root = styled.div`
   margin-top: 10px;
   background: rgb(255, 255, 255);
-  box-shadow: rgb(0 0 0 / 1%) 0px 0px 1px, rgb(0 0 0 / 4%) 0px 4px 8px,
-    rgb(0 0 0 / 4%) 0px 16px 24px, rgb(0 0 0 / 1%) 0px 24px 32px;
+  box-shadow: rgb(0 0 0 / 1%) 0 0 1px, rgb(0 0 0 / 4%) 0 4px 8px,
+    rgb(0 0 0 / 4%) 0 16px 24px, rgb(0 0 0 / 1%) 0 24px 32px;
   border-radius: 24px;
   margin-left: auto;
   margin-right: auto;
@@ -32,7 +28,7 @@ const Title = styled.div`
 
 const Container = styled.div`
   display: flex;
-  ${getVerticalGap("5px")};
+  ${getVerticalGap('5px')};
   flex-direction: column;
 `;
 
@@ -53,8 +49,6 @@ const BridgeRoutes = ({
   selectedRouteId,
   onRouteSelect,
 }: Props) => {
-
-
   return (
     <Root>
       <TitleContainer>
@@ -62,7 +56,7 @@ const BridgeRoutes = ({
       </TitleContainer>
       {inProgress ? (
         <SpinnerContainer>
-          <LoadingSpinner style={{ color: "black" }} />
+          <LoadingSpinner style={{ color: 'black' }} />
         </SpinnerContainer>
       ) : (
         <Container>
