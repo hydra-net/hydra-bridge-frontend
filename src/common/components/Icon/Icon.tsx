@@ -1,4 +1,4 @@
-import { useTheme } from "styled-components";
+import { LegacyTheme, useTheme } from "styled-components";
 import icons from "./index";
 import { IconKeys } from "../../commonTypes";
 
@@ -14,7 +14,7 @@ interface IIconProps {
 const defaultSize = "24px";
 
 const Icon = ({ width, height, size, color, name, ...props }: IIconProps) => {
-  const theme = useTheme();
+  const theme = useTheme() as LegacyTheme;
   const IconComponent = name && icons[name];
 
   if (!IconComponent || typeof IconComponent === "string") {

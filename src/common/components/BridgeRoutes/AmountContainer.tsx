@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled, { LegacyTheme, useTheme } from "styled-components";
 import { IconKeys } from "../../commonTypes";
 import { getFlexCenter, getHorizontalGap } from "../../styles";
 import Icon from "../Icon/Icon";
@@ -41,7 +41,7 @@ const AmountContainer = ({
   isSelected,
   isAmountIn,
 }: Props) => {
-  const theme = useTheme();
+  const theme = useTheme() as LegacyTheme;
   return (
     <Root>
       <Container>

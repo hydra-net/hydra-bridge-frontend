@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "../../shell/theme/globalStyle";
+import { LegacyGlobalStyle } from "../../shell/theme/legacyGlobalStyle";
 import Navbar from "./Navbar/Navbar";
 import Web3Wrapper from "./Web3Wrapper";
 
@@ -14,7 +14,7 @@ const Root = styled.div``;
 const Layout = ({ theme, children }: ILayoutProps) => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
+      <LegacyGlobalStyle />
       <Web3Wrapper>
         <Navbar />
         <Root>{children}</Root>

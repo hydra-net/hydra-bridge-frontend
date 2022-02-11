@@ -1,7 +1,7 @@
-import { DefaultTheme } from "styled-components";
+import { DefaultTheme, LegacyTheme } from "styled-components";
 
 declare module "styled-components" {
-  export interface DefaultTheme {
+  export interface LegacyTheme extends DefaultTheme {
     primaryColor: string;
     secondaryColor: string;
 
@@ -42,7 +42,7 @@ declare module "styled-components" {
   }
 }
 
-export const defaultTheme: DefaultTheme = {
+export const legacyTheme: LegacyTheme = {
   primaryColor: "#ffffff",
   secondaryColor: "#121212",
 

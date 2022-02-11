@@ -1,5 +1,5 @@
 import { useWeb3 } from "@chainsafe/web3-context";
-import styled, { useTheme } from "styled-components";
+import styled, { LegacyTheme, useTheme } from "styled-components";
 import { getFlexCenter, getHorizontalGap } from "../../styles";
 import Button from "../Buttons/Button";
 import Copy from "../Copy";
@@ -31,7 +31,7 @@ const Wrapper = styled.div<{ $isWrongNetwork: boolean }>`
 const AddressContainer = styled.div``;
 
 const ConnectWallet = () => {
-  const theme = useTheme();
+  const theme = useTheme() as LegacyTheme;
   const { onboard, wallet, address, network } = useWeb3();
   const isWrongNetwork = parseInt(REACT_APP_DEFAULT_NETWORK_ID!) !== network;
 
