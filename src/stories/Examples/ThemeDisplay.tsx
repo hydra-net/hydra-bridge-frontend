@@ -16,7 +16,7 @@ const ThemeDisplay = ({
   borderRadius,
   maxWidth,
   className,
-  }: IStakenetTheme & Props) => {
+}: IStakenetTheme & Props) => {
   /**
    * Returns the all the colors and nested subColors in an array
    * @return {Array<string, string>} colorPalette

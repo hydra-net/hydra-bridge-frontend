@@ -1,4 +1,4 @@
-import styled, { LegacyTheme , useTheme } from "styled-components";
+import styled, { LegacyTheme, useTheme } from "styled-components";
 import { IconKeys } from "../../commonTypes";
 import { getFlexCenter, getHorizontalGap } from "../../styles";
 import Icon from "../Icon/Icon";
