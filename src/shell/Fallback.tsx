@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { getFlexCenter } from '../common/styles';
-import LoadingSpinner from '../common/components/LoadingSpinner';
+import styled from "styled-components";
+import { getFlexCenter } from "../common/styles";
+import LoadingSpinner from "../common/components/LoadingSpinner";
 
 const Root = styled.div`
   ${getFlexCenter};

@@ -53,7 +53,7 @@
     "unused-imports/no-unused-imports-ts": 1,
     "prettier/prettier": [
       "error",
-      { "singleQuote": true,
+      { "doubleQuote": true,
         "endOfLine": "auto"
       }
     ]

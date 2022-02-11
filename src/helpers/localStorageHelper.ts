@@ -1,7 +1,7 @@
 export enum LocalStorageKeys {
-  wallets = 'wallets',
-  selectedWallet = 'onboard.selectedWallet',
-  modalWarningAccepted = 'modalWarningAccepted',
+  wallets = "wallets",
+  selectedWallet = "onboard.selectedWallet",
+  modalWarningAccepted = "modalWarningAccepted",
 }
 
 export const localStorageHelper = {
