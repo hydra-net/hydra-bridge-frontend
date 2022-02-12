@@ -11,6 +11,7 @@ type InputProps = {
   type?: string;
   placeholder?: string;
   isDisabled?: boolean;
+  hasError?: boolean;
   // let us pass an array of input attributes, eg: min, max, pattern, ...
   additionalAttributes?: Record<string, any>;
 };
@@ -23,6 +24,7 @@ const handleInputWrapping = (
     placeholder,
     isDisabled,
     onChange,
+    hasError,
     additionalAttributes,
     ...props
   }: InputProps
@@ -34,6 +36,7 @@ const handleInputWrapping = (
       placeholder={placeholder}
       disabled={isDisabled}
       onChange={onChange}
+      className={hasError ? "has-error" : ""}
       {...additionalAttributes}
       {...props}
     />

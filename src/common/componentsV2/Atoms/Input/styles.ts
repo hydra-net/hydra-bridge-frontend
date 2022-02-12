@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import { getHasError } from "../../../stylesV2/states";
 
 export type IStyledInputProps = {
   isLoading?: boolean;
@@ -36,5 +37,12 @@ export const StyledInput = styled.input<IStyledInputProps>`
   &:disabled {
     cursor: not-allowed;
     color: ${theme.colors.gray["medium-dark"]};
+  }
+
+  &.has-error {
+    ${getHasError};
+    &::placeholder {
+      ${getHasError};
+    }
   }
 `;

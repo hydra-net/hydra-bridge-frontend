@@ -27,3 +27,10 @@ Disabled.args = {
     pattern: "[0-9]",
   },
 };
+
+export const WithError = Template.bind({});
+WithError.args = {
+  placeholder: "0.0",
+  type: "text",
+  hasError: true,
+};
