@@ -24,3 +24,9 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   isDisabled: true,
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  isLoading: true,
+  isDisabled: true,
+};
