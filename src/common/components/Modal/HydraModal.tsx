@@ -1,18 +1,18 @@
-import Modal from 'react-modal';
-import styled from 'styled-components';
-import { NETWORK_EXPLORER_URLS } from '../../constants';
-import { SupportedChainId } from '../../enums';
-import { getFlexCenter } from '../../styles';
-import Button from '../Buttons/Button';
+import Modal from "react-modal";
+import styled from "styled-components";
+import { NETWORK_EXPLORER_URLS } from "../../constants";
+import { SupportedChainId } from "../../enums";
+import { getFlexCenter } from "../../styles";
+import Button from "../Buttons/Button";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
   },
 };
 
@@ -25,7 +25,7 @@ const Content = styled.div`
 `;
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 type Props = {
   network: number;

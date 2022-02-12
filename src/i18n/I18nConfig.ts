@@ -1,10 +1,10 @@
-import { initReactI18next } from 'react-i18next';
-import i18n from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from "react-i18next";
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
-import translationsEN from './locales/en/translations.json';
-import translationsFR from './locales/fr/translations.json';
-import { Languages } from './Languages';
+import translationsEN from "./locales/en/translations.json";
+import translationsFR from "./locales/fr/translations.json";
+import { Languages } from "./Languages";
 
 let defaultLanguage = Languages.EN;
 
@@ -25,16 +25,16 @@ i18n
     resources,
     interpolation: {
       escapeValue: false,
-      formatSeparator: ',',
+      formatSeparator: ",",
       format(value: any, format?: string): string {
-        if (format === 'uppercase') return value.toUpperCase();
+        if (format === "uppercase") return value.toUpperCase();
         return value;
       },
     },
 
     react: {
-      defaultTransParent: 'div',
+      defaultTransParent: "div",
       transSupportBasicHtmlNodes: true,
-      transKeepBasicHtmlNodesFor: ['br', 'strong', 'i'],
+      transKeepBasicHtmlNodesFor: ["br", "strong", "i"],
     },
   });

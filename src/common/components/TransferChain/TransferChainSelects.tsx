@@ -1,22 +1,22 @@
-import styled, { CSSProperties } from 'styled-components';
-import { getHorizontalGap, getVerticalGap } from '../../styles';
-import Select from 'react-select';
-import Icon from '../Icon/Icon';
-import IconOption from '../Select/IconOption';
-import ValueOption from '../Select/ValueOption';
-import { ISelectOption } from '../../commonTypes';
+import styled, { CSSProperties } from "styled-components";
+import { getHorizontalGap, getVerticalGap } from "../../styles";
+import Select from "react-select";
+import Icon from "../Icon/Icon";
+import IconOption from "../Select/IconOption";
+import ValueOption from "../Select/ValueOption";
+import { ISelectOption } from "../../commonTypes";
 
 const Root = styled.div`
   display: flex;
   justify-content: space-between;
-  ${getHorizontalGap('20px')};
+  ${getHorizontalGap("20px")};
   padding: 10px 10px 15px 10px;
 `;
 
 const TransferChainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  ${getVerticalGap('5px')};
+  ${getVerticalGap("5px")};
   width: 100%;
 `;
 
@@ -44,7 +44,7 @@ const IconArrowRight = styled(Icon)`
 const customStyles: any = {
   control: (provided: CSSProperties) => ({
     ...provided,
-    borderRadius: '10px',
+    borderRadius: "10px",
   }),
 };
 

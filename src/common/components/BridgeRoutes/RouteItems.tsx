@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { getHorizontalGap } from '../../styles';
-import { IconKeys } from '../../commonTypes';
-import { RouteDto } from '../../dtos';
-import { ETH } from '../../constants';
-import AmountContainer from './AmountContainer';
-import BridgeInfo from './BridgeInfo';
+import styled from "styled-components";
+import { getHorizontalGap } from "../../styles";
+import { IconKeys } from "../../commonTypes";
+import { RouteDto } from "../../dtos";
+import { ETH } from "../../constants";
+import AmountContainer from "./AmountContainer";
+import BridgeInfo from "./BridgeInfo";
 
 const Root = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ const Root = styled.div`
 
 const Container = styled.div`
   display: flex;
-  ${getHorizontalGap('5px')};
+  ${getHorizontalGap("5px")};
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -25,7 +25,7 @@ type Props = {
 const RouteItems = ({ route, isSelected }: Props) => {
   const assetIconName =
     route.bridgeRoute.fromAsset.symbol.toLocaleLowerCase() === ETH
-      ? ('ethereum' as IconKeys)
+      ? ("ethereum" as IconKeys)
       : (route.bridgeRoute.fromAsset.symbol.toLocaleLowerCase() as IconKeys);
 
   return (

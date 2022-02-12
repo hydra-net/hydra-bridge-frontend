@@ -1,6 +1,6 @@
-import styled, { useTheme } from 'styled-components';
-import { getFlexCenter } from '../../styles';
-import Button from '../Buttons/Button';
+import styled, { LegacyTheme, useTheme } from "styled-components";
+import { getFlexCenter } from "../../styles";
+import Button from "../Buttons/Button";
 
 const Root = styled.div`
   ${getFlexCenter};
@@ -38,7 +38,7 @@ const ActionButtons = ({
   onWalletApprove,
   onMoveAssets,
 }: Props) => {
-  const theme = useTheme();
+  const theme = useTheme() as LegacyTheme;
   const showConnectButton = !isConnected && !inProgress;
   const showApprove =
     isConnected &&
@@ -66,8 +66,8 @@ const ActionButtons = ({
         !showConnectButton && (
           <Button
             background={theme.buttonDefaultColor}
-            fontWeight={'700'}
-            width={'100%'}
+            fontWeight={"700"}
+            width={"100%"}
             text="Loading..."
             isLoading={inProgress}
           />
@@ -75,9 +75,9 @@ const ActionButtons = ({
       {isNotEnoughBalance && !showInputAmount && (
         <Button
           background={theme.buttonDefaultColor}
-          fontWeight={'700'}
-          width={'100%'}
-          text={'Insufficient balance'}
+          fontWeight={"700"}
+          width={"100%"}
+          text={"Insufficient balance"}
           disabled={inProgress}
           isLoading={inProgress}
         />
@@ -85,10 +85,10 @@ const ActionButtons = ({
       {showConnectButton && (
         <Button
           background={theme.blueColor}
-          fontWeight={'700'}
+          fontWeight={"700"}
           onClick={onWalletConnect}
-          width={'100%'}
-          text={'Connect wallet'}
+          width={"100%"}
+          text={"Connect wallet"}
           disabled={inProgress}
         />
       )}
@@ -96,9 +96,9 @@ const ActionButtons = ({
       {showInputAmount && (
         <Button
           background={theme.buttonDefaultColor}
-          fontWeight={'700'}
-          width={'100%'}
-          text={'Input amount'}
+          fontWeight={"700"}
+          width={"100%"}
+          text={"Input amount"}
           disabled={inProgress}
           isLoading={inProgress}
         />
@@ -107,10 +107,10 @@ const ActionButtons = ({
       {showMoveAssets && (
         <Button
           background={theme.blueColor}
-          fontWeight={'700'}
+          fontWeight={"700"}
           onClick={onMoveAssets}
-          width={'100%'}
-          text={'Bridge'}
+          width={"100%"}
+          text={"Bridge"}
           disabled={isDisabled}
           isLoading={inProgress}
         />
@@ -119,10 +119,10 @@ const ActionButtons = ({
       {showApprove && (
         <Button
           background={theme.greenColor}
-          fontWeight={'700'}
+          fontWeight={"700"}
           onClick={onWalletApprove}
-          width={'100%'}
-          text={'Approve'}
+          width={"100%"}
+          text={"Approve"}
           disabled={isDisabled}
           isLoading={inProgress}
         />

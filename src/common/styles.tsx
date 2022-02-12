@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 export const getHorizontalGap = (size: string) => css`
   & > *:not(:last-child) {
@@ -21,6 +21,12 @@ export const getFlexCenter = css`
 export const getFlexStart = css`
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+`;
+
+export const getFlexBetween = css`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 

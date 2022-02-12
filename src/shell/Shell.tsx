@@ -1,24 +1,24 @@
-import { Suspense } from 'react';
-import Layout from '../common/components/Layout';
-import { Routes, Route } from 'react-router-dom';
-import { defaultTheme } from './theme/theme';
-import { lazyWithPreload } from '../helpers/lazy';
-import { routes } from '../routes';
-import Fallback from './Fallback';
-import useChains from '../common/hooks/useChains';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Suspense } from "react";
+import Layout from "../common/components/Layout";
+import { Routes, Route } from "react-router-dom";
+import { legacyTheme } from "./theme/legacyTheme";
+import { lazyWithPreload } from "../helpers/lazy";
+import { routes } from "../routes";
+import Fallback from "./Fallback";
+import useChains from "../common/hooks/useChains";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // translations
-import '../i18n/I18nConfig';
+import "../i18n/I18nConfig";
 
 const Home = lazyWithPreload(
-  () => import(/* webpackChunkName: 'LandingModule' */ '../modules/Home/Home')
+  () => import(/* webpackChunkName: 'LandingModule' */ "../modules/Home/Home")
 );
 
 const Page404 = lazyWithPreload(
   () =>
-    import(/* webpackChunkName: 'LandingModule' */ '../modules/Page404/Page404')
+    import(/* webpackChunkName: 'LandingModule' */ "../modules/Page404/Page404")
 );
 
 const Shell = () => {
@@ -26,7 +26,7 @@ const Shell = () => {
 
   return (
     <>
-      <Layout theme={defaultTheme}>
+      <Layout theme={legacyTheme}>
         <Suspense fallback={<Fallback />}>
           <Routes>
             <Route path={routes.home} element={<Home chains={chains} />} />

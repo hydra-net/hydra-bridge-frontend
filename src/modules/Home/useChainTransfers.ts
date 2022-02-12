@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { ISelectOption } from '../../common/commonTypes';
-import { ChainResponseDto } from '../../common/dtos';
+import { useState } from "react";
+import { ISelectOption } from "../../common/commonTypes";
+import { ChainResponseDto } from "../../common/dtos";
 
 function useChainTransfers(chains: ChainResponseDto[]) {
   const [chainFrom, setChainFrom] = useState<ChainResponseDto>();

@@ -1,8 +1,8 @@
-import { ChainResponseDto, TokenResponseDto } from '../common/dtos';
-import { fetchWrapper } from '../helpers/fetchWrapper';
-import 'dotenv/config';
-import { getAllChainsUrl, getBridgeTokensUrl } from './apiRoutes';
-import { handleResponse } from '../helpers/responseHandler';
+import { ChainResponseDto, TokenResponseDto } from "../common/dtos";
+import { fetchWrapper } from "../helpers/fetchWrapper";
+import "dotenv/config";
+import { getAllChainsUrl, getBridgeTokensUrl } from "./apiRoutes";
+import { handleResponse } from "../helpers/responseHandler";
 
 export const getBridgeTokens = async (
   chainId: number
@@ -11,7 +11,7 @@ export const getBridgeTokens = async (
     const response = await fetchWrapper.get(getBridgeTokensUrl(chainId));
     return await handleResponse(response);
   } catch (e) {
-    console.log('Error getting bridge tokens', e);
+    console.log("Error getting bridge tokens", e);
   }
 };
 
@@ -22,6 +22,6 @@ export const getAllChains = async (): Promise<
     const response = await fetchWrapper.get(getAllChainsUrl());
     return await handleResponse(response);
   } catch (e) {
-    console.log('Error getting chains', e);
+    console.log("Error getting chains", e);
   }
 };

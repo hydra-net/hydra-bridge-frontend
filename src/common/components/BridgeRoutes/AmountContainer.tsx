@@ -1,7 +1,7 @@
-import styled, { useTheme } from 'styled-components';
-import { IconKeys } from '../../commonTypes';
-import { getFlexCenter, getHorizontalGap } from '../../styles';
-import Icon from '../Icon/Icon';
+import styled, { LegacyTheme, useTheme } from "styled-components";
+import { IconKeys } from "../../commonTypes";
+import { getFlexCenter, getHorizontalGap } from "../../styles";
+import Icon from "../Icon/Icon";
 
 const Root = styled.div`
   width: 100%;
@@ -11,14 +11,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  ${getHorizontalGap('10px')};
+  ${getHorizontalGap("10px")};
   ${getFlexCenter};
 `;
 const AmountWrapper = styled.div`
   display: flex;
   flex-direction: row;
   ${getFlexCenter};
-  ${getHorizontalGap('10px')};
+  ${getHorizontalGap("10px")};
 `;
 
 const AmountStyled = styled.p`
@@ -41,7 +41,7 @@ const AmountContainer = ({
   isSelected,
   isAmountIn,
 }: Props) => {
-  const theme = useTheme();
+  const theme = useTheme() as LegacyTheme;
   return (
     <Root>
       <Container>
