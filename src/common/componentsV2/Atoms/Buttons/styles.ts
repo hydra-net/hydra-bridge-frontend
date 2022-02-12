@@ -80,45 +80,45 @@ ${(props) =>
     : ""}
 
   /* Focus: display an offset ring */
-&:focus {
-  outline: none;
-  box-shadow: ${theme.colors.white} 0 0 0 2px,
-  ${theme.colors.blue.darkest} 0 0 0 4px,
-  ${theme.colors.black} 0 0 0 0;
-}
+  &:focus {
+    outline: none;
+    box-shadow: ${theme.colors.white} 0 0 0 2px,
+    ${theme.colors.blue.darkest} 0 0 0 4px,
+    ${theme.colors.black} 0 0 0 0;
+  }
 
-/* Loading: display a circle spinner and hide the text */
-${(props) =>
-  props.isLoading &&
-  css`
-    color: transparent;
-    &:after {
-      z-index: 50;
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      border: 4px solid transparent;
-      border-top-color: #ffffff;
-      border-radius: 50%;
-      filter: contrast(300%);
-      animation: button-loading-spinner 1s ease infinite;
-    }
-  `}
+  /* Loading: display a circle spinner and hide the text */
+  ${(props) =>
+    props.isLoading &&
+    css`
+      color: transparent;
+      &:after {
+        z-index: 50;
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        filter: contrast(300%);
+        animation: button-loading-spinner 1s ease infinite;
+      }
+    `}
 
   /* icon */
-.btn-icon {
-  display:flex;
-  align-items:center;
-  margin-bottom:auto;
-  margin-top:auto;
-  margin-left: 1rem;
-}
+  .btn-icon {
+    display:flex;
+    align-items:center;
+    margin-bottom:auto;
+    margin-top:auto;
+    margin-left: 1rem;
+  }
 `;
 
 export const StyledPrimaryButton = styled(StyledButton)`
