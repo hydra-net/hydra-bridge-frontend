@@ -30,3 +30,8 @@ Loading.args = {
   isLoading: true,
   isDisabled: true,
 };
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  iconName: "cutArrowRight",
+};

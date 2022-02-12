@@ -28,3 +28,8 @@ export const Loading = Template.bind({});
 Loading.args = {
   isLoading: true,
 };
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  iconName: "cutArrowRight",
+};

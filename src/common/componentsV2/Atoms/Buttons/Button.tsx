@@ -6,19 +6,22 @@ import {
   StyledButton,
   StyledPrimaryButton,
 } from "./styles";
+import Icon from "../../../components/Icon/Icon";
+import { IconKeys } from "../../../commonTypes";
 
 type ButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   onClick?: (e?: any) => void;
   children?: ReactNode;
+  iconName?: IconKeys;
+  iconSize?: string;
 };
 
 const handleLinkWrapping = (
   Component: StyledComponent<"button", any>,
   { isDisabled, onClick, children, ...props }: ButtonProps & IStyledButtonProps
 ) => {
-  console.log("ORI", { ...props });
   return (
     <Component
       onClick={onClick}
@@ -26,6 +29,11 @@ const handleLinkWrapping = (
       {...props}
     >
       {children}
+      {props.iconName && (
+        <span className="btn-icon">
+          <Icon name={props.iconName} size={props.iconSize || "1.4rem"} />
+        </span>
+      )}
     </Component>
   );
 };
