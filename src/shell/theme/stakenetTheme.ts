@@ -53,6 +53,8 @@ export interface IStakenetTheme extends DefaultTheme {
   };
 
   borderRadius: {
+    xxl: string;
+    xl: string;
     lg: string;
     md: string;
     sm: string;
@@ -128,6 +130,8 @@ export const stakenetTheme: IStakenetTheme = {
   },
 
   borderRadius: {
+    xxl: "2.4rem",
+    xl: "1.6rem",
     lg: ".8rem",
     md: ".6rem",
     sm: ".4rem",
