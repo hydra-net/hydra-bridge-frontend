@@ -16,18 +16,19 @@ type ButtonProps = {
 
 const handleLinkWrapping = (
   Component: StyledComponent<"button", any>,
-  {
-    isLoading,
-    isDisabled,
-    onClick,
-    children,
-    ...props
-  }: ButtonProps & IStyledButtonProps
-) => (
-  <Component onClick={onClick} disabled={isDisabled || isLoading} {...props}>
-    {children}
-  </Component>
-);
+  { isDisabled, onClick, children, ...props }: ButtonProps & IStyledButtonProps
+) => {
+  console.log("ORI", { ...props });
+  return (
+    <Component
+      onClick={onClick}
+      disabled={isDisabled || props.isLoading}
+      {...props}
+    >
+      {children}
+    </Component>
+  );
+};
 
 export const Button = (props: ButtonProps & IStyledButtonProps) =>
   handleLinkWrapping(StyledButton, props);

@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { PrimaryButton } from "../../../common/components/Buttons/ButtonV2";
+import { PrimaryButton } from "../../../common/componentsV2/Atoms/Buttons/Button";
 
 export default {
   title: "Atoms/Buttons/PrimaryButton",
