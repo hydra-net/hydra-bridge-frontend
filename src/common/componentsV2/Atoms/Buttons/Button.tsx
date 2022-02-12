@@ -18,7 +18,7 @@ type ButtonProps = {
   iconSize?: string;
 };
 
-const handleLinkWrapping = (
+const handleButtonWrapping = (
   Component: StyledComponent<"button", any>,
   { isDisabled, onClick, children, ...props }: ButtonProps & IStyledButtonProps
 ) => {
@@ -39,7 +39,7 @@ const handleLinkWrapping = (
 };
 
 export const Button = (props: ButtonProps & IStyledButtonProps) =>
-  handleLinkWrapping(StyledButton, props);
+  handleButtonWrapping(StyledButton, props);
 
 export const PrimaryButton = (props: ButtonProps & IStyledButtonProps) =>
-  handleLinkWrapping(StyledPrimaryButton, props);
+  handleButtonWrapping(StyledPrimaryButton, props);
