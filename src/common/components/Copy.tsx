@@ -1,4 +1,4 @@
-import copyIcon from "../../assets/copy-icon.svg";
+import copyIcon from "../../assets/svg/copy-icon.svg";
 import styled from "styled-components";
 
 type Props = {
