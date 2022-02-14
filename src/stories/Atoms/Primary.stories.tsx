@@ -1,14 +1,14 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Button } from "../../common/components/Atoms/Buttons/Button";
+import { PrimaryButton } from "../../common/components/Atoms/Buttons/Button";
 
 export default {
-  title: "Atoms/Buttons/Default",
-  component: Button,
-} as ComponentMeta<typeof Button>;
+  title: "Atoms/Buttons/PrimaryButton",
+  component: PrimaryButton,
+} as ComponentMeta<typeof PrimaryButton>;
 
-const Template: ComponentStory<typeof Button> = (args) => (
-  <Button {...args}>Connect wallet</Button>
+const Template: ComponentStory<typeof PrimaryButton> = (args) => (
+  <PrimaryButton {...args}>Input amount</PrimaryButton>
 );
 
 export const Default = Template.bind({});
