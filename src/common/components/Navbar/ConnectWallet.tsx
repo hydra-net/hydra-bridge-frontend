@@ -5,7 +5,6 @@ import Button from "../Buttons/Button";
 import Copy from "../Copy";
 import { toast } from "react-toastify";
 import { formatWalletAddress } from "../../../helpers/walletHelper";
-import "dotenv/config";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 const Root = styled.div`

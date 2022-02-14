@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getBridgeTokens } from "../../api/commonService";
 import { ChainResponseDto, TokenResponseDto } from "../dtos";
-import "dotenv/config";
 import { ETH } from "../constants";
 
 function useTokens(

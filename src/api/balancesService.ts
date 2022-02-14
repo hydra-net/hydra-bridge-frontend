@@ -1,6 +1,5 @@
 import { TokenBalanceDto } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
-import "dotenv/config";
 import { getUserBalancesUrl } from "./apiRoutes";
 import { handleResponse } from "../helpers/responseHandler";
 

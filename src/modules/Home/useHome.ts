@@ -12,7 +12,6 @@ import { useWeb3 } from "@chainsafe/web3-context";
 import { ETH, HOP_BRIDGE_GOERLI } from "../../common/constants";
 import _ from "lodash";
 import { toast } from "react-toastify";
-import "dotenv/config";
 import { TransactionRequest } from "@ethersproject/abstract-provider";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
