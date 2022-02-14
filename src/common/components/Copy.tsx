@@ -1,18 +1,14 @@
-import copyIcon from "../../assets/svg/copy-icon.svg";
-import styled from "styled-components";
+import React from "react";
 
+import Icon from "./Icon/Icon";
 type Props = {
   onCopy?: () => void;
   payload: string;
   size?: string;
+  color?: string;
 };
 
-const CopyIcon = styled.img<{ size?: string }>`
-  width: ${(props) => props.size ?? "20px"};
-  height: ${(props) => props.size ?? "20px"};
-`;
-
-const Copy = ({ payload, size, onCopy }: Props) => {
+const Copy = ({ payload, size, color, onCopy }: Props) => {
   const onCopyClicked = (e: any) => {
     // prevent parent click handler from firing
     e.preventDefault();
@@ -30,7 +26,12 @@ const Copy = ({ payload, size, onCopy }: Props) => {
   };
 
   return (
-    <CopyIcon size={size} src={copyIcon} onClick={(e) => onCopyClicked(e)} />
+    <Icon
+      color={color}
+      size={size}
+      name={"copy"}
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => onCopyClicked(e)}
+    />
   );
 };
 

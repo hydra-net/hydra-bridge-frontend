@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import "dotenv/config";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 import { formatWalletAddress } from "../../../helpers/walletHelper";
-import { getFlexCenter, getHorizontalGap } from "../../styles";
 
 import { Button } from "../Atoms/Buttons/Button";
 import Copy from "../Copy";
@@ -17,20 +16,6 @@ const Root = styled.div`
 const Container = styled.div`
   width: 100%;
 `;
-
-const Wrapper = styled.div<{ $isWrongNetwork: boolean }>`
-  padding: 10px 20px;
-  border-radius: ${(props) => props.theme.borderRadius.lg};
-  background: ${(props) =>
-    props.$isWrongNetwork ? "rgb(218, 45, 43)" : "rgb(226, 226, 229)"};
-  font-weight: 700;
-  cursor: pointer;
-  ${getFlexCenter};
-  display: flex;
-  ${getHorizontalGap("5px")};
-`;
-
-const AddressContainer = styled.div``;
 
 const ConnectWallet = () => {
   const { onboard, wallet, address, network } = useWeb3();
@@ -61,12 +46,19 @@ const ConnectWallet = () => {
   return (
     <Root>
       <Container>
-        <Wrapper $isWrongNetwork={isWrongNetwork}>
-          <AddressContainer>
-            {formatWalletAddress(isWrongNetwork, address)}
-          </AddressContainer>
-          {!isWrongNetwork && <Copy payload={address || ""} onCopy={notify} />}
-        </Wrapper>
+        <Button>
+          {formatWalletAddress(isWrongNetwork, address)}
+          {!isWrongNetwork && (
+            <span className={"btn-icon"}>
+              <Copy
+                payload={address || ""}
+                color={"white"}
+                size={"2rem"}
+                onCopy={notify}
+              />
+            </span>
+          )}
+        </Button>
       </Container>
     </Root>
   );
