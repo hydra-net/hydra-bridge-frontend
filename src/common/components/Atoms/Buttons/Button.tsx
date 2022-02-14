@@ -9,7 +9,7 @@ import {
 import { IconKeys } from "../../../commonTypes";
 import Icon from "../../Icon/Icon";
 
-type ButtonProps = {
+export type ButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   onClick?: (e?: any) => void;

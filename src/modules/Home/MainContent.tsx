@@ -1,8 +1,10 @@
 import styled from "styled-components";
-import ActionButtons from "../../common/components/ActionButtons/ActionButtons";
+
 import Icon from "../../common/components/Icon/Icon";
 import AmountInput from "../../common/components/Input";
+import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
 import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
+
 import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
 import { ChainResponseDto } from "../../common/dtos";
 import { getVerticalGap } from "../../common/styles";
@@ -134,7 +136,7 @@ const MainContent = ({
             disabled={true}
           />
         </AmountsContainer>
-        <ActionButtons
+        <BridgeButton
           isConnected={isConnected}
           isApproved={isApproved}
           inProgress={inProgress}
