@@ -6,12 +6,16 @@ import {
   StyledButton,
   StyledPrimaryButton,
 } from "./styles";
+import { IconKeys } from "../../../commonTypes";
+import Icon from "../../Icon/Icon";
 
 type ButtonProps = {
   isDisabled?: boolean;
   isLoading?: boolean;
   onClick?: (e?: any) => void;
   children?: ReactNode;
+  iconName?: IconKeys;
+  iconSize?: string;
 };
 
 const handleButtonWrapping = (
@@ -26,6 +30,11 @@ const handleButtonWrapping = (
 ) => (
   <Component onClick={onClick} disabled={isDisabled || isLoading} {...props}>
     {children}
+    {props.iconName && (
+      <span className="btn-icon">
+        <Icon name={props.iconName} size={props.iconSize || "1.4rem"} />
+      </span>
+    )}
   </Component>
 );
 

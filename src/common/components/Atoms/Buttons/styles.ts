@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 
 export type IStyledButtonProps = {
+  isLoading?: boolean;
   fontWeight?: number;
   fullWidth?: boolean;
   borderRadius?: string;
@@ -35,13 +36,11 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     props.borderRadius ? props.borderRadius : theme.borderRadius.lg};
   padding: 1.5rem;
 
-  opacity: ${(props) => (props.disabled ? "0.7" : "1")};
+  opacity: ${(props) => (props.disabled && !props.isLoading ? "0.7" : "1")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
-/**
-  Transitions hover
- */
-/* only show brightness transition if button full width and is not disabled */
+  /* Hover: make a brighter effect on the button */
+  /* only show brightness transition if button full width and is not disabled */
   ${(props) =>
     props.fullWidth && !props.disabled
       ? css`
@@ -52,7 +51,9 @@ export const StyledButton = styled.button<IStyledButtonProps>`
         `
       : ""};
   }
-/* only show white shades animation if button is not full width and is not disabled */
+
+  /* Hover: shows a reflect animation from left to right on the button */
+  /* only show white shades animation if button is not full width and is not disabled */
   ${(props) =>
     !props.fullWidth && !props.disabled
       ? css`
@@ -77,6 +78,47 @@ export const StyledButton = styled.button<IStyledButtonProps>`
           }
         `
       : ""}
+
+    /* Focus: display an offset ring */
+  &:focus {
+    outline: none;
+    box-shadow: ${theme.colors.white} 0 0 0 2px,
+    ${theme.colors.blue.darkest} 0 0 0 4px,
+    ${theme.colors.black} 0 0 0 0;
+  }
+
+  /* Loading: display a circle spinner and hide the text */
+  ${(props) =>
+    props.isLoading &&
+    css`
+      color: transparent;
+      &:after {
+        z-index: 50;
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        filter: contrast(300%);
+        animation: button-loading-spinner 1s ease infinite;
+      }
+    `}
+
+    /* icon */
+  .btn-icon {
+    display:flex;
+    align-items:center;
+    margin-bottom:auto;
+    margin-top:auto;
+    margin-left: 1rem;
+  }
 `;
 
 export const StyledPrimaryButton = styled(StyledButton)`
@@ -87,4 +129,20 @@ export const StyledPrimaryButton = styled(StyledButton)`
       ${theme.colors.blue.medium} 100%
     )
     0 0 no-repeat;
+
+  &:focus {
+    box-shadow: ${theme.colors.blue.darkest} 0 0 0 2px,
+      ${theme.colors.blue.lightest} 0 0 0 4px, ${theme.colors.black} 0 0 0 0;
+  }
+
+  /* Keyframes: rotate the button loading circle */
+  @keyframes button-loading-spinner {
+    from {
+      transform: rotate(0turn);
+    }
+
+    to {
+      transform: rotate(1turn);
+    }
+  }
 `;
