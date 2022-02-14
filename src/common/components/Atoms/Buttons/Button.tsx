@@ -20,15 +20,13 @@ type ButtonProps = {
 
 const handleButtonWrapping = (
   Component: StyledComponent<"button", any>,
-  {
-    isLoading,
-    isDisabled,
-    onClick,
-    children,
-    ...props
-  }: ButtonProps & IStyledButtonProps
+  { isDisabled, onClick, children, ...props }: ButtonProps & IStyledButtonProps
 ) => (
-  <Component onClick={onClick} disabled={isDisabled || isLoading} {...props}>
+  <Component
+    onClick={onClick}
+    disabled={isDisabled || props.isLoading}
+    {...props}
+  >
     {children}
     {props.iconName && (
       <span className="btn-icon">

@@ -1,12 +1,14 @@
 import { useWeb3 } from "@chainsafe/web3-context";
-import styled, { LegacyTheme, useTheme } from "styled-components";
-import { getFlexCenter, getHorizontalGap } from "../../styles";
-import Button from "../Buttons/Button";
-import Copy from "../Copy";
+import styled from "styled-components";
 import { toast } from "react-toastify";
-import { formatWalletAddress } from "../../../helpers/walletHelper";
+
 import "dotenv/config";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
+import { formatWalletAddress } from "../../../helpers/walletHelper";
+import { getFlexCenter, getHorizontalGap } from "../../styles";
+
+import { Button } from "../Atoms/Buttons/Button";
+import Copy from "../Copy";
 
 const Root = styled.div`
   max-width: 160px;
@@ -31,7 +33,6 @@ const Wrapper = styled.div<{ $isWrongNetwork: boolean }>`
 const AddressContainer = styled.div``;
 
 const ConnectWallet = () => {
-  const theme = useTheme() as LegacyTheme;
   const { onboard, wallet, address, network } = useWeb3();
   const isWrongNetwork = parseInt(REACT_APP_DEFAULT_NETWORK_ID!) !== network;
 
@@ -48,15 +49,13 @@ const ConnectWallet = () => {
       autoClose: 1000,
       pauseOnHover: false,
     });
+
+  // TODO translate once https://github.com/X9Developers/hydra-bridge-frontend/pull/7 is merged
   if (!address) {
     return (
-      <Button
-        background={theme.blueColor}
-        fontWeight={"700"}
-        width={"160px"}
-        text={"Connect wallet"}
-        onClick={handleConnectWallet}
-      />
+      <Button iconName={"cutArrowRight"} onClick={handleConnectWallet}>
+        Connect wallet
+      </Button>
     );
   }
   return (
