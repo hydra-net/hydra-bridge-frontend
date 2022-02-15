@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import spinnerIcon from "../../assets/spinner-icon.svg";
+import spinnerIcon from "../../assets/svg/spinner-icon.svg";
 import { IStyleableProps } from "../commonTypes";
 
 const Spinner = styled.img<{ maxWidth?: string }>`

@@ -1,6 +1,7 @@
-import styled, { LegacyTheme, useTheme } from "styled-components";
+import styled from "styled-components";
+
 import { getFlexCenter } from "../../styles";
-import Button from "../Buttons/Button";
+import { PrimaryButton } from "../Atoms/Buttons/Button";
 
 const Root = styled.div`
   ${getFlexCenter};
@@ -23,6 +24,7 @@ type Props = {
   onMoveAssets: () => void;
 };
 
+// TODO REFACTOR https://trello.com/c/fKgax0oN/2-fe-improve-button-actions-to-show-consistent-loader-text-in-some-cases-loading-text-is-showed-in-some-cases-loader-is-showed
 const ActionButtons = ({
   isEth,
   isAbleToMove,
@@ -38,7 +40,6 @@ const ActionButtons = ({
   onWalletApprove,
   onMoveAssets,
 }: Props) => {
-  const theme = useTheme() as LegacyTheme;
   const showConnectButton = !isConnected && !inProgress;
   const showApprove =
     isConnected &&
@@ -64,68 +65,59 @@ const ActionButtons = ({
         !showMoveAssets &&
         !isNotEnoughBalance &&
         !showConnectButton && (
-          <Button
-            background={theme.buttonDefaultColor}
-            fontWeight={"700"}
-            width={"100%"}
-            text="Loading..."
-            isLoading={inProgress}
-          />
+          <PrimaryButton fullWidth={true} isLoading={inProgress}>
+            Loading
+          </PrimaryButton>
         )}
       {isNotEnoughBalance && !showInputAmount && (
-        <Button
-          background={theme.buttonDefaultColor}
-          fontWeight={"700"}
-          width={"100%"}
-          text={"Insufficient balance"}
-          disabled={inProgress}
+        <PrimaryButton
+          fullWidth={true}
+          isDisabled={inProgress}
           isLoading={inProgress}
-        />
+        >
+          Insufficient balance
+        </PrimaryButton>
       )}
       {showConnectButton && (
-        <Button
-          background={theme.blueColor}
-          fontWeight={"700"}
+        <PrimaryButton
+          fullWidth={true}
+          isDisabled={inProgress}
           onClick={onWalletConnect}
-          width={"100%"}
-          text={"Connect wallet"}
-          disabled={inProgress}
-        />
+        >
+          Connect wallet
+        </PrimaryButton>
       )}
 
       {showInputAmount && (
-        <Button
-          background={theme.buttonDefaultColor}
-          fontWeight={"700"}
-          width={"100%"}
-          text={"Input amount"}
-          disabled={inProgress}
+        <PrimaryButton
+          fullWidth={true}
+          isDisabled={inProgress}
           isLoading={inProgress}
-        />
+        >
+          Input amount
+        </PrimaryButton>
       )}
 
       {showMoveAssets && (
-        <Button
-          background={theme.blueColor}
-          fontWeight={"700"}
-          onClick={onMoveAssets}
-          width={"100%"}
-          text={"Bridge"}
-          disabled={isDisabled}
+        <PrimaryButton
+          fullWidth={true}
+          isDisabled={inProgress}
           isLoading={inProgress}
-        />
+          onClick={onMoveAssets}
+        >
+          Bridge
+        </PrimaryButton>
       )}
 
       {showApprove && (
-        <Button
-          background={theme.greenColor}
-          fontWeight={"700"}
+        <PrimaryButton
           onClick={onWalletApprove}
-          width={"100%"}
-          text={"Approve"}
-          disabled={isDisabled}
+          fullWidth={true}
+          isDisabled={isDisabled}
           isLoading={inProgress}
-        />
+        >
+          Approve
+        </PrimaryButton>
       )}
     </Root>
   );

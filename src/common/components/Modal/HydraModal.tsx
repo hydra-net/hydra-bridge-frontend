@@ -1,9 +1,10 @@
 import Modal from "react-modal";
 import styled from "styled-components";
+
 import { NETWORK_EXPLORER_URLS } from "../../constants";
 import { SupportedChainId } from "../../enums";
 import { getFlexCenter } from "../../styles";
-import Button from "../Buttons/Button";
+import { Button } from "../Atoms/Buttons/Button";
 
 const customStyles = {
   content: {
@@ -16,9 +17,6 @@ const customStyles = {
   },
 };
 
-const StyledButton = styled(Button)`
-  width: 100%;
-`;
 const Content = styled.div`
   ${getFlexCenter};
   margin-bottom: 20px;
@@ -50,7 +48,9 @@ const HydraModal = ({ network, subtitle, tx, isOpen, onClose }: Props) => {
           {tx}
         </a>
       </Content>
-      <StyledButton onClick={onClose}>Close</StyledButton>
+      <Button fullWidth={true} onClick={onClose}>
+        Close
+      </Button>
     </Modal>
   );
 };
