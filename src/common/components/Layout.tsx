@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { LegacyGlobalStyle } from "../../shell/theme/legacyGlobalStyle";
+import { StakenetGlobalStyle } from "../../shell/theme/stakenetGlobalStyle";
 import Navbar from "./Navbar/Navbar";
 import Web3Wrapper from "./Web3Wrapper";
+import { stakenetTheme } from "../../shell/theme/stakenetTheme";
 
 interface ILayoutProps {
   theme: any;
@@ -13,8 +15,9 @@ const Root = styled.div``;
 
 const Layout = ({ theme, children }: ILayoutProps) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={{ ...theme, sTheme: stakenetTheme }}>
       <LegacyGlobalStyle />
+      <StakenetGlobalStyle />
       <Web3Wrapper>
         <Navbar />
         <Root>{children}</Root>
