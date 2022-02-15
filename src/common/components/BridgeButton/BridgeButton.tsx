@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import { getFlexCenter } from "../../styles";
 import { ButtonProps, PrimaryButton } from "../Atoms/Buttons/Button";
 import { IStyledButtonProps } from "../Atoms/Buttons/styles";
-import { useTranslation } from "react-i18next";
 
 const Root = styled.div`
   ${getFlexCenter};
