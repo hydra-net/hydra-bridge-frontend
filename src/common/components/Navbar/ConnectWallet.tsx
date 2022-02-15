@@ -2,7 +2,6 @@ import { useWeb3 } from "@chainsafe/web3-context";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 
-import "dotenv/config";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 import { formatWalletAddress } from "../../../helpers/walletHelper";
 

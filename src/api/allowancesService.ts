@@ -5,7 +5,6 @@ import {
   CheckAllowanceResponseDto,
 } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
-import "dotenv/config";
 import { getBuildApprovalTxUrl, getCheckAllowanceUrl } from "./apiRoutes";
 import { handleResponse } from "../helpers/responseHandler";
 

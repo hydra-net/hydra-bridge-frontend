@@ -1,6 +1,5 @@
 import { ChainResponseDto, TokenResponseDto } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
-import "dotenv/config";
 import { getAllChainsUrl, getBridgeTokensUrl } from "./apiRoutes";
 import { handleResponse } from "../helpers/responseHandler";
 
