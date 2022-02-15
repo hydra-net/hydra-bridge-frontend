@@ -29,7 +29,7 @@ describe("The BridgeButton", () => {
 
     fireEvent.click(button);
 
-    expect(button).toHaveTextContent("Connect wallet");
+    expect(button).toHaveTextContent("connectWallet");
     expect(mockCallback).toHaveBeenCalledTimes(1);
   });
 
@@ -40,7 +40,7 @@ describe("The BridgeButton", () => {
 
     fireEvent.click(button);
 
-    expect(button).toHaveTextContent("Loading");
+    expect(button).toHaveTextContent("common.loading");
     expect(button).toHaveAttribute("disabled");
   });
 
@@ -50,7 +50,7 @@ describe("The BridgeButton", () => {
     const button = screen.getByRole("button");
 
     expect(button).toHaveAttribute("disabled");
-    expect(button).toHaveTextContent("Insufficient balance");
+    expect(button).toHaveTextContent("insufficientBalance");
   });
 
   it("should ask to input amount and be disabled when none is set", async () => {
@@ -59,7 +59,7 @@ describe("The BridgeButton", () => {
     const button = screen.getByRole("button");
 
     expect(button).toHaveAttribute("disabled");
-    expect(button).toHaveTextContent("Input amount");
+    expect(button).toHaveTextContent("inputAmount");
   });
 
   it("should fallback to input amount text when none of the conditions met", async () => {
@@ -68,7 +68,7 @@ describe("The BridgeButton", () => {
     const button = screen.getByRole("button");
 
     expect(button).toHaveAttribute("disabled");
-    expect(button).toHaveTextContent("Input amount");
+    expect(button).toHaveTextContent("inputAmount");
   });
 
   it("should be able to bridge", async () => {
@@ -80,7 +80,7 @@ describe("The BridgeButton", () => {
 
     fireEvent.click(button);
 
-    expect(button).toHaveTextContent("Bridge");
+    expect(button).toHaveTextContent("bridge");
     expect(mockCallback).toHaveBeenCalledTimes(1);
   });
 
@@ -93,7 +93,7 @@ describe("The BridgeButton", () => {
 
     fireEvent.click(button);
 
-    expect(button).toHaveTextContent("Approve");
+    expect(button).toHaveTextContent("common.approve");
     expect(mockCallback).toHaveBeenCalledTimes(1);
   });
 });
