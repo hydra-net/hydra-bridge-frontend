@@ -13,6 +13,7 @@ export interface IStakenetTheme extends DefaultTheme {
       "medium-dark": string;
     };
     white: string;
+    black: string;
     gray: {
       darker: string;
       dark: string;
@@ -88,6 +89,7 @@ export const stakenetTheme: IStakenetTheme = {
       lightest: "#1D96EC",
     },
     white: "#FFFFFF",
+    black: "#000000",
     gray: {
       darker: "#7377A514",
       dark: "#7377A529",
