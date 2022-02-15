@@ -9,6 +9,9 @@ import useChains from "../common/hooks/useChains";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// translations
+import "../i18n/I18nConfig";
+
 const Home = lazyWithPreload(
   () => import(/* webpackChunkName: 'LandingModule' */ "../modules/Home/Home")
 );
