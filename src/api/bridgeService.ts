@@ -5,7 +5,6 @@ import {
   QuoteResponseDto,
 } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
-import "dotenv/config";
 import { getBuildTxRequestUrl, getQuoteUrl } from "./apiRoutes";
 import { handleResponse } from "../helpers/responseHandler";
 

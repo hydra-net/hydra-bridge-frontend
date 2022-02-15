@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUserAddressBalances } from "../../api/balancesService";
 import { TokenBalanceDto } from "../../common/dtos";
-import "dotenv/config";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 function useWalletBalances(address: string, chainId: number) {
