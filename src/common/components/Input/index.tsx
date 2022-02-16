@@ -24,7 +24,7 @@ const Input = styled.input`
   width: 100%;
   padding: 0 10px 0 10px;
   outline: 0 !important;
-  font: inherit;
+  font: ${({ theme }) => theme.paragraph.lg};
 `;
 
 const Label = styled.div`

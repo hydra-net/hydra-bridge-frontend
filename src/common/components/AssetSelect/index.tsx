@@ -7,6 +7,7 @@ import { getFlexCenter, getHorizontalGap } from "../../styles";
 import { TokenResponseDto } from "../../dtos";
 import { IconKeys, ISelectOption } from "../../commonTypes";
 import { ETH } from "../../constants";
+import { legacyTheme } from "../../../shell/theme/legacyTheme";
 
 const Root = styled.div``;
 
@@ -20,7 +21,7 @@ const Container = styled.div`
 const Label = styled.div`
   font-weight: 700;
   font-size: ${({ theme }) => theme.heading.xs};
-  color: ${({ theme }) => theme.secondaryColor};
+  color: ${({ theme }) => theme.primaryColor};
 `;
 
 const StyledSelect = styled(Select)`
@@ -49,7 +50,12 @@ const AssetSelect = ({
   const customStyles: any = {
     control: (provided: CSSProperties) => ({
       ...provided,
+      fontSize: legacyTheme.paragraph.lg,
       borderRadius: "10px",
+    }),
+    menu: (provided: CSSProperties) => ({
+      ...provided,
+      fontSize: legacyTheme.paragraph.md,
     }),
   };
 
