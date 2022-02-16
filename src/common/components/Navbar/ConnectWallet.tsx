@@ -2,11 +2,13 @@ import { useWeb3 } from "@chainsafe/web3-context";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 
-const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 import { formatWalletAddress } from "../../../helpers/walletHelper";
 
 import { Button } from "../Atoms/Buttons/Button";
 import Copy from "../Copy";
+import { useTranslation } from "react-i18next";
+
+const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 const Root = styled.div`
   max-width: 160px;
@@ -18,6 +20,7 @@ const Container = styled.div`
 
 const ConnectWallet = () => {
   const { onboard, wallet, address, network } = useWeb3();
+  const { t } = useTranslation();
   const isWrongNetwork = parseInt(REACT_APP_DEFAULT_NETWORK_ID!) !== network;
 
   const handleConnectWallet = async () => {
@@ -34,11 +37,10 @@ const ConnectWallet = () => {
       pauseOnHover: false,
     });
 
-  // TODO translate once https://github.com/X9Developers/hydra-bridge-frontend/pull/7 is merged
   if (!address) {
     return (
       <Button iconName={"cutArrowRight"} onClick={handleConnectWallet}>
-        Connect wallet
+        {t("connectWallet")}
       </Button>
     );
   }

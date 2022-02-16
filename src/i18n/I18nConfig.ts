@@ -3,7 +3,6 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 import translationsEN from "./locales/en/translations.json";
-import translationsFR from "./locales/fr/translations.json";
 import { Languages } from "./Languages";
 
 let defaultLanguage = Languages.EN;
@@ -11,9 +10,6 @@ let defaultLanguage = Languages.EN;
 export const resources = {
   en: {
     translation: translationsEN,
-  },
-  fr: {
-    translation: translationsFR,
   },
 } as const;
 
