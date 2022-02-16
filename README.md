@@ -27,15 +27,17 @@ Copy `env.example` in `.env` and populate missing variables.
   - `yarn dev` for launching app on `goerli` test network
   - `yarn production` for launching app on `mainnet` network
 
+## Other scripts
+
+- use commands:
+- `yarn start` is used for building app for heroku usage
+- `heroku-postbuild` is used for heroku postbuild action
+
 ### Lint files
-To display errors, run:
-``` 
-yarn lint
-```
-To apply possible fixes, run :
-```
-yarn lint:fix
-```
+
+- use commands:
+- `yarn lint` to display errors
+- `yarn lint:fix` to apply possible fixes
 
 ## Folder Structure
 
@@ -92,8 +94,11 @@ Root folder contains:
 - folder that contains `theme` folder, `Fallback.tsx` file and `Shell.tsx` where all routes are initialised and child components are passed to `Layout` component along with `Suspense` component for fallback
 
 ## Styleguide
+
 To see the Styleguide run the command below :
+
 ```
 yarn storybook
 ```
-*The styleguide use the port 6006*
+
+_The styleguide use the port 6006_
