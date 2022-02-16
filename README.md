@@ -29,22 +29,15 @@ Copy `env.example` in `.env` and populate missing variables.
 
 ## Other scripts
 
+- use commands:
 - `yarn start` is used for building app for heroku usage
 - `heroku-postbuild` is used for heroku postbuild action
 
 ### Lint files
 
-To display errors, run:
-
-```
-yarn lint
-```
-
-To apply possible fixes, run :
-
-```
-yarn lint:fix
-```
+- use commands:
+- `yarn lint` to display errors
+- `yarn lint:fix` to apply possible fixes
 
 ## Folder Structure
 
