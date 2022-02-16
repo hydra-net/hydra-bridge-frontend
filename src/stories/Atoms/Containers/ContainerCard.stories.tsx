@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ContainerCard } from "../../../common/components/componentsV2/Atoms/Containers/Container";
+import { ContainerCard } from "../../../common/components/Atoms/Containers/Container";
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 
 export default {

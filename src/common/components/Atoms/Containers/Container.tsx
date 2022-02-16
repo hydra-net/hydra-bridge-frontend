@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-import { ContainerType } from "../../../../enums";
-import { IStyleableProps } from "../../../../commonTypes";
+import { ContainerType } from "../../../enums";
+import { IStyleableProps } from "../../../commonTypes";
 import {
   StyledContainer,
   StyledContainerLG,

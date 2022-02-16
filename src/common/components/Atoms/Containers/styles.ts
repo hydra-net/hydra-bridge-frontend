@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
-import { stakenetTheme as theme } from "../../../../../shell/theme/stakenetTheme";
-import { hex2rgba } from "../../../../../helpers/styleHelper";
-import { devicesUp, sizes } from "../../../../../media";
+import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import { hex2rgba } from "../../../../helpers/styleHelper";
+import { devicesUp, sizes } from "../../../../media";
 import { ContainerProps } from "./Container";
 
 const defaultContainerPadding = css`

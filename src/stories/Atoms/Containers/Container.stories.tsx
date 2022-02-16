@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 import { sizes } from "../../../media";
 import { ContainerType } from "../../../common/enums";
-import { Container } from "../../../common/components/componentsV2/Atoms/Containers/Container";
+import { Container } from "../../../common/components/Atoms/Containers/Container";
 
 export default {
   title: "Atoms/Containers/Container",
