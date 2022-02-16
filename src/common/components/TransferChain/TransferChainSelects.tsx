@@ -5,6 +5,7 @@ import Icon from "../Icon/Icon";
 import IconOption from "../Select/IconOption";
 import ValueOption from "../Select/ValueOption";
 import { ISelectOption } from "../../commonTypes";
+import { legacyTheme } from "../../../shell/theme/legacyTheme";
 
 const Root = styled.div`
   display: flex;
@@ -44,7 +45,12 @@ const IconArrowRight = styled(Icon)`
 const customStyles: any = {
   control: (provided: CSSProperties) => ({
     ...provided,
+    fontSize: legacyTheme.paragraph.lg,
     borderRadius: "10px",
+  }),
+  menu: (provided: CSSProperties) => ({
+    ...provided,
+    fontSize: legacyTheme.paragraph.md,
   }),
 };
 

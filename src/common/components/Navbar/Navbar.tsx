@@ -15,6 +15,7 @@ const TitleContainer = styled.div`
   ${getFlexStart};
 `;
 const Title = styled.div`
+  color: ${({ theme }) => theme.primaryColor};
   font-size: ${({ theme }) => theme.heading.md};
   font-weight: 700;
 `;
