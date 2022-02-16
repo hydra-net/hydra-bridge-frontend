@@ -1,9 +1,12 @@
 import Modal from "react-modal";
 import styled from "styled-components";
+
+import "./styles.css";
+import { getFlexCenter } from "../../styles";
+import { Button } from "../Atoms/Buttons/Button";
 import { NETWORK_EXPLORER_URLS } from "../../constants";
 import { SupportedChainId } from "../../enums";
-import { getFlexCenter } from "../../styles";
-import Button from "../Buttons/Button";
+import { legacyTheme } from "../../../shell/theme/legacyTheme";
 
 const customStyles = {
   content: {
@@ -16,9 +19,6 @@ const customStyles = {
   },
 };
 
-const StyledButton = styled(Button)`
-  width: 100%;
-`;
 const Content = styled.div`
   ${getFlexCenter};
   margin-bottom: 20px;
@@ -43,14 +43,21 @@ const HydraModal = ({ network, subtitle, tx, isOpen, onClose }: Props) => {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
-      <h2>{subtitle}</h2>
+      <h2 style={{ fontSize: legacyTheme.heading.sm }}>{subtitle}</h2>
 
       <Content>
-        <a href={transUrl} target="_blank" rel="noreferrer">
+        <a
+          href={transUrl}
+          target="_blank"
+          rel="noreferrer"
+          style={{ fontSize: legacyTheme.paragraph.lg }}
+        >
           {tx}
         </a>
       </Content>
-      <StyledButton onClick={onClose}>Close</StyledButton>
+      <Button fullWidth={true} onClick={onClose}>
+        Close
+      </Button>
     </Modal>
   );
 };
