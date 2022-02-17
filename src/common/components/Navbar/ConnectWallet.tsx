@@ -1,12 +1,12 @@
 import { useWeb3 } from "@chainsafe/web3-context";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import { formatWalletAddress } from "../../../helpers/walletHelper";
 
 import { Button } from "../Atoms/Buttons/Button";
 import Copy from "../Copy";
-import { useTranslation } from "react-i18next";
 
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
