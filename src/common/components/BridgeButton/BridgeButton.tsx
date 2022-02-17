@@ -51,7 +51,7 @@ const BridgeButton = ({
     callback = () => true;
 
     if (!isConnected) {
-      displayText = t("connectWallet");
+      displayText = t("connect-wallet");
       callback = onWalletConnect;
     } else if (inProgress) {
       attributes.isLoading = true;
@@ -59,10 +59,10 @@ const BridgeButton = ({
       displayText = t("common.loading");
     } else if (isNotEnoughBalance) {
       attributes.isDisabled = true;
-      displayText = t("insufficientBalance");
+      displayText = t("insufficient-balance");
     } else if (!isAmountSet) {
       attributes.isDisabled = true;
-      displayText = t("inputAmount");
+      displayText = t("input-amount");
     } else if (isAbleToMove && isRouteIdSelected && isAmountSet) {
       displayText = t("bridge");
       callback = onMoveAssets;
@@ -71,7 +71,7 @@ const BridgeButton = ({
       callback = onWalletApprove;
     } else {
       attributes.isDisabled = true;
-      displayText = t("inputAmount");
+      displayText = t("input-amount");
     }
     return (
       <PrimaryButton {...attributes} onClick={callback}>

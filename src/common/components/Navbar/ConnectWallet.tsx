@@ -40,7 +40,7 @@ const ConnectWallet = () => {
   if (!address) {
     return (
       <Button iconName={"cutArrowRight"} onClick={handleConnectWallet}>
-        {t("connectWallet")}
+        {t("connect-wallet")}
       </Button>
     );
   }

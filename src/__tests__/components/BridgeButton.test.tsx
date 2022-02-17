@@ -29,7 +29,7 @@ describe("The BridgeButton", () => {
 
     fireEvent.click(button);
 
-    expect(button).toHaveTextContent("connectWallet");
+    expect(button).toHaveTextContent("connect-wallet");
     expect(mockCallback).toHaveBeenCalledTimes(1);
   });
 
@@ -50,7 +50,7 @@ describe("The BridgeButton", () => {
     const button = screen.getByRole("button");
 
     expect(button).toHaveAttribute("disabled");
-    expect(button).toHaveTextContent("insufficientBalance");
+    expect(button).toHaveTextContent("insufficient-balance");
   });
 
   it("should ask to input amount and be disabled when none is set", async () => {
@@ -59,7 +59,7 @@ describe("The BridgeButton", () => {
     const button = screen.getByRole("button");
 
     expect(button).toHaveAttribute("disabled");
-    expect(button).toHaveTextContent("inputAmount");
+    expect(button).toHaveTextContent("input-amount");
   });
 
   it("should fallback to input amount text when none of the conditions met", async () => {
@@ -68,7 +68,7 @@ describe("The BridgeButton", () => {
     const button = screen.getByRole("button");
 
     expect(button).toHaveAttribute("disabled");
-    expect(button).toHaveTextContent("inputAmount");
+    expect(button).toHaveTextContent("input-amount");
   });
 
   it("should be able to bridge", async () => {

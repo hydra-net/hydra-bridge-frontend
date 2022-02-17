@@ -1,7 +1,7 @@
 {
-  "connectWallet": "Connect wallet",
-  "insufficientBalance": "Insufficient balance",
-  "inputAmount": "Input amount",
+  "connect-wallet": "Connect wallet",
+  "insufficient-balance": "Insufficient balance",
+  "input-amount": "Input amount",
   "bridge": "Bridge",
   "common": {
     "loading": "Loading",
