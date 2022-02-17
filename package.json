@@ -119,5 +119,10 @@
   "resolutions": {
     "//": "See https://github.com/facebook/create-react-app/issues/11773",
     "react-error-overlay": "6.0.10"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "react-i18next": "<rootDir>/src/__mocks__/react-i18next.ts"
+    }
   }
 }
