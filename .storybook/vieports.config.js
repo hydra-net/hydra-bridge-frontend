@@ -1,50 +1,52 @@
-export const appViewports = {
+import { sizes } from "../src/media";
+
+export const storyBookViewports = {
   xs: {
     name: "xs",
     styles: {
-      width: "375px",
+      width: `${sizes.xs}px`,
       height: "812px",
     },
   },
   sm: {
     name: "sm",
     styles: {
-      width: "640px",
+      width: `${sizes.sm}px`,
       height: "801px",
     },
   },
   md: {
     name: "md",
     styles: {
-      width: "768px",
+      width: `${sizes.md}px`,
       height: "1024px",
     },
   },
   lg: {
     name: "lg",
     styles: {
-      width: "1024px",
+      width: `${sizes.lg}px`,
       height: "1080px",
     },
   },
   xl: {
     name: "xl",
     styles: {
-      width: "1280px",
+      width: `${sizes.xl}px`,
       height: "1080px",
     },
   },
   "2xl": {
     name: "2xl",
     styles: {
-      width: "1536px",
+      width: `${sizes["2xl"]}px`,
       height: "1080px",
     },
   },
   "3xl": {
     name: "3xl",
     styles: {
-      width: "1920px",
+      width: `${sizes["3xl"]}px`,
       height: "1080px",
     },
   },
