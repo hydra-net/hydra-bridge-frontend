@@ -3,12 +3,14 @@ import { StyledComponent } from "styled-components";
 
 import { IStyleableProps } from "../../../commonTypes";
 import { StyledInput } from "./styles";
+import { FlexWrapper } from "../Wrappers/Wrapper";
 
 type InputProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   value?: string | number;
   step?: number;
   type?: string;
+  label?: string;
   placeholder?: string;
   isDisabled?: boolean;
   hasError?: boolean;
@@ -21,6 +23,7 @@ const handleInputWrapping = (
   {
     value,
     type = "text",
+    label,
     placeholder,
     isDisabled,
     onChange,
@@ -30,16 +33,19 @@ const handleInputWrapping = (
   }: InputProps
 ) => {
   return (
-    <Component
-      type={type}
-      value={value}
-      placeholder={placeholder}
-      disabled={isDisabled}
-      onChange={onChange}
-      className={hasError ? "has-error" : ""}
-      {...additionalAttributes}
-      {...props}
-    />
+    <FlexWrapper alignItems={"start"}>
+      {label && <p>{label}</p>}
+      <Component
+        type={type}
+        value={value}
+        placeholder={placeholder}
+        disabled={isDisabled}
+        onChange={onChange}
+        className={hasError ? "has-error" : ""}
+        {...additionalAttributes}
+        {...props}
+      />
+    </FlexWrapper>
   );
 };
 

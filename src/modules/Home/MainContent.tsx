@@ -11,6 +11,7 @@ import { ChainResponseDto } from "../../common/dtos";
 import { getVerticalGap } from "../../common/styles";
 import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
 import { Input } from "../../common/components/Atoms/Input/Input";
+import { useTranslation } from "react-i18next";
 
 const Root = styled.div`
   background: rgb(255, 255, 255);
@@ -111,6 +112,8 @@ const MainContent = ({
   onApproveWallet,
   onMoveAssets,
 }: Props) => {
+  const { t } = useTranslation();
+
   const amountInAdditionalAttributes = {
     pattern: getOnlyNumbersAndAllowDotPattern,
     autocomplete: "off",
@@ -150,6 +153,7 @@ const MainContent = ({
         />
         <AmountsContainer>
           <Input
+            label={t("common.send")}
             value={!amountIn ? "" : amountIn}
             additionalAttributes={amountInAdditionalAttributes}
             placeholder={"0.0"}
@@ -158,7 +162,7 @@ const MainContent = ({
           />
           <Input
             value={!amountOut ? "" : amountOut}
-            type={"text"}
+            label={t("common.receive")}
             placeholder={"0.0"}
             isDisabled={true}
           />
