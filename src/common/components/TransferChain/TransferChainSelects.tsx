@@ -1,14 +1,17 @@
 import styled, { CSSProperties } from "styled-components";
+import { useTranslation } from "react-i18next";
 import Select from "react-select";
+
 import IconOption from "../Select/IconOption";
 import ValueOption from "../Select/ValueOption";
-import { ISelectOption } from "../../commonTypes";
-import { legacyTheme } from "../../../shell/theme/legacyTheme";
 import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
-import { devicesUp } from "../../../media";
 import { InputLabel } from "../Atoms/Label/Label";
-import { useTranslation } from "react-i18next";
+
+import { ISelectOption } from "../../commonTypes";
+
+import { legacyTheme } from "../../../shell/theme/legacyTheme";
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
+import { devicesUp } from "../../../media";
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
   @media only screen and ${devicesUp.lg} {
