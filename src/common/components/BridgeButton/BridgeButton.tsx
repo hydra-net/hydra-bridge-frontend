@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import { getFlexCenter } from "../../styles";
 import { ButtonProps, PrimaryButton } from "../Atoms/Buttons/Button";
@@ -40,6 +41,8 @@ const BridgeButton = ({
   onMoveAssets,
 }: BridgeButtonProps) => {
   const renderButton = () => {
+    const { t } = useTranslation();
+
     const attributes: ButtonProps & IStyledButtonProps = {
       fullWidth: true,
     };
@@ -48,27 +51,27 @@ const BridgeButton = ({
     callback = () => true;
 
     if (!isConnected) {
-      displayText = "Connect wallet";
+      displayText = t("connect-wallet");
       callback = onWalletConnect;
     } else if (inProgress) {
       attributes.isLoading = true;
       attributes.isDisabled = true;
-      displayText = "Loading";
+      displayText = t("common.loading");
     } else if (isNotEnoughBalance) {
       attributes.isDisabled = true;
-      displayText = "Insufficient balance";
+      displayText = t("insufficient-balance");
     } else if (!isAmountSet) {
       attributes.isDisabled = true;
-      displayText = "Input amount";
+      displayText = t("input-amount");
     } else if (isAbleToMove && isRouteIdSelected && isAmountSet) {
-      displayText = "Bridge";
+      displayText = t("bridge");
       callback = onMoveAssets;
     } else if (isAmountSet && !isApproved && isApproveReady && !isEth) {
-      displayText = "Approve";
+      displayText = t("common.approve");
       callback = onWalletApprove;
     } else {
       attributes.isDisabled = true;
-      displayText = "Input amount";
+      displayText = t("input-amount");
     }
     return (
       <PrimaryButton {...attributes} onClick={callback}>
