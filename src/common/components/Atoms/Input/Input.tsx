@@ -4,6 +4,7 @@ import { StyledComponent } from "styled-components";
 import { IStyleableProps } from "../../../commonTypes";
 import { StyledInput } from "./styles";
 import { FlexWrapper } from "../Wrappers/Wrapper";
+import { InputLabel } from "../Label/Label";
 
 type InputProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -34,7 +35,7 @@ const handleInputWrapping = (
 ) => {
   return (
     <FlexWrapper alignItems={"start"}>
-      {label && <p>{label}</p>}
+      {label && <InputLabel>{label}</InputLabel>}
       <Component
         type={type}
         value={value}

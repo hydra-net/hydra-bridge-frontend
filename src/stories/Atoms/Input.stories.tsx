@@ -34,3 +34,8 @@ WithError.args = {
   type: "text",
   hasError: true,
 };
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: "Country",
+};
