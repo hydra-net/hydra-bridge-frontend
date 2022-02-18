@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { getHasError } from "../../../styles";
 
-export type IStyledInputProps = {
+export type StyledInputProps = {
   isLoading?: boolean;
   fontWeight?: number;
   fullWidth?: boolean;
   borderRadius?: string;
 };
 
-export const StyledInput = styled.input<IStyledInputProps>`
+export const StyledInput = styled.input<StyledInputProps>`
   font-size: ${theme.paragraph.xl};
   color: ${theme.colors.blue.lighter};
   background-color: ${theme.colors.blue.dark};
@@ -45,4 +45,17 @@ export const StyledInput = styled.input<IStyledInputProps>`
       ${getHasError};
     }
   }
+`;
+
+export type StyledLabelProps = {
+  fontSize: string;
+  color: string;
+  margin: string;
+};
+
+export const StyledLabel = styled.label<StyledLabelProps>`
+  font-size: ${(props) =>
+    props.fontSize ? props.fontSize : theme.paragraph.md};
+  color: ${(props) => (props.color ? props.color : theme.colors.white)};
+  margin: ${(props) => (props.margin ? props.margin : theme.paragraph.md)};
 `;
