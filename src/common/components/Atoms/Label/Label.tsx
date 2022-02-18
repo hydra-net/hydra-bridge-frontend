@@ -9,6 +9,7 @@ type LabelProps = {
   for?: string;
   color?: string;
   margin?: string;
+  fontWeight?: number;
 };
 
 const handleLabelWrapping = (

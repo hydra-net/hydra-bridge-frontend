@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { getHasError } from "../../../styles";
+import { devicesUp } from "../../../../media";
 
 export type StyledInputProps = {
   isLoading?: boolean;
@@ -10,11 +11,11 @@ export type StyledInputProps = {
 };
 
 export const StyledInput = styled.input<StyledInputProps>`
-  font-size: ${theme.paragraph.xl};
+  font-size: ${theme.paragraph.lg};
   color: ${theme.colors.blue.lighter};
   background-color: ${theme.colors.blue.dark};
   width: 100%;
-  padding: 1.4rem;
+  padding: 1rem;
   border-width: 2px;
   border-style: solid;
   border-color: ${theme.colors.gray["medium-dark"]};
@@ -44,5 +45,10 @@ export const StyledInput = styled.input<StyledInputProps>`
     &::placeholder {
       ${getHasError};
     }
+  }
+
+  @media only screen and ${devicesUp.lg} {
+    padding: 1.4rem;
+    font-size: ${theme.paragraph.xl};
   }
 `;

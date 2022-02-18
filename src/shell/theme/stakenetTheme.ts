@@ -40,6 +40,8 @@ export interface IStakenetTheme extends DefaultTheme {
   };
 
   margin: {
+    xxl: string;
+    xl: string;
     lg: string;
     md: string;
     sm: string;
@@ -119,7 +121,9 @@ export const stakenetTheme: IStakenetTheme = {
   },
 
   margin: {
-    lg: "3.2rem",
+    xxl: "3.2rem",
+    xl: "2.5rem",
+    lg: "2rem",
     md: "1.2rem",
     sm: ".6rem",
     none: "0rem",

@@ -37,7 +37,9 @@ const handleInputWrapping = (
 ) => {
   return (
     <FlexWrapper alignItems={"start"}>
-      {label && <InputLabel>{label}</InputLabel>}
+      {label && (
+        <InputLabel fontWeight={theme.fontWeight.semibold}>{label}</InputLabel>
+      )}
       <Component
         type={type}
         value={value}

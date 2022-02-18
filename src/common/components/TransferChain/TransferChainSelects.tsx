@@ -1,45 +1,28 @@
 import styled, { CSSProperties } from "styled-components";
-import { getHorizontalGap, getVerticalGap } from "../../styles";
 import Select from "react-select";
-import Icon from "../Icon/Icon";
 import IconOption from "../Select/IconOption";
 import ValueOption from "../Select/ValueOption";
 import { ISelectOption } from "../../commonTypes";
 import { legacyTheme } from "../../../shell/theme/legacyTheme";
+import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
+import { devicesUp } from "../../../media";
+import { InputLabel } from "../Atoms/Label/Label";
+import { useTranslation } from "react-i18next";
+import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 
-const Root = styled.div`
-  display: flex;
-  justify-content: space-between;
-  ${getHorizontalGap("20px")};
-  padding: 10px 10px 15px 10px;
-`;
+const ResponsiveFlexWrapper = styled(FlexWrapper)`
+  @media only screen and ${devicesUp.lg} {
+    flex-direction: row;
+    justify-content: space-between;
 
-const TransferChainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  ${getVerticalGap("5px")};
-  width: 100%;
+    .flex-wrapper {
+      width: 45%;
+    }
+  }
 `;
 
 const StyledSelect = styled(Select)`
   width: 100%;
-`;
-
-const TransferLabel = styled.div`
-  font-weight: 700;
-  font-size: ${({ theme }) => theme.paragraph.lg};
-  color: ${({ theme }) => theme.secondaryColor};
-`;
-
-const TransferArrowContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const IconArrowRight = styled(Icon)`
-  margin-top: 20px;
-  height: 25px;
-  width: 25px;
 `;
 
 const customStyles: any = {
@@ -72,10 +55,18 @@ const TransferChainSelects = ({
   onSelectChainFrom,
   onSelectChainTo,
 }: Props) => {
+  const { t } = useTranslation();
+
   return (
-    <Root>
-      <TransferChainContainer>
-        <TransferLabel>Transfer from</TransferLabel>
+    <ResponsiveFlexWrapper>
+      <FlexWrapper
+        className={"flex-wrapper"}
+        alignItems={"start"}
+        margin={`0 0 ${theme.margin.xl} 0`}
+      >
+        <InputLabel fontWeight={theme.fontWeight.semibold}>
+          {t("transfer-from")}
+        </InputLabel>
         <StyledSelect
           value={
             chainsFrom.find((option) => option.value === chainFrom) || null
@@ -87,12 +78,15 @@ const TransferChainSelects = ({
           components={{ Option: IconOption, SingleValue: ValueOption }}
           isDisabled={isDisabled}
         />
-      </TransferChainContainer>
-      <TransferArrowContainer>
-        <IconArrowRight name="arrowRight" />
-      </TransferArrowContainer>
-      <TransferChainContainer>
-        <TransferLabel>Transfer to</TransferLabel>
+      </FlexWrapper>
+      <FlexWrapper
+        className={"flex-wrapper"}
+        alignItems={"start"}
+        margin={`0 0 ${theme.margin.xl} 0`}
+      >
+        <InputLabel fontWeight={theme.fontWeight.semibold}>
+          {t("transfer-to")}
+        </InputLabel>
         <StyledSelect
           value={chainsTo.find((option) => option.value === chainTo) || null}
           styles={customStyles}
@@ -102,8 +96,8 @@ const TransferChainSelects = ({
           components={{ Option: IconOption, SingleValue: ValueOption }}
           isDisabled={isDisabled}
         />
-      </TransferChainContainer>
-    </Root>
+      </FlexWrapper>
+    </ResponsiveFlexWrapper>
   );
 };
 

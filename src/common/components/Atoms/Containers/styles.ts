@@ -52,7 +52,7 @@ export const StyledContainerCard = styled(StyledContainer)`
   border-width: ${(props) => (props.border ? props.border : 0)};
   border-color: transparent;
   border-style: solid;
-  padding: ${(props) => (props.padding === "sm" ? "1.6rem" : "2.4rem")};
+  padding: ${(props) => (props.padding ? props.padding : "2.4rem")};
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.xxl};
 `;

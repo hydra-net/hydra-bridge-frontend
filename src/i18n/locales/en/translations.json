@@ -3,6 +3,8 @@
   "insufficient-balance": "Insufficient balance",
   "input-amount": "Input amount",
   "bridge": "Bridge",
+  "transfer-from": "Transfer from",
+  "transfer-to": "Transfer to",
   "common": {
     "close": "Close",
     "send": "Send",

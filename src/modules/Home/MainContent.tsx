@@ -10,6 +10,8 @@ import { Input } from "../../common/components/Atoms/Input/Input";
 import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
 import { ChainResponseDto } from "../../common/dtos";
 import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+
 const getFromChains = (chains: ChainResponseDto[]) => {
   return chains
     .filter((item) => item.isSendingEnabled)
@@ -133,12 +135,14 @@ const MainContent = ({
         placeholder={"0.0"}
         isDisabled={inProgress || isWrongNetwork}
         onChange={handleAmountInChange}
+        style={{ marginBottom: theme.margin.xl }}
       />
       <Input
         label={t("common.receive")}
         value={!amountOut ? "" : amountOut}
         placeholder={"0.0"}
         isDisabled={true}
+        style={{ marginBottom: theme.margin.xxl }}
       />
       <BridgeButton
         isConnected={isConnected}

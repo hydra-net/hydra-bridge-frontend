@@ -6,9 +6,11 @@ export type StyledFlexWrapperProps = {
   alignItems?: string;
   justifyContent?: string;
   flex?: string;
+  margin?: string;
 };
 
 export const StyledFlexWrapper = styled.div<StyledFlexWrapperProps>`
+  width: 100%;
   display: ${(props) => (props.inlineFlex ? "inline-flex" : "flex")};
   flex-direction: ${(props) =>
     props.flexDirection ? props.flexDirection : "column"};
@@ -20,4 +22,5 @@ export const StyledFlexWrapper = styled.div<StyledFlexWrapperProps>`
     css`
       flex: ${props.flex};
     `};
+  margin: ${(props) => (props.margin ? props.margin : 0)};
 `;
