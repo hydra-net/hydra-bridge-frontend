@@ -1,8 +1,13 @@
 {
-  "connectWallet": "Connect wallet",
+  "connect-wallet": "Connect wallet",
+  "insufficient-balance": "Insufficient balance",
+  "input-amount": "Input amount",
+  "bridge": "Bridge",
   "common": {
     "close": "Close",
     "send": "Send",
-    "receive": "Receive"
+    "receive": "Receive",
+    "loading": "Loading",
+    "approve": "Approve"
   }
 }

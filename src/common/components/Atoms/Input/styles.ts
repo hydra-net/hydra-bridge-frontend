@@ -46,16 +46,3 @@ export const StyledInput = styled.input<StyledInputProps>`
     }
   }
 `;
-
-export type StyledLabelProps = {
-  fontSize: string;
-  color: string;
-  margin: string;
-};
-
-export const StyledLabel = styled.label<StyledLabelProps>`
-  font-size: ${(props) =>
-    props.fontSize ? props.fontSize : theme.paragraph.md};
-  color: ${(props) => (props.color ? props.color : theme.colors.white)};
-  margin: ${(props) => (props.margin ? props.margin : theme.paragraph.md)};
-`;

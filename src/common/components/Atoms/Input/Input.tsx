@@ -6,10 +6,10 @@ import { StyledInput } from "./styles";
 import { FlexWrapper } from "../Wrappers/Wrapper";
 import { InputLabel } from "../Label/Label";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+
 type InputProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   value?: string | number;
-  step?: number;
   type?: string;
   label?: string;
   placeholder?: string;

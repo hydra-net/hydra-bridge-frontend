@@ -7,6 +7,10 @@ export const StakenetGlobalStyle = createGlobalStyle`
     font-size: 62.5% !important;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     /* brand darkest blue */
     background-color: #0D1328;

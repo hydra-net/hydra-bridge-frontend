@@ -97,8 +97,6 @@ Root folder contains:
 
 To see the Styleguide run the command below :
 
-```
-yarn storybook
-```
+- `yarn storybook`
 
 _The styleguide use the port 6006_

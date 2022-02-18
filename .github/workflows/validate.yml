@@ -1,0 +1,41 @@
+name: Run linter and tests
+
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  validate:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.2'
+          # global cache directory
+          cache: 'yarn'
+          cache-dependency-path: '**/yarn.lock'
+
+      # will cache node modules and only re-install them only if yarn.lock get updated
+      - name: setup cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: install modules
+        run: yarn install
+
+      - name: run eslint
+        run: yarn lint
+
+      - name: run tests
+        run: yarn test:ci
