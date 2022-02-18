@@ -6,9 +6,10 @@ export type StyledLabel = {
   margin?: number;
 };
 
+// TODO set smaller for mobile
 export const StyledInputLabel = styled.label<StyledLabel>`
   font-size: ${theme.paragraph.lg};
-  color: ${(props) => (props.color ? props.color : theme.colors.white)};
+  color: ${(props) => (props.color ? props.color : theme.colors.black)};
   margin: ${(props) =>
     props.margin ? props.margin : `0 0 ${theme.margin.sm} 0`};
 `;

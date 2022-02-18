@@ -35,6 +35,14 @@ WithError.args = {
   hasError: true,
 };
 
+export const WithErrorWithText = Template.bind({});
+WithErrorWithText.args = {
+  placeholder: "0.0",
+  type: "text",
+  hasError: true,
+  errorText: "Invalid amount",
+};
+
 export const WithLabel = Template.bind({});
 WithLabel.args = {
   label: "Country",
