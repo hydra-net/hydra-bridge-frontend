@@ -1,13 +1,16 @@
+import React from "react";
+
 import styled from "styled-components";
 
 import Icon from "../../common/components/Icon/Icon";
-import AmountInput from "../../common/components/Input";
 import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
 import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
 
 import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
 import { ChainResponseDto } from "../../common/dtos";
 import { getVerticalGap } from "../../common/styles";
+import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
+import { Input } from "../../common/components/Atoms/Input/Input";
 
 const Root = styled.div`
   background: rgb(255, 255, 255);
@@ -65,8 +68,8 @@ type Props = {
   chains: ChainResponseDto[];
   chainFrom: ChainResponseDto;
   chainTo: ChainResponseDto;
-  amountIn: number;
-  amountOut: number;
+  amountIn: string;
+  amountOut: string;
   routeId: number;
   isConnected: boolean;
   isApproved: boolean;
@@ -79,7 +82,7 @@ type Props = {
   isDisabled: boolean;
   onSelectChainFrom: (option: any) => void;
   onSelectChainTo: (option: any) => void;
-  onAmountChange: (e: any) => void;
+  onAmountChange: (evt: any) => void;
   onConnectWallet: () => void;
   onApproveWallet: () => void;
   onMoveAssets: () => void;
@@ -108,6 +111,31 @@ const MainContent = ({
   onApproveWallet,
   onMoveAssets,
 }: Props) => {
+  const amountInAdditionalAttributes = {
+    pattern: getOnlyNumbersAndAllowDotPattern,
+    autocomplete: "off",
+    autocorrect: "off",
+    minLength: "1",
+    maxLength: "79",
+    spellCheck: false,
+    inputMode: "decimal",
+  };
+
+  const handleAmountInChange = (
+    evt: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const value = replaceUnwantedStringChars(evt.target.value);
+    onAmountChange(value);
+  };
+
+  /**
+   * Will replace unwanted chars from the value string (only 0-9 and .(dot) authorized)
+   * @param value - the string to verify
+   * @return the clean string
+   */
+  const replaceUnwantedStringChars = (value: string): string =>
+    value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1");
+
   return (
     <Root>
       <Container>
@@ -121,19 +149,18 @@ const MainContent = ({
           isDisabled={inProgress || isWrongNetwork}
         />
         <AmountsContainer>
-          <AmountInput
-            amount={amountIn}
-            label={"Send"}
-            min={0}
+          <Input
+            value={!amountIn ? "" : amountIn}
+            additionalAttributes={amountInAdditionalAttributes}
             placeholder={"0.0"}
-            disabled={inProgress || isWrongNetwork}
-            onChange={onAmountChange}
+            isDisabled={inProgress || isWrongNetwork}
+            onChange={handleAmountInChange}
           />
-          <AmountInput
-            amount={amountOut}
+          <Input
+            value={!amountOut ? "" : amountOut}
+            type={"text"}
             placeholder={"0.0"}
-            label={"Receive"}
-            disabled={true}
+            isDisabled={true}
           />
         </AmountsContainer>
         <BridgeButton

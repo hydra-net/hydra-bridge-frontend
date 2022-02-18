@@ -74,6 +74,7 @@ const Home = ({ chains }: Props) => {
     setAmountIn,
     setAmountOut,
     onAmountInChange,
+    getParsedAmountIn,
     setIsNotEnoughBalance,
   } = useAmountInput(
     address!,
@@ -91,10 +92,9 @@ const Home = ({ chains }: Props) => {
   const isConnected = !!address;
   const isActionDisabled = inProgress || isWrongNetwork || isDisabled;
 
-  const handleAmountInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAmountInChange = (value: string) => {
     setShowRoutes(false);
     setIsDisabled(true);
-    const { value } = e.target;
     onAmountInChange(value);
   };
 
@@ -106,7 +106,7 @@ const Home = ({ chains }: Props) => {
       !isWrongNetwork
     ) {
       await onRouteClick({
-        amount: amountIn!,
+        amount: getParsedAmountIn(),
         fromAsset: asset!,
         toAsset: asset!,
         fromChainId: chainFrom!.chainId!,
@@ -122,10 +122,10 @@ const Home = ({ chains }: Props) => {
     setAsset(value);
     setShowRoutes(false);
     setIsDisabled(true);
-    if (amountIn && amountIn > 0) {
+    if (amountIn && getParsedAmountIn() > 0) {
       const isNotEnoughBalance = getIsNotEnoughBalance(
         walletBalances!,
-        amountIn,
+        getParsedAmountIn(),
         value,
         isWrongNetwork
       );
@@ -136,7 +136,7 @@ const Home = ({ chains }: Props) => {
           fromChainId: chainFrom?.chainId!,
           toAsset: value,
           toChainId: chainTo?.chainId!,
-          amount: amountIn!,
+          amount: getParsedAmountIn(),
         });
       }
       if (isNotEnoughBalance) {
@@ -157,7 +157,7 @@ const Home = ({ chains }: Props) => {
         fromChainId: selectedChain.chainId,
         toAsset: asset,
         toChainId: chainTo?.chainId!,
-        amount: amountIn!,
+        amount: getParsedAmountIn(),
       });
     }
   };
@@ -173,7 +173,7 @@ const Home = ({ chains }: Props) => {
         fromChainId: chainFrom?.chainId!,
         toAsset: asset,
         toChainId: selectedChain.chainId,
-        amount: amountIn!,
+        amount: getParsedAmountIn(),
       });
     }
   };
@@ -190,8 +190,8 @@ const Home = ({ chains }: Props) => {
 
   const onResetValues = () => {
     setInProgress(false);
-    setAmountOut(0.0);
-    setAmountIn(0.0);
+    setAmountOut("");
+    setAmountIn("");
     setIsApproved(false);
     setRouteId(0);
     setShowRoutes(false);
@@ -214,8 +214,8 @@ const Home = ({ chains }: Props) => {
             chains={chains}
             chainFrom={chainFrom!}
             chainTo={chainTo!}
-            amountIn={amountIn!}
-            amountOut={amountOut!}
+            amountIn={amountIn}
+            amountOut={amountOut}
             routeId={routeId}
             inProgress={inProgress}
             isAbleToMove={isAbleToMove}
@@ -229,7 +229,7 @@ const Home = ({ chains }: Props) => {
             onAmountChange={handleAmountInChange}
             onApproveWallet={() =>
               onApproveWallet(
-                amountIn!,
+                getParsedAmountIn(),
                 chainFrom?.isSendingEnabled!,
                 chainTo?.isReceivingEnabled!,
                 chainFrom?.chainId!,
