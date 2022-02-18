@@ -15,16 +15,8 @@ import useWalletBalances from "./useWalletBalances";
 import useChainTransfers from "./useChainTransfers";
 import { ISelectOption } from "../../common/commonTypes";
 import { toast } from "react-toastify";
-
-const Root = styled.div``;
-
-const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 520px;
-  width: 100%;
-  margin-top: 3rem;
-  padding: 10px;
-`;
+import { Container } from "../../common/components/Atoms/Containers/Container";
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 const SendWrapper = styled.div`
   ${getFlexCenter};
@@ -199,8 +191,8 @@ const Home = ({ chains }: Props) => {
 
   return (
     <>
-      <Root>
-        <Wrapper>
+      <Container>
+        <Container maxWidth={theme.maxWidth["6xl"]}>
           <SendWrapper>
             <AssetSelect
               isLoading={inProgress}
@@ -250,8 +242,8 @@ const Home = ({ chains }: Props) => {
               onRouteSelect={handleOnRouteClick}
             />
           )}
-        </Wrapper>
-      </Root>
+        </Container>
+      </Container>
 
       <HydraModal
         network={network!}

@@ -1,39 +1,15 @@
 import React from "react";
-
-import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import Icon from "../../common/components/Icon/Icon";
 import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
 import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
+import { ContainerCard } from "../../common/components/Atoms/Containers/Container";
+import { Input } from "../../common/components/Atoms/Input/Input";
 
 import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
 import { ChainResponseDto } from "../../common/dtos";
-import { getVerticalGap } from "../../common/styles";
 import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
-import { Input } from "../../common/components/Atoms/Input/Input";
-import { useTranslation } from "react-i18next";
-
-const Root = styled.div`
-  background: rgb(255, 255, 255);
-  box-shadow: rgb(0 0 0 / 1%) 0 0 1px, rgb(0 0 0 / 4%) 0 4px 8px,
-    rgb(0 0 0 / 4%) 0 16px 24px, rgb(0 0 0 / 1%) 0 24px 32px;
-  border-radius: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 1;
-  padding: 10px;
-`;
-
-const Container = styled.div`
-  width: 100%;
-`;
-
-const AmountsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  ${getVerticalGap("15px")};
-`;
-
 const getFromChains = (chains: ChainResponseDto[]) => {
   return chains
     .filter((item) => item.isSendingEnabled)
@@ -140,50 +116,46 @@ const MainContent = ({
     value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1");
 
   return (
-    <Root>
-      <Container>
-        <TransferChainSelects
-          chainsFrom={getFromChains(chains)}
-          chainsTo={getToChains(chains)}
-          chainFrom={chainFrom?.chainId!}
-          chainTo={chainTo?.chainId!}
-          onSelectChainFrom={onSelectChainFrom}
-          onSelectChainTo={onSelectChainTo}
-          isDisabled={inProgress || isWrongNetwork}
-        />
-        <AmountsContainer>
-          <Input
-            label={t("common.send")}
-            value={!amountIn ? "" : amountIn}
-            additionalAttributes={amountInAdditionalAttributes}
-            placeholder={"0.0"}
-            isDisabled={inProgress || isWrongNetwork}
-            onChange={handleAmountInChange}
-          />
-          <Input
-            value={!amountOut ? "" : amountOut}
-            label={t("common.receive")}
-            placeholder={"0.0"}
-            isDisabled={true}
-          />
-        </AmountsContainer>
-        <BridgeButton
-          isConnected={isConnected}
-          isApproved={isApproved}
-          inProgress={inProgress}
-          isRouteIdSelected={routeId > 0}
-          isEth={isEth}
-          isAmountSet={!!amountIn}
-          isAbleToMove={isAbleToMove}
-          isNotEnoughBalance={isNotEnoughBalance}
-          isApproveReady={isApproveReady}
-          isDisabled={isDisabled}
-          onWalletConnect={onConnectWallet}
-          onWalletApprove={onApproveWallet}
-          onMoveAssets={onMoveAssets}
-        />
-      </Container>
-    </Root>
+    <ContainerCard>
+      <TransferChainSelects
+        chainsFrom={getFromChains(chains)}
+        chainsTo={getToChains(chains)}
+        chainFrom={chainFrom?.chainId!}
+        chainTo={chainTo?.chainId!}
+        onSelectChainFrom={onSelectChainFrom}
+        onSelectChainTo={onSelectChainTo}
+        isDisabled={inProgress || isWrongNetwork}
+      />
+      <Input
+        label={t("common.send")}
+        value={!amountIn ? "" : amountIn}
+        additionalAttributes={amountInAdditionalAttributes}
+        placeholder={"0.0"}
+        isDisabled={inProgress || isWrongNetwork}
+        onChange={handleAmountInChange}
+      />
+      <Input
+        label={t("common.receive")}
+        value={!amountOut ? "" : amountOut}
+        placeholder={"0.0"}
+        isDisabled={true}
+      />
+      <BridgeButton
+        isConnected={isConnected}
+        isApproved={isApproved}
+        inProgress={inProgress}
+        isRouteIdSelected={routeId > 0}
+        isEth={isEth}
+        isAmountSet={!!amountIn}
+        isAbleToMove={isAbleToMove}
+        isNotEnoughBalance={isNotEnoughBalance}
+        isApproveReady={isApproveReady}
+        isDisabled={isDisabled}
+        onWalletConnect={onConnectWallet}
+        onWalletApprove={onApproveWallet}
+        onMoveAssets={onMoveAssets}
+      />
+    </ContainerCard>
   );
 };
 
