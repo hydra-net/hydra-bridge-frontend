@@ -1,6 +1,5 @@
 import React from "react";
 import { useWeb3 } from "@chainsafe/web3-context";
-import styled from "styled-components";
 import { toast } from "react-toastify";
 
 import useHome from "./useHome";
@@ -13,18 +12,39 @@ import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
 import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
 import HydraModal from "../../common/components/Modal/HydraModal";
-import { Container } from "../../common/components/Atoms/Containers/Container";
+import {
+  Container,
+  ContainerCard,
+} from "../../common/components/Atoms/Containers/Container";
 
 import { ChainResponseDto } from "../../common/dtos";
-import { getFlexCenter } from "../../common/styles";
 import { ISelectOption } from "../../common/commonTypes";
 import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+import Icon from "../../common/components/Icon/Icon";
+import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
+import styled from "styled-components";
+import { devicesUp } from "../../media";
 
-const SendWrapper = styled.div`
-  ${getFlexCenter};
-  width: 100%;
-  margin-bottom: 20px;
+const ResponsiveFlexWrapper = styled(FlexWrapper)`
+  .hydra-bridge-logo {
+    margin-bottom: ${theme.margin.xl};
+  }
+  .asset-select {
+    width: 100%;
+  }
+  @media only screen and ${devicesUp.lg} {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .hydra-bridge-logo {
+      width: 28%;
+      margin-bottom: 0;
+    }
+    .asset-select {
+      max-width: ${theme.maxWidth.lg};
+    }
+  }
 `;
 
 type Props = {
@@ -196,15 +216,24 @@ const Home = ({ chains }: Props) => {
     <>
       <Container>
         <Container maxWidth={theme.maxWidth["6xl"]}>
-          <SendWrapper>
-            <AssetSelect
-              isLoading={inProgress}
-              isDisabled={isWrongNetwork}
-              selectedTokenId={asset}
-              tokens={tokens}
-              onSelectAsset={handleSelectAsset}
-            />
-          </SendWrapper>
+          <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
+            <ResponsiveFlexWrapper>
+              <Icon
+                className={"hydra-bridge-logo"}
+                width={"20rem"}
+                height={"4.5rem"}
+                name={"hydraBridgeLogo"}
+              />
+              <AssetSelect
+                className={"asset-select"}
+                isLoading={inProgress}
+                isDisabled={isWrongNetwork}
+                selectedTokenId={asset}
+                tokens={tokens}
+                onSelectAsset={handleSelectAsset}
+              />
+            </ResponsiveFlexWrapper>
+          </ContainerCard>
           <MainContent
             chains={chains}
             chainFrom={chainFrom!}

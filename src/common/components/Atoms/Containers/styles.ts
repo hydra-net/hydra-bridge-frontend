@@ -55,4 +55,11 @@ export const StyledContainerCard = styled(StyledContainer)`
   padding: ${(props) => (props.padding ? props.padding : "2.4rem")};
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.xxl};
+  box-shadow: ${(props) =>
+    props.boxShadow ? props.boxShadow : theme.boxShadow.lg};
+
+  &:hover {
+    box-shadow: ${theme.boxShadow.xl};
+    transition: box-shadow 0.3s ease-in-out;
+  }
 `;
