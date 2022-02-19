@@ -15,6 +15,14 @@ import useWalletBalances from "./useWalletBalances";
 import useChainTransfers from "./useChainTransfers";
 import { ISelectOption } from "../../common/commonTypes";
 import { toast } from "react-toastify";
+import ConnectWallet from "../../common/components/Navbar/ConnectWallet";
+import { Container } from "../../common/components/Atoms/Containers/Container";
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+
+const StyledHydraBackground = styled.section`
+  flex-grow: 1;
+  background: url("./hydra-background.svg") no-repeat fixed center;
+`;
 
 const Root = styled.div``;
 
@@ -196,71 +204,77 @@ const Home = ({ chains }: Props) => {
     setRouteId(0);
     setShowRoutes(false);
   };
-
   return (
-    <>
-      <Root>
-        <Wrapper>
-          <SendWrapper>
-            <AssetSelect
-              isLoading={inProgress}
-              isDisabled={isWrongNetwork}
-              selectedTokenId={asset}
-              tokens={tokens}
-              onSelectAsset={handleSelectAsset}
-            />
-          </SendWrapper>
-          <MainContent
-            chains={chains}
-            chainFrom={chainFrom!}
-            chainTo={chainTo!}
-            amountIn={amountIn!}
-            amountOut={amountOut!}
-            routeId={routeId}
-            inProgress={inProgress}
-            isAbleToMove={isAbleToMove}
-            isApproveReady={!!buildApproveTx}
-            isApproved={isApproved}
-            isConnected={isConnected}
-            isEth={isEth}
-            isNotEnoughBalance={isNotEnoughBalance}
-            isWrongNetwork={isWrongNetwork}
-            isDisabled={isActionDisabled}
-            onAmountChange={handleAmountInChange}
-            onApproveWallet={() =>
-              onApproveWallet(
-                amountIn!,
-                chainFrom?.isSendingEnabled!,
-                chainTo?.isReceivingEnabled!,
-                chainFrom?.chainId!,
-                chainTo?.chainId!
-              )
-            }
-            onConnectWallet={onConnectWallet}
-            onMoveAssets={handleMoveAssets}
-            onSelectChainTo={hanldeOnSelectChainTo}
-            onSelectChainFrom={hanldeOnSelectChainFrom}
-          />
-
-          {showRoutes && !isNotEnoughBalance && isAbleToMove && (
-            <BridgeRoutes
+    <StyledHydraBackground>
+      <Container
+        style={{ paddingTop: theme.margin.lg, paddingBottom: theme.margin.lg }}
+      >
+        <div style={{ textAlign: "right" }}>
+          <ConnectWallet />
+        </div>
+        <Root>
+          <Wrapper>
+            <SendWrapper>
+              <AssetSelect
+                isLoading={inProgress}
+                isDisabled={isWrongNetwork}
+                selectedTokenId={asset}
+                tokens={tokens}
+                onSelectAsset={handleSelectAsset}
+              />
+            </SendWrapper>
+            <MainContent
+              chains={chains}
+              chainFrom={chainFrom!}
+              chainTo={chainTo!}
+              amountIn={amountIn!}
+              amountOut={amountOut!}
+              routeId={routeId}
               inProgress={inProgress}
-              selectedRouteId={routeId}
-              routes={bridgeRoutes}
-              onRouteSelect={handleOnRouteClick}
+              isAbleToMove={isAbleToMove}
+              isApproveReady={!!buildApproveTx}
+              isApproved={isApproved}
+              isConnected={isConnected}
+              isEth={isEth}
+              isNotEnoughBalance={isNotEnoughBalance}
+              isWrongNetwork={isWrongNetwork}
+              isDisabled={isActionDisabled}
+              onAmountChange={handleAmountInChange}
+              onApproveWallet={() =>
+                onApproveWallet(
+                  amountIn!,
+                  chainFrom?.isSendingEnabled!,
+                  chainTo?.isReceivingEnabled!,
+                  chainFrom?.chainId!,
+                  chainTo?.chainId!
+                )
+              }
+              onConnectWallet={onConnectWallet}
+              onMoveAssets={handleMoveAssets}
+              onSelectChainTo={hanldeOnSelectChainTo}
+              onSelectChainFrom={hanldeOnSelectChainFrom}
             />
-          )}
-        </Wrapper>
-      </Root>
 
-      <HydraModal
-        network={network!}
-        subtitle="Transaction"
-        onClose={() => setIsModalOpen(false)}
-        isOpen={isModalOpen}
-        tx={txHash!}
-      />
-    </>
+            {showRoutes && !isNotEnoughBalance && isAbleToMove && (
+              <BridgeRoutes
+                inProgress={inProgress}
+                selectedRouteId={routeId}
+                routes={bridgeRoutes}
+                onRouteSelect={handleOnRouteClick}
+              />
+            )}
+          </Wrapper>
+        </Root>
+
+        <HydraModal
+          network={network!}
+          subtitle="Transaction"
+          onClose={() => setIsModalOpen(false)}
+          isOpen={isModalOpen}
+          tx={txHash!}
+        />
+      </Container>
+    </StyledHydraBackground>
   );
 };
 
