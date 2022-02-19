@@ -33,6 +33,18 @@ const testCases = [
     providedValue: ".07.",
     expectedResult: ".07",
   },
+  {
+    providedValue: "..4",
+    expectedResult: ".4",
+  },
+  {
+    providedValue: ".4.",
+    expectedResult: ".4",
+  },
+  {
+    providedValue: ".4.3",
+    expectedResult: ".43",
+  },
 ];
 
 describe("The replaceCharsToHaveOnlyDotOrStringInIt method", () => {
