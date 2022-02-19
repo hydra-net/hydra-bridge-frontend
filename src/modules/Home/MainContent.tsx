@@ -10,6 +10,7 @@ import { Input } from "../../common/components/Atoms/Input/Input";
 import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
 import { ChainResponseDto } from "../../common/dtos";
 import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
+import { replaceCharsToHaveOnlyDotOrStringInIt } from "../../helpers/stringHelper";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 const getFromChains = (chains: ChainResponseDto[]) => {
@@ -105,17 +106,9 @@ const MainContent = ({
   const handleAmountInChange = (
     evt: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    const value = replaceUnwantedStringChars(evt.target.value);
+    const value = replaceCharsToHaveOnlyDotOrStringInIt(evt.target.value);
     onAmountChange(value);
   };
-
-  /**
-   * Will replace unwanted chars from the value string (only 0-9 and .(dot) authorized)
-   * @param value - the string to verify
-   * @return the clean string
-   */
-  const replaceUnwantedStringChars = (value: string): string =>
-    value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1");
 
   return (
     <ContainerCard>
