@@ -15,8 +15,8 @@ import useWalletBalances from "./useWalletBalances";
 import useChainTransfers from "./useChainTransfers";
 import { ISelectOption } from "../../common/commonTypes";
 import { toast } from "react-toastify";
-import ConnectWallet from "../../common/components/Navbar/ConnectWallet";
 import { Container } from "../../common/components/Atoms/Containers/Container";
+import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 const StyledHydraBackground = styled.section`
