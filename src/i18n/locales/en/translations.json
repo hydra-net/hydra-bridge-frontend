@@ -10,6 +10,7 @@
     "send": "Send",
     "receive": "Receive",
     "loading": "Loading",
-    "approve": "Approve"
+    "approve": "Approve",
+    "no-options-in-select": "No optiodasdns"
   }
 }
