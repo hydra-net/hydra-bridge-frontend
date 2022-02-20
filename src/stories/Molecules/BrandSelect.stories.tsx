@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { stakenetTheme } from "../../shell/theme/stakenetTheme";
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import BrandSelect from "../../common/components/Molecules/BrandSelect/BrandSelect";
 import { SelectOptionType } from "../../common/components/Molecules/BrandSelect/SelectOption";
 
@@ -10,23 +10,31 @@ export default {
 } as ComponentMeta<typeof BrandSelect>;
 
 const Template: ComponentStory<typeof BrandSelect> = (args) => (
-  <div style={{ maxWidth: stakenetTheme.maxWidth.lg }}>
+  <div style={{ maxWidth: theme.maxWidth.lg }}>
     <BrandSelect {...args}>Connect wallet</BrandSelect>
   </div>
 );
 
 const options: Array<SelectOptionType> = [
   {
-    label: "Label 1",
-    value: "1",
+    label: "Ethereum",
+    value: "eth",
   },
   {
-    label: "Label 2",
-    value: "2",
+    label: "Dai",
+    value: "dai",
   },
   {
-    label: "Label 3",
-    value: "3",
+    label: "Polygon",
+    value: "polygon",
+  },
+  {
+    label: "USDC",
+    value: "usdc",
+  },
+  {
+    label: "USDT",
+    value: "usdt",
   },
 ];
 
@@ -58,8 +66,9 @@ WithOptionsAndAllowDisabled.args = {
 export const WithIconsOptions = Template.bind({});
 const optionsWithIcons = options.map((option) => ({
   ...option,
-  iconName: "usdc",
+  iconName: `${option.value}Coin`,
 }));
+
 WithIconsOptions.args = {
   placeholder: "Select an asset",
   options: optionsWithIcons,
