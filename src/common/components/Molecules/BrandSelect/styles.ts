@@ -6,11 +6,8 @@ import { SelectOptionType } from "./SelectOption";
 
 export const StyledSelect = styled(Select)`
   width: 100%;
-  border-radius: 10px;
+  border-radius: ${theme.borderRadius.lg};
   font-size: ${theme.paragraph.md};
-  .send-asset-select__control {
-    border-radius: 20px !important;
-  }
 `;
 
 const themeDarkerBlue = theme.colors.blue.darker;
@@ -18,13 +15,19 @@ const themeDarkestBlue = theme.colors.blue.darkest;
 const themeLightBlue = theme.colors.blue.light;
 const noValueSelectedColor = hex2rgba(theme.colors.white, 0.3);
 export const colourStylesOverride: StylesConfig<SelectOptionType> = {
-  control: (styles) => ({
+  control: (styles, { selectProps }) => ({
     ...styles,
+    padding: "5px",
     borderWidth: "2px",
+    borderRadius: theme.borderRadius.lg,
     backgroundColor: themeDarkestBlue,
-    borderColor: "transparent",
+    borderColor: selectProps?.className?.includes("has-error")
+      ? theme.colors.red
+      : "transparent",
     ":hover": {
-      borderColor: "transparent",
+      borderColor: selectProps?.className?.includes("has-error")
+        ? theme.colors.red
+        : "transparent",
     },
     ":focus, :focus-within, :active": {
       outline: "none",
@@ -32,24 +35,29 @@ export const colourStylesOverride: StylesConfig<SelectOptionType> = {
       boxShadow: "none",
     },
   }),
-  indicatorSeparator: (styles, state) => ({
+  indicatorSeparator: (styles, { selectProps, isFocused, hasValue }) => ({
     ...styles,
-    backgroundColor: !state.isFocused
-      ? state.hasValue
+    backgroundColor: !isFocused
+      ? selectProps?.className?.includes("has-error")
+        ? theme.colors.red
+        : hasValue
         ? theme.colors.white
         : noValueSelectedColor
       : themeLightBlue,
   }),
-  dropdownIndicator: (styles, state) => ({
+  dropdownIndicator: (styles, { selectProps, hasValue, isFocused }) => ({
     ...styles,
-    color: !state.isFocused
-      ? state.hasValue
+
+    color: !isFocused
+      ? selectProps?.className?.includes("has-error")
+        ? theme.colors.red
+        : hasValue
         ? theme.colors.white
         : noValueSelectedColor
       : themeLightBlue,
     ":hover": {
-      color: !state.isFocused
-        ? state.hasValue
+      color: !isFocused
+        ? hasValue
           ? theme.colors.white
           : noValueSelectedColor
         : themeLightBlue,
@@ -93,10 +101,15 @@ export const colourStylesOverride: StylesConfig<SelectOptionType> = {
     borderRadius: theme.borderRadius.md,
     boxShadow: theme.boxShadow.xxl,
   }),
-  input: (styles) => ({ ...styles, color: theme.colors.white }),
-  placeholder: (styles) => ({
+  input: (styles) => ({
     ...styles,
-    color: noValueSelectedColor,
+    color: theme.colors.white,
+  }),
+  placeholder: (styles, { selectProps }) => ({
+    ...styles,
+    color: selectProps?.className?.includes("has-error")
+      ? theme.colors.red
+      : noValueSelectedColor,
   }),
   singleValue: (styles) => ({
     ...styles,

@@ -15,7 +15,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   color: ${theme.colors.blue.lighter};
   background-color: ${theme.colors.blue.dark};
   width: 100%;
-  padding: 1rem;
+  padding: ${theme.margin.md};
   border-width: 2px;
   border-style: solid;
   border-color: ${theme.colors.gray["medium-dark"]};
@@ -48,7 +48,6 @@ export const StyledInput = styled.input<StyledInputProps>`
   }
 
   @media only screen and ${devicesUp.lg} {
-    padding: 1.4rem;
     font-size: ${theme.paragraph.xl};
   }
 `;

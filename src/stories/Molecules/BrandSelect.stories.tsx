@@ -69,7 +69,24 @@ const optionsWithIcons = options.map((option) => ({
   iconName: `${option.value}Coin`,
 }));
 
-WithIconsOptions.args = {
+export const WithError = Template.bind({});
+WithError.args = {
+  placeholder: "Select an asset",
+  hasError: true,
+  options: optionsWithIcons,
+};
+
+export const WithErrorAndErrorText = Template.bind({});
+WithErrorAndErrorText.args = {
+  placeholder: "Select an asset",
+  hasError: true,
+  errorText: "Value is required",
+  options: optionsWithIcons,
+};
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: "Transfer from",
   placeholder: "Select an asset",
   options: optionsWithIcons,
 };
