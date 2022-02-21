@@ -40,6 +40,8 @@ export interface IStakenetTheme extends DefaultTheme {
   };
 
   margin: {
+    xxl: string;
+    xl: string;
     lg: string;
     md: string;
     sm: string;
@@ -55,6 +57,15 @@ export interface IStakenetTheme extends DefaultTheme {
   };
 
   borderRadius: {
+    xxl: string;
+    xl: string;
+    lg: string;
+    md: string;
+    sm: string;
+    xs: string;
+  };
+
+  boxShadow: {
     xxl: string;
     xl: string;
     lg: string;
@@ -119,7 +130,9 @@ export const stakenetTheme: IStakenetTheme = {
   },
 
   margin: {
-    lg: "3.2rem",
+    xxl: "3.2rem",
+    xl: "2.5rem",
+    lg: "2rem",
     md: "1.2rem",
     sm: ".6rem",
     none: "0rem",
@@ -140,6 +153,15 @@ export const stakenetTheme: IStakenetTheme = {
     md: ".6rem",
     sm: ".4rem",
     xs: ".2rem",
+  },
+
+  boxShadow: {
+    xxl: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+    xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+    lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+    md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+    sm: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+    xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
   },
 
   maxWidth: {

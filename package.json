@@ -27,8 +27,6 @@
     "web3": "^1.6.1"
   },
   "devDependencies": {
-    "babel-loader": "8.1.0",
-    "react-error-overlay": "6.0.9",
     "@react-theming/storybook-addon": "^1.1.5",
     "@storybook/addon-actions": "^6.4.18",
     "@storybook/addon-essentials": "^6.4.18",
@@ -41,6 +39,7 @@
     "@storybook/theming": "^6.4.18",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/lodash": "^4.14.178",
@@ -50,6 +49,7 @@
     "@types/styled-components": "^5.1.16",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/parser": "^5.10.2",
+    "babel-loader": "8.1.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -58,6 +58,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
     "prettier": "^2.5.1",
+    "react-error-overlay": "6.0.9",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
