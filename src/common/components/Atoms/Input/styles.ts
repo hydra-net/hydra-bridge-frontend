@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
-import { devicesUp } from "../../../../media";
 
 export type StyledInputProps = {
   isLoading?: boolean;
@@ -14,7 +13,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   color: ${theme.colors.white};
   background-color: ${theme.colors.blue.dark};
   width: 100%;
-  padding: 1rem;
+  padding: ${theme.margin.md};
   border-width: 2px;
   border-style: solid;
   border-color: ${theme.colors.blue.lighter};
@@ -36,10 +35,5 @@ export const StyledInput = styled.input<StyledInputProps>`
   &:disabled {
     cursor: not-allowed;
     color: ${theme.colors.white};
-  }
-
-  @media only screen and ${devicesUp.lg} {
-    padding: 1.4rem;
-    font-size: ${theme.paragraph.xl};
   }
 `;
