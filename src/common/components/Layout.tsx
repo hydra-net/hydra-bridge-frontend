@@ -3,9 +3,6 @@ import styled, { ThemeProvider } from "styled-components";
 import Web3Wrapper from "./Web3Wrapper";
 import { StakenetGlobalStyle } from "../../shell/theme/stakenetGlobalStyle";
 
-import { Container } from "./Atoms/Containers/Container";
-
-import { ContainerType } from "../enums";
 import { stakenetTheme } from "../../shell/theme/stakenetTheme";
 
 interface ILayoutProps {
@@ -23,9 +20,7 @@ const Layout = ({ theme, children }: ILayoutProps) => {
     <ThemeProvider theme={{ ...theme, sTheme: stakenetTheme }}>
       <StakenetGlobalStyle />
       <Web3Wrapper>
-        <Container type={ContainerType.XXXL} noGutter={true}>
-          <Root>{children}</Root>
-        </Container>
+        <Root>{children}</Root>
       </Web3Wrapper>
     </ThemeProvider>
   );

@@ -18,10 +18,14 @@ import { toast } from "react-toastify";
 import { Container } from "../../common/components/Atoms/Containers/Container";
 import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+import { ContainerType } from "../../common/enums";
 
 const StyledHydraBackground = styled.section`
-  flex-grow: 1;
-  background: url("./hydra-background.svg") no-repeat fixed center;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url("./hydra-background.svg") no-repeat fixed;
+  background-size: cover;
+  background-position: center center;
 `;
 
 const Root = styled.div``;
@@ -207,6 +211,7 @@ const Home = ({ chains }: Props) => {
   return (
     <StyledHydraBackground>
       <Container
+        type={ContainerType.XXXL}
         style={{ paddingTop: theme.margin.lg, paddingBottom: theme.margin.lg }}
       >
         <div style={{ textAlign: "right" }}>

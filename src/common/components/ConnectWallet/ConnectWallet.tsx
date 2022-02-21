@@ -1,5 +1,4 @@
 import { useWeb3 } from "@chainsafe/web3-context";
-import styled from "styled-components";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
@@ -9,14 +8,6 @@ import { Button } from "../Atoms/Buttons/Button";
 import Copy from "../Copy";
 
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
-
-const Root = styled.div`
-  max-width: 160px;
-`;
-
-const Container = styled.div`
-  width: 100%;
-`;
 
 const ConnectWallet = () => {
   const { onboard, wallet, address, network } = useWeb3();
@@ -45,23 +36,19 @@ const ConnectWallet = () => {
     );
   }
   return (
-    <Root>
-      <Container>
-        <Button>
-          {formatWalletAddress(isWrongNetwork, address)}
-          {!isWrongNetwork && (
-            <span className={"btn-icon"}>
-              <Copy
-                payload={address || ""}
-                color={"white"}
-                size={"2rem"}
-                onCopy={notify}
-              />
-            </span>
-          )}
-        </Button>
-      </Container>
-    </Root>
+    <Button>
+      {formatWalletAddress(isWrongNetwork, address)}
+      {!isWrongNetwork && (
+        <span className={"btn-icon"}>
+          <Copy
+            payload={address || ""}
+            color={"white"}
+            size={"2rem"}
+            onCopy={notify}
+          />
+        </span>
+      )}
+    </Button>
   );
 };
 
