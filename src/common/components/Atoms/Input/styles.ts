@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
-import { devicesUp } from "../../../../media";
 
 export type StyledInputProps = {
   isLoading?: boolean;
@@ -37,9 +35,5 @@ export const StyledInput = styled.input<StyledInputProps>`
   &:disabled {
     cursor: not-allowed;
     color: ${theme.colors.white};
-  }
-
-  @media only screen and ${devicesUp.lg} {
-    font-size: ${theme.paragraph.xl};
   }
 `;
