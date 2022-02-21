@@ -29,4 +29,8 @@ export const StakenetGlobalStyle = createGlobalStyle`
   input[type=number] {
     -moz-appearance: textfield;
   }
+  /* Metamask popup  */
+  aside {
+    z-index: 9999;
+  }
 `;
