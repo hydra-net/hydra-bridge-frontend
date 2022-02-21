@@ -3,7 +3,7 @@
  * @param stringNumber
  * @return the parsed number
  */
-export const parseStringToNumber = (stringNumber: string) => {
+export const parseStringToNumber = (stringNumber: string): number => {
   if (Number.isNaN(Number(stringNumber))) {
     return 0;
   }

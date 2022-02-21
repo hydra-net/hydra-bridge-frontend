@@ -28,11 +28,16 @@ Disabled.args = {
   },
 };
 
-export const WithError = Template.bind({});
-WithError.args = {
+export const WithValue = Template.bind({});
+WithValue.args = {
   placeholder: "0.0",
   type: "text",
-  hasError: true,
+  value: "0.003",
+};
+
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: "Country",
 };
 
 export const WithErrorWithText = Template.bind({});
