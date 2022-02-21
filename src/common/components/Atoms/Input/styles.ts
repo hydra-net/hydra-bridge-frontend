@@ -35,7 +35,7 @@ export const StyledInput = styled.input<StyledInputProps>`
 
   &:disabled {
     cursor: not-allowed;
-    color: ${theme.colors.blue.lighter};
+    color: ${theme.colors.white};
   }
 
   @media only screen and ${devicesUp.lg} {
