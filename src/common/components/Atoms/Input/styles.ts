@@ -12,32 +12,31 @@ export type StyledInputProps = {
 
 export const StyledInput = styled.input<StyledInputProps>`
   font-size: ${theme.paragraph.lg};
-  color: ${theme.colors.blue.lighter};
+  color: ${theme.colors.white};
   background-color: ${theme.colors.blue.dark};
   width: 100%;
   padding: 1rem;
   border-width: 2px;
   border-style: solid;
-  border-color: ${theme.colors.gray["medium-dark"]};
+  border-color: ${theme.colors.blue.lighter};
   border-radius: ${theme.borderRadius.lg};
 
   transition: border-color 300ms, color 300ms;
 
   &::placeholder {
-    color: ${theme.colors.gray["medium-dark"]};
+    color: ${theme.colors.blue.lighter};
   }
 
   &:focus,
   :focus-visible,
   :focus-within {
     outline: none;
-    color: ${theme.colors.white};
     border-color: ${theme.colors.blue.light};
   }
 
   &:disabled {
     cursor: not-allowed;
-    color: ${theme.colors.gray["medium-dark"]};
+    color: ${theme.colors.blue.lighter};
   }
 
   &.has-error {

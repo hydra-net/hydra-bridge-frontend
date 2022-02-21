@@ -28,6 +28,13 @@ Disabled.args = {
   },
 };
 
+export const WithValue = Template.bind({});
+WithValue.args = {
+  placeholder: "0.0",
+  type: "text",
+  value: "0.003",
+};
+
 export const WithError = Template.bind({});
 WithError.args = {
   placeholder: "0.0",
