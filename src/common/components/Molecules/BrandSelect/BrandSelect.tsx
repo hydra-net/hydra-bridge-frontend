@@ -26,10 +26,8 @@ const BrandSelect = ({
   value,
   options,
   label,
-  errorText,
   placeholder,
   isLoading,
-  hasError,
   isDisabled,
   onChange,
   noOptionsMessage,
@@ -52,13 +50,7 @@ const BrandSelect = ({
         onChange={onChange}
         components={{ Option: SelectOption, SingleValue: SelectValue }}
         isDisabled={isLoading || isDisabled}
-        className={hasError ? "has-error" : ""}
       />
-      {errorText && (
-        <p style={{ color: theme.colors.red, fontSize: theme.paragraph.xs }}>
-          {errorText}
-        </p>
-      )}
     </FlexWrapper>
   );
 };

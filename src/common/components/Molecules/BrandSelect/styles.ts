@@ -15,19 +15,15 @@ const themeDarkestBlue = theme.colors.blue.darkest;
 const themeLightBlue = theme.colors.blue.light;
 const noValueSelectedColor = hex2rgba(theme.colors.white, 0.3);
 export const colourStylesOverride: StylesConfig<SelectOptionType> = {
-  control: (styles, { selectProps }) => ({
+  control: (styles) => ({
     ...styles,
     padding: "5px",
     borderWidth: "2px",
     borderRadius: theme.borderRadius.lg,
     backgroundColor: themeDarkestBlue,
-    borderColor: selectProps?.className?.includes("has-error")
-      ? theme.colors.red
-      : "transparent",
+    borderColor: "transparent",
     ":hover": {
-      borderColor: selectProps?.className?.includes("has-error")
-        ? theme.colors.red
-        : "transparent",
+      borderColor: "transparent",
     },
     ":focus, :focus-within, :active": {
       outline: "none",
@@ -35,23 +31,18 @@ export const colourStylesOverride: StylesConfig<SelectOptionType> = {
       boxShadow: "none",
     },
   }),
-  indicatorSeparator: (styles, { selectProps, isFocused, hasValue }) => ({
+  indicatorSeparator: (styles, { isFocused, hasValue }) => ({
     ...styles,
     backgroundColor: !isFocused
-      ? selectProps?.className?.includes("has-error")
-        ? theme.colors.red
-        : hasValue
+      ? hasValue
         ? theme.colors.white
         : noValueSelectedColor
       : themeLightBlue,
   }),
-  dropdownIndicator: (styles, { selectProps, hasValue, isFocused }) => ({
+  dropdownIndicator: (styles, { hasValue, isFocused }) => ({
     ...styles,
-
     color: !isFocused
-      ? selectProps?.className?.includes("has-error")
-        ? theme.colors.red
-        : hasValue
+      ? hasValue
         ? theme.colors.white
         : noValueSelectedColor
       : themeLightBlue,
@@ -105,11 +96,9 @@ export const colourStylesOverride: StylesConfig<SelectOptionType> = {
     ...styles,
     color: theme.colors.white,
   }),
-  placeholder: (styles, { selectProps }) => ({
+  placeholder: (styles) => ({
     ...styles,
-    color: selectProps?.className?.includes("has-error")
-      ? theme.colors.red
-      : noValueSelectedColor,
+    color: noValueSelectedColor,
   }),
   singleValue: (styles) => ({
     ...styles,
