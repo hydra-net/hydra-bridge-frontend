@@ -1,24 +1,12 @@
-import styled, { CSSProperties } from "styled-components";
-import Select from "react-select";
-
-import Icon from "../Icon/Icon";
-import IconOption from "../Select/IconOption";
-import ValueOption from "../Select/ValueOption";
 import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
 
 import { TokenResponseDto } from "../../dtos";
-import { IconKeys, ISelectOption, IStyleableProps } from "../../commonTypes";
-import { ETH } from "../../constants";
-import { legacyTheme } from "../../../shell/theme/legacyTheme";
-
-const StyledSelect = styled(Select)`
-  width: 100%;
-  border-radius: 10px;
-
-  .send-asset-select__control {
-    border-radius: 20px !important;
-  }
-`;
+import { IStyleableProps } from "../../commonTypes";
+import BrandSelect from "../Molecules/BrandSelect/BrandSelect";
+import { useTranslation } from "react-i18next";
+import { InputLabel } from "../Atoms/Label/Label";
+import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
+import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
 
 type Props = {
   selectedTokenId: number;
@@ -35,46 +23,34 @@ const AssetSelect = ({
   onSelectAsset,
   className,
 }: Props & IStyleableProps) => {
-  const customStyles: any = {
-    control: (provided: CSSProperties) => ({
-      ...provided,
-      fontSize: legacyTheme.paragraph.lg,
-      borderRadius: "10px",
-    }),
-    menu: (provided: CSSProperties) => ({
-      ...provided,
-      fontSize: legacyTheme.paragraph.md,
-    }),
-  };
+  const { t } = useTranslation();
 
-  const options: ISelectOption[] = tokens.map((token: TokenResponseDto) => {
-    const isEth = token.symbol.toLocaleLowerCase() === ETH;
-    return {
-      label: token.symbol,
-      value: token.id,
-      icon: (
-        <Icon
-          name={
-            isEth ? "ethereum" : (token.symbol.toLocaleLowerCase() as IconKeys)
-          }
-          size="20px"
-        />
-      ),
-    };
-  });
+  const options: SelectOptionType[] = tokens.map((token: TokenResponseDto) => ({
+    label: token.symbol,
+    value: token.id,
+    iconName: `${token.symbol.toLocaleLowerCase()}Coin`,
+  }));
 
   return (
     <div className={className}>
-      <FlexWrapper flexDirection={"row"} justifyContent={"space-between"}>
-        <StyledSelect
-          styles={customStyles}
+      <FlexWrapper
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
+        <InputLabel
+          fontWeight={theme.fontWeight.semibold}
+          margin={`0 ${theme.margin.md} 0 0`}
+        >
+          {t("common.send")}
+        </InputLabel>
+        <BrandSelect
           value={
             options.find((option) => option.value === selectedTokenId) || null
           }
           options={options}
-          placeholder={null}
+          placeholder={t("select-an-asset")}
           onChange={onSelectAsset}
-          components={{ Option: IconOption, SingleValue: ValueOption }}
           isDisabled={isLoading || isDisabled}
         />
       </FlexWrapper>

@@ -5,6 +5,7 @@
   "bridge": "Bridge",
   "transfer-from": "Transfer from",
   "transfer-to": "Transfer to",
+  "select-an-asset": "Select an asset",
   "common": {
     "close": "Close",
     "send": "Send",

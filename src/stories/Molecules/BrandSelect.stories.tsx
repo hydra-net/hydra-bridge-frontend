@@ -18,23 +18,23 @@ const Template: ComponentStory<typeof BrandSelect> = (args) => (
 const options: Array<SelectOptionType> = [
   {
     label: "Ethereum",
-    value: "eth",
+    value: 1,
   },
   {
     label: "Dai",
-    value: "dai",
+    value: 2,
   },
   {
     label: "Polygon",
-    value: "polygon",
+    value: 3,
   },
   {
     label: "USDC",
-    value: "usdc",
+    value: 4,
   },
   {
     label: "USDT",
-    value: "usdt",
+    value: 5,
   },
 ];
 
@@ -57,7 +57,7 @@ WithValue.args = {
 };
 
 export const WithOptionsAndAllowDisabled = Template.bind({});
-const disabledOption = { label: "Im disabled", value: "323", isDisabled: true };
+const disabledOption = { label: "Im disabled", value: 323, isDisabled: true };
 WithOptionsAndAllowDisabled.args = {
   placeholder: "Select an asset",
   options: [...options, disabledOption],
