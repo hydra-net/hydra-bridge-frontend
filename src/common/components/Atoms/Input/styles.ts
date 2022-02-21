@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
-import { getHasError } from "../../../styles";
 import { devicesUp } from "../../../../media";
 
 export type StyledInputProps = {
@@ -37,13 +36,6 @@ export const StyledInput = styled.input<StyledInputProps>`
   &:disabled {
     cursor: not-allowed;
     color: ${theme.colors.blue.lighter};
-  }
-
-  &.has-error {
-    ${getHasError};
-    &::placeholder {
-      ${getHasError};
-    }
   }
 
   @media only screen and ${devicesUp.lg} {
