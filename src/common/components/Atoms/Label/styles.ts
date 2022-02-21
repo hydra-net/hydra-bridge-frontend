@@ -14,7 +14,7 @@ export const StyledInputLabel = styled.label<StyledLabel>`
   font-weight: ${(props) =>
     props.fontWeight ? props.fontWeight : theme.fontWeight.normal};
   margin: ${(props) =>
-    props.margin ? props.margin : `0 0 ${theme.margin.sm} 0`};
+    props.margin ? props.margin : `0 0 ${theme.margin.md} 0`};
 
   @media only screen and ${devicesUp.lg} {
     font-size: ${theme.paragraph.lg};

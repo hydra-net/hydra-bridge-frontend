@@ -128,7 +128,7 @@ const MainContent = ({
         placeholder={"0.0"}
         isDisabled={inProgress || isWrongNetwork}
         onChange={handleAmountInChange}
-        style={{ marginBottom: theme.margin.xl }}
+        style={{ marginBottom: theme.margin.xxl }}
       />
       <Input
         label={t("common.receive")}
