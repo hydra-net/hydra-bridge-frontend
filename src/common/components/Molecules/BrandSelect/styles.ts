@@ -7,7 +7,7 @@ import { SelectOptionType } from "./SelectOption";
 export const StyledSelect = styled(Select)`
   width: 100%;
   border-radius: ${theme.borderRadius.lg};
-  font-size: ${theme.paragraph.md};
+  font-size: ${theme.paragraph.lg};
 `;
 
 const themeDarkerBlue = theme.colors.blue.darker;

@@ -1,17 +1,14 @@
-import styled, { CSSProperties } from "styled-components";
+import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import Select from "react-select";
 
-import IconOption from "../Select/IconOption";
-import ValueOption from "../Select/ValueOption";
 import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
-import { InputLabel } from "../Atoms/Label/Label";
 
 import { ISelectOption } from "../../commonTypes";
 
-import { legacyTheme } from "../../../shell/theme/legacyTheme";
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../media";
+import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
+import BrandSelect from "../Molecules/BrandSelect/BrandSelect";
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
   @media only screen and ${devicesUp.lg} {
@@ -24,25 +21,9 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
   }
 `;
 
-const StyledSelect = styled(Select)`
-  width: 100%;
-`;
-
-const customStyles: any = {
-  control: (provided: CSSProperties) => ({
-    ...provided,
-    fontSize: legacyTheme.paragraph.lg,
-    borderRadius: "10px",
-  }),
-  menu: (provided: CSSProperties) => ({
-    ...provided,
-    fontSize: legacyTheme.paragraph.md,
-  }),
-};
-
-type Props = {
-  chainsFrom: ISelectOption[];
-  chainsTo: ISelectOption[];
+type TransferChainSelectsProps = {
+  optionsChainsFrom: ISelectOption[];
+  optionsChainsTo: ISelectOption[];
   chainFrom: number;
   chainTo: number;
   isDisabled: boolean;
@@ -50,15 +31,27 @@ type Props = {
   onSelectChainTo: (option: any) => void;
 };
 const TransferChainSelects = ({
-  chainsFrom,
-  chainsTo,
+  optionsChainsFrom,
+  optionsChainsTo,
   chainFrom,
   chainTo,
   isDisabled,
   onSelectChainFrom,
   onSelectChainTo,
-}: Props) => {
+}: TransferChainSelectsProps) => {
   const { t } = useTranslation();
+
+  /**
+   * Filter through the options the current value
+   * @param options - The SelectOptionType
+   * @param value - The current network value from parent
+   * @return - The result or null
+   */
+  const getValueFromOptions = (
+    options: SelectOptionType[],
+    value: number
+  ): SelectOptionType | null =>
+    options.find((option: SelectOptionType) => option.value === value) || null;
 
   return (
     <ResponsiveFlexWrapper>
@@ -67,19 +60,13 @@ const TransferChainSelects = ({
         alignItems={"start"}
         margin={`0 0 ${theme.margin.xl} 0`}
       >
-        <InputLabel fontWeight={theme.fontWeight.semibold}>
-          {t("transfer-from")}
-        </InputLabel>
-        <StyledSelect
-          value={
-            chainsFrom.find((option) => option.value === chainFrom) || null
-          }
-          styles={customStyles}
-          options={chainsFrom}
-          placeholder={null}
-          onChange={onSelectChainFrom}
-          components={{ Option: IconOption, SingleValue: ValueOption }}
+        <BrandSelect
+          label={t("transfer-from")}
+          value={getValueFromOptions(optionsChainsFrom, chainFrom)}
+          options={optionsChainsFrom}
+          placeholder={t("select-an-asset")}
           isDisabled={isDisabled}
+          onChange={onSelectChainFrom}
         />
       </FlexWrapper>
       <FlexWrapper
@@ -87,17 +74,13 @@ const TransferChainSelects = ({
         alignItems={"start"}
         margin={`0 0 ${theme.margin.xl} 0`}
       >
-        <InputLabel fontWeight={theme.fontWeight.semibold}>
-          {t("transfer-to")}
-        </InputLabel>
-        <StyledSelect
-          value={chainsTo.find((option) => option.value === chainTo) || null}
-          styles={customStyles}
-          options={chainsTo}
-          placeholder={null}
-          onChange={onSelectChainTo}
-          components={{ Option: IconOption, SingleValue: ValueOption }}
+        <BrandSelect
+          label={t("transfer-to")}
+          value={getValueFromOptions(optionsChainsTo, chainTo)}
+          options={optionsChainsTo}
+          placeholder={t("select-an-asset")}
           isDisabled={isDisabled}
+          onChange={onSelectChainTo}
         />
       </FlexWrapper>
     </ResponsiveFlexWrapper>
