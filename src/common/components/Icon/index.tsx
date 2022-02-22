@@ -1,4 +1,5 @@
 import { ReactComponent as hydraBridgeLogo } from "../../../assets/svg/hydra-bridge-logo.svg";
+import { ReactComponent as hydraBridgeLogoSm } from "../../../assets/svg/hydra-bridge-logo-sm.svg";
 import { ReactComponent as arrowRight } from "../../../assets/svg/arrow-right.svg";
 import { ReactComponent as cutArrowRight } from "../../../assets/svg/cut-arrow-right.svg";
 import { ReactComponent as ethereum } from "../../../assets/svg/ethereum.svg";
@@ -17,6 +18,7 @@ import { ReactComponent as usdtCoin } from "../../../assets/svg/coins/usdt.svg";
 
 export const icons = {
   hydraBridgeLogo,
+  hydraBridgeLogoSm,
   arrowRight,
   cutArrowRight,
   ethereum,

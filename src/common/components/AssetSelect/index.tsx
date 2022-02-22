@@ -7,6 +7,27 @@ import { useTranslation } from "react-i18next";
 import { InputLabel } from "../Atoms/Label/Label";
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
+import styled from "styled-components";
+import { devicesUp } from "../../../media";
+
+const ResponsiveFlexWrapper = styled(FlexWrapper)`
+  flex-direction: column;
+  align-items: start;
+
+  .label {
+    margin: 0 0 ${theme.margin.md} 0;
+  }
+
+  @media only screen and ${devicesUp.lg} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .label {
+      margin: 0 ${theme.margin.md} 0 0;
+    }
+  }
+`;
 
 type Props = {
   selectedTokenId: number;
@@ -33,15 +54,12 @@ const AssetSelect = ({
 
   return (
     <div className={className}>
-      <FlexWrapper
+      <ResponsiveFlexWrapper
         flexDirection={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <InputLabel
-          fontWeight={theme.fontWeight.semibold}
-          margin={`0 ${theme.margin.md} 0 0`}
-        >
+        <InputLabel fontWeight={theme.fontWeight.semibold} className={"label"}>
           {t("common.send")}
         </InputLabel>
         <BrandSelect
@@ -53,7 +71,7 @@ const AssetSelect = ({
           onChange={onSelectAsset}
           isDisabled={isLoading || isDisabled}
         />
-      </FlexWrapper>
+      </ResponsiveFlexWrapper>
     </div>
   );
 };

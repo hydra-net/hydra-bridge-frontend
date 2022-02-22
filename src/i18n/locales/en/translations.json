@@ -6,6 +6,7 @@
   "transfer-from": "Transfer from",
   "transfer-to": "Transfer to",
   "select-an-asset": "Select an asset",
+  "select-chain": "Select chain",
   "common": {
     "close": "Close",
     "send": "Send",

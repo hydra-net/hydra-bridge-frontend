@@ -27,22 +27,48 @@ import styled from "styled-components";
 import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
 
 import { devicesUp } from "../../media";
+import { ContainerType } from "../../common/enums";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
   min-width: 100vw;
-  background: url("./hydra-background.svg") no-repeat fixed;
   background-size: cover;
-  background-position: center center;
+  background: url("./hydra-background.svg") no-repeat fixed center center;
+`;
+
+const CustomFlexWrapper = styled(FlexWrapper)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: ${theme.margin.xl};
+
+  .hydra-bridge-logo-sm {
+    width: 40%;
+  }
+
+  @media only screen and ${devicesUp.sm} {
+    justify-content: flex-end;
+    .hydra-bridge-logo-sm {
+      display: none;
+    }
+  }
 `;
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
   .hydra-bridge-logo {
-    margin-bottom: ${theme.margin.xl};
+    display: none;
   }
   .asset-select {
     width: 100%;
   }
+
+  @media only screen and ${devicesUp.sm} {
+    .hydra-bridge-logo {
+      display: block;
+      margin-bottom: ${theme.margin.xl};
+    }
+  }
+
   @media only screen and ${devicesUp.lg} {
     flex-direction: row;
     justify-content: space-between;
@@ -228,16 +254,22 @@ const Home = ({ chains }: Props) => {
         type={ContainerType.XXXL}
         style={{ paddingTop: theme.margin.lg, paddingBottom: theme.margin.lg }}
       >
-        <div style={{ textAlign: "right" }}>
+        <CustomFlexWrapper>
+          <Icon
+            className={"hydra-bridge-logo-sm"}
+            width={"20rem"}
+            height={"7rem"}
+            name={"hydraBridgeLogoSm"}
+          />
           <ConnectWallet />
-        </div>
-        <Container maxWidth={theme.maxWidth["6xl"]}>
+        </CustomFlexWrapper>
+        <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
           <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}
                 width={"20rem"}
-                height={"4.5rem"}
+                height={"7rem"}
                 name={"hydraBridgeLogo"}
               />
               <AssetSelect
@@ -290,15 +322,16 @@ const Home = ({ chains }: Props) => {
               onRouteSelect={handleOnRouteClick}
             />
           )}
-      <HydraModal
-        network={network!}
-        subtitle="Transaction"
-        onClose={() => setIsModalOpen(false)}
-        isOpen={isModalOpen}
-        tx={txHash!}
-      />
-    </Container>
-</StyledHydraBackground>
+          <HydraModal
+            network={network!}
+            subtitle="Transaction"
+            onClose={() => setIsModalOpen(false)}
+            isOpen={isModalOpen}
+            tx={txHash!}
+          />
+        </Container>
+      </Container>
+    </StyledHydraBackground>
   );
 };
 

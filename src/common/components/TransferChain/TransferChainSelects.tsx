@@ -64,7 +64,7 @@ const TransferChainSelects = ({
           label={t("transfer-from")}
           value={getValueFromOptions(optionsChainsFrom, chainFrom)}
           options={optionsChainsFrom}
-          placeholder={t("select-an-asset")}
+          placeholder={t("select-chain")}
           isDisabled={isDisabled}
           onChange={onSelectChainFrom}
         />
@@ -78,7 +78,7 @@ const TransferChainSelects = ({
           label={t("transfer-to")}
           value={getValueFromOptions(optionsChainsTo, chainTo)}
           options={optionsChainsTo}
-          placeholder={t("select-an-asset")}
+          placeholder={t("select-chain")}
           isDisabled={isDisabled}
           onChange={onSelectChainTo}
         />
