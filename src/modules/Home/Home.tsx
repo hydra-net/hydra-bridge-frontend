@@ -1,6 +1,7 @@
 import React from "react";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { toast } from "react-toastify";
+import styled from "styled-components";
 
 import useHome from "./useHome";
 import useTokens from "../../common/hooks/useTokens";
@@ -16,18 +17,17 @@ import {
   Container,
   ContainerCard,
 } from "../../common/components/Atoms/Containers/Container";
-
-import { ChainResponseDto } from "../../common/dtos";
-import { ISelectOption } from "../../common/commonTypes";
-import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
-import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import Icon from "../../common/components/Icon/Icon";
 import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
-import styled from "styled-components";
 import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
 
-import { devicesUp } from "../../media";
+import { ChainResponseDto } from "../../common/dtos";
+import { SelectOptionType } from "../../common/components/Molecules/BrandSelect/SelectOption";
 import { ContainerType } from "../../common/enums";
+import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
+
+import { devicesUp } from "../../media";
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
@@ -168,7 +168,7 @@ const Home = ({ chains }: Props) => {
     }
   };
 
-  const handleSelectAsset = (option: ISelectOption) => {
+  const handleSelectAsset = (option: SelectOptionType) => {
     const { value } = option;
     setAsset(value);
     setShowRoutes(false);
@@ -197,7 +197,7 @@ const Home = ({ chains }: Props) => {
     }
   };
 
-  const hanldeOnSelectChainFrom = (option: ISelectOption) => {
+  const hanldeOnSelectChainFrom = (option: SelectOptionType) => {
     const selectedChain = onSelectChainFrom(option);
     setShowRoutes(false);
     setIsDisabled(true);
@@ -213,7 +213,7 @@ const Home = ({ chains }: Props) => {
     }
   };
 
-  const hanldeOnSelectChainTo = (option: ISelectOption) => {
+  const hanldeOnSelectChainTo = (option: SelectOptionType) => {
     const selectedChain = onSelectChainTo(option);
     setShowRoutes(false);
     setIsDisabled(true);

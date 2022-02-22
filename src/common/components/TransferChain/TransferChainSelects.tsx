@@ -3,11 +3,10 @@ import { useTranslation } from "react-i18next";
 
 import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
 
-import { ISelectOption } from "../../commonTypes";
+import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
 
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../media";
-import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
 import BrandSelect from "../Molecules/BrandSelect/BrandSelect";
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
@@ -22,8 +21,8 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
 `;
 
 type TransferChainSelectsProps = {
-  optionsChainsFrom: ISelectOption[];
-  optionsChainsTo: ISelectOption[];
+  optionsChainsFrom: SelectOptionType[];
+  optionsChainsTo: SelectOptionType[];
   chainFrom: number;
   chainTo: number;
   isDisabled: boolean;

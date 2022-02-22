@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { ISelectOption } from "../../common/commonTypes";
+
 import { ChainResponseDto } from "../../common/dtos";
+import { SelectOptionType } from "../../common/components/Molecules/BrandSelect/SelectOption";
 
 function useChainTransfers(chains: ChainResponseDto[]) {
   const [chainFrom, setChainFrom] = useState<ChainResponseDto>();
   const [chainTo, setChainTo] = useState<ChainResponseDto>();
 
   const onSelectChainFrom = (
-    option: ISelectOption
+    option: SelectOptionType
   ): ChainResponseDto | undefined => {
     const { value } = option;
     if (value !== chainFrom?.chainId) {
@@ -19,7 +20,7 @@ function useChainTransfers(chains: ChainResponseDto[]) {
   };
 
   const onSelectChainTo = (
-    option: ISelectOption
+    option: SelectOptionType
   ): ChainResponseDto | undefined => {
     const { value } = option;
     if (value !== chainTo?.chainId) {

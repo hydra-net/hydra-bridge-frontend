@@ -1,13 +1,15 @@
-import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
+import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
+import BrandSelect from "../Molecules/BrandSelect/BrandSelect";
+import { InputLabel } from "../Atoms/Label/Label";
+
+import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
 import { TokenResponseDto } from "../../dtos";
 import { IStyleableProps } from "../../commonTypes";
-import BrandSelect from "../Molecules/BrandSelect/BrandSelect";
-import { useTranslation } from "react-i18next";
-import { InputLabel } from "../Atoms/Label/Label";
+
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
-import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
-import styled from "styled-components";
 import { devicesUp } from "../../../media";
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
