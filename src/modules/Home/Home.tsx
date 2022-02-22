@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { toast } from "react-toastify";
 
@@ -12,19 +13,29 @@ import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
 import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
 import HydraModal from "../../common/components/Modal/HydraModal";
+import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
 import {
   Container,
   ContainerCard,
 } from "../../common/components/Atoms/Containers/Container";
+import Icon from "../../common/components/Icon/Icon";
+import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
 
 import { ChainResponseDto } from "../../common/dtos";
 import { ISelectOption } from "../../common/commonTypes";
+import { ContainerType } from "../../common/enums";
 import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
+
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
-import Icon from "../../common/components/Icon/Icon";
-import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
-import styled from "styled-components";
 import { devicesUp } from "../../media";
+
+const StyledHydraBackground = styled.section`
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url("./hydra-background.svg") no-repeat fixed;
+  background-size: cover;
+  background-position: center center;
+`;
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
   .hydra-bridge-logo {
@@ -211,10 +222,15 @@ const Home = ({ chains }: Props) => {
     setRouteId(0);
     setShowRoutes(false);
   };
-
   return (
-    <>
-      <Container>
+    <StyledHydraBackground>
+      <Container
+        type={ContainerType.XXXL}
+        style={{ paddingTop: theme.margin.lg, paddingBottom: theme.margin.lg }}
+      >
+        <div style={{ textAlign: "right" }}>
+          <ConnectWallet />
+        </div>
         <Container maxWidth={theme.maxWidth["6xl"]}>
           <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
@@ -238,8 +254,8 @@ const Home = ({ chains }: Props) => {
             chains={chains}
             chainFrom={chainFrom!}
             chainTo={chainTo!}
-            amountIn={amountIn}
-            amountOut={amountOut}
+            amountIn={amountIn!}
+            amountOut={amountOut!}
             routeId={routeId}
             inProgress={inProgress}
             isAbleToMove={isAbleToMove}
@@ -274,17 +290,17 @@ const Home = ({ chains }: Props) => {
               onRouteSelect={handleOnRouteClick}
             />
           )}
+
+          <HydraModal
+            network={network!}
+            subtitle="Transaction"
+            onClose={() => setIsModalOpen(false)}
+            isOpen={isModalOpen}
+            tx={txHash!}
+          />
         </Container>
       </Container>
-
-      <HydraModal
-        network={network!}
-        subtitle="Transaction"
-        onClose={() => setIsModalOpen(false)}
-        isOpen={isModalOpen}
-        tx={txHash!}
-      />
-    </>
+    </StyledHydraBackground>
   );
 };
 

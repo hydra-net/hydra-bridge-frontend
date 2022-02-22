@@ -34,7 +34,6 @@ export const Container = (props: ContainerProps & IStyleableProps) => {
         <StyledContainer2XL {...props}>{props.children}</StyledContainer2XL>
       );
     case ContainerType.XXXL:
-      console.log("hello XXXl");
       return (
         <StyledContainer3XL {...props}>{props.children}</StyledContainer3XL>
       );
