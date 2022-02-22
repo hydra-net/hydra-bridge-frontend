@@ -1,31 +1,18 @@
 import styled, { CSSProperties } from "styled-components";
-import Icon from "../Icon/Icon";
 import Select from "react-select";
+
+import Icon from "../Icon/Icon";
 import IconOption from "../Select/IconOption";
 import ValueOption from "../Select/ValueOption";
-import { getFlexCenter, getHorizontalGap } from "../../styles";
+import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
+
 import { TokenResponseDto } from "../../dtos";
-import { IconKeys, ISelectOption } from "../../commonTypes";
+import { IconKeys, ISelectOption, IStyleableProps } from "../../commonTypes";
 import { ETH } from "../../constants";
 import { legacyTheme } from "../../../shell/theme/legacyTheme";
 
-const Root = styled.div``;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  ${getHorizontalGap("10px")}
-  ${getFlexCenter}
-`;
-
-const Label = styled.div`
-  font-weight: 700;
-  font-size: ${({ theme }) => theme.heading.xs};
-  color: ${({ theme }) => theme.primaryColor};
-`;
-
 const StyledSelect = styled(Select)`
-  width: 150px;
+  width: 100%;
   border-radius: 10px;
 
   .send-asset-select__control {
@@ -46,7 +33,8 @@ const AssetSelect = ({
   selectedTokenId,
   tokens,
   onSelectAsset,
-}: Props) => {
+  className,
+}: Props & IStyleableProps) => {
   const customStyles: any = {
     control: (provided: CSSProperties) => ({
       ...provided,
@@ -76,9 +64,8 @@ const AssetSelect = ({
   });
 
   return (
-    <Root>
-      <Container>
-        <Label>Send</Label>
+    <div className={className}>
+      <FlexWrapper flexDirection={"row"} justifyContent={"space-between"}>
         <StyledSelect
           styles={customStyles}
           value={
@@ -90,8 +77,8 @@ const AssetSelect = ({
           components={{ Option: IconOption, SingleValue: ValueOption }}
           isDisabled={isLoading || isDisabled}
         />
-      </Container>
-    </Root>
+      </FlexWrapper>
+    </div>
   );
 };
 

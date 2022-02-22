@@ -20,6 +20,7 @@ export type ContainerProps = {
   maxWidth?: string;
   noGutter?: boolean;
   padding?: string;
+  boxShadow?: string;
 };
 
 export const Container = (props: ContainerProps & IStyleableProps) => {
