@@ -9,6 +9,12 @@ import { ReactComponent as copy } from "../../../assets/svg/copy-icon.svg";
 import { ReactComponent as arbitrum } from "../../../assets/svg/arbitrum.svg";
 import { ReactComponent as optimism } from "../../../assets/svg/optimism.svg";
 
+import { ReactComponent as ethCoin } from "../../../assets/svg/coins/eth.svg";
+import { ReactComponent as daiCoin } from "../../../assets/svg/coins/dai.svg";
+import { ReactComponent as polygonCoin } from "../../../assets/svg/coins/polygon.svg";
+import { ReactComponent as usdcCoin } from "../../../assets/svg/coins/usdc.svg";
+import { ReactComponent as usdtCoin } from "../../../assets/svg/coins/usdt.svg";
+
 export const icons = {
   hydraBridgeLogo,
   arrowRight,
@@ -20,6 +26,12 @@ export const icons = {
   copy,
   arbitrum,
   optimism,
+  // coins
+  ethCoin,
+  daiCoin,
+  polygonCoin,
+  usdcCoin,
+  usdtCoin,
 };
 
 export default icons;
