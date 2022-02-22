@@ -24,7 +24,17 @@ import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import Icon from "../../common/components/Icon/Icon";
 import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
 import styled from "styled-components";
+import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
+
 import { devicesUp } from "../../media";
+
+const StyledHydraBackground = styled.section`
+  min-height: 100vh;
+  min-width: 100vw;
+  background: url("./hydra-background.svg") no-repeat fixed;
+  background-size: cover;
+  background-position: center center;
+`;
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
   .hydra-bridge-logo {
@@ -213,8 +223,14 @@ const Home = ({ chains }: Props) => {
   };
 
   return (
-    <>
-      <Container>
+    <StyledHydraBackground>
+      <Container
+        type={ContainerType.XXXL}
+        style={{ paddingTop: theme.margin.lg, paddingBottom: theme.margin.lg }}
+      >
+        <div style={{ textAlign: "right" }}>
+          <ConnectWallet />
+        </div>
         <Container maxWidth={theme.maxWidth["6xl"]}>
           <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
@@ -274,9 +290,6 @@ const Home = ({ chains }: Props) => {
               onRouteSelect={handleOnRouteClick}
             />
           )}
-        </Container>
-      </Container>
-
       <HydraModal
         network={network!}
         subtitle="Transaction"
@@ -284,7 +297,8 @@ const Home = ({ chains }: Props) => {
         isOpen={isModalOpen}
         tx={txHash!}
       />
-    </>
+    </Container>
+</StyledHydraBackground>
   );
 };
 
