@@ -1,35 +1,50 @@
 import React from "react";
 import { useWeb3 } from "@chainsafe/web3-context";
-import styled from "styled-components";
+import { toast } from "react-toastify";
+
+import useHome from "./useHome";
+import useTokens from "../../common/hooks/useTokens";
+import useWalletBalances from "./useWalletBalances";
+import useChainTransfers from "./useChainTransfers";
+import useAmountInput from "./useAmountInput";
+
+import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
 import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
 import HydraModal from "../../common/components/Modal/HydraModal";
+import {
+  Container,
+  ContainerCard,
+} from "../../common/components/Atoms/Containers/Container";
+
 import { ChainResponseDto } from "../../common/dtos";
-import { getFlexCenter } from "../../common/styles";
-import useHome from "./useHome";
-import MainContent from "./MainContent";
-import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
-import useTokens from "../../common/hooks/useTokens";
-import useAmountInput from "./useAmountInput";
-import useWalletBalances from "./useWalletBalances";
-import useChainTransfers from "./useChainTransfers";
 import { ISelectOption } from "../../common/commonTypes";
-import { toast } from "react-toastify";
+import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+import Icon from "../../common/components/Icon/Icon";
+import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
+import styled from "styled-components";
+import { devicesUp } from "../../media";
 
-const Root = styled.div``;
+const ResponsiveFlexWrapper = styled(FlexWrapper)`
+  .hydra-bridge-logo {
+    margin-bottom: ${theme.margin.xl};
+  }
+  .asset-select {
+    width: 100%;
+  }
+  @media only screen and ${devicesUp.lg} {
+    flex-direction: row;
+    justify-content: space-between;
 
-const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 520px;
-  width: 100%;
-  margin-top: 3rem;
-  padding: 10px;
-`;
-
-const SendWrapper = styled.div`
-  ${getFlexCenter};
-  width: 100%;
-  margin-bottom: 20px;
+    .hydra-bridge-logo {
+      width: 28%;
+      margin-bottom: 0;
+    }
+    .asset-select {
+      max-width: ${theme.maxWidth.lg};
+    }
+  }
 `;
 
 type Props = {
@@ -74,6 +89,7 @@ const Home = ({ chains }: Props) => {
     setAmountIn,
     setAmountOut,
     onAmountInChange,
+    getParsedAmountIn,
     setIsNotEnoughBalance,
   } = useAmountInput(
     address!,
@@ -91,10 +107,9 @@ const Home = ({ chains }: Props) => {
   const isConnected = !!address;
   const isActionDisabled = inProgress || isWrongNetwork || isDisabled;
 
-  const handleAmountInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAmountInChange = (value: string) => {
     setShowRoutes(false);
     setIsDisabled(true);
-    const { value } = e.target;
     onAmountInChange(value);
   };
 
@@ -106,7 +121,7 @@ const Home = ({ chains }: Props) => {
       !isWrongNetwork
     ) {
       await onRouteClick({
-        amount: amountIn!,
+        amount: getParsedAmountIn(),
         fromAsset: asset!,
         toAsset: asset!,
         fromChainId: chainFrom!.chainId!,
@@ -122,10 +137,10 @@ const Home = ({ chains }: Props) => {
     setAsset(value);
     setShowRoutes(false);
     setIsDisabled(true);
-    if (amountIn && amountIn > 0) {
+    if (amountIn && getParsedAmountIn() > 0) {
       const isNotEnoughBalance = getIsNotEnoughBalance(
         walletBalances!,
-        amountIn,
+        getParsedAmountIn(),
         value,
         isWrongNetwork
       );
@@ -136,7 +151,7 @@ const Home = ({ chains }: Props) => {
           fromChainId: chainFrom?.chainId!,
           toAsset: value,
           toChainId: chainTo?.chainId!,
-          amount: amountIn!,
+          amount: getParsedAmountIn(),
         });
       }
       if (isNotEnoughBalance) {
@@ -157,7 +172,7 @@ const Home = ({ chains }: Props) => {
         fromChainId: selectedChain.chainId,
         toAsset: asset,
         toChainId: chainTo?.chainId!,
-        amount: amountIn!,
+        amount: getParsedAmountIn(),
       });
     }
   };
@@ -173,7 +188,7 @@ const Home = ({ chains }: Props) => {
         fromChainId: chainFrom?.chainId!,
         toAsset: asset,
         toChainId: selectedChain.chainId,
-        amount: amountIn!,
+        amount: getParsedAmountIn(),
       });
     }
   };
@@ -190,8 +205,8 @@ const Home = ({ chains }: Props) => {
 
   const onResetValues = () => {
     setInProgress(false);
-    setAmountOut(0.0);
-    setAmountIn(0.0);
+    setAmountOut("");
+    setAmountIn("");
     setIsApproved(false);
     setRouteId(0);
     setShowRoutes(false);
@@ -199,23 +214,32 @@ const Home = ({ chains }: Props) => {
 
   return (
     <>
-      <Root>
-        <Wrapper>
-          <SendWrapper>
-            <AssetSelect
-              isLoading={inProgress}
-              isDisabled={isWrongNetwork}
-              selectedTokenId={asset}
-              tokens={tokens}
-              onSelectAsset={handleSelectAsset}
-            />
-          </SendWrapper>
+      <Container>
+        <Container maxWidth={theme.maxWidth["6xl"]}>
+          <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
+            <ResponsiveFlexWrapper>
+              <Icon
+                className={"hydra-bridge-logo"}
+                width={"20rem"}
+                height={"4.5rem"}
+                name={"hydraBridgeLogo"}
+              />
+              <AssetSelect
+                className={"asset-select"}
+                isLoading={inProgress}
+                isDisabled={isWrongNetwork}
+                selectedTokenId={asset}
+                tokens={tokens}
+                onSelectAsset={handleSelectAsset}
+              />
+            </ResponsiveFlexWrapper>
+          </ContainerCard>
           <MainContent
             chains={chains}
             chainFrom={chainFrom!}
             chainTo={chainTo!}
-            amountIn={amountIn!}
-            amountOut={amountOut!}
+            amountIn={amountIn}
+            amountOut={amountOut}
             routeId={routeId}
             inProgress={inProgress}
             isAbleToMove={isAbleToMove}
@@ -229,7 +253,7 @@ const Home = ({ chains }: Props) => {
             onAmountChange={handleAmountInChange}
             onApproveWallet={() =>
               onApproveWallet(
-                amountIn!,
+                getParsedAmountIn(),
                 chainFrom?.isSendingEnabled!,
                 chainTo?.isReceivingEnabled!,
                 chainFrom?.chainId!,
@@ -250,8 +274,8 @@ const Home = ({ chains }: Props) => {
               onRouteSelect={handleOnRouteClick}
             />
           )}
-        </Wrapper>
-      </Root>
+        </Container>
+      </Container>
 
       <HydraModal
         network={network!}

@@ -1,3 +1,4 @@
+import { ReactComponent as hydraBridgeLogo } from "../../../assets/svg/hydra-bridge-logo.svg";
 import { ReactComponent as arrowRight } from "../../../assets/svg/arrow-right.svg";
 import { ReactComponent as cutArrowRight } from "../../../assets/svg/cut-arrow-right.svg";
 import { ReactComponent as ethereum } from "../../../assets/svg/ethereum.svg";
@@ -9,6 +10,7 @@ import { ReactComponent as arbitrum } from "../../../assets/svg/arbitrum.svg";
 import { ReactComponent as optimism } from "../../../assets/svg/optimism.svg";
 
 export const icons = {
+  hydraBridgeLogo,
   arrowRight,
   cutArrowRight,
   ethereum,
