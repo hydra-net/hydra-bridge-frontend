@@ -16,7 +16,6 @@ export type SelectProps = {
   label?: string;
   errorText?: string;
   placeholder?: string;
-  hasError?: boolean;
   isDisabled?: boolean;
   noOptionsMessage?: string;
   onChange: (option: any) => void;
