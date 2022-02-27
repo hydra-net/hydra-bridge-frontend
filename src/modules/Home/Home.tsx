@@ -32,8 +32,8 @@ import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
   min-width: 100vw;
-  background-size: cover;
   background: url("./hydra-background.svg") no-repeat fixed center center;
+  background-size: cover;
 `;
 
 const CustomFlexWrapper = styled(FlexWrapper)`
@@ -252,17 +252,22 @@ const Home = ({ chains }: Props) => {
     <StyledHydraBackground>
       <Container
         type={ContainerType.XXXL}
-        style={{ paddingTop: theme.margin.lg, paddingBottom: theme.margin.lg }}
+        style={{
+          paddingTop: theme.margin.xxl,
+          paddingBottom: theme.margin.xxl,
+        }}
       >
-        <CustomFlexWrapper>
-          <Icon
-            className={"hydra-bridge-logo-sm"}
-            width={"20rem"}
-            height={"7rem"}
-            name={"hydraBridgeLogoSm"}
-          />
-          <ConnectWallet />
-        </CustomFlexWrapper>
+        <Container type={ContainerType.XL}>
+          <CustomFlexWrapper>
+            <Icon
+              className={"hydra-bridge-logo-sm"}
+              width={"20rem"}
+              height={"7rem"}
+              name={"hydraBridgeLogoSm"}
+            />
+            <ConnectWallet />
+          </CustomFlexWrapper>
+        </Container>
         <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
           <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
