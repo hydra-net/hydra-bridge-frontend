@@ -1,22 +1,33 @@
-import styled, { CSSProperties } from "styled-components";
-import Select from "react-select";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
-import Icon from "../Icon/Icon";
-import IconOption from "../Select/IconOption";
-import ValueOption from "../Select/ValueOption";
 import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
+import BrandSelect from "../Molecules/BrandSelect/BrandSelect";
+import { InputLabel } from "../Atoms/Label/Label";
 
+import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
 import { TokenResponseDto } from "../../dtos";
-import { IconKeys, ISelectOption, IStyleableProps } from "../../commonTypes";
-import { ETH } from "../../constants";
-import { legacyTheme } from "../../../shell/theme/legacyTheme";
+import { IStyleableProps } from "../../commonTypes";
 
-const StyledSelect = styled(Select)`
-  width: 100%;
-  border-radius: 10px;
+import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
+import { devicesUp } from "../../../media";
 
-  .send-asset-select__control {
-    border-radius: 20px !important;
+const ResponsiveFlexWrapper = styled(FlexWrapper)`
+  flex-direction: column;
+  align-items: start;
+
+  .label {
+    margin: 0 0 ${theme.margin.md} 0;
+  }
+
+  @media only screen and ${devicesUp.lg} {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .label {
+      margin: 0 ${theme.margin.md} 0 0;
+    }
   }
 `;
 
@@ -35,49 +46,34 @@ const AssetSelect = ({
   onSelectAsset,
   className,
 }: Props & IStyleableProps) => {
-  const customStyles: any = {
-    control: (provided: CSSProperties) => ({
-      ...provided,
-      fontSize: legacyTheme.paragraph.lg,
-      borderRadius: "10px",
-    }),
-    menu: (provided: CSSProperties) => ({
-      ...provided,
-      fontSize: legacyTheme.paragraph.md,
-    }),
-  };
+  const { t } = useTranslation();
 
-  const options: ISelectOption[] = tokens.map((token: TokenResponseDto) => {
-    const isEth = token.symbol.toLocaleLowerCase() === ETH;
-    return {
-      label: token.symbol,
-      value: token.id,
-      icon: (
-        <Icon
-          name={
-            isEth ? "ethereum" : (token.symbol.toLocaleLowerCase() as IconKeys)
-          }
-          size="20px"
-        />
-      ),
-    };
-  });
+  const options: SelectOptionType[] = tokens.map((token: TokenResponseDto) => ({
+    label: token.symbol,
+    value: token.id,
+    iconName: `${token.symbol.toLocaleLowerCase()}Coin`,
+  }));
 
   return (
     <div className={className}>
-      <FlexWrapper flexDirection={"row"} justifyContent={"space-between"}>
-        <StyledSelect
-          styles={customStyles}
+      <ResponsiveFlexWrapper
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
+        <InputLabel fontWeight={theme.fontWeight.semibold} className={"label"}>
+          {t("common.send")}
+        </InputLabel>
+        <BrandSelect
           value={
             options.find((option) => option.value === selectedTokenId) || null
           }
           options={options}
-          placeholder={null}
+          placeholder={t("select-an-asset")}
           onChange={onSelectAsset}
-          components={{ Option: IconOption, SingleValue: ValueOption }}
           isDisabled={isLoading || isDisabled}
         />
-      </FlexWrapper>
+      </ResponsiveFlexWrapper>
     </div>
   );
 };

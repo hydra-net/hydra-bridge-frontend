@@ -12,7 +12,7 @@ const CustomFlexWrapper = styled(FlexWrapper)`
 
 export type SelectOptionType = {
   label: string;
-  value: string | number;
+  value: number;
   iconName?: string;
   isDisabled?: boolean;
   isSelected?: boolean;

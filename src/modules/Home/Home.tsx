@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { toast } from "react-toastify";
+import styled from "styled-components";
 
 import useHome from "./useHome";
 import useTokens from "../../common/hooks/useTokens";
@@ -13,37 +13,62 @@ import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
 import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
 import HydraModal from "../../common/components/Modal/HydraModal";
-import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
 import {
   Container,
   ContainerCard,
 } from "../../common/components/Atoms/Containers/Container";
 import Icon from "../../common/components/Icon/Icon";
 import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
+import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
 
 import { ChainResponseDto } from "../../common/dtos";
-import { ISelectOption } from "../../common/commonTypes";
+import { SelectOptionType } from "../../common/components/Molecules/BrandSelect/SelectOption";
 import { ContainerType } from "../../common/enums";
 import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 
-import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../media";
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
   min-width: 100vw;
-  background: url("./hydra-background.svg") no-repeat fixed;
+  background: url("./hydra-background.svg") no-repeat fixed center center;
   background-size: cover;
-  background-position: center center;
+`;
+
+const CustomFlexWrapper = styled(FlexWrapper)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: ${theme.margin.xl};
+
+  .hydra-bridge-logo-sm {
+    width: 40%;
+  }
+
+  @media only screen and ${devicesUp.sm} {
+    justify-content: flex-end;
+    .hydra-bridge-logo-sm {
+      display: none;
+    }
+  }
 `;
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
   .hydra-bridge-logo {
-    margin-bottom: ${theme.margin.xl};
+    display: none;
   }
   .asset-select {
     width: 100%;
   }
+
+  @media only screen and ${devicesUp.sm} {
+    .hydra-bridge-logo {
+      display: block;
+      margin-bottom: ${theme.margin.xl};
+    }
+  }
+
   @media only screen and ${devicesUp.lg} {
     flex-direction: row;
     justify-content: space-between;
@@ -143,7 +168,7 @@ const Home = ({ chains }: Props) => {
     }
   };
 
-  const handleSelectAsset = (option: ISelectOption) => {
+  const handleSelectAsset = (option: SelectOptionType) => {
     const { value } = option;
     setAsset(value);
     setShowRoutes(false);
@@ -172,7 +197,7 @@ const Home = ({ chains }: Props) => {
     }
   };
 
-  const hanldeOnSelectChainFrom = (option: ISelectOption) => {
+  const hanldeOnSelectChainFrom = (option: SelectOptionType) => {
     const selectedChain = onSelectChainFrom(option);
     setShowRoutes(false);
     setIsDisabled(true);
@@ -188,7 +213,7 @@ const Home = ({ chains }: Props) => {
     }
   };
 
-  const hanldeOnSelectChainTo = (option: ISelectOption) => {
+  const hanldeOnSelectChainTo = (option: SelectOptionType) => {
     const selectedChain = onSelectChainTo(option);
     setShowRoutes(false);
     setIsDisabled(true);
@@ -222,22 +247,34 @@ const Home = ({ chains }: Props) => {
     setRouteId(0);
     setShowRoutes(false);
   };
+
   return (
     <StyledHydraBackground>
       <Container
         type={ContainerType.XXXL}
-        style={{ paddingTop: theme.margin.lg, paddingBottom: theme.margin.lg }}
+        style={{
+          paddingTop: theme.margin.xxl,
+          paddingBottom: theme.margin.xxl,
+        }}
       >
-        <div style={{ textAlign: "right" }}>
-          <ConnectWallet />
-        </div>
-        <Container maxWidth={theme.maxWidth["6xl"]}>
+        <Container type={ContainerType.XL}>
+          <CustomFlexWrapper>
+            <Icon
+              className={"hydra-bridge-logo-sm"}
+              width={"20rem"}
+              height={"7rem"}
+              name={"hydraBridgeLogoSm"}
+            />
+            <ConnectWallet />
+          </CustomFlexWrapper>
+        </Container>
+        <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
           <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}
                 width={"20rem"}
-                height={"4.5rem"}
+                height={"7rem"}
                 name={"hydraBridgeLogo"}
               />
               <AssetSelect
@@ -254,8 +291,8 @@ const Home = ({ chains }: Props) => {
             chains={chains}
             chainFrom={chainFrom!}
             chainTo={chainTo!}
-            amountIn={amountIn!}
-            amountOut={amountOut!}
+            amountIn={amountIn}
+            amountOut={amountOut}
             routeId={routeId}
             inProgress={inProgress}
             isAbleToMove={isAbleToMove}
@@ -290,7 +327,6 @@ const Home = ({ chains }: Props) => {
               onRouteSelect={handleOnRouteClick}
             />
           )}
-
           <HydraModal
             network={network!}
             subtitle="Transaction"

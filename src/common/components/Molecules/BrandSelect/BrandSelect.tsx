@@ -16,8 +16,6 @@ export type SelectProps = {
   label?: string;
   errorText?: string;
   placeholder?: string;
-  isLoading?: boolean;
-  hasError?: boolean;
   isDisabled?: boolean;
   noOptionsMessage?: string;
   onChange: (option: any) => void;
@@ -27,7 +25,6 @@ const BrandSelect = ({
   options,
   label,
   placeholder,
-  isLoading,
   isDisabled,
   onChange,
   noOptionsMessage,
@@ -49,7 +46,7 @@ const BrandSelect = ({
         noOptionsMessage={() => noOptionsText}
         onChange={onChange}
         components={{ Option: SelectOption, SingleValue: SelectValue }}
-        isDisabled={isLoading || isDisabled}
+        isDisabled={isDisabled}
       />
     </FlexWrapper>
   );

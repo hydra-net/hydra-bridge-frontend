@@ -1,34 +1,41 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Icon from "../../common/components/Icon/Icon";
 import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
 import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
 import { ContainerCard } from "../../common/components/Atoms/Containers/Container";
 import { Input } from "../../common/components/Atoms/Input/Input";
 
-import { ETHEREUM, GOERLI, POLYGON } from "../../common/constants";
+import { ETH, GOERLI, POLYGON } from "../../common/constants";
 import { ChainResponseDto } from "../../common/dtos";
 import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
 import { replaceCharsToHaveOnlyDotOrStringInIt } from "../../helpers/stringHelper";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
-const getFromChains = (chains: ChainResponseDto[]) => {
+/**
+ * Handler to map the results of the ChainResponseDto of the available sender to a SelectionOptionType
+ * @param chains - the senders available
+ */
+const mapChainResponseDtoFromSendingTarget = (chains: ChainResponseDto[]) => {
   return chains
     .filter((item) => item.isSendingEnabled)
     .map((chain: ChainResponseDto) => {
       const name = chain.name.toString().toLowerCase().includes(GOERLI)
-        ? ETHEREUM
+        ? ETH
         : (chain.name.toString().toLowerCase() as any);
       return {
         label: chain.name,
         value: chain.chainId,
-        icon: <Icon name={name} size="20px" />,
+        iconName: `${name}Coin`,
       };
     });
 };
 
-const getToChains = (chains: ChainResponseDto[]) => {
+/**
+ * Handler to map the results of the ChainResponseDto of the available receiver to a SelectionOptionType
+ * @param chains - the receivers available
+ */
+const mapChainResponseDtoToReceivingTarget = (chains: ChainResponseDto[]) => {
   return chains
     .filter((item) => item.isReceivingEnabled)
     .map((chain: ChainResponseDto) => {
@@ -39,7 +46,7 @@ const getToChains = (chains: ChainResponseDto[]) => {
       return {
         label: chain.name,
         value: chain.chainId,
-        icon: <Icon name={name} size="20px" />,
+        iconName: `${name}Coin`,
       };
     });
 };
@@ -113,8 +120,8 @@ const MainContent = ({
   return (
     <ContainerCard>
       <TransferChainSelects
-        chainsFrom={getFromChains(chains)}
-        chainsTo={getToChains(chains)}
+        optionsChainsFrom={mapChainResponseDtoFromSendingTarget(chains)}
+        optionsChainsTo={mapChainResponseDtoToReceivingTarget(chains)}
         chainFrom={chainFrom?.chainId!}
         chainTo={chainTo?.chainId!}
         onSelectChainFrom={onSelectChainFrom}

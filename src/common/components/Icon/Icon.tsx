@@ -1,6 +1,6 @@
-import { LegacyTheme, useTheme } from "styled-components";
 import icons from "./index";
 import { IconKeys } from "../../commonTypes";
+import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 
 interface IIconProps {
   width?: string;
@@ -14,7 +14,6 @@ interface IIconProps {
 const defaultSize = "24px";
 
 const Icon = ({ width, height, size, color, name, ...props }: IIconProps) => {
-  const theme = useTheme() as LegacyTheme;
   const IconComponent = name && icons[name];
 
   if (!IconComponent || typeof IconComponent === "string") {
@@ -25,7 +24,7 @@ const Icon = ({ width, height, size, color, name, ...props }: IIconProps) => {
     <IconComponent
       width={width || size || defaultSize}
       height={height || size || defaultSize}
-      color={color || theme.primaryColor}
+      color={color || theme.colors.white}
       {...props}
     />
   );
