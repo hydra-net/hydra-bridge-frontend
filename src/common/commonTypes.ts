@@ -1,5 +1,6 @@
-import icons from "./components/Icon";
 import { ToastPosition, ToastTransition } from "react-toastify/dist/types";
+
+import icons from "./components/Icon";
 
 export interface IStyleableProps {
   style?: any;

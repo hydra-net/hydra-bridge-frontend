@@ -2,6 +2,7 @@ import React from "react";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { toast } from "react-toastify";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import useHome from "./useHome";
 import useTokens from "../../common/hooks/useTokens";
@@ -29,7 +30,6 @@ import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 import { devicesUp } from "../../media";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
-import { useTranslation } from "react-i18next";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;

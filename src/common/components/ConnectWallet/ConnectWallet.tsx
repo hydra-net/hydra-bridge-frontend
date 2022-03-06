@@ -1,15 +1,14 @@
+import React from "react";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
-import { formatWalletAddress } from "../../../helpers/walletHelper";
-
 import { Button } from "../Atoms/Buttons/Button";
-
-import { DEFAULT_NOTIFY_CONFIG } from "../../constants";
 import Icon from "../Icon/Icon";
-import React from "react";
+
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
+import { DEFAULT_NOTIFY_CONFIG } from "../../constants";
+import { formatWalletAddress } from "../../../helpers/walletHelper";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 const ConnectWallet = () => {
@@ -22,7 +21,6 @@ const ConnectWallet = () => {
     if (!wallet) {
       await onboard?.walletSelect();
     }
-    console.log("WALLET CHECK");
     await onboard?.walletCheck();
   };
 
