@@ -1,4 +1,5 @@
 import { SupportedChainId } from "./enums";
+import { NotificationType } from "./commonTypes";
 
 export const ETH = "eth";
 export const USDC = "usdc";
@@ -19,3 +20,11 @@ export const NETWORK_EXPLORER_URLS: { [key in SupportedChainId]: string } = {
 export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = Object.values(
   SupportedChainId
 ).filter((id) => typeof id === "number") as SupportedChainId[];
+
+export const DEFAULT_NOTIFY_CONFIG: NotificationType = {
+  position: "top-right",
+  autoClose: 5000,
+  pauseOnHover: true,
+  closeOnClick: false,
+  hideProgressBar: true,
+};
