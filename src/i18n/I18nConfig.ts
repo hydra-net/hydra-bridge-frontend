@@ -34,3 +34,5 @@ i18n
       transKeepBasicHtmlNodesFor: ["br", "strong", "i"],
     },
   });
+
+export default i18n;
