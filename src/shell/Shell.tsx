@@ -1,16 +1,16 @@
 import { Suspense } from "react";
-import Layout from "../common/components/Layout";
 import { Routes, Route } from "react-router-dom";
-import { legacyTheme } from "./theme/legacyTheme";
-import { lazyWithPreload } from "../helpers/lazy";
-import { routes } from "../routes";
-import Fallback from "./Fallback";
-import useChains from "../common/hooks/useChains";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// translations
+import useChains from "../common/hooks/useChains";
+import Layout from "../common/components/Layout";
+import Fallback from "./Fallback";
+import { StyledUserNotifyToastContainer } from "../common/components/Molecules/BrandToast/styles";
+
 import "../i18n/I18nConfig";
+import { lazyWithPreload } from "../helpers/lazy";
+import { routes } from "../routes";
+import { legacyTheme } from "./theme/legacyTheme";
 
 const Home = lazyWithPreload(
   () => import(/* webpackChunkName: 'LandingModule' */ "../modules/Home/Home")
@@ -33,7 +33,10 @@ const Shell = () => {
             <Route path={routes.page404} element={<Page404 />} />
             <Route path="*" element={<Page404 />} />
           </Routes>
-          <ToastContainer />
+          <StyledUserNotifyToastContainer
+            containerId={"user__notify"}
+            toastClassName={"toast"}
+          />
         </Suspense>
       </Layout>
     </>

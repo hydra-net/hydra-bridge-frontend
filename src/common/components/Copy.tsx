@@ -10,11 +10,13 @@ type Props = {
 
 const Copy = ({ payload, size, color, onCopy }: Props) => {
   const onCopyClicked = (e: any) => {
+    console.log("onCopyClicked");
     // prevent parent click handler from firing
     e.preventDefault();
     e.stopPropagation();
     navigator.clipboard.writeText(payload).then(
       () => {
+        console.log("onCopy ?");
         if (onCopy) {
           onCopy();
         }

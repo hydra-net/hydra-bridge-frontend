@@ -16,6 +16,9 @@ export const StyledUserNotifyToastContainer = styled(StyledToastContainer)`
     top: 3rem;
     right: 3rem;
     .Toastify {
+      &__toast-body:not(.Toastify__toast-icon) {
+        word-break: break-word;
+      }
       &__close-button {
         color: ${theme.colors.white};
         opacity: 0.8;

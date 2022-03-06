@@ -9,10 +9,15 @@ import {
   RouteDto,
 } from "../../common/dtos";
 import { useWeb3 } from "@chainsafe/web3-context";
-import { ETH, HOP_BRIDGE_GOERLI } from "../../common/constants";
+import {
+  DEFAULT_NOTIFY_CONFIG,
+  ETH,
+  HOP_BRIDGE_GOERLI,
+} from "../../common/constants";
 import _ from "lodash";
 import { toast } from "react-toastify";
 import { TransactionRequest } from "@ethersproject/abstract-provider";
+import { useTranslation } from "react-i18next";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 export default function useHome() {
@@ -39,6 +44,7 @@ export default function useHome() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { onboard, address, provider, network } = useWeb3();
+  const { t } = useTranslation();
 
   const onConnectWallet = async () => {
     // Prompt user to select a wallet
@@ -107,7 +113,7 @@ export default function useHome() {
           }
         }
       } catch (e) {
-        console.log("Get quote error", e);
+        console.error("Get quote error", e);
       } finally {
         setInProgress(false);
       }
@@ -148,7 +154,7 @@ export default function useHome() {
         }
       }
     } catch (e) {
-      console.log("Build approve data error", e);
+      console.error("Build approve data error", e);
     }
   };
 
@@ -169,14 +175,14 @@ export default function useHome() {
         const signer = provider!.getUncheckedSigner();
         const tx = await signer.sendTransaction(buildApproveTx);
         if (tx) {
-          console.log("Approve tx hash:", tx.hash);
+          console.info("Approve tx hash:", tx.hash);
           setInProgress(true);
           setTxHash(tx.hash);
           setIsModalOpen(true);
           const receipt = await tx.wait();
           if (receipt.logs) {
             setIsApproved(true);
-            console.log("Approve receipt logs", receipt.logs);
+            console.info("Approve receipt logs", receipt.logs);
             await onGetQuote({
               recipient: address!,
               fromAsset: asset,
@@ -189,8 +195,10 @@ export default function useHome() {
         }
       }
     } catch (e: any) {
-      console.log("On approve wallet error", e);
-      toast.error("Error approving wallet", { autoClose: false });
+      console.error("On approve wallet error", e);
+      toast.error(t("notification.error-approving-wallet"), {
+        autoClose: false,
+      });
     } finally {
       setInProgress(false);
     }
@@ -204,7 +212,7 @@ export default function useHome() {
           setBridgeTx(response);
         }
       } catch (e) {
-        console.log("Build bridge tx error", e);
+        console.error("Build bridge tx error", e);
       }
     }
   };
@@ -219,7 +227,7 @@ export default function useHome() {
       try {
         const signer = provider!.getUncheckedSigner();
         const { data, to, from, value } = bridgeTx;
-        console.log("bridge tx move:", bridgeTx);
+        console.info("bridge tx move:", bridgeTx);
         let dto: TransactionRequest = { data, to, from };
         if (isEth) {
           dto.value = value;
@@ -230,14 +238,17 @@ export default function useHome() {
         setTxHash(tx.hash);
         setIsModalOpen(true);
         setShowRoutes(false);
-        console.log("Move tx", tx);
+        console.info("Move tx", tx);
         const receipt = await tx.wait();
         if (receipt.logs) {
-          console.log("Move receipt logs", receipt.logs);
+          console.info("Move receipt logs", receipt.logs);
         }
       } catch (e: any) {
-        console.log("Bridge funds error", e);
-        toast.error("Error bridging funds", { autoClose: false });
+        console.error("Bridge funds error", e);
+        toast.error(t("notification.error-bridging-funds"), {
+          ...DEFAULT_NOTIFY_CONFIG,
+          autoClose: false,
+        });
       }
     }
   };
