@@ -11,7 +11,7 @@ const StyledText = styled.p`
   font-size: ${theme.paragraph.sm};
   margin: 0;
   min-width: 15rem;
-  padding: 0.8rem;
+  padding: 0.8rem 1.5rem;
 `;
 
 export type BridgeRouteItemFeesProps = {
@@ -32,7 +32,11 @@ const BridgeRouteItemFees = ({
   // TODO TEST
   const getServiceTimeOutput = () => `~ ${serviceTime / 60} min`;
   return (
-    <ContainerCard borderRadius={theme.borderRadius.xxl} padding={"0"}>
+    <ContainerCard
+      borderRadius={theme.borderRadius.xl}
+      padding={"0"}
+      bg={theme.colors.gray["medium-dark"]}
+    >
       <StyledText>
         {t("gas-fee")} : ~ {getGasFee()} $ | {getServiceTimeOutput()}
       </StyledText>

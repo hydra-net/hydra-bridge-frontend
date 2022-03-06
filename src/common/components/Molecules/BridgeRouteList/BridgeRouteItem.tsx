@@ -29,7 +29,7 @@ const ResponsiveContainerCard = styled(ContainerCard)`
     background-color: ${theme.colors.blue.darker};
   }
   @media only screen and ${devicesUp.md} {
-    padding: 2.4rem;
+    padding: 1.4rem 2.4rem;
   }
 `;
 
@@ -56,7 +56,10 @@ const BridgeRouteItem = ({
 }: BridgeRouteItemProps) => {
   return (
     <CustomUnStyledButton onClick={() => onRouteSelect(routeId)}>
-      <ResponsiveContainerCard borderRadius={theme.borderRadius.lg}>
+      <ResponsiveContainerCard
+        borderRadius={theme.borderRadius.lg}
+        bg={theme.colors.blue.darkest}
+      >
         <StyledBridgeRoute>
           <StyledBridgeRouteAmount>
             <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />

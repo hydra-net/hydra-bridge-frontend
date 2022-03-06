@@ -1,12 +1,16 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
+
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../../media";
-export const StyledBridgeRoute = styled.div`
+
+export const StyledBridgeRoute = styled.div<{ children?: ReactNode }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
   width: 100%;
+  margin-bottom: ${(props) => (props.children ? theme.margin.md : 0)};
 
   @media only screen and ${devicesUp.sm} {
     align-items: center;
