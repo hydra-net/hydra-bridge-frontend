@@ -118,7 +118,6 @@ export const StyledBridgeNetwork = styled.div`
       &__name {
         font-size: ${theme.paragraph.lg};
         letter-spacing: 0.1rem;
-        font-weight: ${theme.fontWeight.semibold};
       }
       &__icon {
         margin: 0 ${theme.margin.md} 0 0;

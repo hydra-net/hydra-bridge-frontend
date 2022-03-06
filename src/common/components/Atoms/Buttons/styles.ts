@@ -146,3 +146,19 @@ export const StyledPrimaryButton = styled(StyledButton)`
     }
   }
 `;
+
+export const UnStyledButton = styled.button`
+  background: none;
+  width: 100%;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  &:focus {
+    border-radius: ${theme.borderRadius.lg};
+    box-shadow: ${theme.colors.blue.darkest} 0 0 0 2px,
+      ${theme.colors.blue.light} 0 0 0 4px, ${theme.colors.black} 0 0 0 0;
+  }
+`;
