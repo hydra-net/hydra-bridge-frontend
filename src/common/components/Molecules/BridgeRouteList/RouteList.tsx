@@ -1,12 +1,31 @@
-import React from "react";
-import { RouteDto } from "../../../dtos";
+import React, { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+
 import RouteItem from "./RouteItem";
 import RouteItemFees from "./RouteItemFees";
-import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+
+import { RouteDto } from "../../../dtos";
 import { getBridgeIcon, getCoinIcon } from "../../../../helpers/icons";
+import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import { devicesUp } from "../../../../media";
+
+const StyledDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  width: 100%;
+  font-size: ${theme.paragraph.md};
+  text-align: center;
+  color: ${theme.colors.black};
+
+  @media only screen and ${devicesUp.md} {
+    font-size: ${theme.paragraph.lg};
+  }
+`;
 
 export type BridgeRouteListProps = {
-  inProgress: boolean;
   routes: RouteDto[];
   selectedRouteId?: number;
   onRouteSelect: (routeId: number) => void;
@@ -17,12 +36,11 @@ const RouteList = ({
   selectedRouteId,
   onRouteSelect,
 }: BridgeRouteListProps) => {
+  const { t } = useTranslation();
+
   const renderRouteItems = () => {
     try {
-      const routeList = routes.map((route: RouteDto) => {
-        // const routo = _.cloneDeep(route);
-        // @ts-ignore
-        // delete routo.bridgeRoute;
+      const routeList: ReactNode = routes.map((route: RouteDto) => {
         const {
           id,
           transactionCoastUsd,
@@ -34,7 +52,6 @@ const RouteList = ({
             bridgeInfo: { displayName, serviceTime },
           },
         } = route;
-
         const coinSymbol = getCoinIcon(symbol);
         const bridgeSymbol = getBridgeIcon(bridgeName);
 
@@ -60,10 +77,15 @@ const RouteList = ({
       });
       return routeList;
     } catch (err) {
-      return <div>ERROR</div>;
+      return (
+        <StyledDiv style={{ height: "10rem" }}>
+          {t("error-showing-routes")}
+        </StyledDiv>
+      );
     }
   };
-  return <div>{renderRouteItems()}</div>;
+
+  return <>{renderRouteItems()}</>;
 };
 
 export default RouteList;

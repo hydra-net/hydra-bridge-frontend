@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { RouteDto } from "../../dtos";
-import { getFlexCenter, getFlexStart, getVerticalGap } from "../../styles";
-import LoadingSpinner from "../LoadingSpinner";
-import BridgeRoute from "./BridgeRoute";
+import { getFlexStart } from "../../styles";
+import RouteList from "../Molecules/BridgeRouteList/RouteList";
+import { RectangleSkeleton } from "../Atoms/Skelletons/styles";
 
 const Root = styled.div`
   margin-top: 10px;
@@ -26,17 +26,6 @@ const Title = styled.div`
   font-weight: 700;
 `;
 
-const Container = styled.div`
-  display: flex;
-  ${getVerticalGap("5px")};
-  flex-direction: column;
-`;
-
-const SpinnerContainer = styled.div`
-  display: flex;
-  ${getFlexCenter};
-`;
-
 type Props = {
   inProgress: boolean;
   routes: RouteDto[];
@@ -55,22 +44,13 @@ const BridgeRoutes = ({
         <Title>Available routes:</Title>
       </TitleContainer>
       {inProgress ? (
-        <SpinnerContainer>
-          <LoadingSpinner style={{ color: "black" }} />
-        </SpinnerContainer>
+        <RectangleSkeleton height={"10rem"} />
       ) : (
-        <Container>
-          {routes.map((route: RouteDto) => {
-            return (
-              <BridgeRoute
-                key={route.id}
-                route={route}
-                selectedRouteId={selectedRouteId!}
-                onRouteSelect={onRouteSelect}
-              />
-            );
-          })}
-        </Container>
+        <RouteList
+          routes={routes}
+          selectedRouteId={selectedRouteId!}
+          onRouteSelect={onRouteSelect}
+        />
       )}
     </Root>
   );
