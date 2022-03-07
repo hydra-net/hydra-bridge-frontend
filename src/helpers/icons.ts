@@ -9,28 +9,21 @@ import {
 import { IconKeys } from "../common/commonTypes";
 
 /**
- * Helper to allow to match the bridge name.
- * Later on used to get the the icon key
- * @param bridgeName
+ * Helper to easily get the icon key from a bridge
+ * @param initialBridgeName
  */
-export const getBridgeIconName = (bridgeName: string): string => {
+export const getBridgeIcon = (initialBridgeName: string): IconKeys => {
+  let bridgeName = initialBridgeName;
   if (bridgeName === POLYGON_BRIDGE || bridgeName === POLYGON_BRIDGE_GOERLI) {
-    return POLYGON;
+    bridgeName = POLYGON;
   }
 
   if (bridgeName === HOP_BRIDGE || bridgeName === HOP_BRIDGE_GOERLI) {
-    return HOP;
+    bridgeName = HOP;
   }
 
-  return "";
+  return `${bridgeName.toLocaleLowerCase()}Bridge` as IconKeys;
 };
-
-/**
- * Helper to easily get the icon key from a bridge
- * @param bridgeName
- */
-export const getBridgeIcon = (bridgeName: string): IconKeys =>
-  `${bridgeName.toLocaleLowerCase()}Bridge` as IconKeys;
 
 /**
  * Helper to easily get the icon key from a coin
