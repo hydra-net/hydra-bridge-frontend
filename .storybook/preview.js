@@ -4,15 +4,19 @@ import { withThemes } from "@react-theming/storybook-addon";
 
 import { stakenetTheme } from "../src/shell/theme/stakenetTheme";
 import { StakenetGlobalStyle } from "../src/shell/theme/stakenetGlobalStyle";
+import { storyBookViewports } from "./vieports.config";
+
+import { StyledUserNotifyToastContainer } from "../src/common/components/Molecules/BrandToast/styles";
 
 import "./storybook.css";
 import "../src/assets/fonts/index.css";
-import { storyBookViewports } from "./vieports.config";
+import "react-toastify/dist/ReactToastify.css";
 
 addDecorator(withThemes(ThemeProvider, [stakenetTheme]));
 addDecorator((s) => (
   <>
     <StakenetGlobalStyle />
+    <StyledUserNotifyToastContainer containerId={"user__notify"} toastClassName={"toast"} />
     {s()}
   </>
 ));
