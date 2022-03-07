@@ -18,10 +18,10 @@ import { ReactComponent as polygonCoin } from "../../../assets/svg/coins/polygon
 import { ReactComponent as usdcCoin } from "../../../assets/svg/coins/usdc.svg";
 import { ReactComponent as usdtCoin } from "../../../assets/svg/coins/usdt.svg";
 
-// networks
-import { ReactComponent as hopNetwork } from "../../../assets/svg/networks/hop.svg";
-import { ReactComponent as polygonNetwork } from "../../../assets/svg/networks/polygon.svg";
-import { ReactComponent as synapseNetwork } from "../../../assets/svg/networks/synapse.svg";
+// bridges
+import { ReactComponent as hopBridge } from "../../../assets/svg/networks/hop.svg";
+import { ReactComponent as polygonBridge } from "../../../assets/svg/networks/polygon.svg";
+import { ReactComponent as synapseBridge } from "../../../assets/svg/networks/synapse.svg";
 
 export const icons = {
   hydraBridgeLogo,
@@ -42,10 +42,10 @@ export const icons = {
   polygonCoin,
   usdcCoin,
   usdtCoin,
-  // networks
-  hopNetwork,
-  polygonNetwork,
-  synapseNetwork,
+  // bridges
+  hopBridge,
+  polygonBridge,
+  synapseBridge,
 };
 
 export default icons;
