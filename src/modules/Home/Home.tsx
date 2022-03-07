@@ -2,6 +2,7 @@ import React from "react";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { toast } from "react-toastify";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 import useHome from "./useHome";
 import useTokens from "../../common/hooks/useTokens";
@@ -28,6 +29,7 @@ import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 
 import { devicesUp } from "../../media";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
@@ -138,6 +140,7 @@ const Home = ({ chains }: Props) => {
     onDebouncedQuote
   );
   const { tokens, isEth } = useTokens(chainFrom!, network!, asset);
+  const { t } = useTranslation();
 
   const isAbleToMove = isApproved || isEth;
   const isConnected = !!address;
@@ -191,7 +194,10 @@ const Home = ({ chains }: Props) => {
         });
       }
       if (isNotEnoughBalance) {
-        toast.error("Error not enough funds", { autoClose: false });
+        toast.error(t("notification.not-enough-funds"), {
+          ...DEFAULT_NOTIFY_CONFIG,
+          autoClose: false,
+        });
       }
       setIsNotEnoughBalance(isNotEnoughBalance);
     }

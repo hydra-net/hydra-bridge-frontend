@@ -15,5 +15,12 @@
     "loading": "Loading",
     "approve": "Approve",
     "no-options-in-select": "No options"
+  },
+  "notification": {
+    "copied": "Copied!",
+    "error-copy": "Couldn't copy the address",
+    "not-enough-funds": "Not enough funds",
+    "error-bridging-funds": "Error bridging funds",
+    "error-approving-wallet": "Error approving wallet"
   }
 }
