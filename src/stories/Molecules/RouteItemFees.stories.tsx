@@ -4,16 +4,16 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Container } from "../../common/components/Atoms/Containers/Container";
 
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
-import BridgeRouteItemFees from "../../common/components/Molecules/BridgeRouteList/BridgeRouteItemFees";
+import RouteItemFees from "../../common/components/Molecules/BridgeRouteList/RouteItemFees";
 
 export default {
   title: "Molecules/BridgeRoutes/Fees",
-  component: BridgeRouteItemFees,
-} as ComponentMeta<typeof BridgeRouteItemFees>;
+  component: RouteItemFees,
+} as ComponentMeta<typeof RouteItemFees>;
 
-const Template: ComponentStory<typeof BridgeRouteItemFees> = (args) => (
+const Template: ComponentStory<typeof RouteItemFees> = (args) => (
   <Container maxWidth={theme.maxWidth.xs} noGutter={true}>
-    <BridgeRouteItemFees {...args} />
+    <RouteItemFees {...args} />
   </Container>
 );
 

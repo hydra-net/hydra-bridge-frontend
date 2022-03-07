@@ -4,21 +4,19 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Container } from "../../common/components/Atoms/Containers/Container";
 
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
-import BridgeRouteItem, {
+import RouteItem, {
   BridgeRouteItemProps,
-} from "../../common/components/Molecules/BridgeRouteList/BridgeRouteItem";
-import BridgeRouteItemFees from "../../common/components/Molecules/BridgeRouteList/BridgeRouteItemFees";
+} from "../../common/components/Molecules/BridgeRouteList/RouteItem";
+import RouteItemFees from "../../common/components/Molecules/BridgeRouteList/RouteItemFees";
 
 export default {
   title: "Molecules/BridgeRoutes/Item",
-  component: BridgeRouteItem,
-} as ComponentMeta<typeof BridgeRouteItem>;
+  component: RouteItem,
+} as ComponentMeta<typeof RouteItem>;
 
-const Template: ComponentStory<typeof BridgeRouteItem> = (args) => (
+const Template: ComponentStory<typeof RouteItem> = (args) => (
   <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
-    <BridgeRouteItem {...args}>
-      {args.children ? args.children : null}
-    </BridgeRouteItem>
+    <RouteItem {...args}>{args.children ? args.children : null}</RouteItem>
   </Container>
 );
 
@@ -26,9 +24,10 @@ const baseArgs: BridgeRouteItemProps = {
   amountIn: "0.0001",
   amountOut: "0.0001",
   coinSymbol: "ethCoin",
-  bridgeSymbol: "polygonNetwork",
+  bridgeSymbol: "polygonBridge",
   bridgeDisplayName: "Polygon",
   routeId: 2,
+  isSelected: false,
   onRouteSelect: (id: number) => alert(`on route select id: ${id}`),
 };
 
@@ -46,9 +45,17 @@ export const WithTransactionFees = Template.bind({});
 WithTransactionFees.args = {
   ...baseArgs,
   children: (
-    <BridgeRouteItemFees
+    <RouteItemFees
       transactionCostInUsd={0.39979797399225586}
       serviceTime={300}
     />
   ),
+};
+
+export const Selected = Template.bind({});
+Selected.args = {
+  ...baseArgs,
+  isSelected: true,
+  amountIn: "0.001",
+  amountOut: "0.001",
 };

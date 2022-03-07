@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import { UnStyledButton } from "../../Atoms/Buttons/styles";
 
-import { IconKeys } from "../../../commonTypes";
+import { IconKeys, IStyleableProps } from "../../../commonTypes";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../../media";
 
@@ -21,8 +21,11 @@ const CustomUnStyledButton = styled(UnStyledButton)`
     background-color: ${theme.colors.blue.darker};
   }
 `;
-const ResponsiveContainerCard = styled(ContainerCard)`
+const ResponsiveContainerCard = styled(ContainerCard)<{ isSelected: boolean }>`
   padding: 1rem;
+
+  ${(props) =>
+    props.isSelected ? `background-color: ${theme.colors.blue.darker}` : ""};
 
   &:hover,
   &:focus {
@@ -40,23 +43,26 @@ export type BridgeRouteItemProps = {
   amountOut: string | number;
   bridgeDisplayName: string;
   routeId: number;
+  isSelected: boolean;
   onRouteSelect: (id: number) => void;
   children?: ReactNode;
 };
 
-const BridgeRouteItem = ({
+const RouteItem = ({
   coinSymbol,
   bridgeSymbol,
   amountIn,
   amountOut,
   bridgeDisplayName,
   routeId,
+  isSelected,
   onRouteSelect,
   children,
-}: BridgeRouteItemProps) => {
+}: BridgeRouteItemProps & IStyleableProps) => {
   return (
     <CustomUnStyledButton onClick={() => onRouteSelect(routeId)}>
       <ResponsiveContainerCard
+        isSelected={isSelected}
         borderRadius={theme.borderRadius.lg}
         bg={theme.colors.blue.darkest}
       >
@@ -98,4 +104,4 @@ const BridgeRouteItem = ({
   );
 };
 
-export default BridgeRouteItem;
+export default RouteItem;

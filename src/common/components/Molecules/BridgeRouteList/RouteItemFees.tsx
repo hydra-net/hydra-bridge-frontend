@@ -18,7 +18,7 @@ export type BridgeRouteItemFeesProps = {
   transactionCostInUsd: number;
   serviceTime: number;
 };
-const BridgeRouteItemFees = ({
+const RouteItemFees = ({
   transactionCostInUsd,
   serviceTime,
 }: BridgeRouteItemFeesProps) => {
@@ -42,4 +42,4 @@ const BridgeRouteItemFees = ({
   );
 };
 
-export default BridgeRouteItemFees;
+export default RouteItemFees;
