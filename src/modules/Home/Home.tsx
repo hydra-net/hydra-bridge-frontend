@@ -42,14 +42,15 @@ const CustomFlexWrapper = styled(FlexWrapper)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: ${theme.margin.xl};
+  margin-bottom: ${theme.margin.md};
 
   .hydra-bridge-logo-sm {
-    width: 40%;
+    transform: scale(0.8);
   }
 
   @media only screen and ${devicesUp.sm} {
     justify-content: flex-end;
+    margin-bottom: ${theme.margin.xxl};
     .hydra-bridge-logo-sm {
       display: none;
     }
@@ -76,7 +77,6 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
     justify-content: space-between;
 
     .hydra-bridge-logo {
-      width: 28%;
       margin-bottom: 0;
     }
     .asset-select {
@@ -263,7 +263,7 @@ const Home = ({ chains }: Props) => {
           paddingBottom: theme.margin.xxl,
         }}
       >
-        <Container type={ContainerType.XL}>
+        <Container type={ContainerType.XXXL} noGutter={true}>
           <CustomFlexWrapper>
             <Icon
               className={"hydra-bridge-logo-sm"}

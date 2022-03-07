@@ -1,18 +1,21 @@
 import styled, { css } from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import { devicesUp } from "../../../../media";
 
 export type IStyledButtonProps = {
   isLoading?: boolean;
   fontWeight?: number;
   fullWidth?: boolean;
   borderRadius?: string;
+  size?: string;
 };
 
 export const StyledButton = styled.button<IStyledButtonProps>`
   position: relative;
   z-index: 1;
   overflow: hidden;
-  font-size: ${theme.paragraph.md};
+  font-size: ${(props) =>
+    props.size === "sm" ? theme.paragraph.sm : theme.paragraph.md};
   font-weight: ${(props) =>
     props.fontWeight ? props.fontWeight : theme.fontWeight.normal};
   color: ${theme.colors.white};
@@ -34,8 +37,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
   border: 1px transparent;
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.lg};
-  padding: 1.5rem;
-
+  padding: ${(props) => (props.size === "sm" ? "1rem" : "1.5rem")};
   opacity: ${(props) => (props.disabled && !props.isLoading ? "0.7" : "1")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
@@ -111,7 +113,12 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       }
     `}
 
-    /* icon */
+  @media only screen and ${devicesUp.lg} {
+    font-size: ${theme.paragraph.md};
+    padding: 1.5rem;
+  }
+
+  /* icon */
   .btn-icon {
     display:flex;
     align-items:center;
