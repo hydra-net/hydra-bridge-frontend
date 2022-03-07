@@ -36,6 +36,11 @@ const StyledHydraBackground = styled.section`
   min-width: 100vw;
   background: url("./hydra-background.svg") no-repeat fixed center center;
   background-size: cover;
+  padding: ${theme.margin.md} 0 6rem 0;
+
+  @media only screen and ${devicesUp.md} {
+    padding: ${theme.margin.xxl} 0 ${theme.margin.xxl} 0;
+  }
 `;
 
 const CustomFlexWrapper = styled(FlexWrapper)`
@@ -256,13 +261,7 @@ const Home = ({ chains }: Props) => {
 
   return (
     <StyledHydraBackground>
-      <Container
-        type={ContainerType.XXXL}
-        style={{
-          paddingTop: theme.margin.xxl,
-          paddingBottom: theme.margin.xxl,
-        }}
-      >
+      <Container type={ContainerType.XXXL}>
         <Container type={ContainerType.XXXL} noGutter={true}>
           <CustomFlexWrapper>
             <Icon
