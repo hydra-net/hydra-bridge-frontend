@@ -22,7 +22,7 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = Object.values(
 ).filter((id) => typeof id === "number") as SupportedChainId[];
 
 export const DEFAULT_NOTIFY_CONFIG: NotificationType = {
-  position: "top-right",
+  position: "bottom-right",
   autoClose: 5000,
   pauseOnHover: true,
   closeOnClick: false,

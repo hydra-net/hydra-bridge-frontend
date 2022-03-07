@@ -13,7 +13,7 @@ export const StyledToastContainer = styled(ToastContainer)`
 `;
 
 export const StyledUserNotifyToastContainer = styled(StyledToastContainer)`
-    top: 3rem;
+    bottom: 3rem;
     right: 3rem;
     .Toastify {
       &__toast-body:not(.Toastify__toast-icon) {

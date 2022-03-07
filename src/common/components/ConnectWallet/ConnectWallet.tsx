@@ -32,7 +32,7 @@ const ConnectWallet = () => {
       () => {
         toast.info(t("notification.copied"), {
           ...DEFAULT_NOTIFY_CONFIG,
-          autoClose: 500,
+          autoClose: 1000,
           pauseOnHover: false,
         });
       },
