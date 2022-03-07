@@ -35,10 +35,10 @@ const ResponsiveContainerCard = styled(ContainerCard)`
 
 export type BridgeRouteItemProps = {
   coinSymbol: IconKeys;
-  networkSymbol: IconKeys;
+  bridgeSymbol: IconKeys;
   amountIn: string | number;
   amountOut: string | number;
-  networkDisplayName: string;
+  bridgeDisplayName: string;
   routeId: number;
   onRouteSelect: (id: number) => void;
   children?: ReactNode;
@@ -46,10 +46,10 @@ export type BridgeRouteItemProps = {
 
 const BridgeRouteItem = ({
   coinSymbol,
-  networkSymbol,
+  bridgeSymbol,
   amountIn,
   amountOut,
-  networkDisplayName,
+  bridgeDisplayName,
   routeId,
   onRouteSelect,
   children,
@@ -74,11 +74,11 @@ const BridgeRouteItem = ({
           </StyledBridgeArrow>
           <StyledBridgeNetwork>
             <Icon
-              name={networkSymbol}
+              name={bridgeSymbol}
               size={"4rem"}
               className={"network__icon"}
             />
-            <p className={"network__name"}>{networkDisplayName}</p>
+            <p className={"network__name"}>{bridgeDisplayName}</p>
           </StyledBridgeNetwork>
           <StyledBridgeArrow>
             <Icon

@@ -26,8 +26,8 @@ const baseArgs: BridgeRouteItemProps = {
   amountIn: "0.0001",
   amountOut: "0.0001",
   coinSymbol: "ethCoin",
-  networkSymbol: "polygonNetwork",
-  networkDisplayName: "Polygon",
+  bridgeSymbol: "polygonNetwork",
+  bridgeDisplayName: "Polygon",
   routeId: 2,
   onRouteSelect: (id: number) => alert(`on route select id: ${id}`),
 };
