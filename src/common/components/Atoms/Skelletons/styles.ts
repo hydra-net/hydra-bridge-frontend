@@ -1,6 +1,8 @@
 import styled, { keyframes } from "styled-components";
+
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
-export const skeletonKeyframes = keyframes`
+
+const skeletonKeyframes = keyframes`
   0% {
     background-position: -200px 0;
   }
@@ -8,17 +10,6 @@ export const skeletonKeyframes = keyframes`
     background-position: calc(200px + 100%) 0;
   }
 `;
-// TODO tweak it and use it on the MainContent
-// export const CardSkeletonWrapper = styled.div`
-//   width: 220px;
-//   height: 336px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   position: relative;
-//   border: 1px solid #f5f5f5;
-// `;
 
 export type RectangleSkeletonProps = {
   height?: string;

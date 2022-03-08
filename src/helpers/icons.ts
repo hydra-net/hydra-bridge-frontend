@@ -11,6 +11,7 @@ import { IconKeys } from "../common/commonTypes";
 /**
  * Helper to easily get the icon key from a bridge
  * @param initialBridgeName
+ * @return the bridge icon
  */
 export const getBridgeIcon = (initialBridgeName: string): IconKeys => {
   let bridgeName = initialBridgeName;
@@ -28,6 +29,7 @@ export const getBridgeIcon = (initialBridgeName: string): IconKeys => {
 /**
  * Helper to easily get the icon key from a coin
  * @param coinSymbol
+ * @return the coin icon
  */
 export const getCoinIcon = (coinSymbol: string): IconKeys =>
   `${coinSymbol.toLocaleLowerCase()}Coin` as IconKeys;

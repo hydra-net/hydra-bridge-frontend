@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import { UnStyledButton } from "../../Atoms/Buttons/styles";
 
-import { IconKeys, IStyleableProps } from "../../../commonTypes";
+import { IconKeys } from "../../../commonTypes";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../../media";
 
@@ -58,7 +58,7 @@ const RouteItem = ({
   isSelected,
   onRouteSelect,
   children,
-}: BridgeRouteItemProps & IStyleableProps) => {
+}: BridgeRouteItemProps) => {
   return (
     <CustomUnStyledButton onClick={() => onRouteSelect(routeId)}>
       <ResponsiveContainerCard
