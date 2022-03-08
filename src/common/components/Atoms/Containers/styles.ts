@@ -54,7 +54,7 @@ export const StyledContainerCard = styled(StyledContainer)`
   border-style: solid;
   padding: ${(props) => (props.padding ? props.padding : "2.4rem")};
   border-radius: ${(props) =>
-    props.borderRadius ? props.borderRadius : theme.borderRadius.xxl};
+    props.borderRadius ? props.borderRadius : theme.borderRadius.xl};
   box-shadow: ${(props) =>
     props.boxShadow ? props.boxShadow : theme.boxShadow.lg};
 
