@@ -1,11 +1,11 @@
-import RouteList from "../Molecules/BridgeRouteList/RouteList";
-import { RectangleSkeleton } from "../Atoms/Skelletons/styles";
-import { Container, ContainerCard } from "../Atoms/Containers/Container";
-import { ContainerType } from "../../enums";
-import { InputLabel as Label } from "../Atoms/Label/Label";
-import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
+import RouteList from "./RouteList";
+import { RectangleSkeleton } from "../../Atoms/Skelletons/styles";
+import { Container, ContainerCard } from "../../Atoms/Containers/Container";
+import { ContainerType } from "../../../enums";
+import { InputLabel as Label } from "../../Atoms/Label/Label";
+import { FlexWrapper } from "../../Atoms/Wrappers/Wrapper";
 
-import { RouteDto } from "../../dtos";
+import { RouteDto } from "../../../dtos";
 type Props = {
   inProgress: boolean;
   routes: RouteDto[];

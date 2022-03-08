@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import RouteItemFees, {
   BridgeRouteItemFeesProps,
-} from "../../common/components/Molecules/BridgeRouteList/RouteItemFees";
+} from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
 describe("The Bridge route item fees", () => {
   it("should be defined and correctly calculated", async () => {

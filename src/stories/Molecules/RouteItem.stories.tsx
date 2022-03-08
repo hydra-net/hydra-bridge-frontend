@@ -2,12 +2,12 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Container } from "../../common/components/Atoms/Containers/Container";
-
-import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import RouteItem, {
   BridgeRouteItemProps,
-} from "../../common/components/Molecules/BridgeRouteList/RouteItem";
-import RouteItemFees from "../../common/components/Molecules/BridgeRouteList/RouteItemFees";
+} from "../../common/components/Molecules/BridgeRoutes/RouteItem";
+import RouteItemFees from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
+
+import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 export default {
   title: "Molecules/BridgeRoutes/Item",

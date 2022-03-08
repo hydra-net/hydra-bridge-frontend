@@ -12,7 +12,7 @@ import useAmountInput from "./useAmountInput";
 
 import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
-import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
+import BridgeRoutes from "../../common/components/Molecules/BridgeRoutes/BridgeRoutes";
 import HydraModal from "../../common/components/Modal/HydraModal";
 import {
   Container,

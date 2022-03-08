@@ -2,9 +2,9 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Container } from "../../common/components/Atoms/Containers/Container";
+import RouteItemFees from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
-import RouteItemFees from "../../common/components/Molecules/BridgeRouteList/RouteItemFees";
 
 export default {
   title: "Molecules/BridgeRoutes/Fees",
