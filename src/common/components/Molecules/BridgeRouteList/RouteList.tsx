@@ -56,7 +56,10 @@ const RouteList = ({
         const bridgeSymbol = getBridgeIcon(bridgeName);
 
         return (
-          <div key={id} style={{ marginBottom: theme.margin.sm }}>
+          <div
+            key={id}
+            style={{ width: "100%", marginBottom: theme.margin.md }}
+          >
             <RouteItem
               coinSymbol={coinSymbol}
               bridgeSymbol={bridgeSymbol}

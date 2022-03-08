@@ -275,7 +275,7 @@ const Home = ({ chains }: Props) => {
           </CustomFlexWrapper>
         </Container>
         <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
-          <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
+          <ContainerCard style={{ marginBottom: theme.margin.xl }}>
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}
@@ -326,12 +326,14 @@ const Home = ({ chains }: Props) => {
           />
 
           {showRoutes && !isNotEnoughBalance && isAbleToMove && (
-            <BridgeRoutes
-              inProgress={inProgress}
-              selectedRouteId={routeId}
-              routes={bridgeRoutes}
-              onRouteSelect={handleOnRouteClick}
-            />
+            <div style={{ marginTop: theme.margin.xl }}>
+              <BridgeRoutes
+                inProgress={inProgress}
+                selectedRouteId={routeId}
+                routes={bridgeRoutes}
+                onRouteSelect={handleOnRouteClick}
+              />
+            </div>
           )}
           <HydraModal
             network={network!}
