@@ -9,13 +9,15 @@ import {
   StyledBridgeRoute,
   StyledBridgeRouteAmount,
 } from "./styles";
-import { UnStyledButton } from "../../Atoms/Buttons/styles";
+import { FakeButton } from "../../Atoms/Buttons/Button";
 
 import { IconKeys } from "../../../commonTypes";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../../media";
 
-const CustomUnStyledButton = styled(UnStyledButton)`
+const CustomFakeButton = styled(FakeButton)<{
+  hasBoxShadow?: boolean;
+}>`
   &:focus,
   &:focus-within {
     background-color: ${theme.colors.blue.darker};
@@ -60,7 +62,11 @@ const RouteItem = ({
   children,
 }: BridgeRouteItemProps) => {
   return (
-    <CustomUnStyledButton onClick={() => onRouteSelect(routeId)}>
+    <CustomFakeButton
+      ariaLabel={"select route"}
+      hasBoxShadow={true}
+      onClick={() => onRouteSelect(routeId)}
+    >
       <ResponsiveContainerCard
         isSelected={isSelected}
         borderRadius={theme.borderRadius.lg}
@@ -100,7 +106,7 @@ const RouteItem = ({
         </StyledBridgeRoute>
         {children}
       </ResponsiveContainerCard>
-    </CustomUnStyledButton>
+    </CustomFakeButton>
   );
 };
 

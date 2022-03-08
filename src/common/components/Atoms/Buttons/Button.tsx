@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { StyledComponent } from "styled-components";
 
 import {
   IStyledButtonProps,
   StyledButton,
+  StyledDivAsButton,
   StyledPrimaryButton,
 } from "./styles";
 import { IconKeys } from "../../../commonTypes";
@@ -41,3 +42,23 @@ export const Button = (props: ButtonProps & IStyledButtonProps) =>
 
 export const PrimaryButton = (props: ButtonProps & IStyledButtonProps) =>
   handleButtonWrapping(StyledPrimaryButton, props);
+
+type FakeButtonProps = {
+  onClick: (evt: React.MouseEvent<HTMLDivElement>) => void;
+  ariaLabel: string;
+  children: ReactNode;
+};
+export const FakeButton = ({
+  onClick,
+  ariaLabel,
+  children,
+}: FakeButtonProps & IStyledButtonProps) => (
+  <StyledDivAsButton
+    tabIndex={0}
+    role={"button"}
+    aria-label={ariaLabel}
+    onClick={onClick}
+  >
+    {children}
+  </StyledDivAsButton>
+);

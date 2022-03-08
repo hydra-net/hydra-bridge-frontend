@@ -1,7 +1,7 @@
 import { StyledBubble } from "./styles";
 
 type RoundedBubbleProps = {
-  children: string;
+  children: string | number;
 };
 
 const RoundedBubble = ({ children }: RoundedBubbleProps) => {

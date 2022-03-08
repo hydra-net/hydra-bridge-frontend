@@ -27,9 +27,15 @@ Default.args = {
       alignItems={"center"}
       justifyContent={"space-between"}
     >
-      <Label margin={"0"}>Hello</Label>
+      <Label margin={"0"} style={{ width: "100%" }}>
+        Available routes
+      </Label>
       <RoundedBubble>3</RoundedBubble>
     </FlexWrapper>
   ),
-  content: <div>HELLO</div>,
+  content: (
+    <div style={{ padding: "5rem" }}>
+      <h1 style={{ fontSize: "3rem" }}>Hello again</h1>
+    </div>
+  ),
 };

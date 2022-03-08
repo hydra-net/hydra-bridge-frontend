@@ -147,7 +147,7 @@ export const StyledPrimaryButton = styled(StyledButton)`
   }
 `;
 
-export const UnStyledButton = styled.button`
+export const StyledDivAsButton = styled.div<{ hasBoxShadow?: boolean }>`
   background: none;
   width: 100%;
   color: inherit;
@@ -155,10 +155,13 @@ export const UnStyledButton = styled.button`
   padding: 0;
   font: inherit;
   cursor: pointer;
-  outline: inherit;
+  outline: none;
   &:focus {
     border-radius: ${theme.borderRadius.lg};
-    box-shadow: ${theme.colors.blue.darkest} 0 0 0 2px,
-      ${theme.colors.blue.light} 0 0 0 4px, ${theme.colors.black} 0 0 0 0;
+    box-shadow: ${(props) =>
+      props.hasBoxShadow
+        ? `${theme.colors.blue.darkest} 0 0 0 2px,
+        ${theme.colors.blue.light} 0 0 0 4px, ${theme.colors.black} 0 0 0 0`
+        : "none"};
   }
 `;
