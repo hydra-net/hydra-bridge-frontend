@@ -7,6 +7,7 @@
   "transfer-to": "Transfer to",
   "select-an-asset": "Select an asset",
   "select-chain": "Select chain",
+  "gas-fee": "Gas fee",
   "common": {
     "close": "Close",
     "send": "Send",
