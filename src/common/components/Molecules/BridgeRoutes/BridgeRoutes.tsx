@@ -12,7 +12,7 @@ import RoundedBubble from "../../Atoms/RoundedBubble/RoundedBubble";
 
 import { RouteDto } from "../../../dtos";
 
-type Props = {
+export type BridgeRoutesProps = {
   inProgress: boolean;
   routes: RouteDto[];
   selectedRouteId?: number;
@@ -23,7 +23,7 @@ const BridgeRoutes = ({
   inProgress,
   selectedRouteId,
   onRouteSelect,
-}: Props) => {
+}: BridgeRoutesProps) => {
   const { t } = useTranslation();
 
   const renderHeader = (): ReactNode => (
