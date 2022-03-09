@@ -1,0 +1,357 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Bridge routes should render correctly when not in progress and no error 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL sc-eCImPb bXyKXZ czizOc"
+    type="3xl"
+  >
+    <div
+      class="sc-bdvvtL sc-jRQBWg fGXmcv lkItHs"
+    >
+      <div
+        aria-expanded="true"
+        aria-label="open accordion"
+        class="sc-iqseJM eIsPzL"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="sc-fotOHu bnkEsk"
+        >
+          <div
+            class="sc-fotOHu fbDECk"
+          >
+            <label
+              class="sc-hBUSln dubAMH"
+              style="width: 100%; text-align: left;"
+            >
+              available-routes
+            </label>
+            <div
+              class="sc-dJjYzT jLGZDQ"
+            >
+              2
+            </div>
+          </div>
+          <svg
+            class="sc-ieecCq iNYKmN"
+            color="#FFFFFF"
+            height="1.7rem"
+            isopen="1"
+            style="margin-left: 1.7rem;"
+            width="1.7rem"
+          >
+            cut-arrow-right.svg
+          </svg>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="rah-animating rah-animating--down rah-animating--to-height-auto"
+        style="width: 100%; height: 0px; overflow: hidden; transition: height 500ms ease 0ms;"
+      >
+        <div
+          style=""
+        >
+          <div
+            class="sc-bkkeKt gZVIEP"
+          >
+            <div
+              id="route-8"
+              style="width: 100%; margin-bottom: 2rem;"
+            >
+              <div
+                aria-expanded="false"
+                aria-label="select route"
+                class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK gssaBE"
+                >
+                  <div
+                    class="sc-gKclnd konHGI"
+                  >
+                    <div
+                      class="sc-iCfMLu gYGgwA"
+                    >
+                      <svg
+                        class="amount__icon"
+                        color="#FFFFFF"
+                        height="4rem"
+                        width="4rem"
+                      >
+                        usdc.svg
+                      </svg>
+                      <span
+                        class="amount__number"
+                      >
+                        1
+                      </span>
+                    </div>
+                    <div
+                      class="sc-furwcr fhgROL"
+                    >
+                      <svg
+                        class="arrow__icon"
+                        color="#FFFFFF"
+                        height="2rem"
+                        width="2rem"
+                      >
+                        double-arrow-right.svg
+                      </svg>
+                    </div>
+                    <div
+                      class="sc-pVTFL kOcWqs"
+                    >
+                      <svg
+                        class="bridge__icon"
+                        color="#FFFFFF"
+                        height="4rem"
+                        width="4rem"
+                      >
+                        hop.svg
+                      </svg>
+                      <p
+                        class="bridge__name"
+                      >
+                        Hop Goerli
+                      </p>
+                    </div>
+                    <div
+                      class="sc-furwcr fhgROL"
+                    >
+                      <svg
+                        class="arrow__icon"
+                        color="#FFFFFF"
+                        height="2rem"
+                        width="2rem"
+                      >
+                        double-arrow-right.svg
+                      </svg>
+                    </div>
+                    <div
+                      class="sc-iCfMLu fRazBy"
+                    >
+                      <svg
+                        class="amount__icon"
+                        color="#FFFFFF"
+                        height="4rem"
+                        width="4rem"
+                      >
+                        usdc.svg
+                      </svg>
+                      <span
+                        class="amount__number"
+                      >
+                        1.0
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+                  >
+                    <p
+                      class="sc-bqiRlB jIWwtk"
+                      data-testid="route-fees"
+                    >
+                      gas-fee : ~ 0.61 $ | ~ 5 min
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              id="route-6"
+              style="width: 100%; margin-bottom: 2rem;"
+            >
+              <div
+                aria-expanded="false"
+                aria-label="select route"
+                class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK dKiIhB"
+                >
+                  <div
+                    class="sc-gKclnd konHGI"
+                  >
+                    <div
+                      class="sc-iCfMLu gYGgwA"
+                    >
+                      <svg
+                        class="amount__icon"
+                        color="#FFFFFF"
+                        height="4rem"
+                        width="4rem"
+                      >
+                        usdc.svg
+                      </svg>
+                      <span
+                        class="amount__number"
+                      >
+                        1
+                      </span>
+                    </div>
+                    <div
+                      class="sc-furwcr fhgROL"
+                    >
+                      <svg
+                        class="arrow__icon"
+                        color="#FFFFFF"
+                        height="2rem"
+                        width="2rem"
+                      >
+                        double-arrow-right.svg
+                      </svg>
+                    </div>
+                    <div
+                      class="sc-pVTFL kOcWqs"
+                    >
+                      <svg
+                        class="bridge__icon"
+                        color="#FFFFFF"
+                        height="4rem"
+                        width="4rem"
+                      >
+                        polygon.svg
+                      </svg>
+                      <p
+                        class="bridge__name"
+                      >
+                        Polygon POS Goerli
+                      </p>
+                    </div>
+                    <div
+                      class="sc-furwcr fhgROL"
+                    >
+                      <svg
+                        class="arrow__icon"
+                        color="#FFFFFF"
+                        height="2rem"
+                        width="2rem"
+                      >
+                        double-arrow-right.svg
+                      </svg>
+                    </div>
+                    <div
+                      class="sc-iCfMLu fRazBy"
+                    >
+                      <svg
+                        class="amount__icon"
+                        color="#FFFFFF"
+                        height="4rem"
+                        width="4rem"
+                      >
+                        usdc.svg
+                      </svg>
+                      <span
+                        class="amount__number"
+                      >
+                        1.0
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+                  >
+                    <p
+                      class="sc-bqiRlB jIWwtk"
+                      data-testid="route-fees"
+                    >
+                      gas-fee : ~ 0.63 $ | ~ 30 min
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Bridge routes should render the skeleton when in progress 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL sc-eCImPb bXyKXZ czizOc"
+    type="3xl"
+  >
+    <div
+      class="sc-bdvvtL sc-jRQBWg fGXmcv lkItHs"
+    >
+      <div
+        aria-expanded="true"
+        aria-label="open accordion"
+        class="sc-iqseJM eIsPzL"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="sc-fotOHu bnkEsk"
+        >
+          <div
+            class="sc-fotOHu fbDECk"
+          >
+            <label
+              class="sc-hBUSln dubAMH"
+              style="width: 100%; text-align: left;"
+            >
+              available-routes
+            </label>
+            <div
+              class="sc-dJjYzT jLGZDQ"
+            >
+              2
+            </div>
+          </div>
+          <svg
+            class="sc-ieecCq iNYKmN"
+            color="#FFFFFF"
+            height="1.7rem"
+            isopen="1"
+            style="margin-left: 1.7rem;"
+            width="1.7rem"
+          >
+            cut-arrow-right.svg
+          </svg>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        class="rah-animating rah-animating--down rah-animating--to-height-auto"
+        style="width: 100%; height: 0px; overflow: hidden; transition: height 500ms ease 0ms;"
+      >
+        <div
+          style=""
+        >
+          <div
+            class="sc-bkkeKt gZVIEP"
+          >
+            <div
+              class="sc-ksdxgE jNGrHQ rectangle-skeleton"
+              height="10rem"
+              style="margin-bottom: 1rem;"
+            />
+            <div
+              class="sc-ksdxgE jNGrHQ rectangle-skeleton"
+              height="10rem"
+              style="margin-bottom: 1rem;"
+            />
+            <div
+              class="sc-ksdxgE jNGrHQ rectangle-skeleton"
+              height="10rem"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

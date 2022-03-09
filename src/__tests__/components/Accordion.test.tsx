@@ -14,10 +14,10 @@ describe("The Accordion", () => {
     const { asFragment } = render(<Accordion {...props} />);
     const element = screen.getByRole("button");
 
-    expect(asFragment()).toMatchSnapshot();
     expect(element.getAttribute("aria-expanded")).toBe("false");
     // @ts-ignore nullable
     expect(element.firstChild.lastChild).toHaveStyle("transform: rotate(0)");
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should render correctly when open", async () => {
@@ -27,11 +27,11 @@ describe("The Accordion", () => {
     const element = screen.getByRole("button");
     fireEvent.click(element);
 
-    expect(asFragment()).toMatchSnapshot();
     expect(element.getAttribute("aria-expanded")).toBe("true");
     // @ts-ignore nullable
     expect(element.firstChild.lastChild).toHaveStyle(
       "transform: rotate(90deg)"
     );
+    expect(asFragment()).toMatchSnapshot();
   });
 });

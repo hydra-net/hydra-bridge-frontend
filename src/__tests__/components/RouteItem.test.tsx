@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import RouteItem, {
   RouteItemProps,
@@ -9,6 +9,10 @@ import { mockRouteItemBaseProps } from "../../__mocks__/props/bridgeRoutes";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 describe("The Bridge route item", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it("should render correctly", async () => {
     const props: RouteItemProps = mockRouteItemBaseProps;
 

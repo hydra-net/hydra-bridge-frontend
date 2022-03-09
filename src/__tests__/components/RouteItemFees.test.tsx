@@ -1,10 +1,14 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import RouteItemFees, {
   RouteItemFeesProps,
 } from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
 describe("The Bridge route item fees", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it("should render correctly", async () => {
     const props: RouteItemFeesProps = {
       transactionCostInUsd: 0.39979797399225586,

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import _ from "lodash";
 
 import RouteList, {
@@ -11,6 +11,10 @@ import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import QuoteResponseDtoMock from "../../__mocks__/fromResponse/QuoteResponseDto.json";
 
 describe("The Bridge route list", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it("should render with routes", async () => {
     const props: RouteListProps = mockRouteListBaseProps;
 

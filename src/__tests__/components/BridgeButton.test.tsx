@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import BridgeButton, {
   BridgeButtonProps,
 } from "../../common/components/BridgeButton/BridgeButton";
@@ -20,6 +20,10 @@ describe("The BridgeButton", () => {
       onWalletConnect: () => true,
       onMoveAssets: () => true,
     };
+  });
+
+  afterEach(() => {
+    cleanup();
   });
 
   it("should show Connect wallet when wallet not connected", async () => {
