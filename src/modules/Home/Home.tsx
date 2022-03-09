@@ -30,6 +30,7 @@ import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 import { devicesUp } from "../../media";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
+import { defaultContainerPadding } from "../../common/components/Atoms/Containers/styles";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
@@ -48,7 +49,6 @@ const CustomFlexWrapper = styled(FlexWrapper)`
   align-items: center;
   justify-content: space-between;
   margin-bottom: ${theme.margin.md};
-
   .hydra-bridge-logo-sm {
     transform: scale(0.8);
   }
@@ -60,6 +60,7 @@ const CustomFlexWrapper = styled(FlexWrapper)`
       display: none;
     }
   }
+  ${defaultContainerPadding};
 `;
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
@@ -261,18 +262,16 @@ const Home = ({ chains }: Props) => {
 
   return (
     <StyledHydraBackground>
+      <CustomFlexWrapper>
+        <Icon
+          className={"hydra-bridge-logo-sm"}
+          width={"20rem"}
+          height={"7rem"}
+          name={"hydraBridgeLogoSm"}
+        />
+        <ConnectWallet />
+      </CustomFlexWrapper>
       <Container type={ContainerType.XXXL}>
-        <Container type={ContainerType.XXXL} noGutter={true}>
-          <CustomFlexWrapper>
-            <Icon
-              className={"hydra-bridge-logo-sm"}
-              width={"20rem"}
-              height={"7rem"}
-              name={"hydraBridgeLogoSm"}
-            />
-            <ConnectWallet />
-          </CustomFlexWrapper>
-        </Container>
         <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
           <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
