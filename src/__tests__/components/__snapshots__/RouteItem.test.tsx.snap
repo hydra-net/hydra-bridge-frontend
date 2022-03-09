@@ -95,7 +95,7 @@ exports[`The Bridge route item should render correctly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`The Bridge route item should render correctly without children 1`] = `
+exports[`The Bridge route item should render correctly 1`] = `
 <DocumentFragment>
   <div
     aria-label="select route"

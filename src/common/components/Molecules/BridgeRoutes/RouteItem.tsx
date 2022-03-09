@@ -26,8 +26,10 @@ const CustomFakeButton = styled(FakeButton)<{
 export const RouteItemContainerCard = styled(ContainerCard)<{
   isSelected: boolean;
   hasChildren?: boolean;
+  hasError?: boolean;
 }>`
-  min-height: ${(props) => (props.hasChildren ? "10rem" : "auto")};
+  min-height: ${(props) =>
+    props.hasChildren ? "10rem" : props.hasError ? "10rem" : "auto"};
   padding: 1rem;
   border-radius: ${theme.borderRadius.lg};
   background-color: ${(props) =>

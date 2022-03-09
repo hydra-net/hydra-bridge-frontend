@@ -71,7 +71,6 @@ describe("The BridgeButton", () => {
   it("should fallback to input amount text when none of the conditions met", async () => {
     props.isAmountSet = true;
     const { asFragment } = render(<BridgeButton {...props} />);
-    expect(asFragment()).toMatchSnapshot();
     const button = screen.getByRole("button");
 
     expect(asFragment()).toMatchSnapshot();

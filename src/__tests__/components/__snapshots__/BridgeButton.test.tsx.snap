@@ -53,17 +53,6 @@ exports[`The BridgeButton should fallback to input amount text when none of the 
 </DocumentFragment>
 `;
 
-exports[`The BridgeButton should fallback to input amount text when none of the conditions met 2`] = `
-<DocumentFragment>
-  <button
-    class="sc-bdvvtL sc-gsDKAQ dWAYQK iutElP"
-    disabled=""
-  >
-    input-amount
-  </button>
-</DocumentFragment>
-`;
-
 exports[`The BridgeButton should show Connect wallet when wallet not connected 1`] = `
 <DocumentFragment>
   <button
@@ -75,17 +64,6 @@ exports[`The BridgeButton should show Connect wallet when wallet not connected 1
 `;
 
 exports[`The BridgeButton should show loading spinner and be disabled when inProgress 1`] = `
-<DocumentFragment>
-  <button
-    class="sc-bdvvtL sc-gsDKAQ jKmHEe iutElP"
-    disabled=""
-  >
-    common.loading
-  </button>
-</DocumentFragment>
-`;
-
-exports[`The BridgeButton should show loading spinner and be disabled when inProgress 2`] = `
 <DocumentFragment>
   <button
     class="sc-bdvvtL sc-gsDKAQ jKmHEe iutElP"
