@@ -24,19 +24,20 @@ const BridgeRouteItemFees = ({
 }: BridgeRouteItemFeesProps) => {
   const { t } = useTranslation();
 
-  const getGasFee = () =>
+  const roundGasFee = (): string =>
     // eg: round(0.39979797399225586 * 100) = 40 / 100 = 0.4 to fixed(2) = 0.40
     (Math.round(transactionCostInUsd * 100) / 100).toFixed(2);
 
-  const getServiceTimeOutput = () => `~ ${serviceTime / 60} min`;
+  const getServiceTimeInMinutes = (): number => serviceTime / 60;
+
   return (
     <ContainerCard
       borderRadius={theme.borderRadius.xl}
       padding={"0"}
       bg={theme.colors.gray["medium-dark"]}
     >
-      <StyledText data-testid="route-fees">
-        {t("gas-fee")} : ~ {getGasFee()} $ | {getServiceTimeOutput()}
+      <StyledText>
+        {t("gas-fee")} : ~ {roundGasFee()} $ | ~ {getServiceTimeInMinutes()} min
       </StyledText>
     </ContainerCard>
   );
