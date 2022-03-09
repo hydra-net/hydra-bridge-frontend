@@ -5,7 +5,7 @@ import Icon from "../../Icon/Icon";
 import { ContainerCard } from "../../Atoms/Containers/Container";
 import {
   StyledBridgeArrow,
-  StyledBridgeNetwork,
+  StyledBridgeChain,
   StyledBridgeRoute,
   StyledBridgeRouteAmount,
 } from "./styles";
@@ -25,13 +25,13 @@ const CustomFakeButton = styled(FakeButton)<{
 `;
 export const RouteItemContainerCard = styled(ContainerCard)<{
   isSelected: boolean;
+  hasChildren: boolean;
 }>`
-  min-height: 10rem;
+  min-height: ${(props) => (props.hasChildren ? "10rem" : "auto")};
   padding: 1rem;
   border-radius: ${theme.borderRadius.lg};
-  background-color: ${theme.colors.blue.darkest};
-  ${(props) =>
-    props.isSelected ? `background-color: ${theme.colors.blue.darker}` : ""};
+  background-color: ${(props) =>
+    props.isSelected ? theme.colors.blue.darker : theme.colors.blue.darkest};
 
   &:hover,
   &:focus {
@@ -71,9 +71,9 @@ const RouteItem = ({
       hasBoxShadow={true}
       onClick={() => onRouteSelect(routeId)}
     >
-      <RouteItemContainerCard isSelected={isSelected}>
+      <RouteItemContainerCard isSelected={isSelected} hasChildren={!!children}>
         <StyledBridgeRoute>
-          <StyledBridgeRouteAmount>
+          <StyledBridgeRouteAmount data-testid={"route-first-amount"}>
             <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
             <span className={"amount__number"}>{amountIn}</span>
           </StyledBridgeRouteAmount>
@@ -82,24 +82,29 @@ const RouteItem = ({
               name={"doubleArrowRight"}
               size={"2rem"}
               className={"arrow__icon"}
+              data-testid={"route-first-arrow-icon"}
             />
           </StyledBridgeArrow>
-          <StyledBridgeNetwork>
+          <StyledBridgeChain data-testid={"route-bridge-chain"}>
             <Icon
               name={bridgeSymbol}
               size={"4rem"}
-              className={"network__icon"}
+              className={"bridge__icon"}
             />
-            <p className={"network__name"}>{bridgeDisplayName}</p>
-          </StyledBridgeNetwork>
+            <p className={"bridge__name"}>{bridgeDisplayName}</p>
+          </StyledBridgeChain>
           <StyledBridgeArrow>
             <Icon
               name={"doubleArrowRight"}
               size={"2rem"}
               className={"arrow__icon"}
+              data-testid={"route-second-arrow-icon"}
             />
           </StyledBridgeArrow>
-          <StyledBridgeRouteAmount rtl={true}>
+          <StyledBridgeRouteAmount
+            rtl={true}
+            data-testid={"route-second-amount"}
+          >
             <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
             <span className={"amount__number"}>{amountOut}</span>
           </StyledBridgeRouteAmount>

@@ -2,12 +2,11 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Container } from "../../common/components/Atoms/Containers/Container";
-import RouteItem, {
-  BridgeRouteItemProps,
-} from "../../common/components/Molecules/BridgeRoutes/RouteItem";
+import RouteItem from "../../common/components/Molecules/BridgeRoutes/RouteItem";
 import RouteItemFees from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+import { routeItemBaseProps } from "../../__mocks__/props/bridgeRoutes";
 
 export default {
   title: "Molecules/BridgeRoutes/Item",
@@ -20,30 +19,19 @@ const Template: ComponentStory<typeof RouteItem> = (args) => (
   </Container>
 );
 
-const baseArgs: BridgeRouteItemProps = {
-  amountIn: "0.0001",
-  amountOut: "0.0001",
-  coinSymbol: "ethCoin",
-  bridgeSymbol: "polygonBridge",
-  bridgeDisplayName: "Polygon",
-  routeId: 2,
-  isSelected: false,
-  onRouteSelect: (id: number) => alert(`on route select id: ${id}`),
-};
-
 export const Default = Template.bind({});
-Default.args = { ...baseArgs };
+Default.args = { ...routeItemBaseProps };
 
 export const WithOverflowAmount = Template.bind({});
 WithOverflowAmount.args = {
-  ...baseArgs,
+  ...routeItemBaseProps,
   amountIn: "0.00000001",
   amountOut: "0.00000001",
 };
 
 export const WithTransactionFees = Template.bind({});
 WithTransactionFees.args = {
-  ...baseArgs,
+  ...routeItemBaseProps,
   children: (
     <RouteItemFees
       transactionCostInUsd={0.39979797399225586}
@@ -54,7 +42,7 @@ WithTransactionFees.args = {
 
 export const Selected = Template.bind({});
 Selected.args = {
-  ...baseArgs,
+  ...routeItemBaseProps,
   isSelected: true,
   amountIn: "0.001",
   amountOut: "0.001",

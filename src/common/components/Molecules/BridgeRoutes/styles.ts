@@ -86,14 +86,14 @@ export const StyledBridgeArrow = styled.div`
   }
 `;
 
-export const StyledBridgeNetwork = styled.div`
+export const StyledBridgeChain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 30%;
   max-width: 30%;
 
-  .network {
+  .bridge {
     &__name {
       font-size: ${theme.paragraph.md};
       color: ${theme.colors.white};
@@ -107,7 +107,7 @@ export const StyledBridgeNetwork = styled.div`
   }
 
   @media only screen and ${devicesUp.sm} {
-    .network {
+    .bridge {
       &__icon {
         margin-bottom: ${theme.margin.md};
         transform: scale(1);
@@ -118,7 +118,7 @@ export const StyledBridgeNetwork = styled.div`
   @media only screen and ${devicesUp.md} {
     flex-direction: row;
     justify-content: center;
-    .network {
+    .bridge {
       &__name {
         font-size: ${theme.paragraph.lg};
         letter-spacing: 0.1rem;
