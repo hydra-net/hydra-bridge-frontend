@@ -28,10 +28,12 @@ export const RouteItemContainerCard = styled(ContainerCard)<{
 }>`
   min-height: 10rem;
   padding: 1rem;
-  border-radius: ${theme.borderRadius.lg};
   background-color: ${theme.colors.blue.darkest};
   ${(props) =>
     props.isSelected ? `background-color: ${theme.colors.blue.darker}` : ""};
+  border-radius: ${theme.borderRadius.lg};
+  position: relative;
+  z-index: 3;
 
   &:hover,
   &:focus {
@@ -42,7 +44,7 @@ export const RouteItemContainerCard = styled(ContainerCard)<{
   }
 `;
 
-export type BridgeRouteItemProps = {
+export type RouteItemProps = {
   coinSymbol: IconKeys;
   bridgeSymbol: IconKeys;
   amountIn: string | number;
@@ -64,7 +66,7 @@ const RouteItem = ({
   isSelected,
   onRouteSelect,
   children,
-}: BridgeRouteItemProps) => {
+}: RouteItemProps) => {
   return (
     <CustomFakeButton
       ariaLabel={"select route"}

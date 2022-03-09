@@ -2,13 +2,13 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Container } from "../../common/components/Atoms/Containers/Container";
+import BridgeRoutes, {
+  BridgeRoutesProps,
+} from "../../common/components/Molecules/BridgeRoutes/BridgeRoutes";
 
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { QuoteResponseDto } from "../../common/dtos";
 import QuoteResponseDtoMock from "../../__mocks__/fromResponse/QuoteResponseDto.json";
-import BridgeRoutes, {
-  BridgeRoutesProps,
-} from "../../common/components/Molecules/BridgeRoutes/BridgeRoutes";
 
 export default {
   title: "Organisms/BridgeRoutes",

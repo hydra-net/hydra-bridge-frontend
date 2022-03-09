@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { Container } from "../../common/components/Atoms/Containers/Container";
 import RouteList, {
-  BridgeRouteListProps,
+  RouteListProps,
 } from "../../common/components/Molecules/BridgeRoutes/RouteList";
 
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
@@ -23,7 +23,7 @@ const Template: ComponentStory<typeof RouteList> = (args) => (
 );
 
 const quoteResponse: QuoteResponseDto = QuoteResponseDtoMock;
-const baseArgs: BridgeRouteListProps = {
+const baseArgs: RouteListProps = {
   routes: quoteResponse.routes,
   selectedRouteId: quoteResponse.routes[0].id,
   onRouteSelect: (id: number) => alert(`on route select id: ${id}`),

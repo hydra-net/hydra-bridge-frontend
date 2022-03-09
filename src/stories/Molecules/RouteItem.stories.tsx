@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Container } from "../../common/components/Atoms/Containers/Container";
 import RouteItem, {
-  BridgeRouteItemProps,
+  RouteItemProps,
 } from "../../common/components/Molecules/BridgeRoutes/RouteItem";
 import RouteItemFees from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
@@ -20,7 +20,7 @@ const Template: ComponentStory<typeof RouteItem> = (args) => (
   </Container>
 );
 
-const baseArgs: BridgeRouteItemProps = {
+const baseArgs: RouteItemProps = {
   amountIn: "0.0001",
   amountOut: "0.0001",
   coinSymbol: "ethCoin",
