@@ -8,7 +8,6 @@ import { FlexWrapper } from "../../Atoms/Wrappers/Wrapper";
 
 import { IStyleableProps } from "../../../commonTypes";
 import { colourStylesOverride, StyledSelect } from "./styles";
-import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 
 export type SelectProps = {
   value?: SelectValueType;
@@ -34,9 +33,7 @@ const BrandSelect = ({
 
   return (
     <FlexWrapper alignItems={"start"}>
-      {label && (
-        <InputLabel fontWeight={theme.fontWeight.semibold}>{label}</InputLabel>
-      )}
+      {label && <InputLabel>{label}</InputLabel>}
       <StyledSelect
         // @ts-ignore style config
         styles={colourStylesOverride}

@@ -1,8 +1,8 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import RouteItemFees, {
+import { render } from "@testing-library/react";
+import BridgeRouteItemFees, {
   BridgeRouteItemFeesProps,
-} from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
+} from "../../common/components/Molecules/BridgeRouteList/BridgeRouteItemFees";
 
 describe("The Bridge route item fees", () => {
   it("should be defined and correctly calculated", async () => {
@@ -10,8 +10,8 @@ describe("The Bridge route item fees", () => {
       transactionCostInUsd: 0.39979797399225586,
       serviceTime: 300,
     };
-    render(<RouteItemFees {...props} />);
-    const element = screen.getByTestId("route-fees");
+    const { container } = render(<BridgeRouteItemFees {...props} />);
+    const element = container.querySelector("p");
 
     expect(element).toBeInTheDocument();
     expect(element).toHaveTextContent("gas-fee : ~ 0.40 $ | ~ 5 min");
@@ -22,14 +22,14 @@ describe("The Bridge route item fees", () => {
       transactionCostInUsd: 0.39979797399225586,
       serviceTime: 300,
     };
-    const { rerender } = render(<RouteItemFees {...props} />);
-    const element = screen.getByTestId("route-fees");
+    const { container, rerender } = render(<BridgeRouteItemFees {...props} />);
+    const element = container.querySelector("p");
 
     expect(element).toBeInTheDocument();
     expect(element).toHaveTextContent("gas-fee : ~ 0.40 $ | ~ 5 min");
 
     rerender(
-      <RouteItemFees
+      <BridgeRouteItemFees
         transactionCostInUsd={3.2546656797399225586}
         serviceTime={1800}
       />
