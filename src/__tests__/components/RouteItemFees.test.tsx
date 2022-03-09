@@ -5,6 +5,16 @@ import RouteItemFees, {
 } from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
 describe("The Bridge route item fees", () => {
+  it("should render correctly", async () => {
+    const props: RouteItemFeesProps = {
+      transactionCostInUsd: 0.39979797399225586,
+      serviceTime: 300,
+    };
+
+    const { asFragment } = render(<RouteItemFees {...props} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it("should be defined and correctly calculated", async () => {
     const props: RouteItemFeesProps = {
       transactionCostInUsd: 0.39979797399225586,

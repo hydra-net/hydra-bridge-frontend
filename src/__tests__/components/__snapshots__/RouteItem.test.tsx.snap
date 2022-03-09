@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Bridge route item should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="select route"
+    class="sc-iqseJM eIsPzL"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK hZIbER"
+    >
+      <div
+        class="sc-gKclnd konHGI"
+      >
+        <div
+          class="sc-iCfMLu gYGgwA"
+        >
+          <svg
+            class="amount__icon"
+            color="#FFFFFF"
+            height="4rem"
+            width="4rem"
+          >
+            eth.svg
+          </svg>
+          <span
+            class="amount__number"
+          >
+            0.0001
+          </span>
+        </div>
+        <div
+          class="sc-furwcr fhgROL"
+        >
+          <svg
+            class="arrow__icon"
+            color="#FFFFFF"
+            height="2rem"
+            width="2rem"
+          >
+            double-arrow-right.svg
+          </svg>
+        </div>
+        <div
+          class="sc-pVTFL kOcWqs"
+        >
+          <svg
+            class="bridge__icon"
+            color="#FFFFFF"
+            height="4rem"
+            width="4rem"
+          >
+            polygon.svg
+          </svg>
+          <p
+            class="bridge__name"
+          >
+            Polygon
+          </p>
+        </div>
+        <div
+          class="sc-furwcr fhgROL"
+        >
+          <svg
+            class="arrow__icon"
+            color="#FFFFFF"
+            height="2rem"
+            width="2rem"
+          >
+            double-arrow-right.svg
+          </svg>
+        </div>
+        <div
+          class="sc-iCfMLu fRazBy"
+        >
+          <svg
+            class="amount__icon"
+            color="#FFFFFF"
+            height="4rem"
+            width="4rem"
+          >
+            eth.svg
+          </svg>
+          <span
+            class="amount__number"
+          >
+            0.0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Bridge route item should render correctly without children 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="select route"
+    class="sc-iqseJM eIsPzL"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK hZIbER"
+    >
+      <div
+        class="sc-gKclnd konHGI"
+      >
+        <div
+          class="sc-iCfMLu gYGgwA"
+        >
+          <svg
+            class="amount__icon"
+            color="#FFFFFF"
+            height="4rem"
+            width="4rem"
+          >
+            eth.svg
+          </svg>
+          <span
+            class="amount__number"
+          >
+            0.0001
+          </span>
+        </div>
+        <div
+          class="sc-furwcr fhgROL"
+        >
+          <svg
+            class="arrow__icon"
+            color="#FFFFFF"
+            height="2rem"
+            width="2rem"
+          >
+            double-arrow-right.svg
+          </svg>
+        </div>
+        <div
+          class="sc-pVTFL kOcWqs"
+        >
+          <svg
+            class="bridge__icon"
+            color="#FFFFFF"
+            height="4rem"
+            width="4rem"
+          >
+            polygon.svg
+          </svg>
+          <p
+            class="bridge__name"
+          >
+            Polygon
+          </p>
+        </div>
+        <div
+          class="sc-furwcr fhgROL"
+        >
+          <svg
+            class="arrow__icon"
+            color="#FFFFFF"
+            height="2rem"
+            width="2rem"
+          >
+            double-arrow-right.svg
+          </svg>
+        </div>
+        <div
+          class="sc-iCfMLu fRazBy"
+        >
+          <svg
+            class="amount__icon"
+            color="#FFFFFF"
+            height="4rem"
+            width="4rem"
+          >
+            eth.svg
+          </svg>
+          <span
+            class="amount__number"
+          >
+            0.0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
