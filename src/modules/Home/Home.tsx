@@ -12,7 +12,7 @@ import useAmountInput from "./useAmountInput";
 
 import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
-import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
+import BridgeRoutes from "../../common/components/Molecules/BridgeRoutes/BridgeRoutes";
 import HydraModal from "../../common/components/Modal/HydraModal";
 import {
   Container,
@@ -275,7 +275,7 @@ const Home = ({ chains }: Props) => {
           </CustomFlexWrapper>
         </Container>
         <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
-          <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
+          <ContainerCard style={{ marginBottom: theme.margin.xl }}>
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}
@@ -326,12 +326,14 @@ const Home = ({ chains }: Props) => {
           />
 
           {showRoutes && !isNotEnoughBalance && isAbleToMove && (
-            <BridgeRoutes
-              inProgress={inProgress}
-              selectedRouteId={routeId}
-              routes={bridgeRoutes}
-              onRouteSelect={handleOnRouteClick}
-            />
+            <div style={{ marginTop: theme.margin.xl }}>
+              <BridgeRoutes
+                inProgress={inProgress}
+                selectedRouteId={routeId}
+                routes={bridgeRoutes}
+                onRouteSelect={handleOnRouteClick}
+              />
+            </div>
           )}
           <HydraModal
             network={network!}
