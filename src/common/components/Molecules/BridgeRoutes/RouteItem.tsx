@@ -23,9 +23,13 @@ const CustomFakeButton = styled(FakeButton)<{
     background-color: ${theme.colors.blue.darker};
   }
 `;
-const ResponsiveContainerCard = styled(ContainerCard)<{ isSelected: boolean }>`
+export const RouteItemContainerCard = styled(ContainerCard)<{
+  isSelected: boolean;
+}>`
+  min-height: 10rem;
   padding: 1rem;
-
+  border-radius: ${theme.borderRadius.lg};
+  background-color: ${theme.colors.blue.darkest};
   ${(props) =>
     props.isSelected ? `background-color: ${theme.colors.blue.darker}` : ""};
 
@@ -67,11 +71,7 @@ const RouteItem = ({
       hasBoxShadow={true}
       onClick={() => onRouteSelect(routeId)}
     >
-      <ResponsiveContainerCard
-        isSelected={isSelected}
-        borderRadius={theme.borderRadius.lg}
-        bg={theme.colors.blue.darkest}
-      >
+      <RouteItemContainerCard isSelected={isSelected}>
         <StyledBridgeRoute>
           <StyledBridgeRouteAmount>
             <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
@@ -105,7 +105,7 @@ const RouteItem = ({
           </StyledBridgeRouteAmount>
         </StyledBridgeRoute>
         {children}
-      </ResponsiveContainerCard>
+      </RouteItemContainerCard>
     </CustomFakeButton>
   );
 };

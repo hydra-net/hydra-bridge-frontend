@@ -1,29 +1,12 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 
-import RouteItem from "./RouteItem";
+import RouteItem, { RouteItemContainerCard } from "./RouteItem";
 import RouteItemFees from "./RouteItemFees";
 
 import { RouteDto } from "../../../dtos";
 import { getBridgeIcon, getCoinIcon } from "../../../../helpers/icons";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
-import { devicesUp } from "../../../../media";
-
-const StyledDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 10rem;
-  width: 100%;
-  font-size: ${theme.paragraph.md};
-  text-align: center;
-  color: ${theme.colors.black};
-
-  @media only screen and ${devicesUp.md} {
-    font-size: ${theme.paragraph.lg};
-  }
-`;
 
 export type BridgeRouteListProps = {
   routes: RouteDto[];
@@ -39,8 +22,9 @@ const RouteList = ({
   const { t } = useTranslation();
 
   const renderRouteItems = () => {
-    try {
-      const routeList: ReactNode = routes.map((route: RouteDto) => {
+    console.log("ROUTES", routes);
+    return routes.map((route: RouteDto) => {
+      try {
         const {
           id,
           transactionCoastUsd,
@@ -77,18 +61,28 @@ const RouteList = ({
             </RouteItem>
           </div>
         );
-      });
-      return routeList;
-    } catch (err) {
-      return (
-        <StyledDiv style={{ height: "10rem" }}>
-          {t("error-showing-routes")}
-        </StyledDiv>
-      );
-    }
+      } catch (err) {
+        console.warn(
+          "Couldn't access required values from routes to display it",
+          route
+        );
+        return (
+          <RouteItemContainerCard isSelected={false}>
+            <p
+              style={{
+                fontSize: theme.paragraph.md,
+                color: theme.colors.red,
+                margin: "auto",
+                textAlign: "center",
+              }}
+            >
+              {t("error-showing-routes")}
+            </p>
+          </RouteItemContainerCard>
+        );
+      }
+    });
   };
-
   return <>{renderRouteItems()}</>;
 };
-
 export default RouteList;

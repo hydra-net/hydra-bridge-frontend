@@ -1,0 +1,108 @@
+{
+  "fromAsset":{
+    "id":4,
+    "name":"USD Coin",
+    "chainId":5,
+    "chainName":"Goerli",
+    "address":"0x98339D8C260052B7ad81c28c16C0b98420f2B46a",
+    "decimals":6,
+    "symbol":"USDC"
+  },
+  "fromChainId":5,
+  "toAsset":{
+    "id":4,
+    "name":"USD Coin",
+    "chainId":80001,
+    "chainName":"Goerli",
+    "address":"0x98339D8C260052B7ad81c28c16C0b98420f2B46a",
+    "decimals":6,
+    "symbol":"USDC"
+  },
+  "toChainId":80001,
+  "routes":[
+    {
+      "id":8,
+      "allowanceTarget":"0x9751332fb2Eb50713Bf24D9e5C71a6dE7B98e341",
+      "bridgeRoute":{
+        "bridgeName":"hop-bridge-goerli",
+        "bridgeId":4,
+        "bridgeInfo":{
+          "displayName":"Hop Goerli",
+          "serviceTime":300,
+          "isTestnet":true
+        },
+        "fromAsset":{
+          "id":4,
+          "name":"USD Coin",
+          "chainId":5,
+          "chainName":"Goerli",
+          "address":"0x98339D8C260052B7ad81c28c16C0b98420f2B46a",
+          "decimals":6,
+          "symbol":"USDC"
+        },
+        "fromChainId":5,
+        "toAsset":{
+          "id":4,
+          "name":"USD Coin",
+          "chainId":5,
+          "chainName":"Goerli",
+          "address":"0x98339D8C260052B7ad81c28c16C0b98420f2B46a",
+          "decimals":6,
+          "symbol":"USDC"
+        },
+        "toChainId":80001,
+        "amountIn":"1",
+        "amountOut":"1.0"
+      },
+      "buildTx":{
+        "data":"0xce4d322b00000000000000000000000098339d8c260052b7ad81c28c16c0b98420f2b46a00000000000000000000000052e5ff3cdf688cfb4de8ea93d7e6a1c06d40ea60000000000000000000000000000000000000000000000000000000000001388100000000000000000000000000000000000000000000000000000000000f424000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000018007515bbd00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "to":"0x9751332fb2eb50713bf24d9e5c71a6de7b98e341",
+        "from":"0x52e5ff3cdf688cfb4de8ea93d7e6a1c06d40ea60"
+      },
+      "transactionCoastUsd":0.6126122985388573
+    },
+    {
+      "id":6,
+      "allowanceTarget":"0x9751332fb2Eb50713Bf24D9e5C71a6dE7B98e341",
+      "bridgeRoute":{
+        "bridgeName":"polygon-bridge-goerli",
+        "bridgeId":3,
+        "bridgeInfo":{
+          "displayName":"Polygon POS Goerli",
+          "serviceTime":1800,
+          "isTestnet":true
+        },
+        "fromAsset":{
+          "id":4,
+          "name":"USD Coin",
+          "chainId":5,
+          "chainName":"Goerli",
+          "address":"0x98339D8C260052B7ad81c28c16C0b98420f2B46a",
+          "decimals":6,
+          "symbol":"USDC"
+        },
+        "fromChainId":5,
+        "toAsset":{
+          "id":4,
+          "name":"USD Coin",
+          "chainId":5,
+          "chainName":"Goerli",
+          "address":"0x98339D8C260052B7ad81c28c16C0b98420f2B46a",
+          "decimals":6,
+          "symbol":"USDC"
+        },
+        "toChainId":80001,
+        "amountIn":"1",
+        "amountOut":"1.0"
+      },
+      "buildTx":{
+        "data":"0x5864d9ce00000000000000000000000052e5ff3cdf688cfb4de8ea93d7e6a1c06d40ea6000000000000000000000000098339d8c260052b7ad81c28c16c0b98420f2b46a00000000000000000000000000000000000000000000000000000000000f4240",
+        "to":"0x9751332fb2eb50713bf24d9e5c71a6de7b98e341",
+        "from":"0x52e5ff3cdf688cfb4de8ea93d7e6a1c06d40ea60"
+      },
+      "transactionCoastUsd":0.6313019727060758
+    }
+  ],
+  "amount":"1",
+  "isApproved":true
+}
