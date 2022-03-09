@@ -18,12 +18,12 @@ const Accordion = ({ header, content }: AccordionProps) => {
     setHeight(height === 0 ? "auto" : 0);
   };
   return (
-    <FakeButton
-      ariaLabel={"open accordion"}
-      aria-expanded={height !== 0}
-      onClick={handleToggle}
-    >
-      <ContainerCard padding={"1.8rem 2.4rem"}>
+    <ContainerCard padding={"1.8rem 2.4rem"}>
+      <FakeButton
+        ariaLabel={"open accordion"}
+        aria-expanded={height !== 0}
+        onClick={handleToggle}
+      >
         <FlexWrapper flexDirection={"row"}>
           {header}
           <AccordionIcon
@@ -34,11 +34,11 @@ const Accordion = ({ header, content }: AccordionProps) => {
             isopen={height !== 0 ? 1 : 0}
           />
         </FlexWrapper>
-        <AnimateHeight height={height} duration={500} style={{ width: "100%" }}>
-          <AccordionContent>{content}</AccordionContent>
-        </AnimateHeight>
-      </ContainerCard>
-    </FakeButton>
+      </FakeButton>
+      <AnimateHeight height={height} duration={500} style={{ width: "100%" }}>
+        <AccordionContent>{content}</AccordionContent>
+      </AnimateHeight>
+    </ContainerCard>
   );
 };
 

@@ -8,7 +8,7 @@ import { RouteDto } from "../../../dtos";
 import { getBridgeIcon, getCoinIcon } from "../../../../helpers/icons";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 
-export type BridgeRouteListProps = {
+export type RouteListProps = {
   routes: RouteDto[];
   selectedRouteId?: number;
   onRouteSelect: (routeId: number) => void;
@@ -18,11 +18,10 @@ const RouteList = ({
   routes,
   selectedRouteId,
   onRouteSelect,
-}: BridgeRouteListProps) => {
+}: RouteListProps) => {
   const { t } = useTranslation();
 
   const renderRouteItems = () => {
-    console.log("ROUTES", routes);
     return routes.map((route: RouteDto) => {
       try {
         const {

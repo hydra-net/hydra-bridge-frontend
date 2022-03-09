@@ -6,7 +6,7 @@ import RouteItem from "../../common/components/Molecules/BridgeRoutes/RouteItem"
 import RouteItemFees from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
-import { routeItemBaseProps } from "../../__mocks__/props/bridgeRoutes";
+import { mockRouteItemBaseProps } from "../../__mocks__/props/bridgeRoutes";
 
 export default {
   title: "Molecules/BridgeRoutes/Item",
@@ -20,18 +20,18 @@ const Template: ComponentStory<typeof RouteItem> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { ...routeItemBaseProps };
+Default.args = { ...mockRouteItemBaseProps };
 
 export const WithOverflowAmount = Template.bind({});
 WithOverflowAmount.args = {
-  ...routeItemBaseProps,
+  ...mockRouteItemBaseProps,
   amountIn: "0.00000001",
   amountOut: "0.00000001",
 };
 
 export const WithTransactionFees = Template.bind({});
 WithTransactionFees.args = {
-  ...routeItemBaseProps,
+  ...mockRouteItemBaseProps,
   children: (
     <RouteItemFees
       transactionCostInUsd={0.39979797399225586}
@@ -42,7 +42,7 @@ WithTransactionFees.args = {
 
 export const Selected = Template.bind({});
 Selected.args = {
-  ...routeItemBaseProps,
+  ...mockRouteItemBaseProps,
   isSelected: true,
   amountIn: "0.001",
   amountOut: "0.001",

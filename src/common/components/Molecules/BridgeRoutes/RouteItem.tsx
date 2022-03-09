@@ -25,7 +25,7 @@ const CustomFakeButton = styled(FakeButton)<{
 `;
 export const RouteItemContainerCard = styled(ContainerCard)<{
   isSelected: boolean;
-  hasChildren: boolean;
+  hasChildren?: boolean;
 }>`
   min-height: ${(props) => (props.hasChildren ? "10rem" : "auto")};
   padding: 1rem;
@@ -42,7 +42,7 @@ export const RouteItemContainerCard = styled(ContainerCard)<{
   }
 `;
 
-export type BridgeRouteItemProps = {
+export type RouteItemProps = {
   coinSymbol: IconKeys;
   bridgeSymbol: IconKeys;
   amountIn: string | number;
@@ -64,7 +64,7 @@ const RouteItem = ({
   isSelected,
   onRouteSelect,
   children,
-}: BridgeRouteItemProps) => {
+}: RouteItemProps) => {
   return (
     <CustomFakeButton
       ariaLabel={"select route"}
@@ -73,7 +73,7 @@ const RouteItem = ({
     >
       <RouteItemContainerCard isSelected={isSelected} hasChildren={!!children}>
         <StyledBridgeRoute>
-          <StyledBridgeRouteAmount data-testid={"route-first-amount"}>
+          <StyledBridgeRouteAmount>
             <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
             <span className={"amount__number"}>{amountIn}</span>
           </StyledBridgeRouteAmount>
@@ -82,10 +82,9 @@ const RouteItem = ({
               name={"doubleArrowRight"}
               size={"2rem"}
               className={"arrow__icon"}
-              data-testid={"route-first-arrow-icon"}
             />
           </StyledBridgeArrow>
-          <StyledBridgeChain data-testid={"route-bridge-chain"}>
+          <StyledBridgeChain>
             <Icon
               name={bridgeSymbol}
               size={"4rem"}
@@ -98,13 +97,9 @@ const RouteItem = ({
               name={"doubleArrowRight"}
               size={"2rem"}
               className={"arrow__icon"}
-              data-testid={"route-second-arrow-icon"}
             />
           </StyledBridgeArrow>
-          <StyledBridgeRouteAmount
-            rtl={true}
-            data-testid={"route-second-amount"}
-          >
+          <StyledBridgeRouteAmount rtl={true}>
             <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
             <span className={"amount__number"}>{amountOut}</span>
           </StyledBridgeRouteAmount>

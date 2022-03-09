@@ -14,14 +14,14 @@ const StyledText = styled.p`
   padding: 0.8rem 1.5rem;
 `;
 
-export type BridgeRouteItemFeesProps = {
+export type RouteItemFeesProps = {
   transactionCostInUsd: number;
   serviceTime: number;
 };
 const RouteItemFees = ({
   transactionCostInUsd,
   serviceTime,
-}: BridgeRouteItemFeesProps) => {
+}: RouteItemFeesProps) => {
   const { t } = useTranslation();
 
   const getGasFee = () =>

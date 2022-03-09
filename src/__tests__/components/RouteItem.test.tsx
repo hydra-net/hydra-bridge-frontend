@@ -1,14 +1,14 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import RouteItem, {
-  BridgeRouteItemProps,
+  RouteItemProps,
 } from "../../common/components/Molecules/BridgeRoutes/RouteItem";
-import { routeItemBaseProps } from "../../__mocks__/props/bridgeRoutes";
+import { mockRouteItemBaseProps } from "../../__mocks__/props/bridgeRoutes";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 
 describe("The Bridge route item", () => {
   it("should be defined", async () => {
-    const props: BridgeRouteItemProps = routeItemBaseProps;
+    const props: RouteItemProps = mockRouteItemBaseProps;
     render(<RouteItem {...props} />);
     const element = screen.getByRole("button");
     const firstAmount = screen.getByTestId("route-first-amount");
@@ -41,8 +41,8 @@ describe("The Bridge route item", () => {
   });
 
   it("should not be selected", async () => {
-    const props: BridgeRouteItemProps = {
-      ...routeItemBaseProps,
+    const props: RouteItemProps = {
+      ...mockRouteItemBaseProps,
     };
     render(<RouteItem {...props} />);
     const element = screen.getByRole("button");
@@ -54,8 +54,8 @@ describe("The Bridge route item", () => {
   });
 
   it("should be selected", async () => {
-    const props: BridgeRouteItemProps = {
-      ...routeItemBaseProps,
+    const props: RouteItemProps = {
+      ...mockRouteItemBaseProps,
       isSelected: true,
     };
     render(<RouteItem {...props} />);

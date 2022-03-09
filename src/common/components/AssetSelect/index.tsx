@@ -61,9 +61,7 @@ const AssetSelect = ({
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <InputLabel fontWeight={theme.fontWeight.semibold} className={"label"}>
-          {t("common.send")}
-        </InputLabel>
+        <InputLabel className={"label"}>{t("common.send")}</InputLabel>
         <BrandSelect
           value={
             options.find((option) => option.value === selectedTokenId) || null

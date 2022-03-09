@@ -1,6 +1,6 @@
-import { BridgeRouteItemProps } from "../../common/components/Molecules/BridgeRoutes/RouteItem";
+import { RouteItemProps } from "../../common/components/Molecules/BridgeRoutes/RouteItem";
 
-export const routeItemBaseProps: BridgeRouteItemProps = {
+export const mockRouteItemBaseProps: RouteItemProps = {
   amountIn: "0.0001",
   amountOut: "0.0001",
   coinSymbol: "ethCoin",
