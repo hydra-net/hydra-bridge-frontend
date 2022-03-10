@@ -30,17 +30,16 @@ export const RouteItemContainerCard = styled(ContainerCard)<{
   padding: 1rem;
   background-color: ${theme.colors.blue.darkest};
   ${(props) =>
-    props.isSelected ? `background-color: ${theme.colors.blue.darker}` : ""};
+    props.isSelected ? `background-color: ${theme.colors.gray.dark}` : ""};
+  box-shadow: ${theme.boxShadow.sm};
   border-radius: ${theme.borderRadius.lg};
-  position: relative;
-  z-index: 3;
 
   &:hover,
   &:focus {
-    background-color: ${theme.colors.blue.darker};
+    background-color: ${theme.colors.gray.dark};
   }
   @media only screen and ${devicesUp.md} {
-    padding: 1.4rem 2.4rem;
+    padding: 1.8rem 1.8rem 0.8rem 1.8rem !important;
   }
 `;
 
@@ -96,10 +95,22 @@ const RouteItem = ({
             <Icon
               name={bridgeSymbol}
               width={"2.6rem"}
-              height={"2.3rem"}
-              className={"network__icon"}
+              height={"2.6rem"}
+              className={"network__icon network__icon--sm"}
             />
             <p className={"network__name"}>{bridgeDisplayName}</p>
+
+            <div className={"network__group"}>
+              <span>
+                <Icon
+                  name={bridgeSymbol}
+                  width={"2.6rem"}
+                  height={"2.6rem"}
+                  className={"network__icon"}
+                />
+              </span>
+              <span>{bridgeDisplayName}</span>
+            </div>
           </StyledBridgeNetwork>
           <StyledBridgeArrow>
             <Icon
