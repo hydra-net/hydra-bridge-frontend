@@ -57,7 +57,7 @@ const TransferChainSelects = ({
       <FlexWrapper
         className={"flex-wrapper"}
         alignItems={"start"}
-        margin={`0 0 ${theme.margin.xl} 0`}
+        margin={`0 0 ${theme.margin.default} 0`}
       >
         <BrandSelect
           label={t("transfer-from")}
@@ -71,7 +71,7 @@ const TransferChainSelects = ({
       <FlexWrapper
         className={"flex-wrapper"}
         alignItems={"start"}
-        margin={`0 0 ${theme.margin.xl} 0`}
+        margin={`0 0 ${theme.margin.default} 0`}
       >
         <BrandSelect
           label={t("transfer-to")}

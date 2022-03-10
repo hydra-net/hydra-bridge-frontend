@@ -5,11 +5,12 @@ export const StyledBubble = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.7rem;
+  font-size: ${theme.paragraph.md};
   color: ${theme.colors.white};
-  font-weight: ${theme.fontWeight.semibold};
-  width: 3rem;
-  height: 3rem;
+  font-weight: ${theme.fontWeight.normal};
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 100%;
   background: transparent
     linear-gradient(

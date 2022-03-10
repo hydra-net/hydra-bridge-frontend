@@ -76,20 +76,27 @@ const RouteItem = ({
       <RouteItemContainerCard isSelected={isSelected}>
         <StyledBridgeRoute>
           <StyledBridgeRouteAmount>
-            <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
+            <Icon
+              name={coinSymbol}
+              width={"2.8rem"}
+              height={"3.2rem"}
+              className={"amount__icon"}
+            />
             <span className={"amount__number"}>{amountIn}</span>
           </StyledBridgeRouteAmount>
           <StyledBridgeArrow>
             <Icon
               name={"doubleArrowRight"}
-              size={"2rem"}
+              width={"2.1rem"}
+              height={"1.8rem"}
               className={"arrow__icon"}
             />
           </StyledBridgeArrow>
           <StyledBridgeNetwork>
             <Icon
               name={bridgeSymbol}
-              size={"4rem"}
+              width={"2.6rem"}
+              height={"2.3rem"}
               className={"network__icon"}
             />
             <p className={"network__name"}>{bridgeDisplayName}</p>
@@ -97,12 +104,18 @@ const RouteItem = ({
           <StyledBridgeArrow>
             <Icon
               name={"doubleArrowRight"}
-              size={"2rem"}
+              width={"2.1rem"}
+              height={"1.8rem"}
               className={"arrow__icon"}
             />
           </StyledBridgeArrow>
           <StyledBridgeRouteAmount rtl={true}>
-            <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
+            <Icon
+              name={coinSymbol}
+              width={"2.8rem"}
+              height={"3.2rem"}
+              className={"amount__icon"}
+            />
             <span className={"amount__number"}>{amountOut}</span>
           </StyledBridgeRouteAmount>
         </StyledBridgeRoute>

@@ -27,7 +27,12 @@ const SelectValue = (props: any) => {
     <SingleValue {...props}>
       <CustomFlexWrapper flexDirection={"row"} justifyContent={"start"}>
         {props?.data?.iconName && (
-          <Icon name={props.data.iconName as IconKeys} className={"icon"} />
+          <Icon
+            name={props.data.iconName as IconKeys}
+            width={"3.2rem"}
+            height={"3.2rem"}
+            className={"icon"}
+          />
         )}
         <div>{props?.data?.label}</div>
       </CustomFlexWrapper>

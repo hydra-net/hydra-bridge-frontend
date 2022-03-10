@@ -122,6 +122,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
 `;
 
 export const StyledPrimaryButton = styled(StyledButton)`
+  font-size: ${theme.paragraph.xl};
   background: transparent
     linear-gradient(
       90deg,

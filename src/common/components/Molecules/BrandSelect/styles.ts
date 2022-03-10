@@ -7,7 +7,7 @@ import { SelectOptionType } from "./SelectOption";
 export const StyledSelect = styled(Select)`
   width: 100%;
   border-radius: ${theme.borderRadius.lg};
-  font-size: ${theme.paragraph.lg};
+  font-size: ${theme.paragraph.xl};
 `;
 
 const themeDarkerBlue = theme.colors.blue.darker;
@@ -17,7 +17,7 @@ const noValueSelectedColor = hex2rgba(theme.colors.white, 0.3);
 export const colourStylesOverride: StylesConfig<SelectOptionType> = {
   control: (styles) => ({
     ...styles,
-    padding: "5px",
+    padding: ".5rem .4rem",
     borderWidth: "2px",
     borderRadius: theme.borderRadius.lg,
     backgroundColor: themeDarkestBlue,

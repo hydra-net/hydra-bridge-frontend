@@ -7,7 +7,7 @@ import {
   StyledDivAsButton,
   StyledPrimaryButton,
 } from "./styles";
-import { IconKeys } from "../../../commonTypes";
+import { IconKeys, IStyleableProps } from "../../../commonTypes";
 import Icon from "../../Icon/Icon";
 
 export type ButtonProps = {
@@ -52,12 +52,14 @@ export const FakeButton = ({
   onClick,
   ariaLabel,
   children,
-}: FakeButtonProps & IStyledButtonProps) => (
+  ...props
+}: FakeButtonProps & IStyledButtonProps & IStyleableProps) => (
   <StyledDivAsButton
     tabIndex={0}
     role={"button"}
     aria-label={ariaLabel}
     onClick={onClick}
+    {...props}
   >
     {children}
   </StyledDivAsButton>
