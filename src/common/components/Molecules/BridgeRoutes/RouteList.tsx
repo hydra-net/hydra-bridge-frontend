@@ -41,7 +41,7 @@ const RouteList = ({
         return (
           <div
             key={id}
-            style={{ width: "100%", marginBottom: theme.margin.lg }}
+            style={{ width: "100%", marginBottom: theme.margin.md }}
           >
             <RouteItem
               coinSymbol={coinSymbol}

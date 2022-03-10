@@ -110,6 +110,7 @@ export const stakenetTheme: IStakenetTheme = {
       darker: "#7377A514",
       dark: "#7377A529",
       "medium-dark": "#7377A53D",
+      // test: "#4748635E",
     },
   },
 
