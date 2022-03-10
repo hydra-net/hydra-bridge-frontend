@@ -17,7 +17,7 @@ export default {
 } as ComponentMeta<typeof RouteList>;
 
 const Template: ComponentStory<typeof RouteList> = (args) => (
-  <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
+  <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
     <RouteList {...args} />
   </Container>
 );

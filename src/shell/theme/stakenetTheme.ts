@@ -176,7 +176,7 @@ export const stakenetTheme: IStakenetTheme = {
     "2xl": "42rem",
     xl: "36rem",
     lg: "32rem",
-    md: "28rem",
+    md: "28.8rem",
     sm: "24rem",
     xs: "20rem",
   },

@@ -16,7 +16,7 @@ export default {
 } as ComponentMeta<typeof BridgeRoutes>;
 
 const Template: ComponentStory<typeof BridgeRoutes> = (args) => (
-  <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
+  <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
     <BridgeRoutes {...args} />
   </Container>
 );

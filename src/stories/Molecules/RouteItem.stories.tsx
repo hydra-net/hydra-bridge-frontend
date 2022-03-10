@@ -15,7 +15,7 @@ export default {
 } as ComponentMeta<typeof RouteItem>;
 
 const Template: ComponentStory<typeof RouteItem> = (args) => (
-  <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
+  <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
     <RouteItem {...args}>{args.children ? args.children : null}</RouteItem>
   </Container>
 );
