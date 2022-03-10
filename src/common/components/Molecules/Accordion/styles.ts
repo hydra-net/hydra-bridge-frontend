@@ -10,6 +10,6 @@ export const AccordionContent = styled.div`
 `;
 
 export const AccordionIcon = styled(Icon)<{ isopen: boolean }>`
-  transform: ${(props) => (props.isopen ? "rotate(90deg)" : "rotate(0)")};
+  transform: ${(props) => (props.isopen ? "rotate(0)" : "rotate(-90deg)")};
   transition: transform 0.3s linear;
 `;

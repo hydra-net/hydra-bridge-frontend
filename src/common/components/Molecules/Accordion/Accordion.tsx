@@ -27,9 +27,9 @@ const Accordion = ({ header, content }: AccordionProps) => {
         <FlexWrapper flexDirection={"row"} style={{ pointerEvents: "none" }}>
           {header}
           <AccordionIcon
-            name={"cutArrowRight"}
-            width={"1.7rem"}
-            height={"1.7rem"}
+            name={"cutArrowDown"}
+            width={"2.4rem"}
+            height={"2.4rem"}
             style={{ marginLeft: "1.7rem" }}
             isopen={height !== 0 ? 1 : 0}
           />
