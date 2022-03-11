@@ -3,7 +3,7 @@
 exports[`The BridgeButton should ask to input amount and be disabled when none is set 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvtL sc-gsDKAQ dWAYQK iutElP"
+    class="sc-bdvvtL sc-gsDKAQ dWAYQK jCJqpi"
     disabled=""
   >
     input-amount
@@ -14,7 +14,7 @@ exports[`The BridgeButton should ask to input amount and be disabled when none i
 exports[`The BridgeButton should be able to approve 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvtL sc-gsDKAQ iPQeJd iutElP"
+    class="sc-bdvvtL sc-gsDKAQ iPQeJd jCJqpi"
   >
     common.approve
   </button>
@@ -24,7 +24,7 @@ exports[`The BridgeButton should be able to approve 1`] = `
 exports[`The BridgeButton should be able to bridge 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvtL sc-gsDKAQ iPQeJd iutElP"
+    class="sc-bdvvtL sc-gsDKAQ iPQeJd jCJqpi"
   >
     bridge
   </button>
@@ -34,7 +34,7 @@ exports[`The BridgeButton should be able to bridge 1`] = `
 exports[`The BridgeButton should be disabled and warn for not enough balance 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvtL sc-gsDKAQ dWAYQK iutElP"
+    class="sc-bdvvtL sc-gsDKAQ dWAYQK jCJqpi"
     disabled=""
   >
     insufficient-balance
@@ -45,7 +45,7 @@ exports[`The BridgeButton should be disabled and warn for not enough balance 1`]
 exports[`The BridgeButton should fallback to input amount text when none of the conditions met 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvtL sc-gsDKAQ dWAYQK iutElP"
+    class="sc-bdvvtL sc-gsDKAQ dWAYQK jCJqpi"
     disabled=""
   >
     input-amount
@@ -56,7 +56,7 @@ exports[`The BridgeButton should fallback to input amount text when none of the 
 exports[`The BridgeButton should show Connect wallet when wallet not connected 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvtL sc-gsDKAQ iPQeJd iutElP"
+    class="sc-bdvvtL sc-gsDKAQ iPQeJd jCJqpi"
   >
     connect-wallet
   </button>
@@ -66,7 +66,7 @@ exports[`The BridgeButton should show Connect wallet when wallet not connected 1
 exports[`The BridgeButton should show loading spinner and be disabled when inProgress 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvtL sc-gsDKAQ jKmHEe iutElP"
+    class="sc-bdvvtL sc-gsDKAQ jKmHEe jCJqpi"
     disabled=""
   >
     common.loading

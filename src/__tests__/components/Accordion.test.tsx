@@ -16,7 +16,9 @@ describe("The Accordion", () => {
 
     expect(element.getAttribute("aria-expanded")).toBe("false");
     // @ts-ignore nullable
-    expect(element.firstChild.lastChild).toHaveStyle("transform: rotate(0)");
+    expect(element.firstChild.lastChild).toHaveStyle(
+      "transform: rotate(-90deg)"
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -29,9 +31,7 @@ describe("The Accordion", () => {
 
     expect(element.getAttribute("aria-expanded")).toBe("true");
     // @ts-ignore nullable
-    expect(element.firstChild.lastChild).toHaveStyle(
-      "transform: rotate(90deg)"
-    );
+    expect(element.firstChild.lastChild).toHaveStyle("transform: rotate(0)");
     expect(asFragment()).toMatchSnapshot();
   });
 });

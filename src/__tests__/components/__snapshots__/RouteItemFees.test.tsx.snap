@@ -3,10 +3,10 @@
 exports[`The Bridge route item fees should render correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
   >
     <p
-      class="sc-gKclnd fTLTUH"
+      class="sc-gKclnd ixACOe"
       data-testid="route-fees"
     >
       gas-fee : ~ 0.40 $ | ~ 5 min

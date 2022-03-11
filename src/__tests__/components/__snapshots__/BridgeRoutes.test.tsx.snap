@@ -7,7 +7,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
     type="3xl"
   >
     <div
-      class="sc-bdvvtL sc-jRQBWg fGXmcv lkItHs"
+      class="sc-bdvvtL sc-jRQBWg fGXmcv iPhdjs"
     >
       <div
         aria-expanded="true"
@@ -18,31 +18,32 @@ exports[`The Bridge routes should render correctly when not in progress and no e
       >
         <div
           class="sc-fotOHu bnkEsk"
+          style="pointer-events: none;"
         >
           <div
             class="sc-fotOHu fbDECk"
           >
             <label
-              class="sc-hBUSln dubAMH"
+              class="sc-hBUSln jgfghP"
               style="width: 100%; text-align: left;"
             >
               available-routes
             </label>
             <div
-              class="sc-dJjYzT jLGZDQ"
+              class="sc-ieecCq bAMVya"
             >
               2
             </div>
           </div>
           <svg
-            class="sc-ieecCq iNYKmN"
+            class="sc-bkkeKt lpiqKy"
             color="#FFFFFF"
-            height="1.7rem"
+            height="2.4rem"
             isopen="1"
             style="margin-left: 1.7rem;"
-            width="1.7rem"
+            width="2.4rem"
           >
-            cut-arrow-right.svg
+            cut-arrow-down.svg
           </svg>
         </div>
       </div>
@@ -55,7 +56,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
           style=""
         >
           <div
-            class="sc-bkkeKt gZVIEP"
+            class="sc-fFeiMQ fnmjFn"
           >
             <div
               id="route-8"
@@ -69,7 +70,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                 tabindex="0"
               >
                 <div
-                  class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK gssaBE"
+                  class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK eqEoBy"
                 >
                   <div
                     class="sc-gKclnd konHGI"
@@ -80,8 +81,8 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
-                        height="4rem"
-                        width="4rem"
+                        height="3.2rem"
+                        width="2.8rem"
                       >
                         usdc.svg
                       </svg>
@@ -97,28 +98,45 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
-                        height="2rem"
-                        width="2rem"
+                        height="1.8rem"
+                        width="2.1rem"
                       >
                         double-arrow-right.svg
                       </svg>
                     </div>
                     <div
-                      class="sc-pVTFL kOcWqs"
+                      class="sc-pVTFL qWzKy"
                     >
                       <svg
-                        class="bridge__icon"
+                        class="chain__icon chain__icon--sm"
                         color="#FFFFFF"
-                        height="4rem"
-                        width="4rem"
+                        height="2.6rem"
+                        width="2.6rem"
                       >
                         hop.svg
                       </svg>
                       <p
-                        class="bridge__name"
+                        class="chain__name"
                       >
                         Hop Goerli
                       </p>
+                      <div
+                        class="chain__group"
+                      >
+                        <span>
+                          <svg
+                            class="network__icon"
+                            color="#FFFFFF"
+                            height="2.6rem"
+                            width="2.6rem"
+                          >
+                            hop.svg
+                          </svg>
+                        </span>
+                        <span>
+                          Hop Goerli
+                        </span>
+                      </div>
                     </div>
                     <div
                       class="sc-furwcr fhgROL"
@@ -126,8 +144,8 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
-                        height="2rem"
-                        width="2rem"
+                        height="1.8rem"
+                        width="2.1rem"
                       >
                         double-arrow-right.svg
                       </svg>
@@ -138,8 +156,8 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
-                        height="4rem"
-                        width="4rem"
+                        height="3.2rem"
+                        width="2.8rem"
                       >
                         usdc.svg
                       </svg>
@@ -151,10 +169,10 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                     </div>
                   </div>
                   <div
-                    class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+                    class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
                   >
                     <p
-                      class="sc-bqiRlB jIWwtk"
+                      class="sc-bqiRlB kMHECB"
                       data-testid="route-fees"
                     >
                       gas-fee : ~ 0.61 $ | ~ 5 min
@@ -175,7 +193,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                 tabindex="0"
               >
                 <div
-                  class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK dKiIhB"
+                  class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK ixpTqd"
                 >
                   <div
                     class="sc-gKclnd konHGI"
@@ -186,8 +204,8 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
-                        height="4rem"
-                        width="4rem"
+                        height="3.2rem"
+                        width="2.8rem"
                       >
                         usdc.svg
                       </svg>
@@ -203,28 +221,45 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
-                        height="2rem"
-                        width="2rem"
+                        height="1.8rem"
+                        width="2.1rem"
                       >
                         double-arrow-right.svg
                       </svg>
                     </div>
                     <div
-                      class="sc-pVTFL kOcWqs"
+                      class="sc-pVTFL qWzKy"
                     >
                       <svg
-                        class="bridge__icon"
+                        class="chain__icon chain__icon--sm"
                         color="#FFFFFF"
-                        height="4rem"
-                        width="4rem"
+                        height="2.6rem"
+                        width="2.6rem"
                       >
                         polygon.svg
                       </svg>
                       <p
-                        class="bridge__name"
+                        class="chain__name"
                       >
                         Polygon POS Goerli
                       </p>
+                      <div
+                        class="chain__group"
+                      >
+                        <span>
+                          <svg
+                            class="network__icon"
+                            color="#FFFFFF"
+                            height="2.6rem"
+                            width="2.6rem"
+                          >
+                            polygon.svg
+                          </svg>
+                        </span>
+                        <span>
+                          Polygon POS Goerli
+                        </span>
+                      </div>
                     </div>
                     <div
                       class="sc-furwcr fhgROL"
@@ -232,8 +267,8 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
-                        height="2rem"
-                        width="2rem"
+                        height="1.8rem"
+                        width="2.1rem"
                       >
                         double-arrow-right.svg
                       </svg>
@@ -244,8 +279,8 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
-                        height="4rem"
-                        width="4rem"
+                        height="3.2rem"
+                        width="2.8rem"
                       >
                         usdc.svg
                       </svg>
@@ -257,10 +292,10 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                     </div>
                   </div>
                   <div
-                    class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+                    class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
                   >
                     <p
-                      class="sc-bqiRlB jIWwtk"
+                      class="sc-bqiRlB kMHECB"
                       data-testid="route-fees"
                     >
                       gas-fee : ~ 0.63 $ | ~ 30 min
@@ -284,7 +319,7 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
     type="3xl"
   >
     <div
-      class="sc-bdvvtL sc-jRQBWg fGXmcv lkItHs"
+      class="sc-bdvvtL sc-jRQBWg fGXmcv iPhdjs"
     >
       <div
         aria-expanded="true"
@@ -295,31 +330,32 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
       >
         <div
           class="sc-fotOHu bnkEsk"
+          style="pointer-events: none;"
         >
           <div
             class="sc-fotOHu fbDECk"
           >
             <label
-              class="sc-hBUSln dubAMH"
+              class="sc-hBUSln jgfghP"
               style="width: 100%; text-align: left;"
             >
               available-routes
             </label>
             <div
-              class="sc-dJjYzT jLGZDQ"
+              class="sc-ieecCq bAMVya"
             >
               2
             </div>
           </div>
           <svg
-            class="sc-ieecCq iNYKmN"
+            class="sc-bkkeKt lpiqKy"
             color="#FFFFFF"
-            height="1.7rem"
+            height="2.4rem"
             isopen="1"
             style="margin-left: 1.7rem;"
-            width="1.7rem"
+            width="2.4rem"
           >
-            cut-arrow-right.svg
+            cut-arrow-down.svg
           </svg>
         </div>
       </div>
@@ -332,7 +368,7 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
           style=""
         >
           <div
-            class="sc-bkkeKt gZVIEP"
+            class="sc-fFeiMQ fnmjFn"
           >
             <div
               class="sc-ksdxgE jNGrHQ rectangle-skeleton"

@@ -14,7 +14,7 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
       tabindex="0"
     >
       <div
-        class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK gssaBE"
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK eqEoBy"
       >
         <div
           class="sc-gKclnd konHGI"
@@ -25,8 +25,8 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
             <svg
               class="amount__icon"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="3.2rem"
+              width="2.8rem"
             >
               usdc.svg
             </svg>
@@ -42,28 +42,45 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
             <svg
               class="arrow__icon"
               color="#FFFFFF"
-              height="2rem"
-              width="2rem"
+              height="1.8rem"
+              width="2.1rem"
             >
               double-arrow-right.svg
             </svg>
           </div>
           <div
-            class="sc-pVTFL kOcWqs"
+            class="sc-pVTFL qWzKy"
           >
             <svg
-              class="bridge__icon"
+              class="chain__icon chain__icon--sm"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="2.6rem"
+              width="2.6rem"
             >
               hop.svg
             </svg>
             <p
-              class="bridge__name"
+              class="chain__name"
             >
               Hop Goerli
             </p>
+            <div
+              class="chain__group"
+            >
+              <span>
+                <svg
+                  class="network__icon"
+                  color="#FFFFFF"
+                  height="2.6rem"
+                  width="2.6rem"
+                >
+                  hop.svg
+                </svg>
+              </span>
+              <span>
+                Hop Goerli
+              </span>
+            </div>
           </div>
           <div
             class="sc-furwcr fhgROL"
@@ -71,8 +88,8 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
             <svg
               class="arrow__icon"
               color="#FFFFFF"
-              height="2rem"
-              width="2rem"
+              height="1.8rem"
+              width="2.1rem"
             >
               double-arrow-right.svg
             </svg>
@@ -83,8 +100,8 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
             <svg
               class="amount__icon"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="3.2rem"
+              width="2.8rem"
             >
               usdc.svg
             </svg>
@@ -96,10 +113,10 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
           </div>
         </div>
         <div
-          class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
         >
           <p
-            class="sc-bqiRlB jIWwtk"
+            class="sc-bqiRlB kMHECB"
             data-testid="route-fees"
           >
             gas-fee : ~ 0.61 $ | ~ 5 min
@@ -109,7 +126,8 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
     </div>
   </div>
   <div
-    class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK dKiIhB"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 2rem;"
   >
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
@@ -123,7 +141,8 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
 exports[`The Bridge route list should render the routes, when all of them have errors 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK dKiIhB"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 2rem;"
   >
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
@@ -132,7 +151,8 @@ exports[`The Bridge route list should render the routes, when all of them have e
     </p>
   </div>
   <div
-    class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK dKiIhB"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 2rem;"
   >
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
@@ -157,7 +177,7 @@ exports[`The Bridge route list should render with routes 1`] = `
       tabindex="0"
     >
       <div
-        class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK gssaBE"
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK eqEoBy"
       >
         <div
           class="sc-gKclnd konHGI"
@@ -168,8 +188,8 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="amount__icon"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="3.2rem"
+              width="2.8rem"
             >
               usdc.svg
             </svg>
@@ -185,28 +205,45 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="arrow__icon"
               color="#FFFFFF"
-              height="2rem"
-              width="2rem"
+              height="1.8rem"
+              width="2.1rem"
             >
               double-arrow-right.svg
             </svg>
           </div>
           <div
-            class="sc-pVTFL kOcWqs"
+            class="sc-pVTFL qWzKy"
           >
             <svg
-              class="bridge__icon"
+              class="chain__icon chain__icon--sm"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="2.6rem"
+              width="2.6rem"
             >
               hop.svg
             </svg>
             <p
-              class="bridge__name"
+              class="chain__name"
             >
               Hop Goerli
             </p>
+            <div
+              class="chain__group"
+            >
+              <span>
+                <svg
+                  class="network__icon"
+                  color="#FFFFFF"
+                  height="2.6rem"
+                  width="2.6rem"
+                >
+                  hop.svg
+                </svg>
+              </span>
+              <span>
+                Hop Goerli
+              </span>
+            </div>
           </div>
           <div
             class="sc-furwcr fhgROL"
@@ -214,8 +251,8 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="arrow__icon"
               color="#FFFFFF"
-              height="2rem"
-              width="2rem"
+              height="1.8rem"
+              width="2.1rem"
             >
               double-arrow-right.svg
             </svg>
@@ -226,8 +263,8 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="amount__icon"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="3.2rem"
+              width="2.8rem"
             >
               usdc.svg
             </svg>
@@ -239,10 +276,10 @@ exports[`The Bridge route list should render with routes 1`] = `
           </div>
         </div>
         <div
-          class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
         >
           <p
-            class="sc-bqiRlB jIWwtk"
+            class="sc-bqiRlB kMHECB"
             data-testid="route-fees"
           >
             gas-fee : ~ 0.61 $ | ~ 5 min
@@ -263,7 +300,7 @@ exports[`The Bridge route list should render with routes 1`] = `
       tabindex="0"
     >
       <div
-        class="sc-bdvvtL sc-jRQBWg fGXmcv eIbvzN sc-egiyK dKiIhB"
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK ixpTqd"
       >
         <div
           class="sc-gKclnd konHGI"
@@ -274,8 +311,8 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="amount__icon"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="3.2rem"
+              width="2.8rem"
             >
               usdc.svg
             </svg>
@@ -291,28 +328,45 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="arrow__icon"
               color="#FFFFFF"
-              height="2rem"
-              width="2rem"
+              height="1.8rem"
+              width="2.1rem"
             >
               double-arrow-right.svg
             </svg>
           </div>
           <div
-            class="sc-pVTFL kOcWqs"
+            class="sc-pVTFL qWzKy"
           >
             <svg
-              class="bridge__icon"
+              class="chain__icon chain__icon--sm"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="2.6rem"
+              width="2.6rem"
             >
               polygon.svg
             </svg>
             <p
-              class="bridge__name"
+              class="chain__name"
             >
               Polygon POS Goerli
             </p>
+            <div
+              class="chain__group"
+            >
+              <span>
+                <svg
+                  class="network__icon"
+                  color="#FFFFFF"
+                  height="2.6rem"
+                  width="2.6rem"
+                >
+                  polygon.svg
+                </svg>
+              </span>
+              <span>
+                Polygon POS Goerli
+              </span>
+            </div>
           </div>
           <div
             class="sc-furwcr fhgROL"
@@ -320,8 +374,8 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="arrow__icon"
               color="#FFFFFF"
-              height="2rem"
-              width="2rem"
+              height="1.8rem"
+              width="2.1rem"
             >
               double-arrow-right.svg
             </svg>
@@ -332,8 +386,8 @@ exports[`The Bridge route list should render with routes 1`] = `
             <svg
               class="amount__icon"
               color="#FFFFFF"
-              height="4rem"
-              width="4rem"
+              height="3.2rem"
+              width="2.8rem"
             >
               usdc.svg
             </svg>
@@ -345,10 +399,10 @@ exports[`The Bridge route list should render with routes 1`] = `
           </div>
         </div>
         <div
-          class="sc-bdvvtL sc-jRQBWg fGXmcv dQJyMJ"
+          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
         >
           <p
-            class="sc-bqiRlB jIWwtk"
+            class="sc-bqiRlB kMHECB"
             data-testid="route-fees"
           >
             gas-fee : ~ 0.63 $ | ~ 30 min

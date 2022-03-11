@@ -44,7 +44,7 @@ describe("The Bridge route item", () => {
 
     expect(element).toBeInTheDocument();
     expect(element.firstChild).toHaveStyle(
-      `background-color: ${theme.colors.blue.darker}`
+      `background-color: ${theme.colors.gray.dark}`
     );
   });
 });
