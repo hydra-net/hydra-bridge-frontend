@@ -1,12 +1,13 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { StyledComponent } from "styled-components";
 
 import {
   IStyledButtonProps,
   StyledButton,
+  StyledDivAsButton,
   StyledPrimaryButton,
 } from "./styles";
-import { IconKeys } from "../../../commonTypes";
+import { IconKeys, IStyleableProps } from "../../../commonTypes";
 import Icon from "../../Icon/Icon";
 
 export type ButtonProps = {
@@ -41,3 +42,25 @@ export const Button = (props: ButtonProps & IStyledButtonProps) =>
 
 export const PrimaryButton = (props: ButtonProps & IStyledButtonProps) =>
   handleButtonWrapping(StyledPrimaryButton, props);
+
+type FakeButtonProps = {
+  onClick: (evt: React.MouseEvent<HTMLDivElement>) => void;
+  ariaLabel: string;
+  children: ReactNode;
+};
+export const FakeButton = ({
+  onClick,
+  ariaLabel,
+  children,
+  ...props
+}: FakeButtonProps & IStyledButtonProps & IStyleableProps) => (
+  <StyledDivAsButton
+    tabIndex={0}
+    role={"button"}
+    aria-label={ariaLabel}
+    onClick={onClick}
+    {...props}
+  >
+    {children}
+  </StyledDivAsButton>
+);

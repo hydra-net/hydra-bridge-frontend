@@ -43,6 +43,7 @@ export interface IStakenetTheme extends DefaultTheme {
     xxl: string;
     xl: string;
     lg: string;
+    default: string;
     md: string;
     sm: string;
     none: string;
@@ -109,6 +110,7 @@ export const stakenetTheme: IStakenetTheme = {
       darker: "#7377A514",
       dark: "#7377A529",
       "medium-dark": "#7377A53D",
+      // test: "#4748635E",
     },
   },
 
@@ -131,8 +133,9 @@ export const stakenetTheme: IStakenetTheme = {
 
   margin: {
     xxl: "3.2rem",
-    xl: "2.5rem",
+    xl: "2.4rem",
     lg: "2rem",
+    default: "1.6rem",
     md: "1.2rem",
     sm: ".6rem",
     none: "0rem",
@@ -174,7 +177,7 @@ export const stakenetTheme: IStakenetTheme = {
     "2xl": "42rem",
     xl: "36rem",
     lg: "32rem",
-    md: "28rem",
+    md: "28.8rem",
     sm: "24rem",
     xs: "20rem",
   },

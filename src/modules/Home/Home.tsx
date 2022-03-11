@@ -274,7 +274,7 @@ const Home = ({ chains }: Props) => {
             <ConnectWallet />
           </CustomFlexWrapper>
         </Container>
-        <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
+        <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
           <ContainerCard style={{ marginBottom: theme.margin.xl }}>
             <ResponsiveFlexWrapper>
               <Icon

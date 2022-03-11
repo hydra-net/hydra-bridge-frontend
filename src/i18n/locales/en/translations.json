@@ -8,7 +8,8 @@
   "select-an-asset": "Select an asset",
   "select-chain": "Select chain",
   "gas-fee": "Gas fee",
-  "error-showing-routes": "An error occurred while trying to display the routes",
+  "available-routes": "Available routes",
+  "error-showing-routes": "An error occurred while trying to display this route",
   "common": {
     "close": "Close",
     "send": "Send",

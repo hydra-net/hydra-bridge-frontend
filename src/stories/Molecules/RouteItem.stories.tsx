@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { Container } from "../../common/components/Atoms/Containers/Container";
 import RouteItem, {
-  BridgeRouteItemProps,
+  RouteItemProps,
 } from "../../common/components/Molecules/BridgeRoutes/RouteItem";
 import RouteItemFees from "../../common/components/Molecules/BridgeRoutes/RouteItemFees";
 
@@ -15,12 +15,12 @@ export default {
 } as ComponentMeta<typeof RouteItem>;
 
 const Template: ComponentStory<typeof RouteItem> = (args) => (
-  <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
+  <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
     <RouteItem {...args}>{args.children ? args.children : null}</RouteItem>
   </Container>
 );
 
-const baseArgs: BridgeRouteItemProps = {
+const baseArgs: RouteItemProps = {
   amountIn: "0.0001",
   amountOut: "0.0001",
   coinSymbol: "ethCoin",
