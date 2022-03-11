@@ -118,7 +118,7 @@ const MainContent = ({
   };
 
   return (
-    <ContainerCard>
+    <ContainerCard hasHoverEffect={true}>
       <TransferChainSelects
         optionsChainsFrom={mapChainResponseDtoFromSendingTarget(chains)}
         optionsChainsTo={mapChainResponseDtoToReceivingTarget(chains)}
@@ -135,14 +135,14 @@ const MainContent = ({
         placeholder={"0.0"}
         isDisabled={inProgress || isWrongNetwork}
         onChange={handleAmountInChange}
-        style={{ marginBottom: theme.margin.xxl }}
+        style={{ marginBottom: theme.margin.default }}
       />
       <Input
         label={t("common.receive")}
         value={!amountOut ? "" : amountOut}
         placeholder={"0.0"}
         isDisabled={true}
-        style={{ marginBottom: theme.margin.xxl }}
+        style={{ marginBottom: theme.margin.default }}
       />
       <BridgeButton
         isConnected={isConnected}
@@ -158,6 +158,7 @@ const MainContent = ({
         onWalletConnect={onConnectWallet}
         onWalletApprove={onApproveWallet}
         onMoveAssets={onMoveAssets}
+        style={{ marginBottom: theme.margin.sm }}
       />
     </ContainerCard>
   );

@@ -18,18 +18,18 @@ const Accordion = ({ header, content }: AccordionProps) => {
     setHeight(height === 0 ? "auto" : 0);
   };
   return (
-    <ContainerCard padding={"1.8rem 2.4rem"}>
+    <ContainerCard hasHoverEffect={true}>
       <FakeButton
         ariaLabel={"open accordion"}
         aria-expanded={height !== 0}
         onClick={handleToggle}
       >
-        <FlexWrapper flexDirection={"row"}>
+        <FlexWrapper flexDirection={"row"} style={{ pointerEvents: "none" }}>
           {header}
           <AccordionIcon
-            name={"cutArrowRight"}
-            width={"1.7rem"}
-            height={"1.7rem"}
+            name={"cutArrowDown"}
+            width={"2.4rem"}
+            height={"2.4rem"}
             style={{ marginLeft: "1.7rem" }}
             isopen={height !== 0 ? 1 : 0}
           />

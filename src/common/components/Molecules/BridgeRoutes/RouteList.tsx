@@ -71,6 +71,7 @@ const RouteList = ({
             key={route?.id}
             isSelected={false}
             hasError={true}
+            style={{ width: "100%", marginBottom: theme.margin.lg }}
           >
             <p
               style={{

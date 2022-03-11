@@ -52,14 +52,18 @@ export const StyledContainerCard = styled(StyledContainer)`
   border-width: ${(props) => (props.border ? props.border : 0)};
   border-color: transparent;
   border-style: solid;
-  padding: ${(props) => (props.padding ? props.padding : "2.4rem")};
+  padding: ${(props) => (props.padding ? props.padding : `${theme.margin.xl}`)};
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.xl};
   box-shadow: ${(props) =>
-    props.boxShadow ? props.boxShadow : theme.boxShadow.lg};
+    props.boxShadow ? props.boxShadow : theme.boxShadow.sm};
 
   &:hover {
-    box-shadow: ${theme.boxShadow.xl};
-    transition: box-shadow 0.3s ease-in-out;
+    ${(props) =>
+      props.hasHoverEffect &&
+      css`
+        box-shadow: ${theme.boxShadow.md};
+        transition: box-shadow 0.3s ease-in-out;
+      `}
   }
 `;

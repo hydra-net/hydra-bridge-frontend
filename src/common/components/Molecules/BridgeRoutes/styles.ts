@@ -93,24 +93,28 @@ export const StyledBridgeChain = styled.div`
   min-width: 30%;
   max-width: 30%;
 
-  .bridge {
+  .chain {
     &__name {
       font-size: ${theme.paragraph.md};
       color: ${theme.colors.white};
       margin: 0;
+      display: flex;
+      flex-grow: 1;
+      text-align: center;
     }
     &__icon {
-      transform: scale(0.8);
       margin-bottom: ${theme.margin.sm};
       text-align: center;
+    }
+    &__group {
+      display: none;
     }
   }
 
   @media only screen and ${devicesUp.sm} {
-    .bridge {
+    .chain {
       &__icon {
-        margin-bottom: ${theme.margin.md};
-        transform: scale(1);
+        min-width: 2.6rem;
       }
     }
   }
@@ -118,13 +122,38 @@ export const StyledBridgeChain = styled.div`
   @media only screen and ${devicesUp.md} {
     flex-direction: row;
     justify-content: center;
-    .bridge {
+    text-align: center;
+    width: 100%;
+    .chain {
       &__name {
+        display: none;
+        width: 100%;
         font-size: ${theme.paragraph.lg};
         letter-spacing: 0.1rem;
       }
       &__icon {
-        margin: 0 ${theme.margin.md} 0 0;
+        margin: 0 ${theme.margin.sm} 0 0;
+        &--sm {
+          // hack when trying to display none, the icon on the group class is shown in html but we can't see it
+          visibility: hidden;
+          width: 0;
+          height: 0;
+          margin: 0;
+          min-width: 0;
+        }
+      }
+
+      &__group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        font-size: ${theme.paragraph.lg};
+        color: ${theme.colors.white};
+        span {
+          margin-top: 0.3rem;
+        }
       }
     }
   }

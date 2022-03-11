@@ -8,10 +8,10 @@ import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 
 const StyledText = styled.p`
   color: ${theme.colors.white};
-  font-size: ${theme.paragraph.sm};
+  font-size: ${theme.paragraph.xs};
   margin: 0;
   min-width: 15rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.5rem 1.2rem;
 `;
 
 export type RouteItemFeesProps = {
@@ -31,9 +31,10 @@ const RouteItemFees = ({
   const getServiceTimeOutput = () => `~ ${serviceTime / 60} min`;
   return (
     <ContainerCard
-      borderRadius={theme.borderRadius.xl}
+      borderRadius={theme.borderRadius.lg}
       padding={"0"}
       bg={theme.colors.gray["medium-dark"]}
+      boxShadow={theme.boxShadow.sm}
     >
       <StyledText data-testid="route-fees">
         {t("gas-fee")} : ~ {getGasFee()} $ | {getServiceTimeOutput()}

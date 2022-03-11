@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import { ButtonProps, PrimaryButton } from "../Atoms/Buttons/Button";
 import { IStyledButtonProps } from "../Atoms/Buttons/styles";
+import { IStyleableProps } from "../../commonTypes";
 
 export type BridgeButtonProps = {
   isConnected?: boolean;
@@ -32,7 +33,8 @@ const BridgeButton = ({
   onWalletConnect,
   onWalletApprove,
   onMoveAssets,
-}: BridgeButtonProps) => {
+  ...props
+}: BridgeButtonProps & IStyleableProps) => {
   const renderButton = () => {
     const { t } = useTranslation();
 
@@ -67,7 +69,7 @@ const BridgeButton = ({
       displayText = t("input-amount");
     }
     return (
-      <PrimaryButton {...attributes} onClick={callback}>
+      <PrimaryButton onClick={callback} {...props} {...attributes}>
         {displayText}
       </PrimaryButton>
     );
