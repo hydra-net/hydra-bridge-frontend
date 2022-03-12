@@ -9,34 +9,41 @@ import {
   StyledBridgeRoute,
   StyledBridgeRouteAmount,
 } from "./styles";
-import { UnStyledButton } from "../../Atoms/Buttons/styles";
+import { FakeButton } from "../../Atoms/Buttons/Button";
 
 import { IconKeys } from "../../../commonTypes";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../../media";
 
-const CustomUnStyledButton = styled(UnStyledButton)`
+const CustomFakeButton = styled(FakeButton)<{
+  hasBoxShadow?: boolean;
+}>`
   &:focus,
   &:focus-within {
     background-color: ${theme.colors.blue.darker};
   }
 `;
-const ResponsiveContainerCard = styled(ContainerCard)<{ isSelected: boolean }>`
+export const RouteItemContainerCard = styled(ContainerCard)<{
+  isSelected: boolean;
+}>`
+  min-height: 10rem;
   padding: 1rem;
-
+  background-color: ${theme.colors.blue.darkest};
   ${(props) =>
-    props.isSelected ? `background-color: ${theme.colors.blue.darker}` : ""};
+    props.isSelected ? `background-color: ${theme.colors.gray.dark}` : ""};
+  box-shadow: ${theme.boxShadow.sm};
+  border-radius: ${theme.borderRadius.lg};
 
   &:hover,
   &:focus {
-    background-color: ${theme.colors.blue.darker};
+    background-color: ${theme.colors.gray.dark};
   }
   @media only screen and ${devicesUp.md} {
-    padding: 1.4rem 2.4rem;
+    padding: 1.8rem 1.8rem 0.8rem 1.8rem !important;
   }
 `;
 
-export type BridgeRouteItemProps = {
+export type RouteItemProps = {
   coinSymbol: IconKeys;
   bridgeSymbol: IconKeys;
   amountIn: string | number;
@@ -58,49 +65,74 @@ const RouteItem = ({
   isSelected,
   onRouteSelect,
   children,
-}: BridgeRouteItemProps) => {
+}: RouteItemProps) => {
   return (
-    <CustomUnStyledButton onClick={() => onRouteSelect(routeId)}>
-      <ResponsiveContainerCard
-        isSelected={isSelected}
-        borderRadius={theme.borderRadius.lg}
-        bg={theme.colors.blue.darkest}
-      >
+    <CustomFakeButton
+      ariaLabel={"select route"}
+      hasBoxShadow={true}
+      onClick={() => onRouteSelect(routeId)}
+    >
+      <RouteItemContainerCard isSelected={isSelected}>
         <StyledBridgeRoute>
           <StyledBridgeRouteAmount>
-            <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
+            <Icon
+              name={coinSymbol}
+              width={"2.8rem"}
+              height={"3.2rem"}
+              className={"amount__icon"}
+            />
             <span className={"amount__number"}>{amountIn}</span>
           </StyledBridgeRouteAmount>
           <StyledBridgeArrow>
             <Icon
               name={"doubleArrowRight"}
-              size={"2rem"}
+              width={"2.1rem"}
+              height={"1.8rem"}
               className={"arrow__icon"}
             />
           </StyledBridgeArrow>
           <StyledBridgeNetwork>
             <Icon
               name={bridgeSymbol}
-              size={"4rem"}
-              className={"network__icon"}
+              width={"2.6rem"}
+              height={"2.6rem"}
+              className={"network__icon network__icon--sm"}
             />
             <p className={"network__name"}>{bridgeDisplayName}</p>
+
+            <div className={"network__group"}>
+              <span>
+                <Icon
+                  name={bridgeSymbol}
+                  width={"2.6rem"}
+                  height={"2.6rem"}
+                  className={"network__icon"}
+                />
+              </span>
+              <span>{bridgeDisplayName}</span>
+            </div>
           </StyledBridgeNetwork>
           <StyledBridgeArrow>
             <Icon
               name={"doubleArrowRight"}
-              size={"2rem"}
+              width={"2.1rem"}
+              height={"1.8rem"}
               className={"arrow__icon"}
             />
           </StyledBridgeArrow>
           <StyledBridgeRouteAmount rtl={true}>
-            <Icon name={coinSymbol} size={"4rem"} className={"amount__icon"} />
+            <Icon
+              name={coinSymbol}
+              width={"2.8rem"}
+              height={"3.2rem"}
+              className={"amount__icon"}
+            />
             <span className={"amount__number"}>{amountOut}</span>
           </StyledBridgeRouteAmount>
         </StyledBridgeRoute>
         {children}
-      </ResponsiveContainerCard>
-    </CustomUnStyledButton>
+      </RouteItemContainerCard>
+    </CustomFakeButton>
   );
 };
 

@@ -9,7 +9,7 @@ export type StyledLabel = {
 };
 
 export const StyledInputLabel = styled.label<StyledLabel>`
-  font-size: ${theme.paragraph.md};
+  font-size: ${theme.paragraph.sm};
   color: ${(props) => (props.color ? props.color : theme.colors.white)};
   font-weight: ${(props) =>
     props.fontWeight ? props.fontWeight : theme.fontWeight.semibold};
@@ -17,6 +17,6 @@ export const StyledInputLabel = styled.label<StyledLabel>`
     props.margin ? props.margin : `0 0 ${theme.margin.md} 0`};
 
   @media only screen and ${devicesUp.lg} {
-    font-size: ${theme.paragraph.lg};
+    font-size: ${theme.paragraph.md};
   }
 `;

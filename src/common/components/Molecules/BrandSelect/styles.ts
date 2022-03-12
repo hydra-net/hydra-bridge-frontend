@@ -7,7 +7,7 @@ import { SelectOptionType } from "./SelectOption";
 export const StyledSelect = styled(Select)`
   width: 100%;
   border-radius: ${theme.borderRadius.lg};
-  font-size: ${theme.paragraph.lg};
+  font-size: ${theme.paragraph.xl};
 `;
 
 const themeDarkerBlue = theme.colors.blue.darker;
@@ -17,7 +17,8 @@ const noValueSelectedColor = hex2rgba(theme.colors.white, 0.3);
 export const colourStylesOverride: StylesConfig<SelectOptionType> = {
   control: (styles) => ({
     ...styles,
-    padding: "5px",
+    padding: ".6rem 0 .6rem 1.8rem",
+    width: "100%",
     borderWidth: "2px",
     borderRadius: theme.borderRadius.lg,
     backgroundColor: themeDarkestBlue,
@@ -31,16 +32,15 @@ export const colourStylesOverride: StylesConfig<SelectOptionType> = {
       boxShadow: "none",
     },
   }),
-  indicatorSeparator: (styles, { isFocused, hasValue }) => ({
+  indicatorSeparator: (styles, { isFocused }) => ({
     ...styles,
-    backgroundColor: !isFocused
-      ? hasValue
-        ? theme.colors.white
-        : noValueSelectedColor
-      : themeLightBlue,
+    backgroundColor: !isFocused ? noValueSelectedColor : themeLightBlue,
+    marginTop: ".3rem",
+    marginBottom: ".3rem",
   }),
   dropdownIndicator: (styles, { hasValue, isFocused }) => ({
     ...styles,
+    padding: "0.8rem 1.2rem",
     color: !isFocused
       ? hasValue
         ? theme.colors.white
@@ -53,10 +53,15 @@ export const colourStylesOverride: StylesConfig<SelectOptionType> = {
           : noValueSelectedColor
         : themeLightBlue,
     },
+    " svg": {
+      width: "2.4rem",
+      height: "2.4rem",
+    },
   }),
   option: (styles, { isDisabled, isFocused, isSelected }) => {
     return {
       ...styles,
+      padding: ".8rem 2rem",
       backgroundColor: isDisabled
         ? hex2rgba(themeDarkerBlue, 0.7)
         : isSelected
@@ -94,11 +99,17 @@ export const colourStylesOverride: StylesConfig<SelectOptionType> = {
   }),
   input: (styles) => ({
     ...styles,
+    padding: 0,
+    margin: 0,
     color: theme.colors.white,
   }),
   placeholder: (styles) => ({
     ...styles,
     color: noValueSelectedColor,
+  }),
+  valueContainer: (styles) => ({
+    ...styles,
+    padding: 0,
   }),
   singleValue: (styles) => ({
     ...styles,

@@ -99,7 +99,6 @@ describe("useAmountInput hook", () => {
         hookInstance.current.onAmountInChange("7.");
       });
       expect(hookInstance.current.amountIn).toBe("7.");
-      console.log(hookInstance.current.getParsedAmountIn());
       expect(hookInstance.current.getParsedAmountIn()).toBe(7);
       expect(hookInstance.current.getParsedAmountOut()).toBe(7);
     });
