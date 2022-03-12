@@ -37,7 +37,7 @@ const StyledHydraBackground = styled.section`
   min-width: 100vw;
   background: url("./hydra-background.svg") no-repeat fixed center center;
   background-size: cover;
-  padding: ${theme.margin.md} 0 6rem 0;
+  padding: ${theme.margin.lg} 0;
 
   @media only screen and ${devicesUp.md} {
     padding: ${theme.margin.xxl} 0 ${theme.margin.xxl} 0;
@@ -48,10 +48,7 @@ const CustomFlexWrapper = styled(FlexWrapper)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: ${theme.margin.md};
-  .hydra-bridge-logo-sm {
-    transform: scale(0.8);
-  }
+  margin-bottom: 4.3rem;
 
   @media only screen and ${devicesUp.sm} {
     justify-content: flex-end;
@@ -75,9 +72,6 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
     .hydra-bridge-logo {
       display: block;
       margin-bottom: ${theme.margin.xl};
-    }
-    .asset-select {
-      //min-width: 60%;
     }
   }
 
@@ -265,8 +259,8 @@ const Home = ({ chains }: Props) => {
       <CustomFlexWrapper>
         <Icon
           className={"hydra-bridge-logo-sm"}
-          width={"20rem"}
-          height={"7rem"}
+          width={"13.6rem"}
+          height={"3.8rem"}
           name={"hydraBridgeLogoSm"}
         />
         <ConnectWallet />

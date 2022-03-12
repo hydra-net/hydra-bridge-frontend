@@ -14,8 +14,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
   position: relative;
   z-index: 1;
   overflow: hidden;
-  font-size: ${(props) =>
-    props.size === "sm" ? theme.paragraph.sm : theme.paragraph.md};
+  font-size: ${theme.paragraph.md};
   font-weight: ${(props) =>
     props.fontWeight ? props.fontWeight : theme.fontWeight.normal};
   color: ${theme.colors.white};
@@ -32,12 +31,13 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       : css`
           width: auto;
           display: inline-flex;
+          align-items: center;
           flex: none;
         `};
   border: 1px transparent;
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.lg};
-  padding: ${(props) => (props.size === "sm" ? "1rem" : "1.5rem")};
+  padding: 1.4rem 1.8rem;
   opacity: ${(props) => (props.disabled && !props.isLoading ? "0.7" : "1")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 

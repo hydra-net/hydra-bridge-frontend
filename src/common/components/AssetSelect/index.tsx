@@ -16,18 +16,10 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
   flex-direction: column;
   align-items: start;
 
-  .label {
-    margin: 0 0 ${theme.margin.md} 0;
-  }
-
   @media only screen and ${devicesUp.lg} {
     flex-direction: row;
     justify-content: end;
     align-items: center;
-
-    .label {
-      margin: 0 ${theme.margin.md} 0 0;
-    }
 
     /* brand-select */
     & > div {

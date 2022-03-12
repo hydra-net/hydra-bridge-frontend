@@ -48,21 +48,22 @@ const ConnectWallet = () => {
 
   if (!address) {
     return (
-      <Button
-        iconName={"cutArrowRight"}
-        onClick={handleConnectWallet}
-        size={"sm"}
-      >
+      <Button iconName={"cutArrowRight"} onClick={handleConnectWallet}>
         {t("connect-wallet")}
       </Button>
     );
   }
   return (
-    <Button onClick={handleCopyAddress} size={"sm"}>
+    <Button onClick={handleCopyAddress}>
       {formatWalletAddress(isWrongNetwork, address)}
       {!isWrongNetwork && (
         <span className={"btn-icon"}>
-          <Icon color={theme.colors.white} size={"2rem"} name={"copy"} />
+          <Icon
+            color={theme.colors.white}
+            width={"2.1rem"}
+            height={"2.1rem"}
+            name={"copy"}
+          />
         </span>
       )}
     </Button>
