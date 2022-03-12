@@ -21,6 +21,9 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
     justify-content: end;
     align-items: center;
 
+    .label {
+      margin: 0 ${theme.margin.md} 0 0;
+    }
     /* brand-select */
     & > div {
       max-width: ${theme.maxWidth.md};

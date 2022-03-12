@@ -71,6 +71,7 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
   @media only screen and ${devicesUp.sm} {
     .hydra-bridge-logo {
       display: block;
+      transform: scale(1.2);
       margin-bottom: ${theme.margin.xl};
     }
   }
@@ -80,6 +81,7 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
     justify-content: space-between;
 
     .hydra-bridge-logo {
+      transform: scale(1);
       margin-bottom: 0;
     }
   }
@@ -271,8 +273,8 @@ const Home = ({ chains }: Props) => {
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}
-                width={"20rem"}
-                height={"7rem"}
+                width={"18rem"}
+                height={"4.1rem"}
                 name={"hydraBridgeLogo"}
               />
               <AssetSelect
