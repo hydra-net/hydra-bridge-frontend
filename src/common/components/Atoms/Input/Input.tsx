@@ -5,7 +5,6 @@ import { IStyleableProps } from "../../../commonTypes";
 import { StyledInput } from "./styles";
 import { FlexWrapper } from "../Wrappers/Wrapper";
 import { InputLabel } from "../Label/Label";
-import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 
 type InputProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
@@ -33,9 +32,7 @@ const handleInputWrapping = (
 ) => {
   return (
     <FlexWrapper alignItems={"start"}>
-      {label && (
-        <InputLabel fontWeight={theme.fontWeight.semibold}>{label}</InputLabel>
-      )}
+      {label && <InputLabel>{label}</InputLabel>}
       <Component
         type={type}
         value={value}

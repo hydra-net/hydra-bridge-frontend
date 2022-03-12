@@ -32,7 +32,12 @@ const SelectOption = (props: any) => {
     <Option {...props}>
       <CustomFlexWrapper flexDirection={"row"} justifyContent={"start"}>
         {props?.data?.iconName && (
-          <Icon name={props.data.iconName} className={"icon"} />
+          <Icon
+            name={props.data.iconName}
+            width={"3.2rem"}
+            height={"3.2rem"}
+            className={"icon"}
+          />
         )}
         <div>{props?.data?.label}</div>
       </CustomFlexWrapper>

@@ -5,6 +5,7 @@ export const StakenetGlobalStyle = createGlobalStyle`
     height: 100%;
     /* converts 1 rem to 10px instead of 16px */
     font-size: 62.5% !important;
+    overflow-x:hidden;
   }
 
   * {

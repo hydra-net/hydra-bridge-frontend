@@ -12,7 +12,7 @@ import useAmountInput from "./useAmountInput";
 
 import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
-import BridgeRoutes from "../../common/components/BridgeRoutes/BridgeRoutes";
+import BridgeRoutes from "../../common/components/Molecules/BridgeRoutes/BridgeRoutes";
 import HydraModal from "../../common/components/Modal/HydraModal";
 import {
   Container,
@@ -76,6 +76,9 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
       display: block;
       margin-bottom: ${theme.margin.xl};
     }
+    .asset-select {
+      //min-width: 60%;
+    }
   }
 
   @media only screen and ${devicesUp.lg} {
@@ -84,9 +87,6 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
 
     .hydra-bridge-logo {
       margin-bottom: 0;
-    }
-    .asset-select {
-      max-width: ${theme.maxWidth.lg};
     }
   }
 `;
@@ -272,7 +272,7 @@ const Home = ({ chains }: Props) => {
         <ConnectWallet />
       </CustomFlexWrapper>
       <Container type={ContainerType.XXXL}>
-        <Container maxWidth={theme.maxWidth["6xl"]} noGutter={true}>
+        <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
           <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
               <Icon
@@ -324,12 +324,14 @@ const Home = ({ chains }: Props) => {
           />
 
           {showRoutes && !isNotEnoughBalance && isAbleToMove && (
-            <BridgeRoutes
-              inProgress={inProgress}
-              selectedRouteId={routeId}
-              routes={bridgeRoutes}
-              onRouteSelect={handleOnRouteClick}
-            />
+            <div style={{ marginTop: theme.margin.xl }}>
+              <BridgeRoutes
+                inProgress={inProgress}
+                selectedRouteId={routeId}
+                routes={bridgeRoutes}
+                onRouteSelect={handleOnRouteClick}
+              />
+            </div>
           )}
           <HydraModal
             network={network!}
