@@ -30,7 +30,6 @@ import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 import { devicesUp } from "../../media";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
-import { defaultContainerPadding } from "../../common/components/Atoms/Containers/styles";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
@@ -40,7 +39,7 @@ const StyledHydraBackground = styled.section`
   padding: ${theme.margin.lg} 0;
 
   @media only screen and ${devicesUp.md} {
-    padding: ${theme.margin.xxl} 0 ${theme.margin.xxl} 0;
+    padding: 4rem 0 4rem 0;
   }
 `;
 
@@ -49,15 +48,25 @@ const CustomFlexWrapper = styled(FlexWrapper)`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 4.3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   @media only screen and ${devicesUp.sm} {
     justify-content: flex-end;
     margin-bottom: ${theme.margin.xxl};
+
     .hydra-bridge-logo-sm {
       display: none;
     }
   }
-  ${defaultContainerPadding};
+  @media only screen and ${devicesUp.lg} {
+    position: absolute;
+    left: 0;
+  }
+
+  @media only screen and ${devicesUp.lg} {
+    padding-right: 4rem;
+  }
 `;
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`

@@ -84,7 +84,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     /* Focus: display an offset ring */
   &:focus {
     outline: none;
-    box-shadow: ${theme.colors.white} 0 0 0 2px,
+    box-shadow: ${theme.colors.blue.light} 0 0 0 2px,
     ${theme.colors.blue.darkest} 0 0 0 4px,
     ${theme.colors.black} 0 0 0 0;
   }
