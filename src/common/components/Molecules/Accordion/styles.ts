@@ -38,3 +38,21 @@ export const StyledReceiveDetailsAccordionHeader = styled(
     props.isOpen ? theme.colors.blue["medium-darker"] : "transparent"};
   transition: border-bottom-color 150ms linear;
 `;
+
+export const StyledAccordionReceiveDetailsAmountOut = styled.p`
+  font-size: ${theme.paragraph.md};
+  font-weight: ${theme.fontWeight.normal};
+  color: ${theme.colors.white};
+  margin: 0;
+
+  span {
+    font-size: ${theme.paragraph.sm};
+    font-style: italic;
+  }
+`;
+
+export const StyledAccordionReceiveDetailsGasFeeEstimation = styled.p`
+  font-size: ${theme.paragraph.sm};
+  color: ${theme.colors.white};
+  margin: 0 0 0 0.4rem;
+`;

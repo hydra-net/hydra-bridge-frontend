@@ -1,10 +1,16 @@
+import { useTranslation } from "react-i18next";
+
 import {
   StyledAccordionHeader,
   AccordionIcon,
   StyledReceiveDetailsAccordionHeader,
+  StyledAccordionReceiveDetailsGasFeeEstimation,
+  StyledAccordionReceiveDetailsAmountOut,
 } from "./styles";
 import { FlexWrapper } from "../../Atoms/Wrappers/Wrapper";
 import React, { ReactNode } from "react";
+import Icon from "../../Icon/Icon";
+import { formatGasFees } from "../../../../helpers/formatsHelper";
 
 type AccordionHeaderProps = {
   children: ReactNode;
@@ -28,18 +34,58 @@ export const AccordionHeader = ({ isOpen, children }: AccordionHeaderProps) => {
   );
 };
 
-type AccordionHeaderWithBorderSeparatorProps = {
+type ReceiveDetailsAccordionHeaderProps = {
   isOpen?: boolean;
-  children: ReactNode;
+  amountOut?: string;
+  inProgress?: boolean;
+  isDisabled?: boolean;
+  transactionCoastUsd?: number;
 };
 export const ReceiveDetailsAccordionHeader = ({
   isOpen,
-  children,
-}: AccordionHeaderWithBorderSeparatorProps) => {
+  amountOut,
+  inProgress,
+  isDisabled,
+  transactionCoastUsd,
+}: ReceiveDetailsAccordionHeaderProps) => {
+  const { t } = useTranslation();
   return (
     <StyledReceiveDetailsAccordionHeader isOpen={isOpen}>
       <FlexWrapper flexDirection={"row"} style={{ padding: "1.1rem 1.6rem" }}>
-        {children}
+        <FlexWrapper
+          flexDirection={"row"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
+          <StyledAccordionReceiveDetailsAmountOut>
+            {!amountOut ? (
+              "0.0"
+            ) : inProgress || isDisabled ? (
+              <span>{t("fetching-prices")}...</span>
+            ) : (
+              amountOut
+            )}
+          </StyledAccordionReceiveDetailsAmountOut>
+          <FlexWrapper
+            flexDirection={"row"}
+            justifyContent={"flex-end"}
+            inlineFlex
+          >
+            {/* TODO loading spinner integration in next PR */}
+            {!amountOut ? null : inProgress || isDisabled ? (
+              ""
+            ) : (
+              <>
+                {/* TODO 44 integrate font awesome in next PR and replace */}
+                <Icon name={"copy"} size={"1.6rem"} />
+                <StyledAccordionReceiveDetailsGasFeeEstimation>
+                  ~${formatGasFees(transactionCoastUsd)}
+                </StyledAccordionReceiveDetailsGasFeeEstimation>
+              </>
+            )}
+          </FlexWrapper>
+        </FlexWrapper>
+
         {/* TODO 44 integrate font awesome in next PR and replace */}
         <AccordionIcon
           name={"cutArrowDown"}

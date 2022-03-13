@@ -49,6 +49,14 @@ Default.args = {
   ),
 };
 
+const receiveDetailsHeaderProps = {
+  isOpen: true,
+  amountOut: "0.00001",
+  inProgress: false,
+  isDisabled: false,
+  transactionCoastUsd: 0.45456651,
+};
+
 const receiveDetailsProps = {
   iconKey: "hopBridge" as IconKeys,
   chainName: "Hop",
@@ -61,25 +69,8 @@ const receiveDetailsProps = {
 export const AsReceiveDetails = Template.bind({});
 AsReceiveDetails.args = {
   bg: theme.colors.gray.darkest,
-  shouldTriggerToggle: true,
-  header: (
-    <ReceiveDetailsAccordionHeader isOpen={true}>
-      <FlexWrapper
-        flexDirection={"row"}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-      >
-        <Label margin={"0"} style={{ width: "100%" }}>
-          0.0001
-        </Label>
-        <p
-          style={{ fontSize: "1.4rem", color: "white", margin: "0 0 0 .4rem" }}
-        >
-          ~$36.53
-        </p>
-      </FlexWrapper>
-    </ReceiveDetailsAccordionHeader>
-  ),
+  isOpenFromParent: true,
+  header: <ReceiveDetailsAccordionHeader {...receiveDetailsHeaderProps} />,
   content: (
     <AccordionContent padding={"0 1.6rem 1.6rem 1.6rem"}>
       <ReceiveDetails {...receiveDetailsProps} />

@@ -8,27 +8,38 @@ export type AccordionProps = {
   header: ReactNode;
   content: ReactNode;
   bg?: string;
-  shouldTriggerToggle?: boolean;
+  isOpenFromParent?: boolean;
   bottomBorderColorHeader?: string;
+  onToggle?: () => void;
 };
 
 const Accordion = ({
   header,
   content,
   bg,
-  shouldTriggerToggle,
+  isOpenFromParent,
+  onToggle,
 }: AccordionProps & IStyleableProps) => {
   const [height, setHeight] = useState<string | number>(0);
 
   // allow to trigger an open from parent
   useEffect(() => {
-    if (shouldTriggerToggle) setHeight(isOpen() ? 0 : "auto");
-  }, [shouldTriggerToggle]);
+    setHeight(isOpenFromParent ? "auto" : 0);
+  }, [isOpenFromParent]);
 
   const isOpen = (): boolean => height !== 0;
 
+  /**
+   * Handler that emit the fact the click on toggle was done if
+   * the process open/close process is handled by the parent
+   * Otherwise update the internal state
+   */
   const handleToggle = (): void => {
-    setHeight(height === 0 ? "auto" : 0);
+    if (onToggle) {
+      onToggle();
+    } else {
+      setHeight(isOpen() ? 0 : "auto");
+    }
   };
   return (
     <ContainerCard padding={"0"} bg={bg} style={{ width: "100%" }}>

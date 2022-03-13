@@ -1,13 +1,11 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
 
 import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
 import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
 import { ContainerCard } from "../../common/components/Atoms/Containers/Container";
 import { Input } from "../../common/components/Atoms/Input/Input";
 import { InputLabel as Label } from "../../common/components/Atoms/Label/Label";
-import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
 import { ReceiveDetailsAccordionHeader } from "../../common/components/Molecules/Accordion/AccordionHeaders";
 import ReceiveDetails from "../../common/components/Atoms/ReceiveDetails/ReceiveDetails";
 import Accordion from "../../common/components/Molecules/Accordion/Accordion";
@@ -19,27 +17,6 @@ import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
 import { replaceCharsToHaveOnlyDotOrStringInIt } from "../../helpers/stringHelper";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { IconKeys } from "../../common/commonTypes";
-import { formatGasFees } from "../../helpers/formatsHelper";
-import Icon from "../../common/components/Icon/Icon";
-
-const StyledAmountOut = styled.p`
-  font-size: ${theme.paragraph.xl};
-  font-weight: ${theme.fontWeight.normal};
-  color: ${theme.colors.white};
-  margin: 0;
-
-  span {
-    font-size: ${theme.paragraph.sm};
-    font-style: italic;
-  }
-`;
-
-const StyledGasFeeEstimation = styled.p`
-  font-size: ${theme.paragraph.sm};
-  //font-weight: ${theme.fontWeight.normal};
-  color: ${theme.colors.white};
-  margin: 0 0 0 0.4rem;
-`;
 
 type Props = {
   chains: ChainResponseDto[];
@@ -152,44 +129,6 @@ const MainContent = ({
     onAmountChange(value);
   };
 
-  const renderReceiveDetailsHeader = (): ReactNode => (
-    <ReceiveDetailsAccordionHeader isOpen={isReceiveDetailsOpen}>
-      <FlexWrapper
-        flexDirection={"row"}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-      >
-        <StyledAmountOut>
-          {!amountOut ? (
-            "0.0"
-          ) : inProgress || isDisabled ? (
-            <span>{t("fetching-prices")}...</span>
-          ) : (
-            amountOut
-          )}
-        </StyledAmountOut>
-        <FlexWrapper
-          flexDirection={"row"}
-          justifyContent={"flex-end"}
-          inlineFlex
-        >
-          {/* TODO loading spinner integration in next PR */}
-          {!amountOut ? null : inProgress || isDisabled ? (
-            ""
-          ) : (
-            <>
-              {/* TODO 44 integrate font awesome in next PR and replace */}
-              <Icon name={"copy"} size={"1.6rem"} />
-              <StyledGasFeeEstimation>
-                ~${formatGasFees(selectedRoute?.transactionCoastUsd)}
-              </StyledGasFeeEstimation>
-            </>
-          )}
-        </FlexWrapper>
-      </FlexWrapper>
-    </ReceiveDetailsAccordionHeader>
-  );
-
   const renderReceiveDetailsContent = (): ReactNode => {
     const props = {
       iconKey: "hopBridge" as IconKeys,
@@ -200,7 +139,6 @@ const MainContent = ({
       slippage: "0.00001 ETH",
       amountOut: "0.00001 ETH",
     };
-
     return (
       <AccordionContent padding={"0 1.6rem 1.6rem 1.6rem"}>
         <ReceiveDetails {...props} />
@@ -231,9 +169,18 @@ const MainContent = ({
 
       <Label style={{ marginRight: "auto" }}>{t("common.receive")}</Label>
       <Accordion
-        header={renderReceiveDetailsHeader()}
+        header={
+          <ReceiveDetailsAccordionHeader
+            isOpen={isReceiveDetailsOpen}
+            amountOut={amountOut}
+            inProgress={inProgress}
+            isDisabled={isDisabled}
+            transactionCoastUsd={selectedRoute?.transactionCoastUsd}
+          />
+        }
         content={renderReceiveDetailsContent()}
-        shouldTriggerToggle={isReceiveDetailsOpen}
+        isOpenFromParent={isReceiveDetailsOpen}
+        onToggle={() => setIsReceiveDetailsOpen(!isReceiveDetailsOpen)}
       />
 
       <BridgeButton
