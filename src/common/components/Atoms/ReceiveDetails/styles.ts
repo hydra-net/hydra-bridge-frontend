@@ -17,11 +17,14 @@ export const ReceiveDetailsRow = styled(FlexWrapper)<{
       ? `1px solid ${theme.colors.blue["medium-darker"]}`
       : "none"};
 `;
-export const StyledReceiveDetailsParagraph = styled.p<{ isWhite?: boolean }>`
+export const StyledReceiveDetailsParagraph = styled.p<{
+  margin?: string;
+  isWhite?: boolean;
+}>`
   font-size: ${theme.paragraph.sm};
   color: ${(props) =>
     props.isWhite ? theme.colors.white : theme.colors.gray.light};
   text-transform: capitalize;
   font-weight: ${theme.fontWeight.medium};
-  margin: 0.8rem 0;
+  margin: ${(props) => (props.margin ? props.margin : "0.8rem 0")};
 `;

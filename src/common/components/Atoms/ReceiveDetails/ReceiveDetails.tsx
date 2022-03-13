@@ -64,10 +64,10 @@ const ReceiveDetails = ({
         </StyledReceiveDetailsParagraph>
       </ReceiveDetailsRow>
       <ReceiveDetailsRow>
-        <StyledReceiveDetailsParagraph>
+        <StyledReceiveDetailsParagraph margin={"0.8rem 0 0 0"}>
           {t("amount-out")}
         </StyledReceiveDetailsParagraph>
-        <StyledReceiveDetailsParagraph isWhite>
+        <StyledReceiveDetailsParagraph isWhite margin={"0.8rem 0 0 0"}>
           {amountOut}
         </StyledReceiveDetailsParagraph>
       </ReceiveDetailsRow>

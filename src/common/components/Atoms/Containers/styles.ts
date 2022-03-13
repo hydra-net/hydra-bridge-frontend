@@ -14,6 +14,8 @@ const defaultContainerPadding = css`
   }
 `;
 
+export const defaultContainerCardPadding = theme.margin.xl;
+
 export const StyledContainer = styled.div<ContainerProps>`
   max-width: ${(props) => (props.maxWidth ? props.maxWidth : "100%")};
   margin-left: auto;
@@ -52,7 +54,8 @@ export const StyledContainerCard = styled(StyledContainer)`
   border-width: ${(props) => (props.border ? props.border : 0)};
   border-color: transparent;
   border-style: solid;
-  padding: ${(props) => (props.padding ? props.padding : `${theme.margin.xl}`)};
+  padding: ${(props) =>
+    props.padding ? props.padding : defaultContainerCardPadding};
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.xl};
   box-shadow: ${(props) =>

@@ -1,42 +1,45 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import AnimateHeight from "react-animate-height";
 
-import { AccordionContent, AccordionIcon } from "./styles";
 import { ContainerCard } from "../../Atoms/Containers/Container";
 import { FakeButton } from "../../Atoms/Buttons/Button";
-import { FlexWrapper } from "../../Atoms/Wrappers/Wrapper";
-
 export type AccordionProps = {
   header: ReactNode;
   content: ReactNode;
+  bg?: string;
+  shouldTriggerToggle?: boolean;
+  bottomBorderColorHeader?: string;
 };
 
-const Accordion = ({ header, content }: AccordionProps) => {
+const Accordion = ({
+  header,
+  content,
+  bg,
+  shouldTriggerToggle,
+}: AccordionProps) => {
   const [height, setHeight] = useState<string | number>(0);
 
-  const handleToggle = () => {
+  // allow to trigger an open from parent
+  useEffect(() => {
+    if (shouldTriggerToggle) setHeight(isOpen() ? 0 : "auto");
+  }, [shouldTriggerToggle]);
+
+  const isOpen = (): boolean => height !== 0;
+
+  const handleToggle = (): void => {
     setHeight(height === 0 ? "auto" : 0);
   };
   return (
-    <ContainerCard>
+    <ContainerCard padding={"0"} bg={bg}>
       <FakeButton
         ariaLabel={"open accordion"}
-        aria-expanded={height !== 0}
+        aria-expanded={isOpen()}
         onClick={handleToggle}
       >
-        <FlexWrapper flexDirection={"row"} style={{ pointerEvents: "none" }}>
-          {header}
-          <AccordionIcon
-            name={"cutArrowDown"}
-            width={"2.4rem"}
-            height={"2.4rem"}
-            style={{ marginLeft: "1.7rem" }}
-            isopen={height !== 0 ? 1 : 0}
-          />
-        </FlexWrapper>
+        {header}
       </FakeButton>
       <AnimateHeight height={height} duration={500} style={{ width: "100%" }}>
-        <AccordionContent>{content}</AccordionContent>
+        {content}
       </AnimateHeight>
     </ContainerCard>
   );
