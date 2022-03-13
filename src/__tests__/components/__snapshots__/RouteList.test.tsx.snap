@@ -1,0 +1,415 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Bridge route list should render the routes, when a error occurs 1`] = `
+<DocumentFragment>
+  <div
+    id="route-8"
+    style="width: 100%; margin-bottom: 2rem;"
+  >
+    <div
+      aria-expanded="false"
+      aria-label="select route"
+      class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK eqEoBy"
+      >
+        <div
+          class="sc-gKclnd konHGI"
+        >
+          <div
+            class="sc-iCfMLu gYGgwA"
+          >
+            <svg
+              class="amount__icon"
+              color="#FFFFFF"
+              height="3.2rem"
+              width="2.8rem"
+            >
+              usdc.svg
+            </svg>
+            <span
+              class="amount__number"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="sc-furwcr fhgROL"
+          >
+            <svg
+              class="arrow__icon"
+              color="#FFFFFF"
+              height="1.8rem"
+              width="2.1rem"
+            >
+              double-arrow-right.svg
+            </svg>
+          </div>
+          <div
+            class="sc-pVTFL qWzKy"
+          >
+            <svg
+              class="chain__icon chain__icon--sm"
+              color="#FFFFFF"
+              height="2.6rem"
+              width="2.6rem"
+            >
+              hop.svg
+            </svg>
+            <p
+              class="chain__name"
+            >
+              Hop Goerli
+            </p>
+            <div
+              class="chain__group"
+            >
+              <span>
+                <svg
+                  class="network__icon"
+                  color="#FFFFFF"
+                  height="2.6rem"
+                  width="2.6rem"
+                >
+                  hop.svg
+                </svg>
+              </span>
+              <span>
+                Hop Goerli
+              </span>
+            </div>
+          </div>
+          <div
+            class="sc-furwcr fhgROL"
+          >
+            <svg
+              class="arrow__icon"
+              color="#FFFFFF"
+              height="1.8rem"
+              width="2.1rem"
+            >
+              double-arrow-right.svg
+            </svg>
+          </div>
+          <div
+            class="sc-iCfMLu fRazBy"
+          >
+            <svg
+              class="amount__icon"
+              color="#FFFFFF"
+              height="3.2rem"
+              width="2.8rem"
+            >
+              usdc.svg
+            </svg>
+            <span
+              class="amount__number"
+            >
+              1.0
+            </span>
+          </div>
+        </div>
+        <div
+          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
+        >
+          <p
+            class="sc-bqiRlB kMHECB"
+            data-testid="route-fees"
+          >
+            gas-fee : ~ 0.61 $ | ~ 5 min
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 2rem;"
+  >
+    <p
+      style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
+    >
+      error-showing-routes
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Bridge route list should render the routes, when all of them have errors 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 2rem;"
+  >
+    <p
+      style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
+    >
+      error-showing-routes
+    </p>
+  </div>
+  <div
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 2rem;"
+  >
+    <p
+      style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
+    >
+      error-showing-routes
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Bridge route list should render with routes 1`] = `
+<DocumentFragment>
+  <div
+    id="route-8"
+    style="width: 100%; margin-bottom: 2rem;"
+  >
+    <div
+      aria-expanded="false"
+      aria-label="select route"
+      class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK eqEoBy"
+      >
+        <div
+          class="sc-gKclnd konHGI"
+        >
+          <div
+            class="sc-iCfMLu gYGgwA"
+          >
+            <svg
+              class="amount__icon"
+              color="#FFFFFF"
+              height="3.2rem"
+              width="2.8rem"
+            >
+              usdc.svg
+            </svg>
+            <span
+              class="amount__number"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="sc-furwcr fhgROL"
+          >
+            <svg
+              class="arrow__icon"
+              color="#FFFFFF"
+              height="1.8rem"
+              width="2.1rem"
+            >
+              double-arrow-right.svg
+            </svg>
+          </div>
+          <div
+            class="sc-pVTFL qWzKy"
+          >
+            <svg
+              class="chain__icon chain__icon--sm"
+              color="#FFFFFF"
+              height="2.6rem"
+              width="2.6rem"
+            >
+              hop.svg
+            </svg>
+            <p
+              class="chain__name"
+            >
+              Hop Goerli
+            </p>
+            <div
+              class="chain__group"
+            >
+              <span>
+                <svg
+                  class="network__icon"
+                  color="#FFFFFF"
+                  height="2.6rem"
+                  width="2.6rem"
+                >
+                  hop.svg
+                </svg>
+              </span>
+              <span>
+                Hop Goerli
+              </span>
+            </div>
+          </div>
+          <div
+            class="sc-furwcr fhgROL"
+          >
+            <svg
+              class="arrow__icon"
+              color="#FFFFFF"
+              height="1.8rem"
+              width="2.1rem"
+            >
+              double-arrow-right.svg
+            </svg>
+          </div>
+          <div
+            class="sc-iCfMLu fRazBy"
+          >
+            <svg
+              class="amount__icon"
+              color="#FFFFFF"
+              height="3.2rem"
+              width="2.8rem"
+            >
+              usdc.svg
+            </svg>
+            <span
+              class="amount__number"
+            >
+              1.0
+            </span>
+          </div>
+        </div>
+        <div
+          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
+        >
+          <p
+            class="sc-bqiRlB kMHECB"
+            data-testid="route-fees"
+          >
+            gas-fee : ~ 0.61 $ | ~ 5 min
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="route-6"
+    style="width: 100%; margin-bottom: 2rem;"
+  >
+    <div
+      aria-expanded="false"
+      aria-label="select route"
+      class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK ixpTqd"
+      >
+        <div
+          class="sc-gKclnd konHGI"
+        >
+          <div
+            class="sc-iCfMLu gYGgwA"
+          >
+            <svg
+              class="amount__icon"
+              color="#FFFFFF"
+              height="3.2rem"
+              width="2.8rem"
+            >
+              usdc.svg
+            </svg>
+            <span
+              class="amount__number"
+            >
+              1
+            </span>
+          </div>
+          <div
+            class="sc-furwcr fhgROL"
+          >
+            <svg
+              class="arrow__icon"
+              color="#FFFFFF"
+              height="1.8rem"
+              width="2.1rem"
+            >
+              double-arrow-right.svg
+            </svg>
+          </div>
+          <div
+            class="sc-pVTFL qWzKy"
+          >
+            <svg
+              class="chain__icon chain__icon--sm"
+              color="#FFFFFF"
+              height="2.6rem"
+              width="2.6rem"
+            >
+              polygon.svg
+            </svg>
+            <p
+              class="chain__name"
+            >
+              Polygon POS Goerli
+            </p>
+            <div
+              class="chain__group"
+            >
+              <span>
+                <svg
+                  class="network__icon"
+                  color="#FFFFFF"
+                  height="2.6rem"
+                  width="2.6rem"
+                >
+                  polygon.svg
+                </svg>
+              </span>
+              <span>
+                Polygon POS Goerli
+              </span>
+            </div>
+          </div>
+          <div
+            class="sc-furwcr fhgROL"
+          >
+            <svg
+              class="arrow__icon"
+              color="#FFFFFF"
+              height="1.8rem"
+              width="2.1rem"
+            >
+              double-arrow-right.svg
+            </svg>
+          </div>
+          <div
+            class="sc-iCfMLu fRazBy"
+          >
+            <svg
+              class="amount__icon"
+              color="#FFFFFF"
+              height="3.2rem"
+              width="2.8rem"
+            >
+              usdc.svg
+            </svg>
+            <span
+              class="amount__number"
+            >
+              1.0
+            </span>
+          </div>
+        </div>
+        <div
+          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
+        >
+          <p
+            class="sc-bqiRlB kMHECB"
+            data-testid="route-fees"
+          >
+            gas-fee : ~ 0.63 $ | ~ 30 min
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -118,7 +118,7 @@ const MainContent = ({
   };
 
   return (
-    <ContainerCard>
+    <ContainerCard hasHoverEffect={true}>
       <TransferChainSelects
         optionsChainsFrom={mapChainResponseDtoFromSendingTarget(chains)}
         optionsChainsTo={mapChainResponseDtoToReceivingTarget(chains)}

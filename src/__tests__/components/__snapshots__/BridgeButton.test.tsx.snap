@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The BridgeButton should ask to input amount and be disabled when none is set 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdvvtL sc-gsDKAQ dWAYQK jCJqpi"
+    disabled=""
+  >
+    input-amount
+  </button>
+</DocumentFragment>
+`;
+
+exports[`The BridgeButton should be able to approve 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdvvtL sc-gsDKAQ iPQeJd jCJqpi"
+  >
+    common.approve
+  </button>
+</DocumentFragment>
+`;
+
+exports[`The BridgeButton should be able to bridge 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdvvtL sc-gsDKAQ iPQeJd jCJqpi"
+  >
+    bridge
+  </button>
+</DocumentFragment>
+`;
+
+exports[`The BridgeButton should be disabled and warn for not enough balance 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdvvtL sc-gsDKAQ dWAYQK jCJqpi"
+    disabled=""
+  >
+    insufficient-balance
+  </button>
+</DocumentFragment>
+`;
+
+exports[`The BridgeButton should fallback to input amount text when none of the conditions met 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdvvtL sc-gsDKAQ dWAYQK jCJqpi"
+    disabled=""
+  >
+    input-amount
+  </button>
+</DocumentFragment>
+`;
+
+exports[`The BridgeButton should show Connect wallet when wallet not connected 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdvvtL sc-gsDKAQ iPQeJd jCJqpi"
+  >
+    connect-wallet
+  </button>
+</DocumentFragment>
+`;
+
+exports[`The BridgeButton should show loading spinner and be disabled when inProgress 1`] = `
+<DocumentFragment>
+  <button
+    class="sc-bdvvtL sc-gsDKAQ jKmHEe jCJqpi"
+    disabled=""
+  >
+    common.loading
+  </button>
+</DocumentFragment>
+`;

@@ -21,6 +21,7 @@ export type ContainerProps = {
   noGutter?: boolean;
   padding?: string;
   boxShadow?: string;
+  hasHoverEffect?: boolean;
 };
 
 export const Container = (props: ContainerProps & IStyleableProps) => {

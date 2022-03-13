@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Bridge route item should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    aria-label="select route"
+    class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK ixpTqd"
+    >
+      <div
+        class="sc-gKclnd konHGI"
+      >
+        <div
+          class="sc-iCfMLu gYGgwA"
+        >
+          <svg
+            class="amount__icon"
+            color="#FFFFFF"
+            height="3.2rem"
+            width="2.8rem"
+          >
+            eth.svg
+          </svg>
+          <span
+            class="amount__number"
+          >
+            0.0001
+          </span>
+        </div>
+        <div
+          class="sc-furwcr fhgROL"
+        >
+          <svg
+            class="arrow__icon"
+            color="#FFFFFF"
+            height="1.8rem"
+            width="2.1rem"
+          >
+            double-arrow-right.svg
+          </svg>
+        </div>
+        <div
+          class="sc-pVTFL qWzKy"
+        >
+          <svg
+            class="chain__icon chain__icon--sm"
+            color="#FFFFFF"
+            height="2.6rem"
+            width="2.6rem"
+          >
+            polygon.svg
+          </svg>
+          <p
+            class="chain__name"
+          >
+            Polygon
+          </p>
+          <div
+            class="chain__group"
+          >
+            <span>
+              <svg
+                class="network__icon"
+                color="#FFFFFF"
+                height="2.6rem"
+                width="2.6rem"
+              >
+                polygon.svg
+              </svg>
+            </span>
+            <span>
+              Polygon
+            </span>
+          </div>
+        </div>
+        <div
+          class="sc-furwcr fhgROL"
+        >
+          <svg
+            class="arrow__icon"
+            color="#FFFFFF"
+            height="1.8rem"
+            width="2.1rem"
+          >
+            double-arrow-right.svg
+          </svg>
+        </div>
+        <div
+          class="sc-iCfMLu fRazBy"
+        >
+          <svg
+            class="amount__icon"
+            color="#FFFFFF"
+            height="3.2rem"
+            width="2.8rem"
+          >
+            eth.svg
+          </svg>
+          <span
+            class="amount__number"
+          >
+            0.0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

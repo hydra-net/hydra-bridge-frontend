@@ -5,7 +5,7 @@ import Icon from "../../Icon/Icon";
 import { ContainerCard } from "../../Atoms/Containers/Container";
 import {
   StyledBridgeArrow,
-  StyledBridgeNetwork,
+  StyledBridgeChain,
   StyledBridgeRoute,
   StyledBridgeRouteAmount,
 } from "./styles";
@@ -25,12 +25,14 @@ const CustomFakeButton = styled(FakeButton)<{
 `;
 export const RouteItemContainerCard = styled(ContainerCard)<{
   isSelected: boolean;
+  hasChildren?: boolean;
+  hasError?: boolean;
 }>`
-  min-height: 10rem;
+  min-height: ${(props) =>
+    props.hasChildren ? "10rem" : props.hasError ? "10rem" : "auto"};
   padding: 1rem;
-  background-color: ${theme.colors.blue.darkest};
-  ${(props) =>
-    props.isSelected ? `background-color: ${theme.colors.gray.dark}` : ""};
+  background-color: ${(props) =>
+    props.isSelected ? theme.colors.gray.dark : theme.colors.blue.darkest};
   box-shadow: ${theme.boxShadow.sm};
   border-radius: ${theme.borderRadius.lg};
 
@@ -91,16 +93,16 @@ const RouteItem = ({
               className={"arrow__icon"}
             />
           </StyledBridgeArrow>
-          <StyledBridgeNetwork>
+          <StyledBridgeChain>
             <Icon
               name={bridgeSymbol}
               width={"2.6rem"}
               height={"2.6rem"}
-              className={"network__icon network__icon--sm"}
+              className={"chain__icon chain__icon--sm"}
             />
-            <p className={"network__name"}>{bridgeDisplayName}</p>
+            <p className={"chain__name"}>{bridgeDisplayName}</p>
 
-            <div className={"network__group"}>
+            <div className={"chain__group"}>
               <span>
                 <Icon
                   name={bridgeSymbol}
@@ -111,7 +113,7 @@ const RouteItem = ({
               </span>
               <span>{bridgeDisplayName}</span>
             </div>
-          </StyledBridgeNetwork>
+          </StyledBridgeChain>
           <StyledBridgeArrow>
             <Icon
               name={"doubleArrowRight"}

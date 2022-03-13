@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Accordion should render correctly when closed 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dkPtRN sc-iCfMLu xiZCu dZQHyL"
+  >
+    <div
+      aria-expanded="false"
+      aria-label="open accordion"
+      class="sc-jrQzAO gBykGD"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="sc-kDTinF iIZaPt"
+        style="pointer-events: none;"
+      >
+        <h1>
+          Foo
+        </h1>
+        <svg
+          class="sc-gsDKAQ csGOgr"
+          color="#FFFFFF"
+          height="2.4rem"
+          isopen="0"
+          style="margin-left: 1.7rem;"
+          width="2.4rem"
+        >
+          cut-arrow-down.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      class="rah-static rah-static--height-zero"
+      style="width: 100%; height: 0px; overflow: hidden;"
+    >
+      <div
+        style="display: none;"
+      >
+        <div
+          class="sc-bdvvtL dlMaGN"
+        >
+          Bar
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Accordion should render correctly when open 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dkPtRN sc-iCfMLu xiZCu dZQHyL"
+  >
+    <div
+      aria-expanded="true"
+      aria-label="open accordion"
+      class="sc-jrQzAO gBykGD"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="sc-kDTinF iIZaPt"
+        style="pointer-events: none;"
+      >
+        <h1>
+          Foo
+        </h1>
+        <svg
+          class="sc-gsDKAQ JrLkJ"
+          color="#FFFFFF"
+          height="2.4rem"
+          isopen="1"
+          style="margin-left: 1.7rem;"
+          width="2.4rem"
+        >
+          cut-arrow-down.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      class="rah-animating rah-animating--down rah-animating--to-height-auto"
+      style="width: 100%; height: 0px; overflow: hidden; transition: height 500ms ease 0ms;"
+    >
+      <div
+        style=""
+      >
+        <div
+          class="sc-bdvvtL dlMaGN"
+        >
+          Bar
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
