@@ -11,14 +11,17 @@ export interface IStakenetTheme extends DefaultTheme {
       lighter: string;
       lightest: string;
       "medium-dark": string;
+      "medium-darker": string;
     };
     white: string;
     black: string;
     red: string;
     gray: {
+      darkest: string;
       darker: string;
       dark: string;
       "medium-dark": string;
+      light: string;
     };
   };
 
@@ -97,6 +100,7 @@ export const stakenetTheme: IStakenetTheme = {
       darkest: "#0D1328",
       darker: "#192038",
       dark: "#0D132830",
+      "medium-darker": "#3E4262",
       "medium-dark": "#3F476D",
       medium: "#1254DD",
       light: "#1356DE",
@@ -107,10 +111,11 @@ export const stakenetTheme: IStakenetTheme = {
     red: "#BF2C44",
     black: "#000000",
     gray: {
+      darkest: "#3839515E",
       darker: "#7377A514",
       dark: "#7377A529",
       "medium-dark": "#7377A53D",
-      // test: "#4748635E",
+      light: "#9395B0",
     },
   },
 
