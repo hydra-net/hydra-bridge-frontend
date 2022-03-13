@@ -11,6 +11,11 @@
   "available-routes": "Available routes",
   "invalid-address": "Invalid address",
   "error-showing-routes": "An error occurred while trying to display this route",
+  "gas-fees-time": "Gas Fees/Time",
+  "transactions-fees": "Transacations fees",
+  "slippage": "Slippage",
+  "amount-out": "Amount out",
+  "min": "min",
   "common": {
     "close": "Close",
     "send": "Send",
