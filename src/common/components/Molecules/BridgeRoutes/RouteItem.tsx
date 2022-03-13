@@ -86,6 +86,7 @@ const RouteItem = ({
             <span className={"amount__number"}>{amountIn}</span>
           </StyledBridgeRouteAmount>
           <StyledBridgeArrow>
+            {/* TODO 44 integrate font awesome in next PR and replace */}
             <Icon
               name={"doubleArrowRight"}
               width={"2.1rem"}
@@ -115,6 +116,7 @@ const RouteItem = ({
             </div>
           </StyledBridgeChain>
           <StyledBridgeArrow>
+            {/* TODO 44 integrate font awesome in next PR and replace */}
             <Icon
               name={"doubleArrowRight"}
               width={"2.1rem"}

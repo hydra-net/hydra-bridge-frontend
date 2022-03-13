@@ -3,6 +3,7 @@ import AnimateHeight from "react-animate-height";
 
 import { ContainerCard } from "../../Atoms/Containers/Container";
 import { FakeButton } from "../../Atoms/Buttons/Button";
+import { IStyleableProps } from "../../../commonTypes";
 export type AccordionProps = {
   header: ReactNode;
   content: ReactNode;
@@ -16,7 +17,7 @@ const Accordion = ({
   content,
   bg,
   shouldTriggerToggle,
-}: AccordionProps) => {
+}: AccordionProps & IStyleableProps) => {
   const [height, setHeight] = useState<string | number>(0);
 
   // allow to trigger an open from parent
@@ -30,7 +31,7 @@ const Accordion = ({
     setHeight(height === 0 ? "auto" : 0);
   };
   return (
-    <ContainerCard padding={"0"} bg={bg}>
+    <ContainerCard padding={"0"} bg={bg} style={{ width: "100%" }}>
       <FakeButton
         ariaLabel={"open accordion"}
         aria-expanded={isOpen()}

@@ -47,6 +47,7 @@ const ConnectWallet = () => {
   };
 
   if (!address) {
+    /* TODO 44 integrate font awesome in next PR and replace */
     return (
       <Button iconName={"cutArrowRight"} onClick={handleConnectWallet}>
         {t("connect-wallet")}

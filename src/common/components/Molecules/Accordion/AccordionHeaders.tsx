@@ -15,6 +15,7 @@ export const AccordionHeader = ({ isOpen, children }: AccordionHeaderProps) => {
     <StyledAccordionHeader>
       <FlexWrapper flexDirection={"row"}>
         {children}
+        {/* TODO 44 integrate font awesome in next PR and replace */}
         <AccordionIcon
           name={"cutArrowDown"}
           width={"2.4rem"}
@@ -39,6 +40,7 @@ export const ReceiveDetailsAccordionHeader = ({
     <StyledReceiveDetailsAccordionHeader isOpen={isOpen}>
       <FlexWrapper flexDirection={"row"} style={{ padding: "1.1rem 1.6rem" }}>
         {children}
+        {/* TODO 44 integrate font awesome in next PR and replace */}
         <AccordionIcon
           name={"cutArrowDown"}
           width={"2.4rem"}

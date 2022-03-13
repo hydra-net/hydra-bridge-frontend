@@ -15,6 +15,7 @@
   "slippage": "Slippage",
   "amount-out": "Amount out",
   "min": "min",
+  "fetching-prices": "Fetching prices",
   "common": {
     "close": "Close",
     "send": "Send",
