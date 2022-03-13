@@ -11,6 +11,8 @@ import Accordion from "../Accordion/Accordion";
 import RoundedBubble from "../../Atoms/RoundedBubble/RoundedBubble";
 
 import { RouteDto } from "../../../dtos";
+import { AccordionHeader } from "../Accordion/AccordionHeaders";
+import { AccordionContent } from "../Accordion/styles";
 
 export type BridgeRoutesProps = {
   inProgress: boolean;
@@ -27,30 +29,34 @@ const BridgeRoutes = ({
   const { t } = useTranslation();
 
   const renderHeader = (): ReactNode => (
-    <FlexWrapper
-      flexDirection={"row"}
-      alignItems={"center"}
-      justifyContent={"space-between"}
-    >
-      <Label margin={"0"} style={{ width: "100%", textAlign: "left" }}>
-        {t("available-routes")}
-      </Label>
-      <RoundedBubble>{routes.length || 0}</RoundedBubble>
-    </FlexWrapper>
+    <AccordionHeader>
+      <FlexWrapper
+        flexDirection={"row"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
+        <Label margin={"0"} style={{ width: "100%", textAlign: "left" }}>
+          {t("available-routes")}
+        </Label>
+        <RoundedBubble>{routes.length || 0}</RoundedBubble>
+      </FlexWrapper>
+    </AccordionHeader>
   );
   const renderContent = (): ReactNode => {
     return inProgress ? (
-      <>
+      <AccordionContent>
         <RectangleSkeleton height={"10rem"} style={{ marginBottom: "1rem" }} />
         <RectangleSkeleton height={"10rem"} style={{ marginBottom: "1rem" }} />
         <RectangleSkeleton height={"10rem"} />
-      </>
+      </AccordionContent>
     ) : (
-      <RouteList
-        routes={routes}
-        selectedRouteId={selectedRouteId!}
-        onRouteSelect={onRouteSelect}
-      />
+      <AccordionContent>
+        <RouteList
+          routes={routes}
+          selectedRouteId={selectedRouteId!}
+          onRouteSelect={onRouteSelect}
+        />
+      </AccordionContent>
     );
   };
 
