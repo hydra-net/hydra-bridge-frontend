@@ -30,10 +30,17 @@ const ReceiveDetails = ({
   return (
     <div>
       <ReceiveDetailsRow hasBottomBorder justifyContent={"flex-start"}>
-        <Icon name={iconKey} size={"2.2rem"} style={{ margin: "0.8rem 0" }} />
+        <Icon
+          name={iconKey}
+          size={"2.2rem"}
+          style={{ margin: `${theme.margin.default} 0` }}
+        />
         <StyledReceiveDetailsParagraph
           isWhite
-          style={{ fontSize: theme.paragraph.xl, marginLeft: theme.margin.sm }}
+          margin={`${theme.margin.default} 0 ${theme.margin.default} ${theme.margin.sm}`}
+          style={{
+            fontSize: theme.paragraph.xl,
+          }}
         >
           {chainName}
         </StyledReceiveDetailsParagraph>

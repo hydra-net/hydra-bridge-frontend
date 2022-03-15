@@ -45,10 +45,10 @@ export const ReceiveDetailsAccordionHeader = ({
   isOpen,
   amountOut,
   inProgress,
-  isDisabled,
   transactionCoastUsd,
 }: ReceiveDetailsAccordionHeaderProps) => {
   const { t } = useTranslation();
+
   return (
     <StyledReceiveDetailsAccordionHeader isOpen={isOpen}>
       <FlexWrapper flexDirection={"row"} style={{ padding: "1.1rem 1.6rem" }}>
@@ -58,12 +58,12 @@ export const ReceiveDetailsAccordionHeader = ({
           justifyContent={"space-between"}
         >
           <StyledAccordionReceiveDetailsAmountOut>
-            {!amountOut ? (
-              "0.0"
-            ) : inProgress || isDisabled ? (
+            {amountOut ? (
+              amountOut
+            ) : inProgress ? (
               <span>{t("fetching-prices")}...</span>
             ) : (
-              amountOut
+              "0.0"
             )}
           </StyledAccordionReceiveDetailsAmountOut>
           <FlexWrapper
@@ -72,7 +72,7 @@ export const ReceiveDetailsAccordionHeader = ({
             inlineFlex
           >
             {/* TODO loading spinner integration in next PR */}
-            {!amountOut ? null : inProgress || isDisabled ? (
+            {!amountOut ? null : inProgress ? (
               ""
             ) : (
               <>

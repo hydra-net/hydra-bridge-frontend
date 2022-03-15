@@ -174,7 +174,6 @@ const MainContent = ({
             isOpen={isReceiveDetailsOpen}
             amountOut={amountOut}
             inProgress={inProgress}
-            isDisabled={isDisabled}
             transactionCoastUsd={selectedRoute?.transactionCoastUsd}
           />
         }

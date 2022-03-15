@@ -44,6 +44,7 @@ export const StyledAccordionReceiveDetailsAmountOut = styled.p`
   font-weight: ${theme.fontWeight.normal};
   color: ${theme.colors.white};
   margin: 0;
+  min-width: 15rem;
 
   span {
     font-size: ${theme.paragraph.sm};
