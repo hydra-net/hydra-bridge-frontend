@@ -4,7 +4,7 @@ import { hex2rgba } from "../../../../helpers/styleHelper";
 import { devicesUp, sizes } from "../../../../media";
 import { ContainerProps } from "./Container";
 
-const defaultContainerPadding = css`
+export const defaultContainerPadding = css`
   padding-left: 2rem;
   padding-right: 2rem;
 
@@ -52,7 +52,10 @@ export const StyledContainerCard = styled(StyledContainer)`
   border-width: ${(props) => (props.border ? props.border : 0)};
   border-color: transparent;
   border-style: solid;
-  padding: ${(props) => (props.padding ? props.padding : `${theme.margin.xl}`)};
+  padding: ${(props) =>
+    props.padding
+      ? props.padding
+      : `${theme.margin.xl} ${theme.margin.default} `};
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.xl};
   box-shadow: ${(props) =>
@@ -65,5 +68,9 @@ export const StyledContainerCard = styled(StyledContainer)`
         box-shadow: ${theme.boxShadow.md};
         transition: box-shadow 0.3s ease-in-out;
       `}
+  }
+  @media only screen and ${devicesUp.sm} {
+    padding: ${(props) =>
+      props.padding ? props.padding : `${theme.margin.xl}`};
   }
 `;

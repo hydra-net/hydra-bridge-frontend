@@ -158,7 +158,6 @@ const MainContent = ({
         onWalletConnect={onConnectWallet}
         onWalletApprove={onApproveWallet}
         onMoveAssets={onMoveAssets}
-        style={{ marginBottom: theme.margin.sm }}
       />
     </ContainerCard>
   );
