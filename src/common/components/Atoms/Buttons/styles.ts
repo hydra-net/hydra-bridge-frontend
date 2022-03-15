@@ -1,11 +1,13 @@
 import styled, { css } from "styled-components";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import { devicesUp } from "../../../../media";
 
 export type IStyledButtonProps = {
   isLoading?: boolean;
   fontWeight?: number;
   fullWidth?: boolean;
   borderRadius?: string;
+  size?: string;
 };
 
 export const StyledButton = styled.button<IStyledButtonProps>`
@@ -29,13 +31,13 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       : css`
           width: auto;
           display: inline-flex;
+          align-items: center;
           flex: none;
         `};
   border: 1px transparent;
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.lg};
-  padding: 1.5rem;
-
+  padding: 1.4rem 1.8rem;
   opacity: ${(props) => (props.disabled && !props.isLoading ? "0.7" : "1")};
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
@@ -82,7 +84,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     /* Focus: display an offset ring */
   &:focus {
     outline: none;
-    box-shadow: ${theme.colors.white} 0 0 0 2px,
+    box-shadow: ${theme.colors.blue.light} 0 0 0 2px,
     ${theme.colors.blue.darkest} 0 0 0 4px,
     ${theme.colors.black} 0 0 0 0;
   }
@@ -111,7 +113,12 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       }
     `}
 
-    /* icon */
+  @media only screen and ${devicesUp.lg} {
+    font-size: ${theme.paragraph.md};
+    padding: 1.5rem;
+  }
+
+  /* icon */
   .btn-icon {
     display:flex;
     align-items:center;

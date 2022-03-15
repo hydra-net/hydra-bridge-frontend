@@ -25,6 +25,7 @@ const Icon = ({ width, height, size, color, name, ...props }: IIconProps) => {
       width={width || size || defaultSize}
       height={height || size || defaultSize}
       color={color || theme.colors.white}
+      data-icon={name}
       {...props}
     />
   );

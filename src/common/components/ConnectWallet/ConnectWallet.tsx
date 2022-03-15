@@ -59,7 +59,12 @@ const ConnectWallet = () => {
       {formatWalletAddress(isWrongNetwork, address)}
       {!isWrongNetwork && (
         <span className={"btn-icon"}>
-          <Icon color={theme.colors.white} size={"2rem"} name={"copy"} />
+          <Icon
+            color={theme.colors.white}
+            width={"2.1rem"}
+            height={"2.1rem"}
+            name={"copy"}
+          />
         </span>
       )}
     </Button>

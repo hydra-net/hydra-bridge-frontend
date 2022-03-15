@@ -42,7 +42,7 @@ const RouteList = ({
           <div
             key={id}
             id={`route-${id}`}
-            style={{ width: "100%", marginBottom: theme.margin.lg }}
+            style={{ width: "100%", marginBottom: theme.margin.md }}
           >
             <RouteItem
               coinSymbol={coinSymbol}
@@ -71,7 +71,7 @@ const RouteList = ({
             key={route?.id}
             isSelected={false}
             hasError={true}
-            style={{ width: "100%", marginBottom: theme.margin.lg }}
+            style={{ width: "100%", marginBottom: theme.margin.md }}
           >
             <p
               style={{

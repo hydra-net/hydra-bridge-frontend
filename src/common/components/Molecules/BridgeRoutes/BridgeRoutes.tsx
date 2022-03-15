@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteList from "./RouteList";
@@ -27,9 +27,10 @@ const BridgeRoutes = ({
   onRouteSelect,
 }: BridgeRoutesProps) => {
   const { t } = useTranslation();
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(false);
 
   const renderHeader = (): ReactNode => (
-    <AccordionHeader>
+    <AccordionHeader isOpen={isAccordionOpen}>
       <FlexWrapper
         flexDirection={"row"}
         alignItems={"center"}
@@ -70,7 +71,11 @@ const BridgeRoutes = ({
 
   return (
     <Container type={ContainerType.XXXL} noGutter={true}>
-      <Accordion header={renderHeader()} content={renderContent()} />
+      <Accordion
+        header={renderHeader()}
+        content={renderContent()}
+        onToggle={(newStatus) => setIsAccordionOpen(newStatus)}
+      />
     </Container>
   );
 };

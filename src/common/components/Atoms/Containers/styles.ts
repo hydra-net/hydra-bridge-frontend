@@ -4,7 +4,7 @@ import { hex2rgba } from "../../../../helpers/styleHelper";
 import { devicesUp, sizes } from "../../../../media";
 import { ContainerProps } from "./Container";
 
-const defaultContainerPadding = css`
+export const defaultContainerPadding = css`
   padding-left: 2rem;
   padding-right: 2rem;
 
