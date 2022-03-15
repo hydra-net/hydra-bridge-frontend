@@ -4,7 +4,7 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
 <DocumentFragment>
   <div
     id="route-8"
-    style="width: 100%; margin-bottom: 2rem;"
+    style="width: 100%; margin-bottom: 1.2rem;"
   >
     <div
       aria-expanded="false"
@@ -14,7 +14,7 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
       tabindex="0"
     >
       <div
-        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK eqEoBy"
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK eqEoBy"
       >
         <div
           class="sc-gKclnd konHGI"
@@ -113,7 +113,7 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
           </div>
         </div>
         <div
-          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
+          class="sc-bdvvtL sc-jRQBWg fGXmcv eQPwQD"
         >
           <p
             class="sc-bqiRlB kMHECB"
@@ -126,8 +126,8 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
     </div>
   </div>
   <div
-    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
-    style="width: 100%; margin-bottom: 2rem;"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 1.2rem;"
   >
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
@@ -141,8 +141,8 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
 exports[`The Bridge route list should render the routes, when all of them have errors 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
-    style="width: 100%; margin-bottom: 2rem;"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 1.2rem;"
   >
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
@@ -151,8 +151,8 @@ exports[`The Bridge route list should render the routes, when all of them have e
     </p>
   </div>
   <div
-    class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK jMIVTt"
-    style="width: 100%; margin-bottom: 2rem;"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK jMIVTt"
+    style="width: 100%; margin-bottom: 1.2rem;"
   >
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
@@ -167,7 +167,7 @@ exports[`The Bridge route list should render with routes 1`] = `
 <DocumentFragment>
   <div
     id="route-8"
-    style="width: 100%; margin-bottom: 2rem;"
+    style="width: 100%; margin-bottom: 1.2rem;"
   >
     <div
       aria-expanded="false"
@@ -177,7 +177,7 @@ exports[`The Bridge route list should render with routes 1`] = `
       tabindex="0"
     >
       <div
-        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK eqEoBy"
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK eqEoBy"
       >
         <div
           class="sc-gKclnd konHGI"
@@ -276,7 +276,7 @@ exports[`The Bridge route list should render with routes 1`] = `
           </div>
         </div>
         <div
-          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
+          class="sc-bdvvtL sc-jRQBWg fGXmcv eQPwQD"
         >
           <p
             class="sc-bqiRlB kMHECB"
@@ -290,7 +290,7 @@ exports[`The Bridge route list should render with routes 1`] = `
   </div>
   <div
     id="route-6"
-    style="width: 100%; margin-bottom: 2rem;"
+    style="width: 100%; margin-bottom: 1.2rem;"
   >
     <div
       aria-expanded="false"
@@ -300,7 +300,7 @@ exports[`The Bridge route list should render with routes 1`] = `
       tabindex="0"
     >
       <div
-        class="sc-bdvvtL sc-jRQBWg fGXmcv fQFNvP sc-egiyK ixpTqd"
+        class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK ixpTqd"
       >
         <div
           class="sc-gKclnd konHGI"
@@ -399,7 +399,7 @@ exports[`The Bridge route list should render with routes 1`] = `
           </div>
         </div>
         <div
-          class="sc-bdvvtL sc-jRQBWg fGXmcv dQnGwA"
+          class="sc-bdvvtL sc-jRQBWg fGXmcv eQPwQD"
         >
           <p
             class="sc-bqiRlB kMHECB"
