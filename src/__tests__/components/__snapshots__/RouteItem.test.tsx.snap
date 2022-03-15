@@ -21,6 +21,7 @@ exports[`The Bridge route item should render correctly 1`] = `
           <svg
             class="amount__icon"
             color="#FFFFFF"
+            data-icon="ethCoin"
             height="3.2rem"
             width="2.8rem"
           >
@@ -38,6 +39,7 @@ exports[`The Bridge route item should render correctly 1`] = `
           <svg
             class="arrow__icon"
             color="#FFFFFF"
+            data-icon="doubleArrowRight"
             height="1.8rem"
             width="2.1rem"
           >
@@ -50,6 +52,7 @@ exports[`The Bridge route item should render correctly 1`] = `
           <svg
             class="chain__icon chain__icon--sm"
             color="#FFFFFF"
+            data-icon="polygonBridge"
             height="2.6rem"
             width="2.6rem"
           >
@@ -67,6 +70,7 @@ exports[`The Bridge route item should render correctly 1`] = `
               <svg
                 class="network__icon"
                 color="#FFFFFF"
+                data-icon="polygonBridge"
                 height="2.6rem"
                 width="2.6rem"
               >
@@ -84,6 +88,7 @@ exports[`The Bridge route item should render correctly 1`] = `
           <svg
             class="arrow__icon"
             color="#FFFFFF"
+            data-icon="doubleArrowRight"
             height="1.8rem"
             width="2.1rem"
           >
@@ -96,6 +101,7 @@ exports[`The Bridge route item should render correctly 1`] = `
           <svg
             class="amount__icon"
             color="#FFFFFF"
+            data-icon="ethCoin"
             height="3.2rem"
             width="2.8rem"
           >

@@ -7,7 +7,8 @@ exports[`The Bridge routes should render correctly when not in progress and no e
     type="3xl"
   >
     <div
-      class="sc-bdvvtL sc-jRQBWg fGXmcv iPhdjs"
+      class="sc-bdvvtL sc-jRQBWg fGXmcv hJXOBd"
+      style="width: 100%;"
     >
       <div
         aria-expanded="true"
@@ -17,34 +18,38 @@ exports[`The Bridge routes should render correctly when not in progress and no e
         tabindex="0"
       >
         <div
-          class="sc-fotOHu bnkEsk"
-          style="pointer-events: none;"
+          class="sc-fotOHu iFOERY sc-bkkeKt gzjLNt"
         >
           <div
-            class="sc-fotOHu fbDECk"
+            class="sc-fotOHu bnkEsk"
           >
-            <label
-              class="sc-hBUSln jgfghP"
-              style="width: 100%; text-align: left;"
-            >
-              available-routes
-            </label>
             <div
-              class="sc-ieecCq bAMVya"
+              class="sc-fotOHu fbDECk"
             >
-              2
+              <label
+                class="sc-hBUSln jgfghP"
+                style="width: 100%; text-align: left;"
+              >
+                available-routes
+              </label>
+              <div
+                class="sc-fFeiMQ iJaGUG"
+              >
+                2
+              </div>
             </div>
+            <svg
+              class="sc-dJjYzT glBFcR"
+              color="#FFFFFF"
+              data-icon="cutArrowDown"
+              height="2.4rem"
+              isopen="1"
+              style="margin-left: 1.7rem;"
+              width="2.4rem"
+            >
+              cut-arrow-down.svg
+            </svg>
           </div>
-          <svg
-            class="sc-bkkeKt lpiqKy"
-            color="#FFFFFF"
-            height="2.4rem"
-            isopen="1"
-            style="margin-left: 1.7rem;"
-            width="2.4rem"
-          >
-            cut-arrow-down.svg
-          </svg>
         </div>
       </div>
       <div
@@ -56,11 +61,11 @@ exports[`The Bridge routes should render correctly when not in progress and no e
           style=""
         >
           <div
-            class="sc-fFeiMQ fnmjFn"
+            class="sc-ieecCq crfbYk"
           >
             <div
               id="route-8"
-              style="width: 100%; margin-bottom: 2rem;"
+              style="width: 100%; margin-bottom: 1.2rem;"
             >
               <div
                 aria-expanded="false"
@@ -81,6 +86,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
+                        data-icon="usdcCoin"
                         height="3.2rem"
                         width="2.8rem"
                       >
@@ -98,6 +104,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
+                        data-icon="doubleArrowRight"
                         height="1.8rem"
                         width="2.1rem"
                       >
@@ -110,6 +117,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="chain__icon chain__icon--sm"
                         color="#FFFFFF"
+                        data-icon="hopBridge"
                         height="2.6rem"
                         width="2.6rem"
                       >
@@ -127,6 +135,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                           <svg
                             class="network__icon"
                             color="#FFFFFF"
+                            data-icon="hopBridge"
                             height="2.6rem"
                             width="2.6rem"
                           >
@@ -144,6 +153,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
+                        data-icon="doubleArrowRight"
                         height="1.8rem"
                         width="2.1rem"
                       >
@@ -156,6 +166,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
+                        data-icon="usdcCoin"
                         height="3.2rem"
                         width="2.8rem"
                       >
@@ -175,7 +186,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       class="sc-bqiRlB kMHECB"
                       data-testid="route-fees"
                     >
-                      gas-fee : ~ 0.61 $ | ~ 5 min
+                      gas-fee : ~$0.61 | ~5 min
                     </p>
                   </div>
                 </div>
@@ -183,7 +194,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
             </div>
             <div
               id="route-6"
-              style="width: 100%; margin-bottom: 2rem;"
+              style="width: 100%; margin-bottom: 1.2rem;"
             >
               <div
                 aria-expanded="false"
@@ -204,6 +215,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
+                        data-icon="usdcCoin"
                         height="3.2rem"
                         width="2.8rem"
                       >
@@ -221,6 +233,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
+                        data-icon="doubleArrowRight"
                         height="1.8rem"
                         width="2.1rem"
                       >
@@ -233,6 +246,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="chain__icon chain__icon--sm"
                         color="#FFFFFF"
+                        data-icon="polygonBridge"
                         height="2.6rem"
                         width="2.6rem"
                       >
@@ -250,6 +264,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                           <svg
                             class="network__icon"
                             color="#FFFFFF"
+                            data-icon="polygonBridge"
                             height="2.6rem"
                             width="2.6rem"
                           >
@@ -267,6 +282,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="arrow__icon"
                         color="#FFFFFF"
+                        data-icon="doubleArrowRight"
                         height="1.8rem"
                         width="2.1rem"
                       >
@@ -279,6 +295,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       <svg
                         class="amount__icon"
                         color="#FFFFFF"
+                        data-icon="usdcCoin"
                         height="3.2rem"
                         width="2.8rem"
                       >
@@ -298,7 +315,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       class="sc-bqiRlB kMHECB"
                       data-testid="route-fees"
                     >
-                      gas-fee : ~ 0.63 $ | ~ 30 min
+                      gas-fee : ~$0.63 | ~30 min
                     </p>
                   </div>
                 </div>
@@ -319,7 +336,8 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
     type="3xl"
   >
     <div
-      class="sc-bdvvtL sc-jRQBWg fGXmcv iPhdjs"
+      class="sc-bdvvtL sc-jRQBWg fGXmcv hJXOBd"
+      style="width: 100%;"
     >
       <div
         aria-expanded="true"
@@ -329,34 +347,38 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
         tabindex="0"
       >
         <div
-          class="sc-fotOHu bnkEsk"
-          style="pointer-events: none;"
+          class="sc-fotOHu iFOERY sc-bkkeKt gzjLNt"
         >
           <div
-            class="sc-fotOHu fbDECk"
+            class="sc-fotOHu bnkEsk"
           >
-            <label
-              class="sc-hBUSln jgfghP"
-              style="width: 100%; text-align: left;"
-            >
-              available-routes
-            </label>
             <div
-              class="sc-ieecCq bAMVya"
+              class="sc-fotOHu fbDECk"
             >
-              2
+              <label
+                class="sc-hBUSln jgfghP"
+                style="width: 100%; text-align: left;"
+              >
+                available-routes
+              </label>
+              <div
+                class="sc-fFeiMQ iJaGUG"
+              >
+                2
+              </div>
             </div>
+            <svg
+              class="sc-dJjYzT glBFcR"
+              color="#FFFFFF"
+              data-icon="cutArrowDown"
+              height="2.4rem"
+              isopen="1"
+              style="margin-left: 1.7rem;"
+              width="2.4rem"
+            >
+              cut-arrow-down.svg
+            </svg>
           </div>
-          <svg
-            class="sc-bkkeKt lpiqKy"
-            color="#FFFFFF"
-            height="2.4rem"
-            isopen="1"
-            style="margin-left: 1.7rem;"
-            width="2.4rem"
-          >
-            cut-arrow-down.svg
-          </svg>
         </div>
       </div>
       <div
@@ -368,7 +390,7 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
           style=""
         >
           <div
-            class="sc-fFeiMQ fnmjFn"
+            class="sc-ieecCq crfbYk"
           >
             <div
               class="sc-ksdxgE jNGrHQ rectangle-skeleton"

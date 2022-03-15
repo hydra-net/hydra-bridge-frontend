@@ -8,17 +8,17 @@ export type AccordionProps = {
   header: ReactNode;
   content: ReactNode;
   bg?: string;
-  isOpenFromParent?: boolean;
+  isOpenFromParent?: boolean | undefined;
   bottomBorderColorHeader?: string;
-  onToggle?: () => void;
+  onToggle?: (newStatus: boolean) => void | undefined;
 };
 
 const Accordion = ({
   header,
   content,
   bg,
-  isOpenFromParent,
-  onToggle,
+  isOpenFromParent = undefined,
+  onToggle = undefined,
 }: AccordionProps & IStyleableProps) => {
   const [height, setHeight] = useState<string | number>(0);
 
@@ -30,14 +30,18 @@ const Accordion = ({
   const isOpen = (): boolean => height !== 0;
 
   /**
-   * Handler that emit the fact the click on toggle was done if
-   * the process open/close process is handled by the parent
-   * Otherwise update the internal state
+   * Handler that emit the click on if onToggle is function is defined to let parent know
+   * the trigger was made
+   * Open itself if the isFromParent props was given by the parent and the state is handled there
+   * If the isFromParent props is not passed the Accordion will manage it's state alone
+   * However the Icon won't receive the change status if the onToggle function is
+   * not listened by the parent (who has the child header)
    */
   const handleToggle = (): void => {
     if (onToggle) {
-      onToggle();
-    } else {
+      onToggle(!isOpen());
+    }
+    if (isOpenFromParent === undefined) {
       setHeight(isOpen() ? 0 : "auto");
     }
   };

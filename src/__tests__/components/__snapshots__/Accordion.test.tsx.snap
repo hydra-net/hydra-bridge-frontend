@@ -3,32 +3,39 @@
 exports[`The Accordion should render correctly when closed 1`] = `
 <DocumentFragment>
   <div
-    class="sc-dkPtRN sc-iCfMLu xiZCu dZQHyL"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv hJXOBd"
+    style="width: 100%;"
   >
     <div
       aria-expanded="false"
       aria-label="open accordion"
-      class="sc-jrQzAO gBykGD"
+      class="sc-furwcr gPiovd"
       role="button"
       tabindex="0"
     >
       <div
-        class="sc-kDTinF iIZaPt"
-        style="pointer-events: none;"
+        class="sc-pVTFL yzYaz sc-jrQzAO gCBRHg"
       >
-        <h1>
-          Foo
-        </h1>
-        <svg
-          class="sc-gsDKAQ csGOgr"
-          color="#FFFFFF"
-          height="2.4rem"
-          isopen="0"
-          style="margin-left: 1.7rem;"
-          width="2.4rem"
+        <div
+          class="sc-pVTFL ilAcon"
         >
-          cut-arrow-down.svg
-        </svg>
+          <label
+            class="sc-ksdxgE fxGKky"
+          >
+            Foo
+          </label>
+          <svg
+            class="sc-iqseJM eSaCCB"
+            color="#FFFFFF"
+            data-icon="cutArrowDown"
+            height="2.4rem"
+            isopen="0"
+            style="margin-left: 1.7rem;"
+            width="2.4rem"
+          >
+            cut-arrow-down.svg
+          </svg>
+        </div>
       </div>
     </div>
     <div
@@ -39,11 +46,7 @@ exports[`The Accordion should render correctly when closed 1`] = `
       <div
         style="display: none;"
       >
-        <div
-          class="sc-bdvvtL dlMaGN"
-        >
-          Bar
-        </div>
+        Bar
       </div>
     </div>
   </div>
@@ -53,32 +56,39 @@ exports[`The Accordion should render correctly when closed 1`] = `
 exports[`The Accordion should render correctly when open 1`] = `
 <DocumentFragment>
   <div
-    class="sc-dkPtRN sc-iCfMLu xiZCu dZQHyL"
+    class="sc-bdvvtL sc-jRQBWg fGXmcv hJXOBd"
+    style="width: 100%;"
   >
     <div
       aria-expanded="true"
       aria-label="open accordion"
-      class="sc-jrQzAO gBykGD"
+      class="sc-furwcr gPiovd"
       role="button"
       tabindex="0"
     >
       <div
-        class="sc-kDTinF iIZaPt"
-        style="pointer-events: none;"
+        class="sc-pVTFL yzYaz sc-jrQzAO gCBRHg"
       >
-        <h1>
-          Foo
-        </h1>
-        <svg
-          class="sc-gsDKAQ JrLkJ"
-          color="#FFFFFF"
-          height="2.4rem"
-          isopen="1"
-          style="margin-left: 1.7rem;"
-          width="2.4rem"
+        <div
+          class="sc-pVTFL ilAcon"
         >
-          cut-arrow-down.svg
-        </svg>
+          <label
+            class="sc-ksdxgE fxGKky"
+          >
+            Foo
+          </label>
+          <svg
+            class="sc-iqseJM itDfL"
+            color="#FFFFFF"
+            data-icon="cutArrowDown"
+            height="2.4rem"
+            isopen="1"
+            style="margin-left: 1.7rem;"
+            width="2.4rem"
+          >
+            cut-arrow-down.svg
+          </svg>
+        </div>
       </div>
     </div>
     <div
@@ -89,11 +99,7 @@ exports[`The Accordion should render correctly when open 1`] = `
       <div
         style=""
       >
-        <div
-          class="sc-bdvvtL dlMaGN"
-        >
-          Bar
-        </div>
+        Bar
       </div>
     </div>
   </div>
