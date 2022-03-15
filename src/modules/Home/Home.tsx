@@ -302,7 +302,7 @@ const Home = ({ chains }: Props) => {
             chainTo={chainTo!}
             amountIn={amountIn}
             amountOut={amountOut}
-            selectedRoute={bridgeRoutes.find((route) => route.id === routeId)}
+            routeId={routeId}
             inProgress={inProgress}
             isAbleToMove={isAbleToMove}
             isApproveReady={!!buildApproveTx}

@@ -10,7 +10,9 @@ export default {
 } as ComponentMeta<typeof ReceiveDetails>;
 
 const Template: ComponentStory<typeof ReceiveDetails> = (args) => (
-  <ReceiveDetails {...args} />
+  <div style={{ maxWidth: "50rem" }}>
+    <ReceiveDetails {...args} />
+  </div>
 );
 
 export const Default = Template.bind({});
