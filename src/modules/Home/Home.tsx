@@ -36,23 +36,36 @@ const StyledHydraBackground = styled.section`
   min-width: 100vw;
   background: url("./hydra-background.svg") no-repeat fixed center center;
   background-size: cover;
+  padding: ${theme.margin.lg} 0;
+
+  @media only screen and ${devicesUp.md} {
+    padding: 4rem 0 4rem 0;
+  }
 `;
 
 const CustomFlexWrapper = styled(FlexWrapper)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: ${theme.margin.xl};
-
-  .hydra-bridge-logo-sm {
-    width: 40%;
-  }
+  margin-bottom: 4.3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
   @media only screen and ${devicesUp.sm} {
     justify-content: flex-end;
+    margin-bottom: ${theme.margin.xxl};
+
     .hydra-bridge-logo-sm {
       display: none;
     }
+  }
+  @media only screen and ${devicesUp.lg} {
+    position: absolute;
+    left: 0;
+  }
+
+  @media only screen and ${devicesUp.lg} {
+    padding-right: 4rem;
   }
 `;
 
@@ -67,6 +80,7 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
   @media only screen and ${devicesUp.sm} {
     .hydra-bridge-logo {
       display: block;
+      transform: scale(1.2);
       margin-bottom: ${theme.margin.xl};
     }
   }
@@ -76,11 +90,8 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
     justify-content: space-between;
 
     .hydra-bridge-logo {
-      width: 28%;
+      transform: scale(1);
       margin-bottom: 0;
-    }
-    .asset-select {
-      max-width: ${theme.maxWidth.lg};
     }
   }
 `;
@@ -256,31 +267,23 @@ const Home = ({ chains }: Props) => {
 
   return (
     <StyledHydraBackground>
-      <Container
-        type={ContainerType.XXXL}
-        style={{
-          paddingTop: theme.margin.xxl,
-          paddingBottom: theme.margin.xxl,
-        }}
-      >
-        <Container type={ContainerType.XL}>
-          <CustomFlexWrapper>
-            <Icon
-              className={"hydra-bridge-logo-sm"}
-              width={"20rem"}
-              height={"7rem"}
-              name={"hydraBridgeLogoSm"}
-            />
-            <ConnectWallet />
-          </CustomFlexWrapper>
-        </Container>
+      <CustomFlexWrapper>
+        <Icon
+          className={"hydra-bridge-logo-sm"}
+          width={"13.6rem"}
+          height={"3.8rem"}
+          name={"hydraBridgeLogoSm"}
+        />
+        <ConnectWallet />
+      </CustomFlexWrapper>
+      <Container type={ContainerType.XXXL}>
         <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
-          <ContainerCard style={{ marginBottom: theme.margin.xl }}>
+          <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}
-                width={"20rem"}
-                height={"7rem"}
+                width={"18rem"}
+                height={"4.1rem"}
                 name={"hydraBridgeLogo"}
               />
               <AssetSelect

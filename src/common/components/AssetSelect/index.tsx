@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 
 import { FlexWrapper } from "../Atoms/Wrappers/Wrapper";
 import BrandSelect from "../Molecules/BrandSelect/BrandSelect";
-import { InputLabel } from "../Atoms/Label/Label";
 
 import { SelectOptionType } from "../Molecules/BrandSelect/SelectOption";
 import { TokenResponseDto } from "../../dtos";
@@ -11,22 +10,23 @@ import { IStyleableProps } from "../../commonTypes";
 
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../media";
+import { InputLabel } from "../Atoms/Label/Label";
 
 const ResponsiveFlexWrapper = styled(FlexWrapper)`
   flex-direction: column;
   align-items: start;
 
-  .label {
-    margin: 0 0 ${theme.margin.md} 0;
-  }
-
   @media only screen and ${devicesUp.lg} {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
 
     .label {
       margin: 0 ${theme.margin.md} 0 0;
+    }
+    /* brand-select */
+    & > div {
+      max-width: ${theme.maxWidth.md};
     }
   }
 `;
@@ -56,11 +56,7 @@ const AssetSelect = ({
 
   return (
     <div className={className}>
-      <ResponsiveFlexWrapper
-        flexDirection={"row"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-      >
+      <ResponsiveFlexWrapper flexDirection={"row"} alignItems={"center"}>
         <InputLabel className={"label"}>{t("common.send")}</InputLabel>
         <BrandSelect
           value={
