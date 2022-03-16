@@ -42,7 +42,8 @@ const Accordion = ({
       onToggle(!isOpen());
     }
     if (isOpenFromParent === undefined) {
-      setHeight(isOpen() ? 0 : "auto");
+      const isOko = isOpen() ? 0 : "auto";
+      setHeight(isOko);
     }
   };
   return (

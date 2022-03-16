@@ -12,7 +12,7 @@ import React, { ReactNode } from "react";
 import Icon from "../../Icon/Icon";
 import { formatGasFees } from "../../../../helpers/formatsHelper";
 
-type AccordionHeaderProps = {
+export type AccordionHeaderProps = {
   children: ReactNode;
   isOpen?: boolean;
 };

@@ -1,5 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`The Accordion The Accordion independently should not open itself when is open is handled by parent 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL sc-jRQBWg fGXmcv hJXOBd"
+    style="width: 100%;"
+  >
+    <div
+      aria-expanded="false"
+      aria-label="open accordion"
+      class="sc-furwcr gPiovd"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="sc-pVTFL yzYaz sc-jrQzAO gCBRHg"
+      >
+        <div
+          class="sc-pVTFL ilAcon"
+        >
+          <label
+            class="sc-ksdxgE fxGKky"
+          >
+            Foo
+          </label>
+          <svg
+            class="sc-iqseJM eSaCCB"
+            color="#FFFFFF"
+            data-icon="cutArrowDown"
+            height="2.4rem"
+            isopen="0"
+            style="margin-left: 1.7rem;"
+            width="2.4rem"
+          >
+            cut-arrow-down.svg
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      class="rah-static rah-static--height-zero"
+      style="width: 100%; height: 0px; overflow: hidden;"
+    >
+      <div
+        style="display: none;"
+      >
+        Bar
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`The Accordion The Accordion independently should open and emit the new status when onToggle is defined but not isOpenFromParent 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL sc-jRQBWg fGXmcv hJXOBd"
+    style="width: 100%;"
+  >
+    <div
+      aria-expanded="true"
+      aria-label="open accordion"
+      class="sc-furwcr gPiovd"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="sc-pVTFL yzYaz sc-jrQzAO gCBRHg"
+      >
+        <div
+          class="sc-pVTFL ilAcon"
+        >
+          <label
+            class="sc-ksdxgE fxGKky"
+          >
+            Foo
+          </label>
+          <svg
+            class="sc-iqseJM eSaCCB"
+            color="#FFFFFF"
+            data-icon="cutArrowDown"
+            height="2.4rem"
+            isopen="0"
+            style="margin-left: 1.7rem;"
+            width="2.4rem"
+          >
+            cut-arrow-down.svg
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-hidden="true"
+      class="rah-animating rah-animating--down rah-animating--to-height-auto"
+      style="width: 100%; height: 0px; overflow: hidden; transition: height 500ms ease 0ms;"
+    >
+      <div
+        style=""
+      >
+        Bar
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`The Accordion should render correctly when closed 1`] = `
 <DocumentFragment>
   <div
