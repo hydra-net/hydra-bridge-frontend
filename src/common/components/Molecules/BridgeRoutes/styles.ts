@@ -86,14 +86,14 @@ export const StyledBridgeArrow = styled.div`
   }
 `;
 
-export const StyledBridgeNetwork = styled.div`
+export const StyledBridgeChain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 30%;
   max-width: 30%;
 
-  .network {
+  .chain {
     &__name {
       font-size: ${theme.paragraph.md};
       color: ${theme.colors.white};
@@ -112,7 +112,7 @@ export const StyledBridgeNetwork = styled.div`
   }
 
   @media only screen and ${devicesUp.sm} {
-    .network {
+    .chain {
       &__icon {
         min-width: 2.6rem;
       }
@@ -124,7 +124,7 @@ export const StyledBridgeNetwork = styled.div`
     justify-content: center;
     text-align: center;
     width: 100%;
-    .network {
+    .chain {
       &__name {
         display: none;
         width: 100%;

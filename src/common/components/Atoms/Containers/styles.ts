@@ -59,11 +59,15 @@ export const StyledContainerCard = styled(StyledContainer)`
   border-radius: ${(props) =>
     props.borderRadius ? props.borderRadius : theme.borderRadius.xl};
   box-shadow: ${(props) =>
-    props.boxShadow ? props.boxShadow : theme.boxShadow.lg};
+    props.boxShadow ? props.boxShadow : theme.boxShadow.sm};
 
   &:hover {
-    box-shadow: ${theme.boxShadow.xl};
-    transition: box-shadow 0.3s ease-in-out;
+    ${(props) =>
+      props.hasHoverEffect &&
+      css`
+        box-shadow: ${theme.boxShadow.md};
+        transition: box-shadow 0.3s ease-in-out;
+      `}
   }
   @media only screen and ${devicesUp.sm} {
     padding: ${(props) =>

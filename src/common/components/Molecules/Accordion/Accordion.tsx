@@ -18,7 +18,7 @@ const Accordion = ({ header, content }: AccordionProps) => {
     setHeight(height === 0 ? "auto" : 0);
   };
   return (
-    <ContainerCard>
+    <ContainerCard hasHoverEffect={true}>
       <FakeButton
         ariaLabel={"open accordion"}
         aria-expanded={height !== 0}

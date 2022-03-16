@@ -41,9 +41,17 @@ const BridgeRoutes = ({
   const renderContent = (): ReactNode => {
     return inProgress ? (
       <>
-        <RectangleSkeleton height={"10rem"} style={{ marginBottom: "1rem" }} />
-        <RectangleSkeleton height={"10rem"} style={{ marginBottom: "1rem" }} />
-        <RectangleSkeleton height={"10rem"} />
+        <RectangleSkeleton
+          className={"rectangle-skeleton"}
+          height={"10rem"}
+          style={{ marginBottom: "1rem" }}
+        />
+        <RectangleSkeleton
+          className={"rectangle-skeleton"}
+          height={"10rem"}
+          style={{ marginBottom: "1rem" }}
+        />
+        <RectangleSkeleton className={"rectangle-skeleton"} height={"10rem"} />
       </>
     ) : (
       <RouteList

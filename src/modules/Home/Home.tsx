@@ -278,7 +278,10 @@ const Home = ({ chains }: Props) => {
       </CustomFlexWrapper>
       <Container type={ContainerType.XXXL}>
         <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
-          <ContainerCard style={{ marginBottom: theme.margin.xxl }}>
+          <ContainerCard
+            style={{ marginBottom: theme.margin.xxl }}
+            hasHoverEffect={true}
+          >
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}

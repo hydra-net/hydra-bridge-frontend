@@ -41,6 +41,7 @@ const RouteList = ({
         return (
           <div
             key={id}
+            id={`route-${id}`}
             style={{ width: "100%", marginBottom: theme.margin.md }}
           >
             <RouteItem
@@ -66,7 +67,12 @@ const RouteList = ({
           route
         );
         return (
-          <RouteItemContainerCard isSelected={false}>
+          <RouteItemContainerCard
+            key={route?.id}
+            isSelected={false}
+            hasError={true}
+            style={{ width: "100%", marginBottom: theme.margin.md }}
+          >
             <p
               style={{
                 fontSize: theme.paragraph.md,

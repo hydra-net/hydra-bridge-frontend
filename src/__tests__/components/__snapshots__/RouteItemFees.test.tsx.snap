@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The Bridge route item fees should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdvvtL sc-jRQBWg fGXmcv eQPwQD"
+  >
+    <p
+      class="sc-gKclnd ixACOe"
+      data-testid="route-fees"
+    >
+      gas-fee : ~ 0.40 $ | ~ 5 min
+    </p>
+  </div>
+</DocumentFragment>
+`;
