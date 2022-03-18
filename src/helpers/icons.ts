@@ -6,7 +6,7 @@ import {
   POLYGON_BRIDGE,
   POLYGON_BRIDGE_GOERLI,
 } from "../common/constants";
-import { IconKeys } from "../common/commonTypes";
+import { IconKeys } from "../common/components/Atoms/Icons/Icon";
 
 /**
  * Helper to easily get the icon key from a bridge
@@ -23,7 +23,7 @@ export const getBridgeIcon = (initialBridgeName: string): IconKeys => {
     bridgeName = HOP;
   }
 
-  return `${bridgeName.toLocaleLowerCase()}Bridge` as IconKeys;
+  return `${bridgeName.toLocaleLowerCase()}Chain` as IconKeys;
 };
 
 /**

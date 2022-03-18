@@ -1,10 +1,11 @@
 import { components } from "react-select";
 import styled from "styled-components";
-import Icon from "../../Icon/Icon";
+
 import { FlexWrapper } from "../../Atoms/Wrappers/Wrapper";
-import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
-import { IconKeys } from "../../../commonTypes";
+import Icon, { IconKeys } from "../../Atoms/Icons/Icon";
+
 import { SelectOptionType } from "./SelectOption";
+import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 
 const CustomFlexWrapper = styled(FlexWrapper)`
   .icon {
