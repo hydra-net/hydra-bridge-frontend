@@ -20,12 +20,10 @@ exports[`The Bridge route item should render correctly 1`] = `
         >
           <svg
             class="amount__icon"
-            color="#FFFFFF"
             height="3.2rem"
+            name="ethCoin"
             width="2.8rem"
-          >
-            eth.svg
-          </svg>
+          />
           <span
             class="amount__number"
           >
@@ -37,24 +35,20 @@ exports[`The Bridge route item should render correctly 1`] = `
         >
           <svg
             class="arrow__icon"
-            color="#FFFFFF"
             height="1.8rem"
+            name="doubleArrowRight"
             width="2.1rem"
-          >
-            double-arrow-right.svg
-          </svg>
+          />
         </div>
         <div
-          class="sc-pVTFL qWzKy"
+          class="sc-pVTFL joWhdh"
         >
           <svg
             class="chain__icon chain__icon--sm"
-            color="#FFFFFF"
             height="2.6rem"
+            name="polygonChain"
             width="2.6rem"
-          >
-            polygon.svg
-          </svg>
+          />
           <p
             class="chain__name"
           >
@@ -66,12 +60,10 @@ exports[`The Bridge route item should render correctly 1`] = `
             <span>
               <svg
                 class="network__icon"
-                color="#FFFFFF"
                 height="2.6rem"
+                name="polygonChain"
                 width="2.6rem"
-              >
-                polygon.svg
-              </svg>
+              />
             </span>
             <span>
               Polygon
@@ -83,24 +75,20 @@ exports[`The Bridge route item should render correctly 1`] = `
         >
           <svg
             class="arrow__icon"
-            color="#FFFFFF"
             height="1.8rem"
+            name="doubleArrowRight"
             width="2.1rem"
-          >
-            double-arrow-right.svg
-          </svg>
+          />
         </div>
         <div
           class="sc-iCfMLu fRazBy"
         >
           <svg
             class="amount__icon"
-            color="#FFFFFF"
             height="3.2rem"
+            name="ethCoin"
             width="2.8rem"
-          >
-            eth.svg
-          </svg>
+          />
           <span
             class="amount__number"
           >
