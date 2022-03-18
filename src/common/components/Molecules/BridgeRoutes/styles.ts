@@ -134,12 +134,7 @@ export const StyledBridgeChain = styled.div`
       &__icon {
         margin: 0 ${theme.margin.sm} 0 0;
         &--sm {
-          // hack when trying to display none, the icon on the group class is shown in html but we can't see it
-          visibility: hidden;
-          width: 0;
-          height: 0;
-          margin: 0;
-          min-width: 0;
+          display: none;
         }
       }
 

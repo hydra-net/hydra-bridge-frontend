@@ -4,11 +4,11 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "../Atoms/Buttons/Button";
-import Icon from "../Icon/Icon";
 
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 import { DEFAULT_NOTIFY_CONFIG } from "../../constants";
 import { formatWalletAddress } from "../../../helpers/walletHelper";
+import Icon from "../Atoms/Icons/Icon";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 const ConnectWallet = () => {

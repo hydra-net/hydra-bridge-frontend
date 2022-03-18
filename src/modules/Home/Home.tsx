@@ -18,9 +18,9 @@ import {
   Container,
   ContainerCard,
 } from "../../common/components/Atoms/Containers/Container";
-import Icon from "../../common/components/Icon/Icon";
 import { FlexWrapper } from "../../common/components/Atoms/Wrappers/Wrapper";
 import ConnectWallet from "../../common/components/ConnectWallet/ConnectWallet";
+import Icon from "../../common/components/Atoms/Icons/Icon";
 
 import { ChainResponseDto } from "../../common/dtos";
 import { SelectOptionType } from "../../common/components/Molecules/BrandSelect/SelectOption";
@@ -272,7 +272,7 @@ const Home = ({ chains }: Props) => {
           className={"hydra-bridge-logo-sm"}
           width={"13.6rem"}
           height={"3.8rem"}
-          name={"hydraBridgeLogoSm"}
+          name={"hydraBridgeLogo"}
         />
         <ConnectWallet />
       </CustomFlexWrapper>

@@ -7,7 +7,7 @@ export const mockRouteItemBaseProps: RouteItemProps = {
   amountIn: "0.0001",
   amountOut: "0.0001",
   coinSymbol: "ethCoin",
-  bridgeSymbol: "polygonBridge",
+  bridgeSymbol: "polygonChain",
   bridgeDisplayName: "Polygon",
   routeId: 2,
   isSelected: false,
