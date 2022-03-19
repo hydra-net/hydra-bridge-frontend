@@ -1,14 +1,10 @@
 import {
   BuildAllowanceRequestDto,
   BuildTxRequestDto,
-  CheckAllowanceRequestDto,
   QuoteRequestDto,
 } from "../common/dtos";
 
 const { REACT_APP_API_URL } = process.env;
-
-export const getCheckAllowanceUrl = (dto: CheckAllowanceRequestDto) =>
-  `${REACT_APP_API_URL}/approval/check-allowance?chainId=${dto.chainId}&owner=${dto.owner}&tokenAddress=${dto.tokenAddress}`;
 
 export const getBuildApprovalTxUrl = (dto: BuildAllowanceRequestDto) =>
   `${REACT_APP_API_URL}/approval/build-tx?chainId=${dto.chainId}&owner=${dto.owner}&tokenAddress=${dto.tokenAddress}&amount=${dto.amount}`;

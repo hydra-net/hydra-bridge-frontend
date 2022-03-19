@@ -1,14 +1,3 @@
-export interface CheckAllowanceRequestDto {
-  chainId: string;
-  owner: string;
-  tokenAddress: string;
-}
-
-export interface CheckAllowanceResponseDto {
-  value: string;
-  tokenAddress: string;
-}
-
 export interface BuildAllowanceRequestDto {
   chainId: number;
   owner: string;
