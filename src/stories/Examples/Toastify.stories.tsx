@@ -1,9 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ReactComponent } from "*.svg";
-import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
 import { toast } from "react-toastify";
+import { ReactComponent } from "*.svg";
+
 import { ToastContentTransactionHash } from "../../common/components/Atoms/ToastContent/ToastContent";
+
+import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
 
 export default {
   title: "Vendors/Toastify",

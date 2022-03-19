@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import { ExternalLink } from "../Links/Link";
+
 import { formatTxHash } from "../../../../helpers/walletHelper";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 

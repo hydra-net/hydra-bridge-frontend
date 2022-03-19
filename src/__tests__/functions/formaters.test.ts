@@ -50,6 +50,7 @@ describe("The formatWalletAddress helper method", () => {
       expectedResult: "Invalid address",
     },
   ];
+
   testCases.forEach((testCase) => {
     it(`should display <${testCase.expectedResult}> when provided <${testCase.providedValue}>`, () => {
       // @ts-ignore null and undefined type

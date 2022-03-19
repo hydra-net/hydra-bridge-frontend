@@ -59,7 +59,7 @@ export const formatTxHash = (txHash: string): string =>
 export const formatWalletAddress = (
   isWrongNetwork: boolean,
   address: string
-) => {
+): string => {
   return !isWrongNetwork
     ? address
       ? address.substring(0, 6) + "..." + address.substring(38, 42)
