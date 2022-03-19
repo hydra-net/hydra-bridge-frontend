@@ -1,7 +1,9 @@
 import { ethers } from "ethers";
 import { parseUnits } from "ethers/lib/utils";
+
 import { TokenBalanceDto } from "../common/dtos";
 import { localStorageHelper, LocalStorageKeys } from "./localStorageHelper";
+import i18n from "../i18n/I18nConfig";
 
 export const walletHelper = {
   getLocalWallets: () => {
@@ -40,7 +42,15 @@ export const getIsNotEnoughBalance = (
   }
 };
 
+/**
+ * Formatter for transactions hash
+ * @param txHash
+ * @return 0x2e4f3a1ee7bb52e89c...
+ */
+export const formatTxHash = (txHash: string): string =>
+  txHash ? `${txHash.substring(0, 20)}...` : "";
+
 export const formatWalletAddress = (isWrongNetwork: boolean, address: string) =>
   !isWrongNetwork
     ? address.substring(0, 6) + "..." + address.substring(38, 42)
-    : "Wrong network";
+    : i18n.t("wrong-network");

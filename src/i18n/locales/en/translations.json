@@ -16,7 +16,10 @@
     "receive": "Receive",
     "loading": "Loading",
     "approve": "Approve",
-    "no-options-in-select": "No options"
+    "view-on-explorer": "View transaction on explorer",
+    "no-options-in-select": "No options",
+    "transaction-hash": "Transaction hash",
+    "wrong-network": "Wrong network"
   },
   "notification": {
     "copied": "Copied!",

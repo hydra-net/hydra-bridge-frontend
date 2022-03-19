@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ReactComponent } from "*.svg";
 import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
 import { toast } from "react-toastify";
+import { ToastContentTransactionHash } from "../../common/components/Atoms/ToastContent/ToastContent";
 
 export default {
   title: "Vendors/Toastify",
@@ -29,4 +30,18 @@ export const Success = Template.bind({});
 Success.args = {
   // @ts-ignore
   callback: () => toast.success("Lorem Ipsum", DEFAULT_NOTIFY_CONFIG),
+};
+
+export const TransactionHash = Template.bind({});
+const txHash =
+  "0x2e6b1426732aeb5f9ea4e7c0b8cdb66530b0030f4f4b44ed589eb04689b93d48;";
+const txUrl =
+  "https://etherscan.io/tx/0x2e6b1426732aeb5f9ea4e7c0b8cdb66530b0030f4f4b44ed589eb04689b93d48";
+TransactionHash.args = {
+  // @ts-ignore
+  callback: () =>
+    toast.info(<ToastContentTransactionHash txHash={txHash} txUrl={txUrl} />, {
+      ...DEFAULT_NOTIFY_CONFIG,
+      autoClose: false,
+    }),
 };
