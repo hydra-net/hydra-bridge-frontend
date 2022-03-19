@@ -28,3 +28,10 @@ export const DEFAULT_NOTIFY_CONFIG: NotificationType = {
   closeOnClick: false,
   hideProgressBar: true,
 };
+export const ERROR_NOTIFY_CONFIG: NotificationType = {
+  position: "bottom-right",
+  autoClose: false,
+  closeOnClick: true,
+  hideProgressBar: true,
+  pauseOnHover: false,
+};

@@ -20,9 +20,16 @@
   },
   "notification": {
     "copied": "Copied!",
-    "error-copy": "Couldn't copy the address",
     "not-enough-funds": "Not enough funds",
-    "error-bridging-funds": "Error bridging funds",
-    "error-approving-wallet": "Error approving wallet"
+    "error-copy": "Failed to copy your address",
+    "error-bridging-funds": "Failed bridging funds",
+    "error-approving-wallet": "Failed trying approving your wallet",
+    "error-checking-allowance": "Failed to check your allowance",
+    "error-checking-wallet-balance": "Failed to get wallet balance",
+    "error-getting-quote": "Failed to get quote",
+    "error-getting-bridge-tokens": "Failed to get bridge tokens",
+    "error-getting-chains": "Failed to get chains",
+    "error-building-bridge-tx": "Failed to build bridge tx",
+    "error-building-approval-transaction": "Failed building the approval transaction"
   }
 }

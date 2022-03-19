@@ -20,6 +20,7 @@ import {
   ETH,
   HOP_BRIDGE_GOERLI,
 } from "../../common/constants";
+import { handleError } from "../../helpers/error";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 export default function useHome() {
@@ -114,8 +115,8 @@ export default function useHome() {
             setIsDisabled(false);
           }
         }
-      } catch (e) {
-        console.error("Get quote error", e);
+      } catch (err) {
+        handleError(t("error-getting-quote"), err);
       } finally {
         setInProgress(false);
       }
@@ -155,8 +156,8 @@ export default function useHome() {
           setBuildApproveTx(response);
         }
       }
-    } catch (e) {
-      console.error("Build approve data error", e);
+    } catch (err) {
+      handleError(t("error-building-approval-transaction"), err);
     }
   };
 
@@ -196,11 +197,8 @@ export default function useHome() {
           }
         }
       }
-    } catch (e: any) {
-      console.error("On approve wallet error", e);
-      toast.error(t("notification.error-approving-wallet"), {
-        autoClose: false,
-      });
+    } catch (err) {
+      handleError(t("notification.error-approving-wallet"), err);
     } finally {
       setInProgress(false);
     }
@@ -213,8 +211,8 @@ export default function useHome() {
         if (response) {
           setBridgeTx(response);
         }
-      } catch (e) {
-        console.error("Build bridge tx error", e);
+      } catch (err) {
+        handleError(t("error-building-bridge-tx"), err);
       }
     }
   };

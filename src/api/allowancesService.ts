@@ -4,28 +4,20 @@ import {
   CheckAllowanceRequestDto,
   CheckAllowanceResponseDto,
 } from "../common/dtos";
-import { fetchWrapper } from "../helpers/fetchWrapper";
 import { getBuildApprovalTxUrl, getCheckAllowanceUrl } from "./apiRoutes";
-import { handleResponse } from "../helpers/responseHandler";
+import { fetchWrapper } from "../helpers/fetchWrapper";
 
+// TODO NOT USED ?
 export const checkAllowance = async (
   dto: CheckAllowanceRequestDto
-): Promise<CheckAllowanceResponseDto | undefined> => {
-  try {
-    const response = await fetchWrapper.get(getCheckAllowanceUrl(dto));
-    return await handleResponse(response);
-  } catch (e) {
-    console.log("Error check allowance", e);
-  }
+): Promise<CheckAllowanceResponseDto> => {
+  const response = await fetchWrapper.get(getCheckAllowanceUrl(dto));
+  return await response.json();
 };
 
 export const buildApprovalTx = async (
   dto: BuildAllowanceRequestDto
-): Promise<BuildAllowanceResponseDto | undefined> => {
-  try {
-    const response = await fetchWrapper.get(getBuildApprovalTxUrl(dto));
-    return handleResponse(response);
-  } catch (e) {
-    console.log("Error building approval transaction", e);
-  }
+): Promise<BuildAllowanceResponseDto> => {
+  const response = await fetchWrapper.get(getBuildApprovalTxUrl(dto));
+  return await response.json();
 };

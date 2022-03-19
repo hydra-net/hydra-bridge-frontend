@@ -1,18 +1,16 @@
 import { TokenBalanceDto } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
 import { getUserBalancesUrl } from "./apiRoutes";
-import { handleResponse } from "../helpers/responseHandler";
 
+/**
+ * API call to retrieve the user balance on a particular chain
+ * @param address
+ * @param chainId
+ */
 export const getUserAddressBalances = async (
   address: string,
   chainId: number
-): Promise<TokenBalanceDto[] | undefined> => {
-  try {
-    const response = await fetchWrapper.get(
-      getUserBalancesUrl(address, chainId)
-    );
-    return await handleResponse(response);
-  } catch (e) {
-    console.log("Error getting user balance", e);
-  }
+): Promise<TokenBalanceDto[]> => {
+  const response = await fetchWrapper.get(getUserBalancesUrl(address, chainId));
+  return await response.json();
 };
