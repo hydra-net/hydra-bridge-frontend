@@ -50,7 +50,19 @@ export const getIsNotEnoughBalance = (
 export const formatTxHash = (txHash: string): string =>
   txHash ? `${txHash.substring(0, 20)}...` : "";
 
-export const formatWalletAddress = (isWrongNetwork: boolean, address: string) =>
-  !isWrongNetwork
-    ? address.substring(0, 6) + "..." + address.substring(38, 42)
-    : i18n.t("wrong-network");
+/**
+ * Formatter for addresses
+ * @param isWrongNetwork
+ * @param address
+ * @return 0x5E93...e55k
+ */
+export const formatWalletAddress = (
+  isWrongNetwork: boolean,
+  address: string
+) => {
+  return !isWrongNetwork
+    ? address
+      ? address.substring(0, 6) + "..." + address.substring(38, 42)
+      : i18n.t("invalid-address")
+    : i18n.t("common.wrong-network");
+};

@@ -9,6 +9,7 @@
   "select-chain": "Select chain",
   "gas-fee": "Gas fee",
   "available-routes": "Available routes",
+  "invalid-address": "Invalid address",
   "error-showing-routes": "An error occurred while trying to display this route",
   "common": {
     "close": "Close",
