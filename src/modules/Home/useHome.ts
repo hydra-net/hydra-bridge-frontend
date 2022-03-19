@@ -19,7 +19,11 @@ import {
   DEFAULT_NOTIFY_CONFIG,
   ETH,
   HOP_BRIDGE_GOERLI,
+  NETWORK_EXPLORER_URLS,
 } from "../../common/constants";
+import { SupportedChainId } from "../../common/enums";
+import { displayTxHash } from "../../shell/Shell";
+
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 export default function useHome() {
@@ -41,9 +45,6 @@ export default function useHome() {
   const [isWrongNetwork, setIsWrongNetwork] = useState<boolean>(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [showRoutes, setShowRoutes] = useState<boolean>(false);
-
-  //modal
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { onboard, address, provider, network } = useWeb3();
   const { t } = useTranslation();
@@ -180,7 +181,7 @@ export default function useHome() {
           console.info("Approve tx hash:", tx.hash);
           setInProgress(true);
           setTxHash(tx.hash);
-          setIsModalOpen(true);
+          notifyTxHash(tx.hash, network!);
           const receipt = await tx.wait();
           if (receipt.logs) {
             setIsApproved(true);
@@ -238,7 +239,7 @@ export default function useHome() {
         const tx = await signer.sendTransaction(dto);
         setInProgress(true);
         setTxHash(tx.hash);
-        setIsModalOpen(true);
+        notifyTxHash(tx.hash, network!);
         setShowRoutes(false);
         console.info("Move tx", tx);
         const receipt = await tx.wait();
@@ -262,6 +263,18 @@ export default function useHome() {
     }
   };
 
+  const notifyTxHash = (txHash: string, network: number) => {
+    const txUrl = `${
+      NETWORK_EXPLORER_URLS[
+        network === SupportedChainId.GOERLI
+          ? SupportedChainId.MAINNET
+          : SupportedChainId.MAINNET
+      ]
+    }/tx/${txHash}`;
+
+    displayTxHash(txHash, txUrl);
+  };
+
   return {
     onDebouncedQuote,
     onMoveAssets,
@@ -273,7 +286,6 @@ export default function useHome() {
     setAsset,
     setRouteId,
     setInProgress,
-    setIsModalOpen,
     setTxHash,
     setIsApproved,
     setShowRoutes,
@@ -288,7 +300,6 @@ export default function useHome() {
     routeId,
     isApproved,
     inProgress,
-    isModalOpen,
     provider,
     buildApproveTx,
     txHash,

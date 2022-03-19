@@ -11,6 +11,9 @@ import "../i18n/I18nConfig";
 import { lazyWithPreload } from "../helpers/lazy";
 import { routes } from "../routes";
 import { legacyTheme } from "./theme/legacyTheme";
+import { toast } from "react-toastify";
+import { ToastContentTransactionHash } from "../common/components/Atoms/ToastContent/ToastContent";
+import { DEFAULT_NOTIFY_CONFIG } from "../common/constants";
 
 const Home = lazyWithPreload(
   () => import(/* webpackChunkName: 'LandingModule' */ "../modules/Home/Home")
@@ -20,6 +23,13 @@ const Page404 = lazyWithPreload(
   () =>
     import(/* webpackChunkName: 'LandingModule' */ "../modules/Page404/Page404")
 );
+
+export const displayTxHash = (txHash: string, txUrl: string): void => {
+  toast.info(<ToastContentTransactionHash txHash={txHash} txUrl={txUrl} />, {
+    ...DEFAULT_NOTIFY_CONFIG,
+    autoClose: false,
+  });
+};
 
 const Shell = () => {
   const { chains } = useChains();
