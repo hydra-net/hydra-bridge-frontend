@@ -4,7 +4,8 @@ import { useTranslation } from "react-i18next";
 import { getAllChains } from "../../api/commonService";
 import { ChainResponseDto } from "../dtos";
 import { SupportedChainId } from "../enums";
-import { handleError } from "../../helpers/error";
+import { handleFetchError } from "../../helpers/error";
+
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 function useChains() {
@@ -24,7 +25,7 @@ function useChains() {
           setChains(filtered);
         }
       } catch (err) {
-        handleError(t("error-getting-chains"), err);
+        handleFetchError(t("errors.getting-chains"), err);
       }
     }
     getChains();

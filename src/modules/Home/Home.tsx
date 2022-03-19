@@ -205,7 +205,7 @@ const Home = ({ chains }: Props) => {
         });
       }
       if (isNotEnoughBalance) {
-        toast.error(t("notification.not-enough-funds"), {
+        toast.error(t("not-enough-funds"), {
           ...DEFAULT_NOTIFY_CONFIG,
           autoClose: false,
         });

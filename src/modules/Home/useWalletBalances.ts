@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { getUserAddressBalances } from "../../api/balancesService";
 import { TokenBalanceDto } from "../../common/dtos";
-import { handleError } from "../../helpers/error";
+import { handleFetchError } from "../../helpers/error";
 
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
@@ -24,7 +24,7 @@ function useWalletBalances(address: string, chainId: number) {
           }
         }
       } catch (err) {
-        handleError(t("error-checking-wallet-balance"), err);
+        handleFetchError(t("errors.checking-wallet-balance"), err);
       }
     }
     getWalletBalances();

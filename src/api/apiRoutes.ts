@@ -14,7 +14,7 @@ export const getBuildApprovalTxUrl = (dto: BuildAllowanceRequestDto) =>
   `${REACT_APP_API_URL}/approval/build-tx?chainId=${dto.chainId}&owner=${dto.owner}&tokenAddress=${dto.tokenAddress}&amount=${dto.amount}`;
 
 export const getUserBalancesUrl = (address: string, chainId: number) =>
-  `${REACT_APP_API_URL}/balances?address=${address}&&chainId=${chainId}`;
+  `${REACT_APP_API_URL}/balances?address=${address}&chainId=${chainId}`;
 
 export const getBuildTxRequestUrl = (dto: BuildTxRequestDto) =>
   `${REACT_APP_API_URL}/bridge/build-tx?recipient=${dto.recipient}&fromAsset=${dto.fromAsset}&fromChainId=${dto.fromChainId}&toAsset=${dto.toAsset}&toChainId=${dto.toChainId}&amount=${dto.amount}&routeId=${dto.routeId}`;

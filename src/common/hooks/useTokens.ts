@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { getBridgeTokens } from "../../api/commonService";
 import { ChainResponseDto, TokenResponseDto } from "../dtos";
 import { ETH } from "../constants";
-import { handleError } from "../../helpers/error";
+import { handleFetchError } from "../../helpers/error";
 
 function useTokens(
   chainFrom: ChainResponseDto,
@@ -28,7 +28,7 @@ function useTokens(
           setTokens(result);
         }
       } catch (err) {
-        handleError(t("error-getting-bridge-tokens"), err);
+        handleFetchError(t("errors.getting-bridge-tokens"), err);
       }
     }
     if (network) {

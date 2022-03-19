@@ -36,7 +36,7 @@ describe("The Bridge route list", () => {
     const routeWithoutError = container.querySelector<HTMLDivElement>(
       `#route-${props.routes[0].id}`
     );
-    const routeWithError = screen.getByText(/error-showing-route/);
+    const routeWithError = screen.getByText(/errors.showing-route/);
 
     expect(asFragment()).toMatchSnapshot();
     expect(container.childElementCount).toBe(props.routes.length);
@@ -60,7 +60,7 @@ describe("The Bridge route list", () => {
     };
     const { container, asFragment } = render(<RouteList {...props} />);
 
-    const routesWithError = screen.getAllByText(/error-showing-route/);
+    const routesWithError = screen.getAllByText(/errors.showing-route/);
 
     expect(asFragment()).toMatchSnapshot();
     expect(container.childElementCount).toBe(props.routes.length);
