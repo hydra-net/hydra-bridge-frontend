@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-import Icon from "../../Icon/Icon";
 import { ContainerCard } from "../../Atoms/Containers/Container";
 import {
   StyledBridgeArrow,
@@ -10,8 +9,8 @@ import {
   StyledBridgeRouteAmount,
 } from "./styles";
 import { FakeButton } from "../../Atoms/Buttons/Button";
+import Icon, { IconKeys } from "../../Atoms/Icons/Icon";
 
-import { IconKeys } from "../../../commonTypes";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { devicesUp } from "../../../../media";
 

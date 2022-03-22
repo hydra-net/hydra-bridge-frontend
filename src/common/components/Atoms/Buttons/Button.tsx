@@ -7,8 +7,9 @@ import {
   StyledDivAsButton,
   StyledPrimaryButton,
 } from "./styles";
-import { IconKeys, IStyleableProps } from "../../../commonTypes";
-import Icon from "../../Icon/Icon";
+import { IStyleableProps } from "../../../commonTypes";
+
+import Icon, { IconKeys } from "../Icons/Icon";
 
 export type ButtonProps = {
   isDisabled?: boolean;
