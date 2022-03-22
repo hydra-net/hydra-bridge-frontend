@@ -4,11 +4,11 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "../Atoms/Buttons/Button";
-import Icon from "../Icon/Icon";
 
 import { stakenetTheme as theme } from "../../../shell/theme/stakenetTheme";
 import { DEFAULT_NOTIFY_CONFIG } from "../../constants";
 import { formatWalletAddress } from "../../../helpers/walletHelper";
+import Icon from "../Atoms/Icons/Icon";
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 const ConnectWallet = () => {
@@ -30,14 +30,14 @@ const ConnectWallet = () => {
 
     navigator.clipboard.writeText(address).then(
       () => {
-        toast.info(t("notification.copied"), {
+        toast.info(t("common.copied"), {
           ...DEFAULT_NOTIFY_CONFIG,
           autoClose: 1000,
           pauseOnHover: false,
         });
       },
       (err) => {
-        toast.error(`${t("notification.error-copy")} ${address} `, {
+        toast.error(`${t("errors.copy")} ${address} `, {
           ...DEFAULT_NOTIFY_CONFIG,
           autoClose: false,
         });

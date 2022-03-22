@@ -1,6 +1,13 @@
 import "@testing-library/jest-dom";
 
 /**
+ * Because we use dynamic id as props for the svg to avoid id collision
+ * We need to transform the Icon component to an svg directly
+ * So id won't be append, this will prevent snapshot from failling
+ */
+jest.mock("./common/components/Atoms/Icons/Icon", () => "svg");
+
+/**
  * For useTranslation() we get the text by the json key
  * For i18n.t() we get the text by the display value
  */

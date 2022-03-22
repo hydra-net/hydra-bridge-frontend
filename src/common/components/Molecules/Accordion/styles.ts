@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Icon from "../../Icon/Icon";
+import Icon from "../../Atoms/Icons/Icon";
 
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 

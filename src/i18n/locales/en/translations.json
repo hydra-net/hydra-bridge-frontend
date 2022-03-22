@@ -22,11 +22,17 @@
     "transaction-hash": "Transaction hash",
     "wrong-network": "Wrong network"
   },
-  "notification": {
-    "copied": "Copied!",
-    "error-copy": "Couldn't copy the address",
-    "not-enough-funds": "Not enough funds",
-    "error-bridging-funds": "Error bridging funds",
-    "error-approving-wallet": "Error approving wallet"
+  "not-enough-funds": "Not enough funds",
+  "errors": {
+    "copy": "Failed to copy your address",
+    "bridging-funds": "Failed to bridge funds",
+    "approving-wallet": "Failed trying approving your wallet",
+    "checking-allowance": "Failed to check your allowance",
+    "checking-wallet-balance": "Failed to get wallet balance",
+    "getting-quote": "Failed to get quote",
+    "getting-bridge-tokens": "Failed to get bridge tokens",
+    "getting-chains": "Failed to get chains",
+    "building-bridge-tx": "Failed to build the bridge transaction",
+    "building-approval-transaction": "Failed to build the approval transaction"
   }
 }

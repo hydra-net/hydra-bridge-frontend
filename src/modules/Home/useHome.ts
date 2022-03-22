@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { toast } from "react-toastify";
 import { TransactionRequest } from "@ethersproject/abstract-provider";
 import { useWeb3 } from "@chainsafe/web3-context";
 import { useCallback, useEffect, useState } from "react";
@@ -16,11 +15,11 @@ import {
   RouteDto,
 } from "../../common/dtos";
 import {
-  DEFAULT_NOTIFY_CONFIG,
   ETH,
   HOP_BRIDGE_GOERLI,
   NETWORK_EXPLORER_URLS,
 } from "../../common/constants";
+import { handleFetchError } from "../../helpers/error";
 import { SupportedChainId } from "../../common/enums";
 import { displayTxHash } from "../../shell/Shell";
 
@@ -115,8 +114,8 @@ export default function useHome() {
             setIsDisabled(false);
           }
         }
-      } catch (e) {
-        console.error("Get quote error", e);
+      } catch (err) {
+        handleFetchError(t("errors.getting-quote"), err);
       } finally {
         setInProgress(false);
       }
@@ -127,7 +126,7 @@ export default function useHome() {
     await onGetQuote(dto);
   };
 
-  const onDebouncedQuote = useCallback(_.debounce(onQuote, 3000), []);
+  const onDebouncedQuote = useCallback(_.debounce(onQuote, 1000), []);
 
   const onBuildApproveTxData = async (
     owner: string,
@@ -156,8 +155,8 @@ export default function useHome() {
           setBuildApproveTx(response);
         }
       }
-    } catch (e) {
-      console.error("Build approve data error", e);
+    } catch (err) {
+      handleFetchError(t("errors.building-approval-transaction"), err);
     }
   };
 
@@ -197,11 +196,8 @@ export default function useHome() {
           }
         }
       }
-    } catch (e: any) {
-      console.error("On approve wallet error", e);
-      toast.error(t("notification.error-approving-wallet"), {
-        autoClose: false,
-      });
+    } catch (err) {
+      handleFetchError(t("errors.approving-wallet"), err);
     } finally {
       setInProgress(false);
     }
@@ -214,8 +210,8 @@ export default function useHome() {
         if (response) {
           setBridgeTx(response);
         }
-      } catch (e) {
-        console.error("Build bridge tx error", e);
+      } catch (err) {
+        handleFetchError(t("errors.building-bridge-tx"), err);
       }
     }
   };
@@ -246,12 +242,8 @@ export default function useHome() {
         if (receipt.logs) {
           console.info("Move receipt logs", receipt.logs);
         }
-      } catch (e: any) {
-        console.error("Bridge funds error", e);
-        toast.error(t("notification.error-bridging-funds"), {
-          ...DEFAULT_NOTIFY_CONFIG,
-          autoClose: false,
-        });
+      } catch (err) {
+        handleFetchError(t("errors.bridging-funds"), err);
       }
     }
   };
