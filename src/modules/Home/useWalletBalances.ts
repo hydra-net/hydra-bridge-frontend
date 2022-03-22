@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import { getUserAddressBalances } from "../../api/balancesService";
 import { TokenBalanceDto } from "../../common/dtos";
+import { handleFetchError } from "../../helpers/error";
+
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
 function useWalletBalances(address: string, chainId: number) {
   const [walletBalances, setWalletBalances] = useState<TokenBalanceDto[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getWalletBalances() {
@@ -18,8 +23,8 @@ function useWalletBalances(address: string, chainId: number) {
             setWalletBalances(result);
           }
         }
-      } catch (e) {
-        console.log("Wallet balances error", e);
+      } catch (err) {
+        handleFetchError(t("errors.checking-wallet-balance"), err);
       }
     }
     getWalletBalances();

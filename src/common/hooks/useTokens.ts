@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import { getBridgeTokens } from "../../api/commonService";
 import { ChainResponseDto, TokenResponseDto } from "../dtos";
 import { ETH } from "../constants";
+import { handleFetchError } from "../../helpers/error";
 
 function useTokens(
   chainFrom: ChainResponseDto,
@@ -9,6 +12,7 @@ function useTokens(
   asset: number
 ) {
   const [tokens, setTokens] = useState<TokenResponseDto[]>([]);
+  const { t } = useTranslation();
 
   const token = tokens.find((t) => t.id === asset);
   const isEth = token?.symbol.toString().toLowerCase() === ETH;
@@ -23,8 +27,8 @@ function useTokens(
         if (result && result.length > 0) {
           setTokens(result);
         }
-      } catch (e) {
-        console.log("Get tokens error", e);
+      } catch (err) {
+        handleFetchError(t("errors.getting-bridge-tokens"), err);
       }
     }
     if (network) {

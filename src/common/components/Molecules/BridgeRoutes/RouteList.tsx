@@ -81,7 +81,7 @@ const RouteList = ({
                 textAlign: "center",
               }}
             >
-              {t("error-showing-routes")}
+              {t("errors.showing-routes")}
             </p>
           </RouteItemContainerCard>
         );

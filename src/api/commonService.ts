@@ -1,26 +1,22 @@
 import { ChainResponseDto, TokenResponseDto } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
 import { getAllChainsUrl, getBridgeTokensUrl } from "./apiRoutes";
-import { handleResponse } from "../helpers/responseHandler";
 
+/**
+ * Fetch all tokens available on the chain
+ * @param chainId
+ */
 export const getBridgeTokens = async (
   chainId: number
-): Promise<TokenResponseDto[] | undefined> => {
-  try {
-    const response = await fetchWrapper.get(getBridgeTokensUrl(chainId));
-    return await handleResponse(response);
-  } catch (e) {
-    console.log("Error getting bridge tokens", e);
-  }
+): Promise<TokenResponseDto[]> => {
+  const response = await fetchWrapper.get(getBridgeTokensUrl(chainId));
+  return await response.json();
 };
 
-export const getAllChains = async (): Promise<
-  ChainResponseDto[] | undefined
-> => {
-  try {
-    const response = await fetchWrapper.get(getAllChainsUrl());
-    return await handleResponse(response);
-  } catch (e) {
-    console.log("Error getting chains", e);
-  }
+/**
+ * Fetch all chains available for bridging
+ */
+export const getAllChains = async (): Promise<ChainResponseDto[]> => {
+  const response = await fetchWrapper.get(getAllChainsUrl());
+  return await response.json();
 };

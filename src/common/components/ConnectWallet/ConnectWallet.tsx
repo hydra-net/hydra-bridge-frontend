@@ -30,14 +30,14 @@ const ConnectWallet = () => {
 
     navigator.clipboard.writeText(address).then(
       () => {
-        toast.info(t("notification.copied"), {
+        toast.info(t("common.copied"), {
           ...DEFAULT_NOTIFY_CONFIG,
           autoClose: 1000,
           pauseOnHover: false,
         });
       },
       (err) => {
-        toast.error(`${t("notification.error-copy")} ${address} `, {
+        toast.error(`${t("errors.copy")} ${address} `, {
           ...DEFAULT_NOTIFY_CONFIG,
           autoClose: false,
         });

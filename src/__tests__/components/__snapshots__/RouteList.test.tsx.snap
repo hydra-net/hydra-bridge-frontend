@@ -120,7 +120,7 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
     >
-      error-showing-routes
+      errors.showing-routes
     </p>
   </div>
 </DocumentFragment>
@@ -135,7 +135,7 @@ exports[`The Bridge route list should render the routes, when all of them have e
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
     >
-      error-showing-routes
+      errors.showing-routes
     </p>
   </div>
   <div
@@ -145,7 +145,7 @@ exports[`The Bridge route list should render the routes, when all of them have e
     <p
       style="font-size: 1.6rem; color: rgb(191, 44, 68); margin: auto; text-align: center;"
     >
-      error-showing-routes
+      errors.showing-routes
     </p>
   </div>
 </DocumentFragment>

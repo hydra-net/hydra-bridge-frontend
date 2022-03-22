@@ -6,26 +6,25 @@ import {
 } from "../common/dtos";
 import { fetchWrapper } from "../helpers/fetchWrapper";
 import { getBuildTxRequestUrl, getQuoteUrl } from "./apiRoutes";
-import { handleResponse } from "../helpers/responseHandler";
 
+/**
+ * API call to build the transaction request
+ * @param dto
+ */
 export const buildBridgeTx = async (
   dto: BuildTxRequestDto
-): Promise<BuildTxResponseDto | undefined> => {
-  try {
-    const response = await fetchWrapper.get(getBuildTxRequestUrl(dto));
-    return await handleResponse(response);
-  } catch (e) {
-    console.log("Error building bridge tx", e);
-  }
+): Promise<BuildTxResponseDto> => {
+  const response = await fetchWrapper.get(getBuildTxRequestUrl(dto));
+  return await response.json();
 };
 
+/**
+ * API call to get a quote with the values provided from the user for bridging
+ * @param dto
+ */
 export const getQuote = async (
   dto: QuoteRequestDto
-): Promise<QuoteResponseDto | undefined> => {
-  try {
-    const response = await fetchWrapper.get(getQuoteUrl(dto));
-    return await handleResponse(response);
-  } catch (e) {
-    console.log("Error getting quote", e);
-  }
+): Promise<QuoteResponseDto> => {
+  const response = await fetchWrapper.get(getQuoteUrl(dto));
+  return await response.json();
 };
