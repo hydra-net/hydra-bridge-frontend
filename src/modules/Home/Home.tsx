@@ -13,7 +13,6 @@ import useAmountInput from "./useAmountInput";
 import MainContent from "./MainContent";
 import AssetSelect from "../../common/components/AssetSelect";
 import BridgeRoutes from "../../common/components/Molecules/BridgeRoutes/BridgeRoutes";
-import HydraModal from "../../common/components/Modal/HydraModal";
 import {
   Container,
   ContainerCard,
@@ -108,7 +107,6 @@ const Home = ({ chains }: Props) => {
     onRouteClick,
     setAsset,
     setRouteId,
-    setIsModalOpen,
     setInProgress,
     setIsApproved,
     setShowRoutes,
@@ -123,9 +121,7 @@ const Home = ({ chains }: Props) => {
     isDisabled,
     isApproved,
     inProgress,
-    isModalOpen,
     bridgeRoutes,
-    txHash,
   } = useHome();
   const { address, network } = useWeb3();
   const { chainFrom, chainTo, onSelectChainFrom, onSelectChainTo } =
@@ -341,13 +337,6 @@ const Home = ({ chains }: Props) => {
               />
             </div>
           )}
-          <HydraModal
-            network={network!}
-            subtitle="Transaction"
-            onClose={() => setIsModalOpen(false)}
-            isOpen={isModalOpen}
-            tx={txHash!}
-          />
         </Container>
       </Container>
     </StyledHydraBackground>

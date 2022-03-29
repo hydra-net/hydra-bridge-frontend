@@ -9,6 +9,7 @@
   "select-chain": "Select chain",
   "gas-fee": "Gas fee",
   "available-routes": "Available routes",
+  "invalid-address": "Invalid address",
   "error-showing-routes": "An error occurred while trying to display this route",
   "common": {
     "close": "Close",
@@ -16,8 +17,10 @@
     "receive": "Receive",
     "loading": "Loading",
     "approve": "Approve",
-    "copied": "Copied!",
-    "no-options-in-select": "No options"
+    "no-options-in-select": "No options",
+    "view-on-explorer": "View transaction on explorer",
+    "transaction-hash": "Transaction hash",
+    "wrong-network": "Wrong network"
   },
   "not-enough-funds": "Not enough funds",
   "errors": {

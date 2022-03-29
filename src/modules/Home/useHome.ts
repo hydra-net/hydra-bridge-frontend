@@ -14,8 +14,14 @@ import {
   QuoteRequestDto,
   RouteDto,
 } from "../../common/dtos";
-import { ETH, HOP_BRIDGE_GOERLI } from "../../common/constants";
+import {
+  ETH,
+  HOP_BRIDGE_GOERLI,
+  NETWORK_EXPLORER_URLS,
+} from "../../common/constants";
 import { handleFetchError } from "../../helpers/error";
+import { SupportedChainId } from "../../common/enums";
+import { displayTxHash } from "../../shell/Shell";
 
 const { REACT_APP_DEFAULT_NETWORK_ID } = process.env;
 
@@ -38,9 +44,6 @@ export default function useHome() {
   const [isWrongNetwork, setIsWrongNetwork] = useState<boolean>(false);
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const [showRoutes, setShowRoutes] = useState<boolean>(false);
-
-  //modal
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { onboard, address, provider, network } = useWeb3();
   const { t } = useTranslation();
@@ -123,7 +126,7 @@ export default function useHome() {
     await onGetQuote(dto);
   };
 
-  const onDebouncedQuote = useCallback(_.debounce(onQuote, 0), []);
+  const onDebouncedQuote = useCallback(_.debounce(onQuote, 1000), []);
 
   const onBuildApproveTxData = async (
     owner: string,
@@ -177,7 +180,7 @@ export default function useHome() {
           console.info("Approve tx hash:", tx.hash);
           setInProgress(true);
           setTxHash(tx.hash);
-          setIsModalOpen(true);
+          notifyTxHash(tx.hash, network!);
           const receipt = await tx.wait();
           if (receipt.logs) {
             setIsApproved(true);
@@ -232,7 +235,7 @@ export default function useHome() {
         const tx = await signer.sendTransaction(dto);
         setInProgress(true);
         setTxHash(tx.hash);
-        setIsModalOpen(true);
+        notifyTxHash(tx.hash, network!);
         setShowRoutes(false);
         console.info("Move tx", tx);
         const receipt = await tx.wait();
@@ -252,6 +255,18 @@ export default function useHome() {
     }
   };
 
+  const notifyTxHash = (txHash: string, network: number) => {
+    const txUrl = `${
+      NETWORK_EXPLORER_URLS[
+        network === SupportedChainId.GOERLI
+          ? SupportedChainId.MAINNET
+          : SupportedChainId.MAINNET
+      ]
+    }/tx/${txHash}`;
+
+    displayTxHash(txHash, txUrl);
+  };
+
   return {
     onDebouncedQuote,
     onMoveAssets,
@@ -263,7 +278,6 @@ export default function useHome() {
     setAsset,
     setRouteId,
     setInProgress,
-    setIsModalOpen,
     setTxHash,
     setIsApproved,
     setShowRoutes,
@@ -278,7 +292,6 @@ export default function useHome() {
     routeId,
     isApproved,
     inProgress,
-    isModalOpen,
     provider,
     buildApproveTx,
     txHash,
