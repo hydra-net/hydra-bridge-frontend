@@ -107,7 +107,7 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
             class="sc-bqiRlB kMHECB"
             data-testid="route-fees"
           >
-            gas-fee : ~ 0.61 $ | ~ 5 min
+            gas-fee : ~$0.61 | ~5 min
           </p>
         </div>
       </div>
@@ -258,7 +258,7 @@ exports[`The Bridge route list should render with routes 1`] = `
             class="sc-bqiRlB kMHECB"
             data-testid="route-fees"
           >
-            gas-fee : ~ 0.61 $ | ~ 5 min
+            gas-fee : ~$0.61 | ~5 min
           </p>
         </div>
       </div>
@@ -369,7 +369,7 @@ exports[`The Bridge route list should render with routes 1`] = `
             class="sc-bqiRlB kMHECB"
             data-testid="route-fees"
           >
-            gas-fee : ~ 0.63 $ | ~ 30 min
+            gas-fee : ~$0.63 | ~30 min
           </p>
         </div>
       </div>

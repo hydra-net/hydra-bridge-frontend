@@ -28,7 +28,7 @@ describe("The Bridge route item fees", () => {
     const element = container.querySelector("p");
 
     expect(element).toBeInTheDocument();
-    expect(element).toHaveTextContent("gas-fee : ~ 0.40 $ | ~ 5 min");
+    expect(element).toHaveTextContent("gas-fee : ~$0.40 | ~5 min");
   });
 
   it("should update correctly", async () => {
@@ -40,7 +40,7 @@ describe("The Bridge route item fees", () => {
     const element = container.querySelector("p");
 
     expect(element).toBeInTheDocument();
-    expect(element).toHaveTextContent("gas-fee : ~ 0.40 $ | ~ 5 min");
+    expect(element).toHaveTextContent("gas-fee : ~$0.40 | ~5 min");
 
     rerender(
       <RouteItemFees
@@ -48,6 +48,6 @@ describe("The Bridge route item fees", () => {
         serviceTime={1800}
       />
     );
-    expect(element).toHaveTextContent("gas-fee : ~ 3.25 $ | ~ 30 min");
+    expect(element).toHaveTextContent("gas-fee : ~$3.25 | ~30 min");
   });
 });

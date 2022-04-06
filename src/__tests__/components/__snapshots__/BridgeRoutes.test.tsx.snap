@@ -160,7 +160,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       class="sc-bqiRlB kMHECB"
                       data-testid="route-fees"
                     >
-                      gas-fee : ~ 0.61 $ | ~ 5 min
+                      gas-fee : ~$0.61 | ~5 min
                     </p>
                   </div>
                 </div>
@@ -271,7 +271,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                       class="sc-bqiRlB kMHECB"
                       data-testid="route-fees"
                     >
-                      gas-fee : ~ 0.63 $ | ~ 30 min
+                      gas-fee : ~$0.63 | ~30 min
                     </p>
                   </div>
                 </div>

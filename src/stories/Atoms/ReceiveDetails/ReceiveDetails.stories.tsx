@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import ReceiveDetails from "../../../common/components/Atoms/ReceiveDetails/ReceiveDetails";
-import { IconKeys } from "../../../common/commonTypes";
+import { IconKeys } from "../../../common/components/Atoms/Icons/Icon";
 
 export default {
   title: "Atoms/ReceiveDetails",
@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof ReceiveDetails> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  iconKey: "hopBridge" as IconKeys,
+  iconKey: "hopChain" as IconKeys,
   chainName: "Hop",
   gasFees: 0.39979797399225586,
   serviceTime: 800,

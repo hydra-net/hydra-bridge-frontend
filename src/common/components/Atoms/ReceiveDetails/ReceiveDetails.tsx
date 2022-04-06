@@ -1,11 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import Icon from "../../Icon/Icon";
 import { ReceiveDetailsRow, StyledReceiveDetailsParagraph } from "./styles";
 
-import { IconKeys } from "../../../commonTypes";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import Icon, { IconKeys } from "../Icons/Icon";
 
 type ReceiveDetailsProps = {
   iconKey: IconKeys;
