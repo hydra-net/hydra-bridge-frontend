@@ -12,7 +12,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
       <div
         aria-expanded="true"
         aria-label="open accordion"
-        class="sc-iqseJM eIsPzL"
+        class="sc-iqseJM gVcuCA"
         role="button"
         tabindex="0"
       >
@@ -53,7 +53,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
           style=""
         >
           <div
-            class="sc-fFeiMQ fnmjFn"
+            class="sc-fFeiMQ hWKtAh"
           >
             <div
               id="route-8"
@@ -62,7 +62,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
               <div
                 aria-expanded="false"
                 aria-label="select route"
-                class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+                class="sc-iqseJM ibXHyJ sc-crHmcD gYEbqi"
                 role="button"
                 tabindex="0"
               >
@@ -173,7 +173,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
               <div
                 aria-expanded="false"
                 aria-label="select route"
-                class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+                class="sc-iqseJM ibXHyJ sc-crHmcD gYEbqi"
                 role="button"
                 tabindex="0"
               >
@@ -297,7 +297,7 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
       <div
         aria-expanded="true"
         aria-label="open accordion"
-        class="sc-iqseJM eIsPzL"
+        class="sc-iqseJM gVcuCA"
         role="button"
         tabindex="0"
       >
@@ -338,7 +338,7 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
           style=""
         >
           <div
-            class="sc-fFeiMQ fnmjFn"
+            class="sc-fFeiMQ hWKtAh"
           >
             <div
               class="sc-ksdxgE jNGrHQ rectangle-skeleton"

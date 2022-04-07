@@ -8,7 +8,7 @@ exports[`The Accordion should render correctly when closed 1`] = `
     <div
       aria-expanded="false"
       aria-label="open accordion"
-      class="sc-jrQzAO gBykGD"
+      class="sc-jrQzAO ioOZMw"
       role="button"
       tabindex="0"
     >
@@ -37,7 +37,7 @@ exports[`The Accordion should render correctly when closed 1`] = `
         style="display: none;"
       >
         <div
-          class="sc-bdvvtL dlMaGN"
+          class="sc-bdvvtL imwMCH"
         >
           Bar
         </div>
@@ -55,7 +55,7 @@ exports[`The Accordion should render correctly when open 1`] = `
     <div
       aria-expanded="true"
       aria-label="open accordion"
-      class="sc-jrQzAO gBykGD"
+      class="sc-jrQzAO ioOZMw"
       role="button"
       tabindex="0"
     >
@@ -84,7 +84,7 @@ exports[`The Accordion should render correctly when open 1`] = `
         style=""
       >
         <div
-          class="sc-bdvvtL dlMaGN"
+          class="sc-bdvvtL imwMCH"
         >
           Bar
         </div>

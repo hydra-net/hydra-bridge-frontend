@@ -9,7 +9,7 @@ exports[`The Bridge route list should render the routes, when a error occurs 1`]
     <div
       aria-expanded="false"
       aria-label="select route"
-      class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+      class="sc-iqseJM ibXHyJ sc-crHmcD gYEbqi"
       role="button"
       tabindex="0"
     >
@@ -160,7 +160,7 @@ exports[`The Bridge route list should render with routes 1`] = `
     <div
       aria-expanded="false"
       aria-label="select route"
-      class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+      class="sc-iqseJM ibXHyJ sc-crHmcD gYEbqi"
       role="button"
       tabindex="0"
     >
@@ -271,7 +271,7 @@ exports[`The Bridge route list should render with routes 1`] = `
     <div
       aria-expanded="false"
       aria-label="select route"
-      class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+      class="sc-iqseJM ibXHyJ sc-crHmcD gYEbqi"
       role="button"
       tabindex="0"
     >

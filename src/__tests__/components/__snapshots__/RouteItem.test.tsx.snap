@@ -5,7 +5,7 @@ exports[`The Bridge route item should render correctly 1`] = `
   <div
     aria-expanded="false"
     aria-label="select route"
-    class="sc-iqseJM bzJIfm sc-crHmcD gYEbqi"
+    class="sc-iqseJM ibXHyJ sc-crHmcD gYEbqi"
     role="button"
     tabindex="0"
   >
