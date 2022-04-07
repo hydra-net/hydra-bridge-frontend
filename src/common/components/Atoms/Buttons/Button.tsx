@@ -47,6 +47,7 @@ export const PrimaryButton = (props: ButtonProps & IStyledButtonProps) =>
 type FakeButtonProps = {
   onClick: (evt: React.MouseEvent<HTMLDivElement>) => void;
   ariaLabel: string;
+  disabled: boolean;
   ariaExpanded?: boolean;
   children: ReactNode;
 };
@@ -55,6 +56,7 @@ export const FakeButton = ({
   ariaLabel,
   ariaExpanded = false,
   children,
+  disabled,
   ...props
 }: FakeButtonProps & IStyledButtonProps & IStyleableProps) => (
   <StyledDivAsButton
@@ -63,6 +65,7 @@ export const FakeButton = ({
     aria-label={ariaLabel}
     aria-expanded={ariaExpanded}
     onClick={onClick}
+    disabled={disabled}
     {...props}
   >
     {children}

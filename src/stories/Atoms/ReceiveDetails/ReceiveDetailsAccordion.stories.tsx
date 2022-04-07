@@ -15,6 +15,17 @@ const Template: ComponentStory<typeof ReceiveDetailsAccordion> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  amountOut: "",
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  amountOut: "",
+  isLoading: true,
+};
+
+export const WithValue = Template.bind({});
+WithValue.args = {
   iconKey: "hopChain" as IconKeys,
   chainName: "Hop",
   gasFees: 0.39979797399225586,

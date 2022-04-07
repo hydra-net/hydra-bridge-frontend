@@ -156,14 +156,17 @@ export const StyledPrimaryButton = styled(StyledButton)`
   }
 `;
 
-export const StyledDivAsButton = styled.div<{ hasBoxShadow?: boolean }>`
+export const StyledDivAsButton = styled.div<{
+  disabled?: boolean;
+  hasBoxShadow?: boolean;
+}>`
   background: none;
   width: 100%;
   color: inherit;
   border: none;
   padding: 0;
   font: inherit;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
   outline: none;
   &:focus {
     border-radius: ${theme.borderRadius.lg};
