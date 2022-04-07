@@ -16,7 +16,8 @@ export type IconKeys =
   | "optimismChain"
   | "hopChain"
   | "polygonChain"
-  | "synapseChain";
+  | "synapseChain"
+  | "loadingSpinner";
 
 export interface IIconProps {
   id?: string;
