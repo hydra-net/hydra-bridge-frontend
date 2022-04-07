@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import { FlexWrapper } from "../Wrappers/Wrapper";
+import { devicesUp } from "../../../../media";
 
 export const ReceiveDetailsRow = styled(FlexWrapper)<{
   hasBottomBorder?: boolean;
@@ -24,4 +25,18 @@ export const StyledReceiveDetailsParagraph = styled.p<{ isWhite?: boolean }>`
   text-transform: capitalize;
   font-weight: ${theme.fontWeight.medium};
   margin: 0.8rem 0;
+`;
+
+export const StyledReceiveDetailsHeaderParagraph = styled(
+  StyledReceiveDetailsParagraph
+)<{ isEmpty?: boolean }>`
+  font-size: ${theme.paragraph.xl};
+  color: ${(props) =>
+    props.isEmpty ? theme.colors.blue.lighter : theme.colors.white};
+  width: 100%;
+  margin: 0;
+
+  @media only screen and ${devicesUp.lg} {
+    font-size: ${theme.paragraph.md};
+  }
 `;

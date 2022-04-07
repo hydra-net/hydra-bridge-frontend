@@ -11,8 +11,8 @@ type ReceiveDetailsProps = {
   chainName: string;
   gasFees: number;
   serviceTime: number;
-  transactionFees: string;
-  slippage: string;
+  transactionFees?: string;
+  slippage?: string;
   amountOut: string;
 };
 
@@ -22,17 +22,23 @@ const ReceiveDetails = ({
   gasFees,
   serviceTime,
   transactionFees,
-  slippage,
   amountOut,
 }: ReceiveDetailsProps) => {
   const { t } = useTranslation();
   return (
     <div>
       <ReceiveDetailsRow hasBottomBorder justifyContent={"flex-start"}>
-        <Icon name={iconKey} size={"2.2rem"} style={{ margin: "0.8rem 0" }} />
+        <Icon
+          name={iconKey}
+          size={"2.2rem"}
+          style={{ margin: "0 0 1.6rem 0" }}
+        />
         <StyledReceiveDetailsParagraph
           isWhite
-          style={{ fontSize: theme.paragraph.xl, marginLeft: theme.margin.sm }}
+          style={{
+            fontSize: theme.paragraph.xl,
+            margin: `0rem 0 1.6rem ${theme.margin.sm}`,
+          }}
         >
           {chainName}
         </StyledReceiveDetailsParagraph>
@@ -52,14 +58,6 @@ const ReceiveDetails = ({
         </StyledReceiveDetailsParagraph>
         <StyledReceiveDetailsParagraph isWhite>
           {transactionFees}
-        </StyledReceiveDetailsParagraph>
-      </ReceiveDetailsRow>
-      <ReceiveDetailsRow hasBottomBorder>
-        <StyledReceiveDetailsParagraph>
-          {t("slippage")}
-        </StyledReceiveDetailsParagraph>
-        <StyledReceiveDetailsParagraph isWhite>
-          {slippage}
         </StyledReceiveDetailsParagraph>
       </ReceiveDetailsRow>
       <ReceiveDetailsRow>

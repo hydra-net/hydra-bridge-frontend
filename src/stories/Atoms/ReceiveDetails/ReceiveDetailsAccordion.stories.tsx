@@ -1,16 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import ReceiveDetails from "../../../common/components/Atoms/ReceiveDetails/ReceiveDetails";
 import { IconKeys } from "../../../common/components/Atoms/Icons/Icon";
+import ReceiveDetailsAccordion from "../../../common/components/Atoms/ReceiveDetails/ReceiveDetailsAccordion";
 
 export default {
-  title: "Atoms/ReceiveDetails/Content",
-  component: ReceiveDetails,
-} as ComponentMeta<typeof ReceiveDetails>;
+  title: "Atoms/ReceiveDetails/Accordion",
+  component: ReceiveDetailsAccordion,
+} as ComponentMeta<typeof ReceiveDetailsAccordion>;
 
-const Template: ComponentStory<typeof ReceiveDetails> = (args) => (
-  <ReceiveDetails {...args} />
+const Template: ComponentStory<typeof ReceiveDetailsAccordion> = (args) => (
+  <ReceiveDetailsAccordion {...args} />
 );
 
 export const Default = Template.bind({});
@@ -19,7 +19,7 @@ Default.args = {
   chainName: "Hop",
   gasFees: 0.39979797399225586,
   serviceTime: 800,
-  transactionFees: "0.00001 ETH",
+  transactionFees: "0",
   slippage: "0.00001 ETH",
   amountOut: "0.00001 ETH",
 };
