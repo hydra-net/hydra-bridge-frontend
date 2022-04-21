@@ -5,8 +5,9 @@ export const mockReceiveDetailsProps: ReceiveDetailsAccordionProps = {
   iconKey: "hopChain" as IconKeys,
   chainName: "Hop",
   gasFees: 0.39979797399225586,
-  serviceTime: 800,
-  transactionFees: "0.00001 ETH",
-  slippage: "0.00001 ETH",
-  amountOut: "0.00001 ETH",
+  serviceTime: 30,
+  transactionFees: "0.00001",
+  slippage: "0.00001",
+  amountOut: "0.00001",
+  symbol: "ETH",
 };
