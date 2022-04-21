@@ -216,6 +216,13 @@ export default function useHome() {
     }
   };
 
+  /**
+   * Get selected route object from id
+   * @return the selected route
+   */
+  const getSelectedRoute = () =>
+    bridgeRoutes.find((route) => route.id === routeId);
+
   const onMoveAssets = async (
     isEth: boolean,
     isSendingEnabled: boolean,
@@ -259,7 +266,7 @@ export default function useHome() {
     const txUrl = `${
       NETWORK_EXPLORER_URLS[
         network === SupportedChainId.GOERLI
-          ? SupportedChainId.MAINNET
+          ? SupportedChainId.GOERLI
           : SupportedChainId.MAINNET
       ]
     }/tx/${txHash}`;
@@ -283,6 +290,7 @@ export default function useHome() {
     setShowRoutes,
     setIsDisabled,
     getBridgeTxData,
+    getSelectedRoute,
     showRoutes,
     isDisabled,
     isWrongNetwork,

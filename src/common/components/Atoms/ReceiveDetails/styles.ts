@@ -18,11 +18,14 @@ export const ReceiveDetailsRow = styled(FlexWrapper)<{
       ? `1px solid ${theme.colors.blue["medium-darker"]}`
       : "none"};
 `;
-export const StyledReceiveDetailsParagraph = styled.p<{ isWhite?: boolean }>`
+export const StyledReceiveDetailsParagraph = styled.p<{
+  isWhite?: boolean;
+  noCapitalize?: boolean;
+}>`
   font-size: ${theme.paragraph.sm};
   color: ${(props) =>
     props.isWhite ? theme.colors.white : theme.colors.gray.light};
-  text-transform: capitalize;
+  text-transform: ${(props) => (props.noCapitalize ? "none" : "capitalize")};
   font-weight: ${theme.fontWeight.medium};
   margin: 0.8rem 0;
 `;

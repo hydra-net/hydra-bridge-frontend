@@ -50,7 +50,8 @@ export const StyledContainerCard = styled(StyledContainer)`
   background-color: ${(props) =>
     props.bg ? props.bg : hex2rgba(theme.colors.blue.darker, 0.6)};
   border-width: ${(props) => (props.border ? props.border : 0)};
-  border-color: transparent;
+  border-color: ${(props) =>
+    props.borderColor ? props.borderColor : "transparent"};
   border-style: solid;
   padding: ${(props) =>
     props.padding

@@ -16,6 +16,7 @@ export type ContainerProps = {
   children?: ReactNode;
   bg?: string;
   border?: string;
+  borderColor?: string;
   borderRadius?: string;
   maxWidth?: string;
   noGutter?: boolean;

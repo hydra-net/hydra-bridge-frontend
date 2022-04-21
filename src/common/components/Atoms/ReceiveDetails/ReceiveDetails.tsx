@@ -9,7 +9,8 @@ import Icon, { IconKeys } from "../Icons/Icon";
 type ReceiveDetailsProps = {
   iconKey: IconKeys;
   chainName: string;
-  gasFees: number;
+  symbol: string;
+  gasFees: string | number;
   serviceTime: number;
   transactionFees?: string;
   slippage?: string;
@@ -23,6 +24,7 @@ const ReceiveDetails = ({
   serviceTime,
   transactionFees,
   amountOut,
+  symbol,
 }: ReceiveDetailsProps) => {
   const { t } = useTranslation();
   return (
@@ -47,9 +49,8 @@ const ReceiveDetails = ({
         <StyledReceiveDetailsParagraph>
           {t("gas-fees-time")}
         </StyledReceiveDetailsParagraph>
-        <StyledReceiveDetailsParagraph isWhite>
-          {gasFees}
-          {serviceTime}
+        <StyledReceiveDetailsParagraph isWhite noCapitalize>
+          ~${gasFees} | ~{serviceTime} min
         </StyledReceiveDetailsParagraph>
       </ReceiveDetailsRow>
       <ReceiveDetailsRow hasBottomBorder>
@@ -65,7 +66,7 @@ const ReceiveDetails = ({
           {t("amount-out")}
         </StyledReceiveDetailsParagraph>
         <StyledReceiveDetailsParagraph isWhite>
-          {amountOut}
+          {amountOut} {symbol}
         </StyledReceiveDetailsParagraph>
       </ReceiveDetailsRow>
     </div>

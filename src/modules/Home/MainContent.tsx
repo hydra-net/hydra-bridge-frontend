@@ -5,12 +5,18 @@ import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
 import TransferChainSelects from "../../common/components/TransferChain/TransferChainSelects";
 import { ContainerCard } from "../../common/components/Atoms/Containers/Container";
 import { Input } from "../../common/components/Atoms/Input/Input";
+import { InputLabel } from "../../common/components/Atoms/Label/Label";
+import ReceiveDetailsAccordion, {
+  ReceiveDetailsAccordionProps,
+} from "../../common/components/Atoms/ReceiveDetails/ReceiveDetailsAccordion";
 
 import { ETH, GOERLI, POLYGON } from "../../common/constants";
-import { ChainResponseDto } from "../../common/dtos";
+import { ChainResponseDto, RouteDto } from "../../common/dtos";
 import { getOnlyNumbersAndAllowDotPattern } from "../../helpers/regexHelper";
 import { replaceCharsToHaveOnlyDotOrStringInIt } from "../../helpers/stringHelper";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
+import { getBridgeIcon } from "../../helpers/icons";
+import { formatGasFees, formatServiceTime } from "../../helpers/formatsHelper";
 
 /**
  * Handler to map the results of the ChainResponseDto of the available sender to a SelectionOptionType
@@ -51,13 +57,26 @@ const mapChainResponseDtoToReceivingTarget = (chains: ChainResponseDto[]) => {
     });
 };
 
+/**
+ * Inputs text attributes (send)
+ */
+const amountInAdditionalAttributes = {
+  pattern: getOnlyNumbersAndAllowDotPattern,
+  autocomplete: "off",
+  autocorrect: "off",
+  minLength: "1",
+  maxLength: "79",
+  spellCheck: false,
+  inputMode: "decimal",
+};
+
 type Props = {
   chains: ChainResponseDto[];
   chainFrom: ChainResponseDto;
   chainTo: ChainResponseDto;
   amountIn: string;
   amountOut: string;
-  routeId: number;
+  route?: RouteDto;
   isConnected: boolean;
   isApproved: boolean;
   inProgress: boolean;
@@ -81,7 +100,7 @@ const MainContent = ({
   chainTo,
   amountIn,
   amountOut,
-  routeId,
+  route,
   isEth,
   isAbleToMove,
   isNotEnoughBalance,
@@ -100,19 +119,39 @@ const MainContent = ({
 }: Props) => {
   const { t } = useTranslation();
 
-  const amountInAdditionalAttributes = {
-    pattern: getOnlyNumbersAndAllowDotPattern,
-    autocomplete: "off",
-    autocorrect: "off",
-    minLength: "1",
-    maxLength: "79",
-    spellCheck: false,
-    inputMode: "decimal",
+  /**
+   * Format receive details data to be passed to the ReceiveDetailsAccordion
+   */
+  const getReceivesData = (): ReceiveDetailsAccordionProps | {} => {
+    if (route) {
+      try {
+        const {
+          bridgeRoute: {
+            bridgeName,
+            toAsset: { symbol },
+            bridgeInfo: { serviceTime, displayName },
+          },
+          transactionCoastUsd,
+        } = route;
+        return {
+          iconKey: getBridgeIcon(bridgeName),
+          chainName: displayName,
+          gasFees: formatGasFees(transactionCoastUsd),
+          serviceTime: formatServiceTime(serviceTime),
+          transactionFees: "0",
+          amountOut,
+          symbol,
+        };
+      } catch (err) {
+        console.error("Couldn't extract route data", route);
+      }
+    }
+    return {};
   };
-
   const handleAmountInChange = (
     evt: React.ChangeEvent<HTMLInputElement>
   ): void => {
+    getReceivesData();
     const value = replaceCharsToHaveOnlyDotOrStringInIt(evt.target.value);
     onAmountChange(value);
   };
@@ -137,18 +176,18 @@ const MainContent = ({
         onChange={handleAmountInChange}
         style={{ marginBottom: theme.margin.default }}
       />
-      <Input
-        label={t("common.receive")}
-        value={!amountOut ? "" : amountOut}
-        placeholder={"0.0"}
-        isDisabled={true}
-        style={{ marginBottom: theme.margin.default }}
-      />
+      <div style={{ width: "100%", marginBottom: theme.margin.default }}>
+        <InputLabel>{t("common.receive")}</InputLabel>
+        <ReceiveDetailsAccordion
+          {...getReceivesData()}
+          isLoading={inProgress}
+        />
+      </div>
       <BridgeButton
         isConnected={isConnected}
         isApproved={isApproved}
         inProgress={inProgress}
-        isRouteIdSelected={routeId > 0}
+        isRouteIdSelected={route && route?.id > 0}
         isEth={isEth}
         isAmountSet={!!amountIn}
         isAbleToMove={isAbleToMove}

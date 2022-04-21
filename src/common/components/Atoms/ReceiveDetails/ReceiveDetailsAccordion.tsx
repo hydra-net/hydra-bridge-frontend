@@ -17,10 +17,11 @@ import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 
 export type ReceiveDetailsAccordionProps = {
   isLoading?: boolean;
-  amountOut: string;
-  gasFees?: number;
+  amountOut?: string;
+  gasFees?: string | number;
   serviceTime?: number;
   chainName?: string;
+  symbol?: string;
   iconKey?: IconKeys;
   transactionFees?: string;
   slippage?: string;
@@ -33,6 +34,7 @@ const ReceiveDetailsAccordion = ({
   serviceTime,
   chainName,
   iconKey,
+  symbol,
   transactionFees,
 }: ReceiveDetailsAccordionProps) => {
   const [height, setHeight] = useState<string | number>(0);
@@ -49,7 +51,14 @@ const ReceiveDetailsAccordion = ({
     }
   };
   return (
-    <ContainerCard hasHoverEffect={true} padding={"0"}>
+    <ContainerCard
+      hasHoverEffect={true}
+      padding={"0"}
+      border={"2px"}
+      bg={theme.colors.blue.dark}
+      borderRadius={theme.borderRadius.lg}
+      borderColor={theme.colors.blue["medium-darker"]}
+    >
       <FakeButton
         ariaLabel={"open accordion"}
         disabled={!hasRouteSelected()}
@@ -74,21 +83,26 @@ const ReceiveDetailsAccordion = ({
             {isLoading ? (
               // placeholder
               <span
-                style={{ width: "2.4rem", height: "2.4rem", color: "white" }}
+                style={{
+                  width: "2.4rem",
+                  height: "1.1rem",
+                  color: "white",
+                  marginBottom: "auto",
+                }}
               >
-                <LoadingSpinner />
+                <LoadingSpinner size={"1.8rem"} />
               </span>
             ) : hasRouteSelected() ? (
               <AccordionIcon
                 name={"cutArrowDown"}
-                width={"2.4rem"}
-                height={"2.4rem"}
+                width={"1.8rem"}
+                height={"1.8rem"}
                 style={{ marginLeft: "1.7rem" }}
                 isopen={height !== 0 ? 1 : 0}
               />
             ) : (
               // placeholder
-              <span style={{ width: "2.4rem", height: "2.4rem" }} />
+              <span style={{ width: "2.4rem", height: "1.1rem" }} />
             )}
           </FlexWrapper>
         </div>
@@ -98,11 +112,12 @@ const ReceiveDetailsAccordion = ({
           <AccordionContent padding={"1.6rem"}>
             <ReceiveDetails
               iconKey={iconKey!}
+              symbol={symbol!}
               chainName={chainName!}
               gasFees={gasFees!}
               serviceTime={serviceTime!}
-              amountOut={amountOut}
-              transactionFees={transactionFees}
+              amountOut={amountOut || ""}
+              transactionFees={transactionFees || "0"}
             />
           </AccordionContent>
         </AnimateHeight>

@@ -112,6 +112,7 @@ const Home = ({ chains }: Props) => {
     setShowRoutes,
     setIsDisabled,
     showRoutes,
+    getSelectedRoute,
     bridgeTx,
     isWrongNetwork,
     buildApproveTx,
@@ -301,7 +302,7 @@ const Home = ({ chains }: Props) => {
             chainTo={chainTo!}
             amountIn={amountIn}
             amountOut={amountOut}
-            routeId={routeId}
+            route={getSelectedRoute()}
             inProgress={inProgress}
             isAbleToMove={isAbleToMove}
             isApproveReady={!!buildApproveTx}

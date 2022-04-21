@@ -17,7 +17,7 @@ export const StyledInput = styled.input<StyledInputProps>`
   padding: 1.1rem 1.6rem;
   border-width: 2px;
   border-style: solid;
-  border-color: ${theme.colors.blue.lighter};
+  border-color: ${theme.colors.gray.darkest};
   border-radius: ${theme.borderRadius.lg};
   transition: border-color 300ms, color 300ms;
 
