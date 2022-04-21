@@ -7,7 +7,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
     type="3xl"
   >
     <div
-      class="sc-bdvvtL sc-jRQBWg fGXmcv fucSeG"
+      class="sc-bdvvtL sc-jRQBWg fGXmcv cswJBU"
     >
       <div
         aria-expanded="true"
@@ -67,7 +67,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                 tabindex="0"
               >
                 <div
-                  class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK eqEoBy"
+                  class="sc-bdvvtL sc-jRQBWg fGXmcv gzSVnD sc-egiyK eqEoBy"
                 >
                   <div
                     class="sc-gKclnd konHGI"
@@ -154,7 +154,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                     </div>
                   </div>
                   <div
-                    class="sc-bdvvtL sc-jRQBWg fGXmcv eQPwQD"
+                    class="sc-bdvvtL sc-jRQBWg fGXmcv fmljMh"
                   >
                     <p
                       class="sc-bqiRlB kMHECB"
@@ -178,7 +178,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                 tabindex="0"
               >
                 <div
-                  class="sc-bdvvtL sc-jRQBWg fGXmcv fAOTCB sc-egiyK ixpTqd"
+                  class="sc-bdvvtL sc-jRQBWg fGXmcv gzSVnD sc-egiyK ixpTqd"
                 >
                   <div
                     class="sc-gKclnd konHGI"
@@ -265,7 +265,7 @@ exports[`The Bridge routes should render correctly when not in progress and no e
                     </div>
                   </div>
                   <div
-                    class="sc-bdvvtL sc-jRQBWg fGXmcv eQPwQD"
+                    class="sc-bdvvtL sc-jRQBWg fGXmcv fmljMh"
                   >
                     <p
                       class="sc-bqiRlB kMHECB"
@@ -292,7 +292,7 @@ exports[`The Bridge routes should render the skeleton when in progress 1`] = `
     type="3xl"
   >
     <div
-      class="sc-bdvvtL sc-jRQBWg fGXmcv fucSeG"
+      class="sc-bdvvtL sc-jRQBWg fGXmcv cswJBU"
     >
       <div
         aria-expanded="true"
