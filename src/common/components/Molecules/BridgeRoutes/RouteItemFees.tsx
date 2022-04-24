@@ -37,7 +37,7 @@ const RouteItemFees = ({
     >
       <StyledText data-testid="route-fees">
         {t("gas-fee")} : ~${formatGasFees(transactionCostInUsd)} | ~
-        {formatServiceTime(serviceTime)} {t("min")}
+        {React.useCallback(() => formatServiceTime(serviceTime), [])} {t("min")}
       </StyledText>
     </ContainerCard>
   );
