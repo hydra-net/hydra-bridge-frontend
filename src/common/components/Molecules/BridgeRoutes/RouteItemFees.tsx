@@ -43,4 +43,4 @@ const RouteItemFees = ({
   );
 };
 
-export default RouteItemFees;
+export default React.memo(RouteItemFees);

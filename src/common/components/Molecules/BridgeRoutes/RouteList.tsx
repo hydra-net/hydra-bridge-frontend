@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteItem, { RouteItemContainerCard } from "./RouteItem";
@@ -99,4 +99,4 @@ const RouteList = ({
   };
   return <>{renderRouteItems()}</>;
 };
-export default RouteList;
+export default React.memo(RouteList);

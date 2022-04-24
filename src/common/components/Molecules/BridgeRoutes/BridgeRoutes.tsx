@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { ReactNode, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteList from "./RouteList";
@@ -35,41 +35,49 @@ const BridgeRoutes = ({
   );
   const memoStylesSkeleton = useMemo(() => ({ marginBottom: "1rem" }), []);
 
-  const renderHeader = (): ReactNode => (
-    <FlexWrapper
-      flexDirection={"row"}
-      alignItems={"center"}
-      justifyContent={"space-between"}
-    >
-      <Label margin={"0"} style={memoStylesLabel}>
-        {t("available-routes")}
-      </Label>
-      <RoundedBubble>{routes.length || 0}</RoundedBubble>
-    </FlexWrapper>
-  );
-  const renderContent = (): ReactNode => {
-    return inProgress ? (
-      <>
-        <RectangleSkeleton
-          className={"rectangle-skeleton"}
-          height={"10rem"}
-          style={memoStylesSkeleton}
-        />
-        <RectangleSkeleton
-          className={"rectangle-skeleton"}
-          height={"10rem"}
-          style={memoStylesSkeleton}
-        />
-        <RectangleSkeleton className={"rectangle-skeleton"} height={"10rem"} />
-      </>
-    ) : (
-      <RouteList
-        routes={routes}
-        selectedRouteId={selectedRouteId!}
-        onRouteSelect={onRouteSelect}
-      />
+  const renderHeader = (): ReactNode =>
+    useCallback(
+      () => (
+        <FlexWrapper
+          flexDirection={"row"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
+          <Label margin={"0"} style={memoStylesLabel}>
+            {t("available-routes")}
+          </Label>
+          <RoundedBubble>{routes.length || 0}</RoundedBubble>
+        </FlexWrapper>
+      ),
+      []
     );
-  };
+  const renderContent = (): ReactNode =>
+    useCallback(() => {
+      return inProgress ? (
+        <>
+          <RectangleSkeleton
+            className={"rectangle-skeleton"}
+            height={"10rem"}
+            style={memoStylesSkeleton}
+          />
+          <RectangleSkeleton
+            className={"rectangle-skeleton"}
+            height={"10rem"}
+            style={memoStylesSkeleton}
+          />
+          <RectangleSkeleton
+            className={"rectangle-skeleton"}
+            height={"10rem"}
+          />
+        </>
+      ) : (
+        <RouteList
+          routes={routes}
+          selectedRouteId={selectedRouteId!}
+          onRouteSelect={onRouteSelect}
+        />
+      );
+    }, []);
 
   return (
     <Container type={ContainerType.XXXL} noGutter={true}>
@@ -78,4 +86,4 @@ const BridgeRoutes = ({
   );
 };
 
-export default BridgeRoutes;
+export default React.memo(BridgeRoutes);

@@ -145,4 +145,4 @@ const ReceiveDetailsAccordion = ({
   );
 };
 
-export default ReceiveDetailsAccordion;
+export default React.memo(ReceiveDetailsAccordion);

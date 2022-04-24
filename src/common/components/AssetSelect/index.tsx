@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
@@ -72,4 +73,4 @@ const AssetSelect = ({
   );
 };
 
-export default AssetSelect;
+export default React.memo(AssetSelect);

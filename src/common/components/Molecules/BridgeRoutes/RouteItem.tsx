@@ -137,4 +137,4 @@ const RouteItem = ({
   );
 };
 
-export default RouteItem;
+export default React.memo(RouteItem);

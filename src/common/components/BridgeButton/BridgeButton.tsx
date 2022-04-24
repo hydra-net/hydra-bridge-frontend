@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { ButtonProps, PrimaryButton } from "../Atoms/Buttons/Button";
@@ -35,9 +36,9 @@ const BridgeButton = ({
   onMoveAssets,
   ...props
 }: BridgeButtonProps & IStyleableProps) => {
-  const renderButton = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
+  const renderButton = () => {
     const attributes: ButtonProps & IStyledButtonProps = {
       fullWidth: true,
     };
@@ -78,4 +79,4 @@ const BridgeButton = ({
   return <>{renderButton()}</>;
 };
 
-export default BridgeButton;
+export default React.memo(BridgeButton);

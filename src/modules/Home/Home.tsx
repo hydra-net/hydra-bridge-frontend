@@ -164,6 +164,10 @@ const Home = ({ chains }: Props) => {
   const isAbleToMove = isApproved || isEth;
   const isConnected = !!address;
   const isActionDisabled = inProgress || isWrongNetwork || isDisabled;
+  const shouldShowBridgeRoutes = useMemo(
+    () => showRoutes && !isNotEnoughBalance && isAbleToMove,
+    []
+  );
 
   const handleAmountInChange = (value: string) => {
     setShowRoutes(false);
@@ -337,7 +341,7 @@ const Home = ({ chains }: Props) => {
             onSelectChainFrom={handleOnSelectChainFrom}
           />
 
-          {showRoutes && !isNotEnoughBalance && isAbleToMove && (
+          {shouldShowBridgeRoutes && (
             <div style={memoStylesBridgeRoutesWrapper}>
               <BridgeRoutes
                 inProgress={inProgress}

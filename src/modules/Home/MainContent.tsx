@@ -212,4 +212,4 @@ const MainContent = ({
   );
 };
 
-export default MainContent;
+export default React.memo(MainContent);
