@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteItem, { RouteItemContainerCard } from "./RouteItem";
@@ -20,6 +20,26 @@ const RouteList = ({
   onRouteSelect,
 }: RouteListProps) => {
   const { t } = useTranslation();
+  /**
+   * Memo styles to avoid useless re-renders with inline styles
+   */
+  const memoStylesRouteItemWrapper = useMemo(
+    () => ({ width: "100%", marginBottom: theme.margin.md }),
+    []
+  );
+  const memoStylesRouteItemContainerCard = useMemo(
+    () => ({ width: "100%", marginBottom: theme.margin.md }),
+    []
+  );
+  const memoStylesErrorShowingRoutes = useMemo(
+    () => ({
+      fontSize: theme.paragraph.md,
+      color: theme.colors.red,
+      margin: "auto",
+      textAlign: "center" as const,
+    }),
+    []
+  );
 
   const renderRouteItems = () => {
     return routes.map((route: RouteDto) => {
@@ -39,11 +59,7 @@ const RouteList = ({
         const bridgeSymbol = getBridgeIcon(bridgeName);
 
         return (
-          <div
-            key={id}
-            id={`route-${id}`}
-            style={{ width: "100%", marginBottom: theme.margin.md }}
-          >
+          <div key={id} id={`route-${id}`} style={memoStylesRouteItemWrapper}>
             <RouteItem
               coinSymbol={coinSymbol}
               bridgeSymbol={bridgeSymbol}
@@ -71,16 +87,9 @@ const RouteList = ({
             key={route?.id}
             isSelected={false}
             hasError={true}
-            style={{ width: "100%", marginBottom: theme.margin.md }}
+            style={memoStylesRouteItemContainerCard}
           >
-            <p
-              style={{
-                fontSize: theme.paragraph.md,
-                color: theme.colors.red,
-                margin: "auto",
-                textAlign: "center",
-              }}
-            >
+            <p style={memoStylesErrorShowingRoutes}>
               {t("errors.showing-routes")}
             </p>
           </RouteItemContainerCard>

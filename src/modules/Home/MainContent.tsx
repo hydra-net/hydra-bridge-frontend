@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
@@ -17,45 +17,6 @@ import { replaceCharsToHaveOnlyDotOrStringInIt } from "../../helpers/stringHelpe
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { getBridgeIcon } from "../../helpers/icons";
 import { formatGasFees, formatServiceTime } from "../../helpers/formatsHelper";
-
-/**
- * Handler to map the results of the ChainResponseDto of the available sender to a SelectionOptionType
- * @param chains - the senders available
- */
-const mapChainResponseDtoFromSendingTarget = (chains: ChainResponseDto[]) => {
-  return chains
-    .filter((item) => item.isSendingEnabled)
-    .map((chain: ChainResponseDto) => {
-      const name = chain.name.toString().toLowerCase().includes(GOERLI)
-        ? ETH
-        : (chain.name.toString().toLowerCase() as any);
-      return {
-        label: chain.name,
-        value: chain.chainId,
-        iconName: `${name}Coin`,
-      };
-    });
-};
-
-/**
- * Handler to map the results of the ChainResponseDto of the available receiver to a SelectionOptionType
- * @param chains - the receivers available
- */
-const mapChainResponseDtoToReceivingTarget = (chains: ChainResponseDto[]) => {
-  return chains
-    .filter((item) => item.isReceivingEnabled)
-    .map((chain: ChainResponseDto) => {
-      const name = chain.name.toString().toLowerCase().includes(POLYGON)
-        ? POLYGON
-        : (chain.name.toString().toLowerCase() as any);
-
-      return {
-        label: chain.name,
-        value: chain.chainId,
-        iconName: `${name}Coin`,
-      };
-    });
-};
 
 /**
  * Inputs text attributes (send)
@@ -118,6 +79,56 @@ const MainContent = ({
   onMoveAssets,
 }: Props) => {
   const { t } = useTranslation();
+  /**
+   * Memo styles to avoid useless re-renders with inline styles
+   */
+  const memoStylesInputSend = useMemo(
+    () => ({ marginBottom: theme.margin.default }),
+    []
+  );
+  const memoStylesReceivesDetails = useMemo(
+    () => ({ width: "100%", marginBottom: theme.margin.default }),
+    []
+  );
+
+  /**
+   * Handler to map the results of the ChainResponseDto of the available sender to a SelectionOptionType
+   * @param chains - the senders available
+   */
+  const mapChainResponseDtoFromSendingTarget = (chains: ChainResponseDto[]) => {
+    return chains
+      .filter((item) => item.isSendingEnabled)
+      .map((chain: ChainResponseDto) => {
+        const name = chain.name.toString().toLowerCase().includes(GOERLI)
+          ? ETH
+          : (chain.name.toString().toLowerCase() as any);
+        return {
+          label: chain.name,
+          value: chain.chainId,
+          iconName: `${name}Coin`,
+        };
+      });
+  };
+
+  /**
+   * Handler to map the results of the ChainResponseDto of the available receiver to a SelectionOptionType
+   * @param chains - the receivers available
+   */
+  const mapChainResponseDtoToReceivingTarget = (chains: ChainResponseDto[]) => {
+    return chains
+      .filter((item) => item.isReceivingEnabled)
+      .map((chain: ChainResponseDto) => {
+        const name = chain.name.toString().toLowerCase().includes(POLYGON)
+          ? POLYGON
+          : (chain.name.toString().toLowerCase() as any);
+
+        return {
+          label: chain.name,
+          value: chain.chainId,
+          iconName: `${name}Coin`,
+        };
+      });
+  };
 
   /**
    * Format receive details data to be passed to the ReceiveDetailsAccordion
@@ -151,7 +162,6 @@ const MainContent = ({
   const handleAmountInChange = (
     evt: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    getReceivesData();
     const value = replaceCharsToHaveOnlyDotOrStringInIt(evt.target.value);
     onAmountChange(value);
   };
@@ -174,9 +184,9 @@ const MainContent = ({
         placeholder={"0.0"}
         isDisabled={inProgress || isWrongNetwork}
         onChange={handleAmountInChange}
-        style={{ marginBottom: theme.margin.default }}
+        style={memoStylesInputSend}
       />
-      <div style={{ width: "100%", marginBottom: theme.margin.default }}>
+      <div style={memoStylesReceivesDetails}>
         <InputLabel>{t("common.receive")}</InputLabel>
         <ReceiveDetailsAccordion
           {...getReceivesData()}

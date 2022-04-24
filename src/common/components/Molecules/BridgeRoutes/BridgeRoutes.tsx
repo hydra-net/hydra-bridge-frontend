@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteList from "./RouteList";
@@ -26,13 +26,22 @@ const BridgeRoutes = ({
 }: BridgeRoutesProps) => {
   const { t } = useTranslation();
 
+  /**
+   * Memo styles to avoid useless re-renders with inline styles
+   */
+  const memoStylesLabel = useMemo(
+    () => ({ width: "100%", textAlign: "left" }),
+    []
+  );
+  const memoStylesSkeleton = useMemo(() => ({ marginBottom: "1rem" }), []);
+
   const renderHeader = (): ReactNode => (
     <FlexWrapper
       flexDirection={"row"}
       alignItems={"center"}
       justifyContent={"space-between"}
     >
-      <Label margin={"0"} style={{ width: "100%", textAlign: "left" }}>
+      <Label margin={"0"} style={memoStylesLabel}>
         {t("available-routes")}
       </Label>
       <RoundedBubble>{routes.length || 0}</RoundedBubble>
@@ -44,12 +53,12 @@ const BridgeRoutes = ({
         <RectangleSkeleton
           className={"rectangle-skeleton"}
           height={"10rem"}
-          style={{ marginBottom: "1rem" }}
+          style={memoStylesSkeleton}
         />
         <RectangleSkeleton
           className={"rectangle-skeleton"}
           height={"10rem"}
-          style={{ marginBottom: "1rem" }}
+          style={memoStylesSkeleton}
         />
         <RectangleSkeleton className={"rectangle-skeleton"} height={"10rem"} />
       </>

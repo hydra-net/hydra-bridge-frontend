@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ReceiveDetailsRow, StyledReceiveDetailsParagraph } from "./styles";
@@ -27,21 +27,22 @@ const ReceiveDetails = ({
   symbol,
 }: ReceiveDetailsProps) => {
   const { t } = useTranslation();
+  /**
+   * Memo styles to avoid useless re-renders with inline styles
+   */
+  const memoStylesIcon = useMemo(() => ({ margin: "0 0 1.6rem 0" }), []);
+  const memoStylesChainName = useMemo(
+    () => ({
+      fontSize: theme.paragraph.xl,
+      margin: `0rem 0 1.6rem ${theme.margin.sm}`,
+    }),
+    []
+  );
   return (
     <div>
       <ReceiveDetailsRow hasBottomBorder justifyContent={"flex-start"}>
-        <Icon
-          name={iconKey}
-          size={"2.2rem"}
-          style={{ margin: "0 0 1.6rem 0" }}
-        />
-        <StyledReceiveDetailsParagraph
-          isWhite
-          style={{
-            fontSize: theme.paragraph.xl,
-            margin: `0rem 0 1.6rem ${theme.margin.sm}`,
-          }}
-        >
+        <Icon name={iconKey} size={"2.2rem"} style={memoStylesIcon} />
+        <StyledReceiveDetailsParagraph isWhite style={memoStylesChainName}>
           {chainName}
         </StyledReceiveDetailsParagraph>
       </ReceiveDetailsRow>

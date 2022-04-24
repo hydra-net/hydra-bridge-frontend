@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import AnimateHeight from "react-animate-height";
 
 import { FlexWrapper } from "../Wrappers/Wrapper";
@@ -40,10 +40,42 @@ const ReceiveDetailsAccordion = ({
   const [height, setHeight] = useState<string | number>(0);
 
   /**
+   * Memo styles to avoid useless re-renders with inline styles
+   */
+  const memoStylesAccordionHeader = useMemo(
+    () => ({
+      padding: `1rem 1.6rem`,
+      borderBottom: `1px solid ${
+        hasRouteSelected() && height
+          ? theme.colors.blue["medium-darker"]
+          : "transparent"
+      }`,
+      transition: "border 300ms linear",
+    }),
+    []
+  );
+  const memoStylesFlexWrapper = useMemo(() => ({ pointerEvents: "none" }), []);
+  const memoStylesLoader = useMemo(
+    () => ({
+      width: "2.4rem",
+      height: "1.1rem",
+      color: "white",
+      marginBottom: "auto",
+    }),
+    []
+  );
+  const memoStylesAccordionIcon = useMemo(() => ({ marginLeft: "1.7rem" }), []);
+  const memoStylesPlaceholder = useMemo(
+    () => ({ width: "2.4rem", height: "1.1rem" }),
+    []
+  );
+  const memoStylesAnimateHeight = useMemo(() => ({ width: "100%" }), []);
+  /**
    * Getter, depending the value returned, it will allow to toggle the accordion / display the content of it
    */
-  const hasRouteSelected = (): boolean =>
-    !!chainName && !!amountOut && !!gasFees && !!iconKey;
+  function hasRouteSelected(): boolean {
+    return !!chainName && !!amountOut && !!gasFees && !!iconKey;
+  }
 
   const handleToggle = (): void => {
     if (hasRouteSelected()) {
@@ -65,31 +97,14 @@ const ReceiveDetailsAccordion = ({
         aria-expanded={amountOut && height !== 0}
         onClick={handleToggle}
       >
-        <div
-          style={{
-            padding: `1rem 1.6rem`,
-            borderBottom: `1px solid ${
-              hasRouteSelected() && height
-                ? theme.colors.blue["medium-darker"]
-                : "transparent"
-            }`,
-            transition: "border 300ms linear",
-          }}
-        >
-          <FlexWrapper flexDirection={"row"} style={{ pointerEvents: "none" }}>
+        <div style={memoStylesAccordionHeader}>
+          <FlexWrapper flexDirection={"row"} style={memoStylesFlexWrapper}>
             <StyledReceiveDetailsHeaderParagraph isEmpty={!amountOut}>
               {amountOut ? amountOut : "0.0"}
             </StyledReceiveDetailsHeaderParagraph>
             {isLoading ? (
               // placeholder
-              <span
-                style={{
-                  width: "2.4rem",
-                  height: "1.1rem",
-                  color: "white",
-                  marginBottom: "auto",
-                }}
-              >
+              <span style={memoStylesLoader}>
                 <LoadingSpinner size={"1.8rem"} />
               </span>
             ) : hasRouteSelected() ? (
@@ -97,18 +112,22 @@ const ReceiveDetailsAccordion = ({
                 name={"cutArrowDown"}
                 width={"1.8rem"}
                 height={"1.8rem"}
-                style={{ marginLeft: "1.7rem" }}
+                style={memoStylesAccordionIcon}
                 isopen={height !== 0 ? 1 : 0}
               />
             ) : (
               // placeholder
-              <span style={{ width: "2.4rem", height: "1.1rem" }} />
+              <span style={memoStylesPlaceholder} />
             )}
           </FlexWrapper>
         </div>
       </FakeButton>
       {hasRouteSelected() && (
-        <AnimateHeight height={height} duration={500} style={{ width: "100%" }}>
+        <AnimateHeight
+          height={height}
+          duration={500}
+          style={memoStylesAnimateHeight}
+        >
           <AccordionContent padding={"1.6rem"}>
             <ReceiveDetails
               iconKey={iconKey!}
