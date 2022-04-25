@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
@@ -49,20 +49,26 @@ const AssetSelect = ({
 }: Props & IStyleableProps) => {
   const { t } = useTranslation();
 
-  const options: SelectOptionType[] = tokens.map((token: TokenResponseDto) => ({
-    label: token.symbol,
-    value: token.id,
-    iconName: `${token.symbol.toLocaleLowerCase()}Coin`,
-  }));
+  const options: SelectOptionType[] = useMemo(
+    () =>
+      tokens.map((token: TokenResponseDto) => ({
+        label: token.symbol,
+        value: token.id,
+        iconName: `${token.symbol.toLocaleLowerCase()}Coin`,
+      })),
+    [tokens]
+  );
 
+  const getValue = useCallback(
+    () => options.find((option) => option.value === selectedTokenId) || null,
+    [options, selectedTokenId]
+  );
   return (
     <div className={className}>
       <ResponsiveFlexWrapper flexDirection={"row"} alignItems={"center"}>
         <InputLabel className={"label"}>{t("common.send")}</InputLabel>
         <BrandSelect
-          value={
-            options.find((option) => option.value === selectedTokenId) || null
-          }
+          value={getValue()}
           options={options}
           placeholder={t("select-an-asset")}
           onChange={onSelectAsset}
