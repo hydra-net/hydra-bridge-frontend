@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
@@ -17,6 +17,12 @@ import { replaceCharsToHaveOnlyDotOrStringInIt } from "../../helpers/stringHelpe
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { getBridgeIcon } from "../../helpers/icons";
 import { formatGasFees, formatServiceTime } from "../../helpers/formatsHelper";
+import { IInlineStyles } from "../../common/commonTypes";
+
+const styles: IInlineStyles = {
+  inputSend: { marginBottom: theme.margin.default },
+  receivesDetails: { width: "100%", marginBottom: theme.margin.default },
+};
 
 /**
  * Inputs text attributes (send)
@@ -79,17 +85,6 @@ const MainContent = ({
   onMoveAssets,
 }: Props) => {
   const { t } = useTranslation();
-  /**
-   * Memo styles to avoid useless re-renders with inline styles
-   */
-  const memoStylesInputSend = useMemo(
-    () => ({ marginBottom: theme.margin.default }),
-    []
-  );
-  const memoStylesReceivesDetails = useMemo(
-    () => ({ width: "100%", marginBottom: theme.margin.default }),
-    []
-  );
 
   /**
    * Handler to map the results of the ChainResponseDto of the available sender to a SelectionOptionType
@@ -184,9 +179,9 @@ const MainContent = ({
         placeholder={"0.0"}
         isDisabled={inProgress || isWrongNetwork}
         onChange={handleAmountInChange}
-        style={memoStylesInputSend}
+        style={styles.inputSend}
       />
-      <div style={memoStylesReceivesDetails}>
+      <div style={styles.receivesDetails}>
         <InputLabel>{t("common.receive")}</InputLabel>
         <ReceiveDetailsAccordion
           {...getReceivesData()}

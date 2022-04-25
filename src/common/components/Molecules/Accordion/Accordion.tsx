@@ -1,10 +1,17 @@
-import React, { ReactNode, useMemo, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import AnimateHeight from "react-animate-height";
 
 import { AccordionContent, AccordionIcon } from "./styles";
 import { ContainerCard } from "../../Atoms/Containers/Container";
 import { FakeButton } from "../../Atoms/Buttons/Button";
 import { FlexWrapper } from "../../Atoms/Wrappers/Wrapper";
+import { IInlineStyles } from "../../../commonTypes";
+
+const styles: IInlineStyles = {
+  flexWrapper: { pointerEvents: "none" },
+  accordionIcon: { marginLeft: "1.7rem" },
+  animateHeight: { width: "100%" },
+};
 
 export type AccordionProps = {
   header: ReactNode;
@@ -13,13 +20,6 @@ export type AccordionProps = {
 
 const Accordion = ({ header, content }: AccordionProps) => {
   const [height, setHeight] = useState<string | number>(0);
-
-  /**
-   * Memo styles to avoid useless re-renders with inline styles
-   */
-  const memoStylesFlexWrapper = useMemo(() => ({ pointerEvents: "none" }), []);
-  const memoStylesAccordionIcon = useMemo(() => ({ marginLeft: "1.7rem" }), []);
-  const memoStylesAnimateHeight = useMemo(() => ({ width: "100%" }), []);
 
   const handleToggle = () => {
     setHeight(height === 0 ? "auto" : 0);
@@ -31,13 +31,13 @@ const Accordion = ({ header, content }: AccordionProps) => {
         aria-expanded={height !== 0}
         onClick={handleToggle}
       >
-        <FlexWrapper flexDirection={"row"} style={memoStylesFlexWrapper}>
+        <FlexWrapper flexDirection={"row"} style={styles.flexWrapper}>
           {header}
           <AccordionIcon
             name={"cutArrowDown"}
             width={"2.4rem"}
             height={"2.4rem"}
-            style={memoStylesAccordionIcon}
+            style={styles.accordionIcon}
             isopen={height !== 0 ? 1 : 0}
           />
         </FlexWrapper>
@@ -45,7 +45,7 @@ const Accordion = ({ header, content }: AccordionProps) => {
       <AnimateHeight
         height={height}
         duration={500}
-        style={memoStylesAnimateHeight}
+        style={styles.animateHeight}
       >
         <AccordionContent>{content}</AccordionContent>
       </AnimateHeight>

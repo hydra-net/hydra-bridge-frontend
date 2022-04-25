@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteItem, { RouteItemContainerCard } from "./RouteItem";
@@ -7,6 +7,18 @@ import RouteItemFees from "./RouteItemFees";
 import { RouteDto } from "../../../dtos";
 import { getBridgeIcon, getCoinIcon } from "../../../../helpers/icons";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import { IInlineStyles } from "../../../commonTypes";
+
+const styles: IInlineStyles = {
+  routeItemWrapper: { width: "100%", marginBottom: theme.margin.md },
+  routeItemContainerCard: { width: "100%", marginBottom: theme.margin.md },
+  errorShowingRoutes: {
+    fontSize: theme.paragraph.md,
+    color: theme.colors.red,
+    margin: "auto",
+    textAlign: "center" as const,
+  },
+};
 
 export type RouteListProps = {
   routes: RouteDto[];
@@ -20,26 +32,6 @@ const RouteList = ({
   onRouteSelect,
 }: RouteListProps) => {
   const { t } = useTranslation();
-  /**
-   * Memo styles to avoid useless re-renders with inline styles
-   */
-  const memoStylesRouteItemWrapper = useMemo(
-    () => ({ width: "100%", marginBottom: theme.margin.md }),
-    []
-  );
-  const memoStylesRouteItemContainerCard = useMemo(
-    () => ({ width: "100%", marginBottom: theme.margin.md }),
-    []
-  );
-  const memoStylesErrorShowingRoutes = useMemo(
-    () => ({
-      fontSize: theme.paragraph.md,
-      color: theme.colors.red,
-      margin: "auto",
-      textAlign: "center" as const,
-    }),
-    []
-  );
 
   const renderRouteItems = () =>
     useCallback(() => {
@@ -60,7 +52,7 @@ const RouteList = ({
           const bridgeSymbol = getBridgeIcon(bridgeName);
 
           return (
-            <div key={id} id={`route-${id}`} style={memoStylesRouteItemWrapper}>
+            <div key={id} id={`route-${id}`} style={styles.routeItemWrapper}>
               <RouteItem
                 coinSymbol={coinSymbol}
                 bridgeSymbol={bridgeSymbol}
@@ -88,16 +80,16 @@ const RouteList = ({
               key={route?.id}
               isSelected={false}
               hasError={true}
-              style={memoStylesRouteItemContainerCard}
+              style={styles.routeItemContainerCard}
             >
-              <p style={memoStylesErrorShowingRoutes}>
+              <p style={styles.errorShowingRoutes}>
                 {t("errors.showing-routes")}
               </p>
             </RouteItemContainerCard>
           );
         }
       });
-    }, []);
+    }, [routes]);
   return <>{renderRouteItems()}</>;
 };
 export default React.memo(RouteList);

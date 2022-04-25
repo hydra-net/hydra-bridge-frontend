@@ -1,10 +1,11 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { ReceiveDetailsRow, StyledReceiveDetailsParagraph } from "./styles";
 
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
 import Icon, { IconKeys } from "../Icons/Icon";
+import { IInlineStyles } from "../../../commonTypes";
 
 type ReceiveDetailsProps = {
   iconKey: IconKeys;
@@ -17,6 +18,14 @@ type ReceiveDetailsProps = {
   amountOut: string;
 };
 
+const styles: IInlineStyles = {
+  icon: { margin: "0 0 1.6rem 0" },
+  chainName: {
+    fontSize: theme.paragraph.xl,
+    margin: `0rem 0 1.6rem ${theme.margin.sm}`,
+  },
+};
+
 const ReceiveDetails = ({
   iconKey,
   chainName,
@@ -27,22 +36,12 @@ const ReceiveDetails = ({
   symbol,
 }: ReceiveDetailsProps) => {
   const { t } = useTranslation();
-  /**
-   * Memo styles to avoid useless re-renders with inline styles
-   */
-  const memoStylesIcon = useMemo(() => ({ margin: "0 0 1.6rem 0" }), []);
-  const memoStylesChainName = useMemo(
-    () => ({
-      fontSize: theme.paragraph.xl,
-      margin: `0rem 0 1.6rem ${theme.margin.sm}`,
-    }),
-    []
-  );
+
   return (
     <div>
       <ReceiveDetailsRow hasBottomBorder justifyContent={"flex-start"}>
-        <Icon name={iconKey} size={"2.2rem"} style={memoStylesIcon} />
-        <StyledReceiveDetailsParagraph isWhite style={memoStylesChainName}>
+        <Icon name={iconKey} size={"2.2rem"} style={styles.icon} />
+        <StyledReceiveDetailsParagraph isWhite style={styles.chainName}>
           {chainName}
         </StyledReceiveDetailsParagraph>
       </ReceiveDetailsRow>

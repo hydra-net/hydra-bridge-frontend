@@ -14,6 +14,20 @@ import LoadingSpinner from "../../LoadingSpinner";
 import { IconKeys } from "../Icons/Icon";
 import { StyledReceiveDetailsHeaderParagraph } from "./styles";
 import { stakenetTheme as theme } from "../../../../shell/theme/stakenetTheme";
+import { IInlineStyles } from "../../../commonTypes";
+
+const styles: IInlineStyles = {
+  flexWrapper: { pointerEvents: "none" },
+  loader: {
+    width: "2.4rem",
+    height: "1.1rem",
+    color: "white",
+    marginBottom: "auto",
+  },
+  accordionIcon: { marginLeft: "1.7rem" },
+  placeholder: { width: "2.4rem", height: "1.1rem" },
+  animateHeight: { width: "100%" },
+};
 
 export type ReceiveDetailsAccordionProps = {
   isLoading?: boolean;
@@ -52,24 +66,9 @@ const ReceiveDetailsAccordion = ({
       }`,
       transition: "border 300ms linear",
     }),
-    []
+    [hasRouteSelected(), height]
   );
-  const memoStylesFlexWrapper = useMemo(() => ({ pointerEvents: "none" }), []);
-  const memoStylesLoader = useMemo(
-    () => ({
-      width: "2.4rem",
-      height: "1.1rem",
-      color: "white",
-      marginBottom: "auto",
-    }),
-    []
-  );
-  const memoStylesAccordionIcon = useMemo(() => ({ marginLeft: "1.7rem" }), []);
-  const memoStylesPlaceholder = useMemo(
-    () => ({ width: "2.4rem", height: "1.1rem" }),
-    []
-  );
-  const memoStylesAnimateHeight = useMemo(() => ({ width: "100%" }), []);
+
   /**
    * Getter, depending the value returned, it will allow to toggle the accordion / display the content of it
    */
@@ -98,13 +97,12 @@ const ReceiveDetailsAccordion = ({
         onClick={handleToggle}
       >
         <div style={memoStylesAccordionHeader}>
-          <FlexWrapper flexDirection={"row"} style={memoStylesFlexWrapper}>
+          <FlexWrapper flexDirection={"row"} style={styles.flexWrapper}>
             <StyledReceiveDetailsHeaderParagraph isEmpty={!amountOut}>
               {amountOut ? amountOut : "0.0"}
             </StyledReceiveDetailsHeaderParagraph>
             {isLoading ? (
-              // placeholder
-              <span style={memoStylesLoader}>
+              <span style={styles.loader}>
                 <LoadingSpinner size={"1.8rem"} />
               </span>
             ) : hasRouteSelected() ? (
@@ -112,12 +110,12 @@ const ReceiveDetailsAccordion = ({
                 name={"cutArrowDown"}
                 width={"1.8rem"}
                 height={"1.8rem"}
-                style={memoStylesAccordionIcon}
+                style={styles.accordionIcon}
                 isopen={height !== 0 ? 1 : 0}
               />
             ) : (
               // placeholder
-              <span style={memoStylesPlaceholder} />
+              <span style={styles.placeholder} />
             )}
           </FlexWrapper>
         </div>
@@ -126,7 +124,7 @@ const ReceiveDetailsAccordion = ({
         <AnimateHeight
           height={height}
           duration={500}
-          style={memoStylesAnimateHeight}
+          style={styles.animateHeight}
         >
           <AccordionContent padding={"1.6rem"}>
             <ReceiveDetails

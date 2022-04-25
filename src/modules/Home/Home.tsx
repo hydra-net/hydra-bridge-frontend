@@ -29,6 +29,7 @@ import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 import { devicesUp } from "../../media";
 import { stakenetTheme as theme } from "../../shell/theme/stakenetTheme";
 import { DEFAULT_NOTIFY_CONFIG } from "../../common/constants";
+import { IInlineStyles } from "../../common/commonTypes";
 
 const StyledHydraBackground = styled.section`
   min-height: 100vh;
@@ -95,6 +96,11 @@ const ResponsiveFlexWrapper = styled(FlexWrapper)`
   }
 `;
 
+const styles: IInlineStyles = {
+  containerCard: { marginBottom: theme.margin.xxl },
+  bridgeRoutesWrapper: { marginTop: theme.margin.xl },
+};
+
 type Props = {
   chains: ChainResponseDto[];
 };
@@ -149,24 +155,13 @@ const Home = ({ chains }: Props) => {
   );
   const { tokens, isEth } = useTokens(chainFrom!, network!, asset);
   const { t } = useTranslation();
-  /**
-   * Memo styles to avoid useless re-renders with inline styles
-   */
-  const memoStylesContainerCard = useMemo(
-    () => ({ marginBottom: theme.margin.xxl }),
-    []
-  );
-  const memoStylesBridgeRoutesWrapper = useMemo(
-    () => ({ marginTop: theme.margin.xl }),
-    []
-  );
 
   const isAbleToMove = isApproved || isEth;
   const isConnected = !!address;
   const isActionDisabled = inProgress || isWrongNetwork || isDisabled;
   const shouldShowBridgeRoutes = useMemo(
     () => showRoutes && !isNotEnoughBalance && isAbleToMove,
-    []
+    [showRoutes, isNotEnoughBalance, isAbleToMove]
   );
 
   const handleAmountInChange = (value: string) => {
@@ -299,7 +294,7 @@ const Home = ({ chains }: Props) => {
       </CustomFlexWrapper>
       <Container type={ContainerType.XXXL}>
         <Container maxWidth={theme.maxWidth["5xl"]} noGutter={true}>
-          <ContainerCard style={memoStylesContainerCard} hasHoverEffect={true}>
+          <ContainerCard style={styles.containerCard} hasHoverEffect={true}>
             <ResponsiveFlexWrapper>
               <Icon
                 className={"hydra-bridge-logo"}
@@ -342,7 +337,7 @@ const Home = ({ chains }: Props) => {
           />
 
           {shouldShowBridgeRoutes && (
-            <div style={memoStylesBridgeRoutesWrapper}>
+            <div style={styles.bridgeRoutesWrapper}>
               <BridgeRoutes
                 inProgress={inProgress}
                 selectedRouteId={routeId}
