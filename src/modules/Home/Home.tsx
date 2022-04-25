@@ -158,7 +158,11 @@ const Home = ({ chains }: Props) => {
 
   const isAbleToMove = isApproved || isEth;
   const isConnected = !!address;
-  const isActionDisabled = inProgress || isWrongNetwork || isDisabled;
+
+  const isActionDisabled = useMemo(
+    () => inProgress || isWrongNetwork || isDisabled,
+    [inProgress, isWrongNetwork, isDisabled]
+  );
   const shouldShowBridgeRoutes = useMemo(
     () => showRoutes && !isNotEnoughBalance && isAbleToMove,
     [showRoutes, isNotEnoughBalance, isAbleToMove]
@@ -352,4 +356,4 @@ const Home = ({ chains }: Props) => {
   );
 };
 
-export default Home;
+export default React.memo(Home);
