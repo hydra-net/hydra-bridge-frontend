@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback } from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteList from "./RouteList";
@@ -32,53 +32,51 @@ const BridgeRoutes = ({
 }: BridgeRoutesProps) => {
   const { t } = useTranslation();
 
-  const renderHeader = (): ReactNode =>
-    useCallback(
-      () => (
-        <FlexWrapper
-          flexDirection={"row"}
-          alignItems={"center"}
-          justifyContent={"space-between"}
-        >
-          <Label margin={"0"} style={styles.label}>
-            {t("available-routes")}
-          </Label>
-          <RoundedBubble>{routes.length || 0}</RoundedBubble>
-        </FlexWrapper>
-      ),
-      []
-    );
-  const renderContent = (): ReactNode =>
-    useCallback(() => {
-      return inProgress ? (
-        <>
-          <RectangleSkeleton
-            className={"rectangle-skeleton"}
-            height={"10rem"}
-            style={styles.label}
-          />
-          <RectangleSkeleton
-            className={"rectangle-skeleton"}
-            height={"10rem"}
-            style={styles.skeleton}
-          />
-          <RectangleSkeleton
-            className={"rectangle-skeleton"}
-            height={"10rem"}
-          />
-        </>
-      ) : (
-        <RouteList
-          routes={routes}
-          selectedRouteId={selectedRouteId!}
-          onRouteSelect={onRouteSelect}
+  const renderHeader = useMemo(
+    () => (
+      <FlexWrapper
+        flexDirection={"row"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
+        <Label margin={"0"} style={styles.label}>
+          {t("available-routes")}
+        </Label>
+        <RoundedBubble>{routes.length || 0}</RoundedBubble>
+      </FlexWrapper>
+    ),
+    [routes]
+  );
+  const renderContent = useMemo(() => {
+    return inProgress ? (
+      <>
+        <RectangleSkeleton
+          className={"rectangle-skeleton"}
+          height={"10rem"}
+          style={styles.label}
         />
-      );
-    }, []);
+        <RectangleSkeleton
+          className={"rectangle-skeleton"}
+          height={"10rem"}
+          style={styles.skeleton}
+        />
+        <RectangleSkeleton className={"rectangle-skeleton"} height={"10rem"} />
+      </>
+    ) : (
+      <RouteList
+        routes={routes}
+        selectedRouteId={selectedRouteId!}
+        onRouteSelect={onRouteSelect}
+      />
+    );
+  }, [routes, selectedRouteId, inProgress]);
 
   return (
     <Container type={ContainerType.XXXL} noGutter={true}>
-      <Accordion header={renderHeader()} content={renderContent()} />
+      {/*
+      TODO 1 Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.
+      */}
+      <Accordion header={renderHeader} content={renderContent} />
     </Container>
   );
 };

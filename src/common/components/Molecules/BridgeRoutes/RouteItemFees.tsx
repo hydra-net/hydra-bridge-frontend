@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
@@ -36,8 +36,13 @@ const RouteItemFees = ({
       boxShadow={theme.boxShadow.sm}
     >
       <StyledText data-testid="route-fees">
-        {t("gas-fee")} : ~${formatGasFees(transactionCostInUsd)} | ~
-        {React.useCallback(() => formatServiceTime(serviceTime), [])} {t("min")}
+        {t("gas-fee")} : ~$
+        {useCallback(
+          () => formatGasFees(transactionCostInUsd),
+          [transactionCostInUsd]
+        )}{" "}
+        | ~{useCallback(() => formatServiceTime(serviceTime), [serviceTime])}{" "}
+        {t("min")}
       </StyledText>
     </ContainerCard>
   );

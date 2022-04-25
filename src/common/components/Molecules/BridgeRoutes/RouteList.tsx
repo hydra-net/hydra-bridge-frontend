@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import RouteItem, { RouteItemContainerCard } from "./RouteItem";
@@ -33,63 +33,62 @@ const RouteList = ({
 }: RouteListProps) => {
   const { t } = useTranslation();
 
-  const renderRouteItems = () =>
-    useCallback(() => {
-      return routes.map((route: RouteDto) => {
-        try {
-          const {
-            id,
-            transactionCoastUsd,
-            bridgeRoute: {
-              amountIn,
-              amountOut,
-              bridgeName,
-              fromAsset: { symbol },
-              bridgeInfo: { displayName, serviceTime },
-            },
-          } = route;
-          const coinSymbol = getCoinIcon(symbol);
-          const bridgeSymbol = getBridgeIcon(bridgeName);
+  const renderRouteItems = useMemo(() => {
+    return routes.map((route: RouteDto) => {
+      try {
+        const {
+          id,
+          transactionCoastUsd,
+          bridgeRoute: {
+            amountIn,
+            amountOut,
+            bridgeName,
+            fromAsset: { symbol },
+            bridgeInfo: { displayName, serviceTime },
+          },
+        } = route;
+        const coinSymbol = getCoinIcon(symbol);
+        const bridgeSymbol = getBridgeIcon(bridgeName);
 
-          return (
-            <div key={id} id={`route-${id}`} style={styles.routeItemWrapper}>
-              <RouteItem
-                coinSymbol={coinSymbol}
-                bridgeSymbol={bridgeSymbol}
-                amountIn={amountIn}
-                amountOut={amountOut}
-                bridgeDisplayName={displayName}
-                routeId={id}
-                isSelected={selectedRouteId === id}
-                onRouteSelect={onRouteSelect}
-              >
-                <RouteItemFees
-                  transactionCostInUsd={transactionCoastUsd}
-                  serviceTime={serviceTime}
-                />
-              </RouteItem>
-            </div>
-          );
-        } catch (err) {
-          console.warn(
-            "Couldn't access required values from routes to display it",
-            route
-          );
-          return (
-            <RouteItemContainerCard
-              key={route?.id}
-              isSelected={false}
-              hasError={true}
-              style={styles.routeItemContainerCard}
+        return (
+          <div key={id} id={`route-${id}`} style={styles.routeItemWrapper}>
+            <RouteItem
+              coinSymbol={coinSymbol}
+              bridgeSymbol={bridgeSymbol}
+              amountIn={amountIn}
+              amountOut={amountOut}
+              bridgeDisplayName={displayName}
+              routeId={id}
+              isSelected={selectedRouteId === id}
+              onRouteSelect={onRouteSelect}
             >
-              <p style={styles.errorShowingRoutes}>
-                {t("errors.showing-routes")}
-              </p>
-            </RouteItemContainerCard>
-          );
-        }
-      });
-    }, [routes]);
-  return <>{renderRouteItems()}</>;
+              <RouteItemFees
+                transactionCostInUsd={transactionCoastUsd}
+                serviceTime={serviceTime}
+              />
+            </RouteItem>
+          </div>
+        );
+      } catch (err) {
+        console.warn(
+          "Couldn't access required values from routes to display it",
+          route
+        );
+        return (
+          <RouteItemContainerCard
+            key={route?.id}
+            isSelected={false}
+            hasError={true}
+            style={styles.routeItemContainerCard}
+          >
+            <p style={styles.errorShowingRoutes}>
+              {t("errors.showing-routes")}
+            </p>
+          </RouteItemContainerCard>
+        );
+      }
+    });
+  }, [routes, selectedRouteId]);
+  return <>{renderRouteItems}</>;
 };
 export default React.memo(RouteList);
