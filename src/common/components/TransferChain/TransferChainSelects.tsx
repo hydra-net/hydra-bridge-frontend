@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 
@@ -41,6 +41,18 @@ const TransferChainSelects = ({
   onSelectChainTo,
 }: TransferChainSelectsProps) => {
   const { t } = useTranslation();
+  const [selectedOptionTo, setSelectedOptionTo] =
+    useState<SelectOptionType | null>(null);
+  const [selectedOptionFrom, setSelectedOptionFrom] =
+    useState<SelectOptionType | null>(null);
+
+  useEffect(() => {
+    setSelectedOptionFrom(getValueFromOptions(optionsChainsFrom, chainFrom));
+  }, [chainFrom, optionsChainsFrom]);
+
+  useEffect(() => {
+    setSelectedOptionTo(getValueFromOptions(optionsChainsTo, chainTo));
+  }, [chainTo, optionsChainsTo]);
 
   /**
    * Filter through the options the current value
@@ -51,9 +63,11 @@ const TransferChainSelects = ({
   const getValueFromOptions = (
     options: SelectOptionType[],
     value: number
-  ): SelectOptionType | null =>
-    options.find((option: SelectOptionType) => option.value === value) || null;
-
+  ): SelectOptionType | null => {
+    return (
+      options.find((option: SelectOptionType) => option.value === value) || null
+    );
+  };
   return (
     <ResponsiveFlexWrapper>
       <FlexWrapper
@@ -63,7 +77,7 @@ const TransferChainSelects = ({
       >
         <BrandSelect
           label={t("transfer-from")}
-          value={getValueFromOptions(optionsChainsFrom, chainFrom)}
+          value={selectedOptionFrom}
           options={optionsChainsFrom}
           placeholder={t("select-chain")}
           isDisabled={isDisabled}
@@ -77,7 +91,7 @@ const TransferChainSelects = ({
       >
         <BrandSelect
           label={t("transfer-to")}
-          value={getValueFromOptions(optionsChainsTo, chainTo)}
+          value={selectedOptionTo}
           options={optionsChainsTo}
           placeholder={t("select-chain")}
           isDisabled={isDisabled}

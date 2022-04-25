@@ -29,6 +29,7 @@ const BrandSelect = ({
   noOptionsMessage,
 }: SelectProps & IStyleableProps) => {
   const { t } = useTranslation();
+
   const noOptionsText = noOptionsMessage || t("common.no-options-in-select");
 
   return (

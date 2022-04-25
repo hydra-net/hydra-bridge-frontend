@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import BridgeButton from "../../common/components/BridgeButton/BridgeButton";
@@ -90,7 +90,7 @@ const MainContent = ({
    * Handler to map the results of the ChainResponseDto of the available sender to a SelectionOptionType
    * @param chains - the senders available
    */
-  const mapChainResponseDtoFromSendingTarget = (chains: ChainResponseDto[]) => {
+  const mapChainResponseDtoFromSendingTarget = useCallback(() => {
     return chains
       .filter((item) => item.isSendingEnabled)
       .map((chain: ChainResponseDto) => {
@@ -103,13 +103,13 @@ const MainContent = ({
           iconName: `${name}Coin`,
         };
       });
-  };
+  }, [chains]);
 
   /**
    * Handler to map the results of the ChainResponseDto of the available receiver to a SelectionOptionType
    * @param chains - the receivers available
    */
-  const mapChainResponseDtoToReceivingTarget = (chains: ChainResponseDto[]) => {
+  const mapChainResponseDtoToReceivingTarget = useCallback(() => {
     return chains
       .filter((item) => item.isReceivingEnabled)
       .map((chain: ChainResponseDto) => {
@@ -123,37 +123,39 @@ const MainContent = ({
           iconName: `${name}Coin`,
         };
       });
-  };
+  }, [chains]);
 
   /**
    * Format receive details data to be passed to the ReceiveDetailsAccordion
    */
-  const getReceivesData = (): ReceiveDetailsAccordionProps | {} => {
-    if (route) {
-      try {
-        const {
-          bridgeRoute: {
-            bridgeName,
-            toAsset: { symbol },
-            bridgeInfo: { serviceTime, displayName },
-          },
-          transactionCoastUsd,
-        } = route;
-        return {
-          iconKey: getBridgeIcon(bridgeName),
-          chainName: displayName,
-          gasFees: formatGasFees(transactionCoastUsd),
-          serviceTime: formatServiceTime(serviceTime),
-          transactionFees: "0",
-          amountOut,
-          symbol,
-        };
-      } catch (err) {
-        console.error("Couldn't extract route data", route);
+  const getReceivesData = (): ReceiveDetailsAccordionProps | {} =>
+    useCallback(() => {
+      if (route) {
+        try {
+          const {
+            bridgeRoute: {
+              bridgeName,
+              toAsset: { symbol },
+              bridgeInfo: { serviceTime, displayName },
+            },
+            transactionCoastUsd,
+          } = route;
+          return {
+            iconKey: getBridgeIcon(bridgeName),
+            chainName: displayName,
+            gasFees: formatGasFees(transactionCoastUsd),
+            serviceTime: formatServiceTime(serviceTime),
+            transactionFees: "0",
+            amountOut,
+            symbol,
+          };
+        } catch (err) {
+          console.error("Couldn't extract route data", route);
+        }
       }
-    }
-    return {};
-  };
+      return {};
+    }, [route]);
+
   const handleAmountInChange = (
     evt: React.ChangeEvent<HTMLInputElement>
   ): void => {
@@ -164,8 +166,8 @@ const MainContent = ({
   return (
     <ContainerCard hasHoverEffect={true}>
       <TransferChainSelects
-        optionsChainsFrom={mapChainResponseDtoFromSendingTarget(chains)}
-        optionsChainsTo={mapChainResponseDtoToReceivingTarget(chains)}
+        optionsChainsFrom={mapChainResponseDtoFromSendingTarget()}
+        optionsChainsTo={mapChainResponseDtoToReceivingTarget()}
         chainFrom={chainFrom?.chainId!}
         chainTo={chainTo?.chainId!}
         onSelectChainFrom={onSelectChainFrom}
