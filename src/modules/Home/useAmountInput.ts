@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { getIsNotEnoughBalance } from "../../helpers/walletHelper";
 import _ from "lodash";
 import { QuoteRequestDto, TokenBalanceDto } from "../../common/dtos";
@@ -18,8 +18,14 @@ function useAmountInput(
   const [amountOut, setAmountOut] = useState<string>("");
   const [isNotEnoughBalance, setIsNotEnoughBalance] = useState<boolean>(false);
 
-  const getParsedAmountIn = (): number => parseStringToNumber(amountIn);
-  const getParsedAmountOut = (): number => parseStringToNumber(amountOut);
+  const getParsedAmountIn = useCallback(
+    () => parseStringToNumber(amountIn),
+    [amountIn]
+  );
+  const getParsedAmountOut = useCallback(
+    () => parseStringToNumber(amountOut),
+    [amountOut]
+  );
 
   const onAmountInChange = (value: string) => {
     setAmountIn(value);
